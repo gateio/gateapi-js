@@ -1,0 +1,56 @@
+# GateApi.Contract
+
+## Properties
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**name** | **String** | Futures contract name | [optional] 
+**type** | **String** | Futures contract type | [optional] 
+**quantoMultiplier** | **String** | Multiplier used in converting from invoicing to settlement currency in quanto futures | [optional] 
+**leverageMin** | **String** | Minimum leverage | [optional] 
+**leverageMax** | **String** | Maximum leverage | [optional] 
+**maintenanceRate** | **String** | Maintenance rate of margin | [optional] 
+**markType** | **String** | Mark price type, internal - based on internal trading, index - based on external index price | [optional] 
+**markPrice** | **String** | Current mark price | [optional] 
+**indexPrice** | **String** | Current index price | [optional] 
+**lastPrice** | **String** | Last trading price | [optional] 
+**makerFeeRate** | **String** | Maker fee rate, where negative means rebate | [optional] 
+**takerFeeRate** | **String** | Taker fee rate | [optional] 
+**orderPriceRound** | **String** | Minimum order price increment | [optional] 
+**markPriceRound** | **String** | Minimum mark price increment | [optional] 
+**fundingRate** | **String** | Current funding rate | [optional] 
+**fundingInterval** | **Number** | Funding application interval, unit in seconds | [optional] 
+**fundingNextApply** | **Number** | Next funding time | [optional] 
+**riskLimitBase** | **String** | Risk limit base | [optional] 
+**riskLimitStep** | **String** | Step of adjusting risk limit | [optional] 
+**riskLimitMax** | **String** | Maximum risk limit the contract allowed | [optional] 
+**orderSizeMin** | **Number** | Minimum order size the contract allowed | [optional] 
+**orderSizeMax** | **Number** | Maximum order size the contract allowed | [optional] 
+**orderPriceDeviate** | **String** | deviation between order price and current index price. If price of an order is denoted as order_price, it must meet the following condition:      abs(order_price - mark_price) &lt;&#x3D; mark_price * order_price_deviate | [optional] 
+**orderbookId** | **Number** | Current orderbook ID | [optional] 
+**tradeId** | **Number** | Current trade ID | [optional] 
+**tradeSize** | **Number** | Historical accumulation trade size | [optional] 
+**positionSize** | **Number** | Current total long position size | [optional] 
+
+
+<a name="TypeEnum"></a>
+## Enum: TypeEnum
+
+
+* `inverse` (value: `"inverse"`)
+
+* `direct` (value: `"direct"`)
+
+
+
+
+<a name="MarkTypeEnum"></a>
+## Enum: MarkTypeEnum
+
+
+* `internal` (value: `"internal"`)
+
+* `index` (value: `"index"`)
+
+
+
+
