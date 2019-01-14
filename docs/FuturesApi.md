@@ -34,22 +34,11 @@ Cancel a single order
 ### Example
 ```javascript
 var GateApi = require('gate-api');
-var defaultClient = GateApi.ApiClient.instance;
-// Configure API key authorization: api_key
-var api_key = defaultClient.authentications['api_key'];
-api_key.apiKey = 'YOUR API KEY';
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//api_key.apiKeyPrefix = 'Token';
-// Configure API key authorization: api_sign
-var api_sign = defaultClient.authentications['api_sign'];
-api_sign.apiKey = 'YOUR API KEY';
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//api_sign.apiKeyPrefix = 'Token';
-// Configure API key authorization: api_timestamp
-var api_timestamp = defaultClient.authentications['api_timestamp'];
-api_timestamp.apiKey = 'YOUR API KEY';
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//api_timestamp.apiKeyPrefix = 'Token';
+var client = GateApi.ApiClient.instance;
+client.key = "YOUR API KEY";
+client.secret = "YOUR API SECRET";
+// uncomment the next line if you are using the API with other host
+// client.basePath = "https://some-other-hosts";
 
 var apiInstance = new GateApi.FuturesApi();
 var orderId = "12345"; // String | ID returned on order successfully being created
@@ -75,7 +64,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key), [api_sign](../README.md#api_sign), [api_timestamp](../README.md#api_timestamp)
+Authentication with API key and secret is required
 
 ### HTTP request headers
 
@@ -91,22 +80,11 @@ Cancel all &#x60;open&#x60; orders matched
 ### Example
 ```javascript
 var GateApi = require('gate-api');
-var defaultClient = GateApi.ApiClient.instance;
-// Configure API key authorization: api_key
-var api_key = defaultClient.authentications['api_key'];
-api_key.apiKey = 'YOUR API KEY';
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//api_key.apiKeyPrefix = 'Token';
-// Configure API key authorization: api_sign
-var api_sign = defaultClient.authentications['api_sign'];
-api_sign.apiKey = 'YOUR API KEY';
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//api_sign.apiKeyPrefix = 'Token';
-// Configure API key authorization: api_timestamp
-var api_timestamp = defaultClient.authentications['api_timestamp'];
-api_timestamp.apiKey = 'YOUR API KEY';
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//api_timestamp.apiKeyPrefix = 'Token';
+var client = GateApi.ApiClient.instance;
+client.key = "YOUR API KEY";
+client.secret = "YOUR API SECRET";
+// uncomment the next line if you are using the API with other host
+// client.basePath = "https://some-other-hosts";
 
 var apiInstance = new GateApi.FuturesApi();
 var contract = "BTC_USD"; // String | Futures contract
@@ -136,7 +114,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key), [api_sign](../README.md#api_sign), [api_timestamp](../README.md#api_timestamp)
+Authentication with API key and secret is required
 
 ### HTTP request headers
 
@@ -152,22 +130,11 @@ Create a futures order
 ### Example
 ```javascript
 var GateApi = require('gate-api');
-var defaultClient = GateApi.ApiClient.instance;
-// Configure API key authorization: api_key
-var api_key = defaultClient.authentications['api_key'];
-api_key.apiKey = 'YOUR API KEY';
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//api_key.apiKeyPrefix = 'Token';
-// Configure API key authorization: api_sign
-var api_sign = defaultClient.authentications['api_sign'];
-api_sign.apiKey = 'YOUR API KEY';
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//api_sign.apiKeyPrefix = 'Token';
-// Configure API key authorization: api_timestamp
-var api_timestamp = defaultClient.authentications['api_timestamp'];
-api_timestamp.apiKey = 'YOUR API KEY';
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//api_timestamp.apiKeyPrefix = 'Token';
+var client = GateApi.ApiClient.instance;
+client.key = "YOUR API KEY";
+client.secret = "YOUR API SECRET";
+// uncomment the next line if you are using the API with other host
+// client.basePath = "https://some-other-hosts";
 
 var apiInstance = new GateApi.FuturesApi();
 var futuresOrder = new GateApi.FuturesOrder(); // FuturesOrder | 
@@ -193,7 +160,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key), [api_sign](../README.md#api_sign), [api_timestamp](../README.md#api_timestamp)
+Authentication with API key and secret is required
 
 ### HTTP request headers
 
@@ -209,22 +176,11 @@ List personal trading history
 ### Example
 ```javascript
 var GateApi = require('gate-api');
-var defaultClient = GateApi.ApiClient.instance;
-// Configure API key authorization: api_key
-var api_key = defaultClient.authentications['api_key'];
-api_key.apiKey = 'YOUR API KEY';
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//api_key.apiKeyPrefix = 'Token';
-// Configure API key authorization: api_sign
-var api_sign = defaultClient.authentications['api_sign'];
-api_sign.apiKey = 'YOUR API KEY';
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//api_sign.apiKeyPrefix = 'Token';
-// Configure API key authorization: api_timestamp
-var api_timestamp = defaultClient.authentications['api_timestamp'];
-api_timestamp.apiKey = 'YOUR API KEY';
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//api_timestamp.apiKeyPrefix = 'Token';
+var client = GateApi.ApiClient.instance;
+client.key = "YOUR API KEY";
+client.secret = "YOUR API SECRET";
+// uncomment the next line if you are using the API with other host
+// client.basePath = "https://some-other-hosts";
 
 var apiInstance = new GateApi.FuturesApi();
 var opts = {
@@ -258,7 +214,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key), [api_sign](../README.md#api_sign), [api_timestamp](../README.md#api_timestamp)
+Authentication with API key and secret is required
 
 ### HTTP request headers
 
@@ -274,22 +230,11 @@ Get a single order
 ### Example
 ```javascript
 var GateApi = require('gate-api');
-var defaultClient = GateApi.ApiClient.instance;
-// Configure API key authorization: api_key
-var api_key = defaultClient.authentications['api_key'];
-api_key.apiKey = 'YOUR API KEY';
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//api_key.apiKeyPrefix = 'Token';
-// Configure API key authorization: api_sign
-var api_sign = defaultClient.authentications['api_sign'];
-api_sign.apiKey = 'YOUR API KEY';
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//api_sign.apiKeyPrefix = 'Token';
-// Configure API key authorization: api_timestamp
-var api_timestamp = defaultClient.authentications['api_timestamp'];
-api_timestamp.apiKey = 'YOUR API KEY';
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//api_timestamp.apiKeyPrefix = 'Token';
+var client = GateApi.ApiClient.instance;
+client.key = "YOUR API KEY";
+client.secret = "YOUR API SECRET";
+// uncomment the next line if you are using the API with other host
+// client.basePath = "https://some-other-hosts";
 
 var apiInstance = new GateApi.FuturesApi();
 var orderId = "12345"; // String | ID returned on order successfully being created
@@ -315,7 +260,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key), [api_sign](../README.md#api_sign), [api_timestamp](../README.md#api_timestamp)
+Authentication with API key and secret is required
 
 ### HTTP request headers
 
@@ -331,22 +276,11 @@ Query futures account
 ### Example
 ```javascript
 var GateApi = require('gate-api');
-var defaultClient = GateApi.ApiClient.instance;
-// Configure API key authorization: api_key
-var api_key = defaultClient.authentications['api_key'];
-api_key.apiKey = 'YOUR API KEY';
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//api_key.apiKeyPrefix = 'Token';
-// Configure API key authorization: api_sign
-var api_sign = defaultClient.authentications['api_sign'];
-api_sign.apiKey = 'YOUR API KEY';
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//api_sign.apiKeyPrefix = 'Token';
-// Configure API key authorization: api_timestamp
-var api_timestamp = defaultClient.authentications['api_timestamp'];
-api_timestamp.apiKey = 'YOUR API KEY';
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//api_timestamp.apiKeyPrefix = 'Token';
+var client = GateApi.ApiClient.instance;
+client.key = "YOUR API KEY";
+client.secret = "YOUR API SECRET";
+// uncomment the next line if you are using the API with other host
+// client.basePath = "https://some-other-hosts";
 
 var apiInstance = new GateApi.FuturesApi();
 var callback = function(error, data, response) {
@@ -368,7 +302,7 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-[api_key](../README.md#api_key), [api_sign](../README.md#api_sign), [api_timestamp](../README.md#api_timestamp)
+Authentication with API key and secret is required
 
 ### HTTP request headers
 
@@ -701,22 +635,11 @@ List futures orders
 ### Example
 ```javascript
 var GateApi = require('gate-api');
-var defaultClient = GateApi.ApiClient.instance;
-// Configure API key authorization: api_key
-var api_key = defaultClient.authentications['api_key'];
-api_key.apiKey = 'YOUR API KEY';
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//api_key.apiKeyPrefix = 'Token';
-// Configure API key authorization: api_sign
-var api_sign = defaultClient.authentications['api_sign'];
-api_sign.apiKey = 'YOUR API KEY';
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//api_sign.apiKeyPrefix = 'Token';
-// Configure API key authorization: api_timestamp
-var api_timestamp = defaultClient.authentications['api_timestamp'];
-api_timestamp.apiKey = 'YOUR API KEY';
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//api_timestamp.apiKeyPrefix = 'Token';
+var client = GateApi.ApiClient.instance;
+client.key = "YOUR API KEY";
+client.secret = "YOUR API SECRET";
+// uncomment the next line if you are using the API with other host
+// client.basePath = "https://some-other-hosts";
 
 var apiInstance = new GateApi.FuturesApi();
 var contract = "BTC_USD"; // String | Futures contract
@@ -750,7 +673,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key), [api_sign](../README.md#api_sign), [api_timestamp](../README.md#api_timestamp)
+Authentication with API key and secret is required
 
 ### HTTP request headers
 
@@ -766,22 +689,11 @@ List position close history
 ### Example
 ```javascript
 var GateApi = require('gate-api');
-var defaultClient = GateApi.ApiClient.instance;
-// Configure API key authorization: api_key
-var api_key = defaultClient.authentications['api_key'];
-api_key.apiKey = 'YOUR API KEY';
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//api_key.apiKeyPrefix = 'Token';
-// Configure API key authorization: api_sign
-var api_sign = defaultClient.authentications['api_sign'];
-api_sign.apiKey = 'YOUR API KEY';
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//api_sign.apiKeyPrefix = 'Token';
-// Configure API key authorization: api_timestamp
-var api_timestamp = defaultClient.authentications['api_timestamp'];
-api_timestamp.apiKey = 'YOUR API KEY';
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//api_timestamp.apiKeyPrefix = 'Token';
+var client = GateApi.ApiClient.instance;
+client.key = "YOUR API KEY";
+client.secret = "YOUR API SECRET";
+// uncomment the next line if you are using the API with other host
+// client.basePath = "https://some-other-hosts";
 
 var apiInstance = new GateApi.FuturesApi();
 var opts = {
@@ -811,7 +723,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key), [api_sign](../README.md#api_sign), [api_timestamp](../README.md#api_timestamp)
+Authentication with API key and secret is required
 
 ### HTTP request headers
 
@@ -827,22 +739,11 @@ List all positions of a user
 ### Example
 ```javascript
 var GateApi = require('gate-api');
-var defaultClient = GateApi.ApiClient.instance;
-// Configure API key authorization: api_key
-var api_key = defaultClient.authentications['api_key'];
-api_key.apiKey = 'YOUR API KEY';
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//api_key.apiKeyPrefix = 'Token';
-// Configure API key authorization: api_sign
-var api_sign = defaultClient.authentications['api_sign'];
-api_sign.apiKey = 'YOUR API KEY';
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//api_sign.apiKeyPrefix = 'Token';
-// Configure API key authorization: api_timestamp
-var api_timestamp = defaultClient.authentications['api_timestamp'];
-api_timestamp.apiKey = 'YOUR API KEY';
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//api_timestamp.apiKeyPrefix = 'Token';
+var client = GateApi.ApiClient.instance;
+client.key = "YOUR API KEY";
+client.secret = "YOUR API SECRET";
+// uncomment the next line if you are using the API with other host
+// client.basePath = "https://some-other-hosts";
 
 var apiInstance = new GateApi.FuturesApi();
 var callback = function(error, data, response) {
@@ -864,7 +765,7 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-[api_key](../README.md#api_key), [api_sign](../README.md#api_sign), [api_timestamp](../README.md#api_timestamp)
+Authentication with API key and secret is required
 
 ### HTTP request headers
 
@@ -880,22 +781,11 @@ Update position leverage
 ### Example
 ```javascript
 var GateApi = require('gate-api');
-var defaultClient = GateApi.ApiClient.instance;
-// Configure API key authorization: api_key
-var api_key = defaultClient.authentications['api_key'];
-api_key.apiKey = 'YOUR API KEY';
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//api_key.apiKeyPrefix = 'Token';
-// Configure API key authorization: api_sign
-var api_sign = defaultClient.authentications['api_sign'];
-api_sign.apiKey = 'YOUR API KEY';
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//api_sign.apiKeyPrefix = 'Token';
-// Configure API key authorization: api_timestamp
-var api_timestamp = defaultClient.authentications['api_timestamp'];
-api_timestamp.apiKey = 'YOUR API KEY';
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//api_timestamp.apiKeyPrefix = 'Token';
+var client = GateApi.ApiClient.instance;
+client.key = "YOUR API KEY";
+client.secret = "YOUR API SECRET";
+// uncomment the next line if you are using the API with other host
+// client.basePath = "https://some-other-hosts";
 
 var apiInstance = new GateApi.FuturesApi();
 var contract = "BTC_USD"; // String | Futures contract
@@ -923,7 +813,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key), [api_sign](../README.md#api_sign), [api_timestamp](../README.md#api_timestamp)
+Authentication with API key and secret is required
 
 ### HTTP request headers
 
@@ -939,22 +829,11 @@ Update position margin
 ### Example
 ```javascript
 var GateApi = require('gate-api');
-var defaultClient = GateApi.ApiClient.instance;
-// Configure API key authorization: api_key
-var api_key = defaultClient.authentications['api_key'];
-api_key.apiKey = 'YOUR API KEY';
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//api_key.apiKeyPrefix = 'Token';
-// Configure API key authorization: api_sign
-var api_sign = defaultClient.authentications['api_sign'];
-api_sign.apiKey = 'YOUR API KEY';
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//api_sign.apiKeyPrefix = 'Token';
-// Configure API key authorization: api_timestamp
-var api_timestamp = defaultClient.authentications['api_timestamp'];
-api_timestamp.apiKey = 'YOUR API KEY';
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//api_timestamp.apiKeyPrefix = 'Token';
+var client = GateApi.ApiClient.instance;
+client.key = "YOUR API KEY";
+client.secret = "YOUR API SECRET";
+// uncomment the next line if you are using the API with other host
+// client.basePath = "https://some-other-hosts";
 
 var apiInstance = new GateApi.FuturesApi();
 var contract = "BTC_USD"; // String | Futures contract
@@ -982,7 +861,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key), [api_sign](../README.md#api_sign), [api_timestamp](../README.md#api_timestamp)
+Authentication with API key and secret is required
 
 ### HTTP request headers
 
@@ -998,22 +877,11 @@ Update position risk limit
 ### Example
 ```javascript
 var GateApi = require('gate-api');
-var defaultClient = GateApi.ApiClient.instance;
-// Configure API key authorization: api_key
-var api_key = defaultClient.authentications['api_key'];
-api_key.apiKey = 'YOUR API KEY';
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//api_key.apiKeyPrefix = 'Token';
-// Configure API key authorization: api_sign
-var api_sign = defaultClient.authentications['api_sign'];
-api_sign.apiKey = 'YOUR API KEY';
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//api_sign.apiKeyPrefix = 'Token';
-// Configure API key authorization: api_timestamp
-var api_timestamp = defaultClient.authentications['api_timestamp'];
-api_timestamp.apiKey = 'YOUR API KEY';
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//api_timestamp.apiKeyPrefix = 'Token';
+var client = GateApi.ApiClient.instance;
+client.key = "YOUR API KEY";
+client.secret = "YOUR API SECRET";
+// uncomment the next line if you are using the API with other host
+// client.basePath = "https://some-other-hosts";
 
 var apiInstance = new GateApi.FuturesApi();
 var contract = "BTC_USD"; // String | Futures contract
@@ -1041,7 +909,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[api_key](../README.md#api_key), [api_sign](../README.md#api_sign), [api_timestamp](../README.md#api_timestamp)
+Authentication with API key and secret is required
 
 ### HTTP request headers
 

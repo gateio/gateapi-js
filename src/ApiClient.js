@@ -17,18 +17,19 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['superagent', 'querystring'], factory);
+    define(['superagent', 'querystring', 'crypto'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('superagent'), require('querystring'));
+    module.exports = factory(require('superagent'), require('querystring'), require('crypto'));
   } else {
     // Browser globals (root is window)
     if (!root.GateApi) {
       root.GateApi = {};
     }
+    // Browser does not need API key and secret authentication
     root.GateApi.ApiClient = factory(root.superagent, root.querystring);
   }
-}(this, function(superagent, querystring) {
+}(this, function(superagent, querystring, crypto) {
   'use strict';
 
   /**
@@ -101,6 +102,16 @@
      * Allow user to override superagent agent
      */
     this.requestAgent = null;
+
+    /*
+     * API Key
+     */
+    this.key = "";
+
+    /*
+     * API secret
+     */
+    this.secret = "";
   };
 
   /**
@@ -388,7 +399,7 @@
     var request = superagent(httpMethod, url);
 
     // apply authentications
-    this.applyAuthToRequest(request, authNames);
+    // this.applyAuthToRequest(request, authNames);
 
     // set collection query parameters
     for (var key in collectionQueryParams) {
@@ -413,7 +424,8 @@
     if (httpMethod.toUpperCase() === 'GET' && this.cache === false) {
         queryParams['_'] = new Date().getTime();
     }
-    request.query(this.normalizeParams(queryParams));
+    queryParams = this.normalizeParams(queryParams);
+    request.query(queryParams);
 
     // set header parameters
     request.set(this.defaultHeaders).set(this.normalizeParams(headerParams));
@@ -435,6 +447,21 @@
       }
     } else if (!request.header['Content-Type']) {
       request.type('application/json');
+    }
+
+    if (typeof window === 'undefined' && authNames !== undefined && authNames.length > 0) {
+      // calculate signature in non-browser environment
+      var timestamp = ((new Date()).getTime() / 1000).toString();
+      var resourcePath = url.slice(url.indexOf('/', url.indexOf('://') + 3));
+      var queryString = querystring.stringify(queryParams);
+      // FIXME: assume application/json body only
+      bodyParam = (bodyParam !== undefined && bodyParam !== null) ? JSON.stringify(bodyParam) : "";
+      var hashedPayload = crypto.createHash('sha512').update(bodyParam).digest('hex');
+      var signatureString = [httpMethod, resourcePath, queryString, hashedPayload, timestamp].join("\n");
+      // console.log('signature string to be calculated: ' + signatureString);
+      var signature = crypto.createHmac('sha512', this.secret).update(signatureString).digest('hex');
+      // console.log('signature generated: ' + signature);
+      request.set({'KEY': this.key, 'Timestamp': timestamp, 'SIGN': signature});
     }
 
     if (contentType === 'application/x-www-form-urlencoded') {

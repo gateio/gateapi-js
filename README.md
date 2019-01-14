@@ -96,25 +96,11 @@ Please follow the [installation](#installation) instruction and execute the foll
 ```javascript
 var GateApi = require('gate-api');
 
-var defaultClient = GateApi.ApiClient.instance;
-
-// Configure API key authorization: api_key
-var api_key = defaultClient.authentications['api_key'];
-api_key.apiKey = "YOUR API KEY"
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//api_key.apiKeyPrefix['KEY'] = "Token"
-
-// Configure API key authorization: api_sign
-var api_sign = defaultClient.authentications['api_sign'];
-api_sign.apiKey = "YOUR API KEY"
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//api_sign.apiKeyPrefix['SIGN'] = "Token"
-
-// Configure API key authorization: api_timestamp
-var api_timestamp = defaultClient.authentications['api_timestamp'];
-api_timestamp.apiKey = "YOUR API KEY"
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//api_timestamp.apiKeyPrefix['Timestamp'] = "Token"
+var client = GateApi.ApiClient.instance;
+client.key = "YOUR API KEY";
+client.secret = "YOUR API SECRET";
+// uncomment the next line if you are using the API with other host
+// client.basePath = "https://some-other-hosts";
 
 var api = new GateApi.FuturesApi()
 var orderId = "12345"; // {String} ID returned on order successfully being created
@@ -173,26 +159,4 @@ Class | Method | HTTP request | Description
  - [GateApi.Position](docs/Position.md)
  - [GateApi.PositionClose](docs/PositionClose.md)
  - [GateApi.PositionCloseOrder](docs/PositionCloseOrder.md)
-
-
-## Documentation for Authorization
-
-
-### api_key
-
-- **Type**: API key
-- **API key parameter name**: KEY
-- **Location**: HTTP header
-
-### api_sign
-
-- **Type**: API key
-- **API key parameter name**: SIGN
-- **Location**: HTTP header
-
-### api_timestamp
-
-- **Type**: API key
-- **API key parameter name**: Timestamp
-- **Location**: HTTP header
 
