@@ -26,7 +26,7 @@
     if (!root.GateApi) {
       root.GateApi = {};
     }
-    root.GateApi.PositionClose = factory(root.GateApi.ApiClient);
+    root.GateApi.FuturesAccountBook = factory(root.GateApi.ApiClient);
   }
 }(this, function(ApiClient) {
   'use strict';
@@ -34,14 +34,14 @@
 
 
   /**
-   * The PositionClose model module.
-   * @module model/PositionClose
+   * The FuturesAccountBook model module.
+   * @module model/FuturesAccountBook
    * @version 1.2.0
    */
 
   /**
-   * Constructs a new <code>PositionClose</code>.
-   * @alias module:model/PositionClose
+   * Constructs a new <code>FuturesAccountBook</code>.
+   * @alias module:model/FuturesAccountBook
    * @class
    */
   var exports = function() {
@@ -50,11 +50,11 @@
   };
 
   /**
-   * Constructs a <code>PositionClose</code> from a plain JavaScript object, optionally creating a new instance.
+   * Constructs a <code>FuturesAccountBook</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:model/PositionClose} obj Optional instance to populate.
-   * @return {module:model/PositionClose} The populated <code>PositionClose</code> instance.
+   * @param {module:model/FuturesAccountBook} obj Optional instance to populate.
+   * @return {module:model/FuturesAccountBook} The populated <code>FuturesAccountBook</code> instance.
    */
   exports.constructFromObject = function(data, obj) {
     if (data) {
@@ -62,14 +62,14 @@
       if (data.hasOwnProperty('time')) {
         obj['time'] = ApiClient.convertToType(data['time'], 'Number');
       }
-      if (data.hasOwnProperty('contract')) {
-        obj['contract'] = ApiClient.convertToType(data['contract'], 'String');
+      if (data.hasOwnProperty('change')) {
+        obj['change'] = ApiClient.convertToType(data['change'], 'String');
       }
-      if (data.hasOwnProperty('side')) {
-        obj['side'] = ApiClient.convertToType(data['side'], 'String');
+      if (data.hasOwnProperty('balance')) {
+        obj['balance'] = ApiClient.convertToType(data['balance'], 'String');
       }
-      if (data.hasOwnProperty('pnl')) {
-        obj['pnl'] = ApiClient.convertToType(data['pnl'], 'String');
+      if (data.hasOwnProperty('type')) {
+        obj['type'] = ApiClient.convertToType(data['type'], 'String');
       }
       if (data.hasOwnProperty('text')) {
         obj['text'] = ApiClient.convertToType(data['text'], 'String');
@@ -79,48 +79,63 @@
   }
 
   /**
-   * Position close time
+   * Change time
    * @member {Number} time
    */
   exports.prototype['time'] = undefined;
   /**
-   * Futures contract
-   * @member {String} contract
+   * Change amount
+   * @member {String} change
    */
-  exports.prototype['contract'] = undefined;
+  exports.prototype['change'] = undefined;
   /**
-   * Position side, long or short
-   * @member {module:model/PositionClose.SideEnum} side
+   * Balance after change
+   * @member {String} balance
    */
-  exports.prototype['side'] = undefined;
+  exports.prototype['balance'] = undefined;
   /**
-   * PNL
-   * @member {String} pnl
+   * Changing Type  - dnw: Deposit & Withdraw - pnl: Profit & Loss by reducing position - fee: Trading fee - refr: Referrer rebate - fund: Funding
+   * @member {module:model/FuturesAccountBook.TypeEnum} type
    */
-  exports.prototype['pnl'] = undefined;
+  exports.prototype['type'] = undefined;
   /**
-   * Text of close order
+   * Comment
    * @member {String} text
    */
   exports.prototype['text'] = undefined;
 
 
   /**
-   * Allowed values for the <code>side</code> property.
+   * Allowed values for the <code>type</code> property.
    * @enum {String}
    * @readonly
    */
-  exports.SideEnum = {
+  exports.TypeEnum = {
     /**
-     * value: "long"
+     * value: "dnw"
      * @const
      */
-    "long": "long",
+    "dnw": "dnw",
     /**
-     * value: "short"
+     * value: "pnl"
      * @const
      */
-    "short": "short"  };
+    "pnl": "pnl",
+    /**
+     * value: "fee"
+     * @const
+     */
+    "fee": "fee",
+    /**
+     * value: "refr"
+     * @const
+     */
+    "refr": "refr",
+    /**
+     * value: "fund"
+     * @const
+     */
+    "fund": "fund"  };
 
 
   return exports;

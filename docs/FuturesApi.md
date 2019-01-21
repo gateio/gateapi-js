@@ -7,8 +7,11 @@ Method | HTTP request | Description
 [**cancelOrder**](FuturesApi.md#cancelOrder) | **DELETE** /futures/orders/{order_id} | Cancel a single order
 [**cancelOrders**](FuturesApi.md#cancelOrders) | **DELETE** /futures/orders | Cancel all &#x60;open&#x60; orders matched
 [**createOrder**](FuturesApi.md#createOrder) | **POST** /futures/orders | Create a futures order
+[**getFuturesContract**](FuturesApi.md#getFuturesContract) | **GET** /futures/contracts/{contract} | Get a single contract
 [**getMyTrades**](FuturesApi.md#getMyTrades) | **GET** /futures/my_trades | List personal trading history
 [**getOrder**](FuturesApi.md#getOrder) | **GET** /futures/orders/{order_id} | Get a single order
+[**getPosition**](FuturesApi.md#getPosition) | **GET** /futures/positions/{contract} | Get single position
+[**listFuturesAccountBook**](FuturesApi.md#listFuturesAccountBook) | **GET** /futures/account_book | Query account book
 [**listFuturesAccounts**](FuturesApi.md#listFuturesAccounts) | **GET** /futures/accounts | Query futures account
 [**listFuturesCandlesticks**](FuturesApi.md#listFuturesCandlesticks) | **GET** /futures/candlesticks | Get futures candlesticks
 [**listFuturesContracts**](FuturesApi.md#listFuturesContracts) | **GET** /futures/contracts | List all futures contracts
@@ -167,6 +170,47 @@ Authentication with API key and secret is required
  - **Content-Type**: application/json
  - **Accept**: application/json
 
+<a name="getFuturesContract"></a>
+# **getFuturesContract**
+> Contract getFuturesContract(contract)
+
+Get a single contract
+
+### Example
+```javascript
+var GateApi = require('gate-api');
+
+var apiInstance = new GateApi.FuturesApi();
+var contract = "BTC_USD"; // String | Futures contract
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully. Returned data: ' + data);
+  }
+};
+apiInstance.getFuturesContract(contract, callback);
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **contract** | **String**| Futures contract | 
+
+### Return type
+
+[**Contract**](Contract.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
 <a name="getMyTrades"></a>
 # **getMyTrades**
 > [MyFuturesTrade] getMyTrades(opts)
@@ -257,6 +301,106 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**FuturesOrder**](FuturesOrder.md)
+
+### Authorization
+
+Authentication with API key and secret is required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+<a name="getPosition"></a>
+# **getPosition**
+> Position getPosition(contract)
+
+Get single position
+
+### Example
+```javascript
+var GateApi = require('gate-api');
+var client = GateApi.ApiClient.instance;
+client.key = "YOUR API KEY";
+client.secret = "YOUR API SECRET";
+// uncomment the next line if you are using the API with other host
+// client.basePath = "https://some-other-hosts";
+
+var apiInstance = new GateApi.FuturesApi();
+var contract = "BTC_USD"; // String | Futures contract
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully. Returned data: ' + data);
+  }
+};
+apiInstance.getPosition(contract, callback);
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **contract** | **String**| Futures contract | 
+
+### Return type
+
+[**Position**](Position.md)
+
+### Authorization
+
+Authentication with API key and secret is required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+<a name="listFuturesAccountBook"></a>
+# **listFuturesAccountBook**
+> [FuturesAccountBook] listFuturesAccountBook(opts)
+
+Query account book
+
+### Example
+```javascript
+var GateApi = require('gate-api');
+var client = GateApi.ApiClient.instance;
+client.key = "YOUR API KEY";
+client.secret = "YOUR API SECRET";
+// uncomment the next line if you are using the API with other host
+// client.basePath = "https://some-other-hosts";
+
+var apiInstance = new GateApi.FuturesApi();
+var opts = {
+  'limit': 100, // Number | Maximum number of record returned in one list
+  'from': 1547706332, // Number | Start timestamp
+  'to': 1547706332, // Number | End timestamp
+  'type': "type_example" // String | Changing Type  - dnw: Deposit & Withdraw - pnl: Profit & Loss by reducing position - fee: Trading fee - refr: Referrer rebate - fund: Funding
+};
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully. Returned data: ' + data);
+  }
+};
+apiInstance.listFuturesAccountBook(opts, callback);
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **limit** | **Number**| Maximum number of record returned in one list | [optional] [default to 100]
+ **from** | **Number**| Start timestamp | [optional] 
+ **to** | **Number**| End timestamp | [optional] 
+ **type** | **String**| Changing Type  - dnw: Deposit &amp; Withdraw - pnl: Profit &amp; Loss by reducing position - fee: Trading fee - refr: Referrer rebate - fund: Funding | [optional] 
+
+### Return type
+
+[**[FuturesAccountBook]**](FuturesAccountBook.md)
 
 ### Authorization
 
