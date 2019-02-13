@@ -1,6 +1,6 @@
 # GateApi.FuturesApi
 
-All URIs are relative to *https://fx-api.gateio.io/api/v4*
+All URIs are relative to *https://fx-api.gateio.ws/api/v4*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
