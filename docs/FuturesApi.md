@@ -377,7 +377,7 @@ var opts = {
   'limit': 100, // Number | Maximum number of record returned in one list
   'from': 1547706332, // Number | Start timestamp
   'to': 1547706332, // Number | End timestamp
-  'type': "type_example" // String | Changing Type  - dnw: Deposit & Withdraw - pnl: Profit & Loss by reducing position - fee: Trading fee - refr: Referrer rebate - fund: Funding
+  'type': "dnw" // String | Changing Type  - dnw: Deposit & Withdraw - pnl: Profit & Loss by reducing position - fee: Trading fee - refr: Referrer rebate - fund: Funding
 };
 var callback = function(error, data, response) {
   if (error) {
