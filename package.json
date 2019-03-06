@@ -1,7 +1,7 @@
 {
   "name": "gate-api",
-  "version": "1.3.0",
-  "description": "APIv4_futures_provides_all_sorts_of_futures_trading_operations_There_are_public_APIs_to_retrieve_the_real_time_market_statisticsand_private_APIs_which_needs_authentication_to_trade_on_users_behalf_",
+  "version": "4.5.0",
+  "description": "APIv4_provides_spot_margin_and_futures_trading_operations__There_are_public_APIs_to_retrieve_the_real_time_market_statistics_and_private_APIs_which_needs_authentication_to_trade_on_users_behalf_",
   "license": "Unlicense",
   "main": "src/index.js",
   "scripts": {

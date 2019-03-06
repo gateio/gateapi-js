@@ -26,7 +26,7 @@
     if (!root.GateApi) {
       root.GateApi = {};
     }
-    root.GateApi.FuturesAccount = factory(root.GateApi.ApiClient);
+    root.GateApi.SpotAccount = factory(root.GateApi.ApiClient);
   }
 }(this, function(ApiClient) {
   'use strict';
@@ -34,14 +34,14 @@
 
 
   /**
-   * The FuturesAccount model module.
-   * @module model/FuturesAccount
+   * The SpotAccount model module.
+   * @module model/SpotAccount
    * @version 4.5.0
    */
 
   /**
-   * Constructs a new <code>FuturesAccount</code>.
-   * @alias module:model/FuturesAccount
+   * Constructs a new <code>SpotAccount</code>.
+   * @alias module:model/SpotAccount
    * @class
    */
   var exports = function() {
@@ -50,59 +50,43 @@
   };
 
   /**
-   * Constructs a <code>FuturesAccount</code> from a plain JavaScript object, optionally creating a new instance.
+   * Constructs a <code>SpotAccount</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:model/FuturesAccount} obj Optional instance to populate.
-   * @return {module:model/FuturesAccount} The populated <code>FuturesAccount</code> instance.
+   * @param {module:model/SpotAccount} obj Optional instance to populate.
+   * @return {module:model/SpotAccount} The populated <code>SpotAccount</code> instance.
    */
   exports.constructFromObject = function(data, obj) {
     if (data) {
       obj = obj || new exports();
-      if (data.hasOwnProperty('total')) {
-        obj['total'] = ApiClient.convertToType(data['total'], 'String');
-      }
-      if (data.hasOwnProperty('unrealised_pnl')) {
-        obj['unrealised_pnl'] = ApiClient.convertToType(data['unrealised_pnl'], 'String');
-      }
-      if (data.hasOwnProperty('position_margin')) {
-        obj['position_margin'] = ApiClient.convertToType(data['position_margin'], 'String');
-      }
-      if (data.hasOwnProperty('order_margin')) {
-        obj['order_margin'] = ApiClient.convertToType(data['order_margin'], 'String');
+      if (data.hasOwnProperty('currency')) {
+        obj['currency'] = ApiClient.convertToType(data['currency'], 'String');
       }
       if (data.hasOwnProperty('available')) {
         obj['available'] = ApiClient.convertToType(data['available'], 'String');
+      }
+      if (data.hasOwnProperty('locked')) {
+        obj['locked'] = ApiClient.convertToType(data['locked'], 'String');
       }
     }
     return obj;
   }
 
   /**
-   * Total assets, total = position_margin + order_margin + available
-   * @member {String} total
+   * Currency detail
+   * @member {String} currency
    */
-  exports.prototype['total'] = undefined;
+  exports.prototype['currency'] = undefined;
   /**
-   * Unrealized PNL
-   * @member {String} unrealised_pnl
-   */
-  exports.prototype['unrealised_pnl'] = undefined;
-  /**
-   * Position margin
-   * @member {String} position_margin
-   */
-  exports.prototype['position_margin'] = undefined;
-  /**
-   * Order margin of unfinished orders
-   * @member {String} order_margin
-   */
-  exports.prototype['order_margin'] = undefined;
-  /**
-   * Available balance to transfer out or trade
+   * Available amount
    * @member {String} available
    */
   exports.prototype['available'] = undefined;
+  /**
+   * Locked amount, used in trading
+   * @member {String} locked
+   */
+  exports.prototype['locked'] = undefined;
 
 
 

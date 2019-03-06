@@ -26,7 +26,7 @@
     if (!root.GateApi) {
       root.GateApi = {};
     }
-    root.GateApi.FuturesTrade = factory(root.GateApi.ApiClient);
+    root.GateApi.TriggerOrderResponse = factory(root.GateApi.ApiClient);
   }
 }(this, function(ApiClient) {
   'use strict';
@@ -34,14 +34,14 @@
 
 
   /**
-   * The FuturesTrade model module.
-   * @module model/FuturesTrade
+   * The TriggerOrderResponse model module.
+   * @module model/TriggerOrderResponse
    * @version 4.5.0
    */
 
   /**
-   * Constructs a new <code>FuturesTrade</code>.
-   * @alias module:model/FuturesTrade
+   * Constructs a new <code>TriggerOrderResponse</code>.
+   * @alias module:model/TriggerOrderResponse
    * @class
    */
   var exports = function() {
@@ -50,11 +50,11 @@
   };
 
   /**
-   * Constructs a <code>FuturesTrade</code> from a plain JavaScript object, optionally creating a new instance.
+   * Constructs a <code>TriggerOrderResponse</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:model/FuturesTrade} obj Optional instance to populate.
-   * @return {module:model/FuturesTrade} The populated <code>FuturesTrade</code> instance.
+   * @param {module:model/TriggerOrderResponse} obj Optional instance to populate.
+   * @return {module:model/TriggerOrderResponse} The populated <code>TriggerOrderResponse</code> instance.
    */
   exports.constructFromObject = function(data, obj) {
     if (data) {
@@ -62,47 +62,15 @@
       if (data.hasOwnProperty('id')) {
         obj['id'] = ApiClient.convertToType(data['id'], 'Number');
       }
-      if (data.hasOwnProperty('create_time')) {
-        obj['create_time'] = ApiClient.convertToType(data['create_time'], 'Number');
-      }
-      if (data.hasOwnProperty('contract')) {
-        obj['contract'] = ApiClient.convertToType(data['contract'], 'String');
-      }
-      if (data.hasOwnProperty('size')) {
-        obj['size'] = ApiClient.convertToType(data['size'], 'Number');
-      }
-      if (data.hasOwnProperty('price')) {
-        obj['price'] = ApiClient.convertToType(data['price'], 'String');
-      }
     }
     return obj;
   }
 
   /**
-   * Trade ID
+   * Auto order ID
    * @member {Number} id
    */
   exports.prototype['id'] = undefined;
-  /**
-   * Trading time
-   * @member {Number} create_time
-   */
-  exports.prototype['create_time'] = undefined;
-  /**
-   * Futures contract
-   * @member {String} contract
-   */
-  exports.prototype['contract'] = undefined;
-  /**
-   * Trading size
-   * @member {Number} size
-   */
-  exports.prototype['size'] = undefined;
-  /**
-   * Trading price
-   * @member {String} price
-   */
-  exports.prototype['price'] = undefined;
 
 
 

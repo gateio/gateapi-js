@@ -26,7 +26,7 @@
     if (!root.GateApi) {
       root.GateApi = {};
     }
-    root.GateApi.FuturesTrade = factory(root.GateApi.ApiClient);
+    root.GateApi.MarginAccountCurrency = factory(root.GateApi.ApiClient);
   }
 }(this, function(ApiClient) {
   'use strict';
@@ -34,14 +34,15 @@
 
 
   /**
-   * The FuturesTrade model module.
-   * @module model/FuturesTrade
+   * The MarginAccountCurrency model module.
+   * @module model/MarginAccountCurrency
    * @version 4.5.0
    */
 
   /**
-   * Constructs a new <code>FuturesTrade</code>.
-   * @alias module:model/FuturesTrade
+   * Constructs a new <code>MarginAccountCurrency</code>.
+   * Account currency detail
+   * @alias module:model/MarginAccountCurrency
    * @class
    */
   var exports = function() {
@@ -50,59 +51,51 @@
   };
 
   /**
-   * Constructs a <code>FuturesTrade</code> from a plain JavaScript object, optionally creating a new instance.
+   * Constructs a <code>MarginAccountCurrency</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:model/FuturesTrade} obj Optional instance to populate.
-   * @return {module:model/FuturesTrade} The populated <code>FuturesTrade</code> instance.
+   * @param {module:model/MarginAccountCurrency} obj Optional instance to populate.
+   * @return {module:model/MarginAccountCurrency} The populated <code>MarginAccountCurrency</code> instance.
    */
   exports.constructFromObject = function(data, obj) {
     if (data) {
       obj = obj || new exports();
-      if (data.hasOwnProperty('id')) {
-        obj['id'] = ApiClient.convertToType(data['id'], 'Number');
+      if (data.hasOwnProperty('currency')) {
+        obj['currency'] = ApiClient.convertToType(data['currency'], 'String');
       }
-      if (data.hasOwnProperty('create_time')) {
-        obj['create_time'] = ApiClient.convertToType(data['create_time'], 'Number');
+      if (data.hasOwnProperty('available')) {
+        obj['available'] = ApiClient.convertToType(data['available'], 'String');
       }
-      if (data.hasOwnProperty('contract')) {
-        obj['contract'] = ApiClient.convertToType(data['contract'], 'String');
+      if (data.hasOwnProperty('locked')) {
+        obj['locked'] = ApiClient.convertToType(data['locked'], 'String');
       }
-      if (data.hasOwnProperty('size')) {
-        obj['size'] = ApiClient.convertToType(data['size'], 'Number');
-      }
-      if (data.hasOwnProperty('price')) {
-        obj['price'] = ApiClient.convertToType(data['price'], 'String');
+      if (data.hasOwnProperty('borrowed')) {
+        obj['borrowed'] = ApiClient.convertToType(data['borrowed'], 'String');
       }
     }
     return obj;
   }
 
   /**
-   * Trade ID
-   * @member {Number} id
+   * Currency name
+   * @member {String} currency
    */
-  exports.prototype['id'] = undefined;
+  exports.prototype['currency'] = undefined;
   /**
-   * Trading time
-   * @member {Number} create_time
+   * Amount suitable for margin trading.
+   * @member {String} available
    */
-  exports.prototype['create_time'] = undefined;
+  exports.prototype['available'] = undefined;
   /**
-   * Futures contract
-   * @member {String} contract
+   * Locked amount, used in margin trading
+   * @member {String} locked
    */
-  exports.prototype['contract'] = undefined;
+  exports.prototype['locked'] = undefined;
   /**
-   * Trading size
-   * @member {Number} size
+   * Borrowed amount
+   * @member {String} borrowed
    */
-  exports.prototype['size'] = undefined;
-  /**
-   * Trading price
-   * @member {String} price
-   */
-  exports.prototype['price'] = undefined;
+  exports.prototype['borrowed'] = undefined;
 
 
 

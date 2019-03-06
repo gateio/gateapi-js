@@ -1,16 +1,20 @@
 # GateApi.FuturesApi
 
-All URIs are relative to *https://fx-api.gateio.ws/api/v4*
+All URIs are relative to *https://api.gateio.ws/api/v4*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**cancelOrder**](FuturesApi.md#cancelOrder) | **DELETE** /futures/orders/{order_id} | Cancel a single order
 [**cancelOrders**](FuturesApi.md#cancelOrders) | **DELETE** /futures/orders | Cancel all &#x60;open&#x60; orders matched
+[**cancelPriceTriggeredOrder**](FuturesApi.md#cancelPriceTriggeredOrder) | **DELETE** /futures/price_orders/{order_id} | Cancel a single order
+[**cancelPriceTriggeredOrderList**](FuturesApi.md#cancelPriceTriggeredOrderList) | **DELETE** /futures/price_orders | Cancel all open orders
 [**createOrder**](FuturesApi.md#createOrder) | **POST** /futures/orders | Create a futures order
+[**createPriceTriggeredOrder**](FuturesApi.md#createPriceTriggeredOrder) | **POST** /futures/price_orders | Create a price-triggered order
 [**getFuturesContract**](FuturesApi.md#getFuturesContract) | **GET** /futures/contracts/{contract} | Get a single contract
 [**getMyTrades**](FuturesApi.md#getMyTrades) | **GET** /futures/my_trades | List personal trading history
 [**getOrder**](FuturesApi.md#getOrder) | **GET** /futures/orders/{order_id} | Get a single order
 [**getPosition**](FuturesApi.md#getPosition) | **GET** /futures/positions/{contract} | Get single position
+[**getPriceTriggeredOrder**](FuturesApi.md#getPriceTriggeredOrder) | **GET** /futures/price_orders/{order_id} | Get a single order
 [**listFuturesAccountBook**](FuturesApi.md#listFuturesAccountBook) | **GET** /futures/account_book | Query account book
 [**listFuturesAccounts**](FuturesApi.md#listFuturesAccounts) | **GET** /futures/accounts | Query futures account
 [**listFuturesCandlesticks**](FuturesApi.md#listFuturesCandlesticks) | **GET** /futures/candlesticks | Get futures candlesticks
@@ -23,6 +27,7 @@ Method | HTTP request | Description
 [**listOrders**](FuturesApi.md#listOrders) | **GET** /futures/orders | List futures orders
 [**listPositionClose**](FuturesApi.md#listPositionClose) | **GET** /futures/position_close | List position close history
 [**listPositions**](FuturesApi.md#listPositions) | **GET** /futures/positions | List all positions of a user
+[**listPriceTriggeredOrders**](FuturesApi.md#listPriceTriggeredOrders) | **GET** /futures/price_orders | List all auto orders
 [**updatePositionLeverage**](FuturesApi.md#updatePositionLeverage) | **POST** /futures/positions/{contract}/leverage | Update position leverage
 [**updatePositionMargin**](FuturesApi.md#updatePositionMargin) | **POST** /futures/positions/{contract}/margin | Update position margin
 [**updatePositionRiskLimit**](FuturesApi.md#updatePositionRiskLimit) | **POST** /futures/positions/{contract}/risk_limit | Update position risk limit
@@ -124,6 +129,98 @@ Authentication with API key and secret is required
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
+<a name="cancelPriceTriggeredOrder"></a>
+# **cancelPriceTriggeredOrder**
+> FuturesPriceTriggeredOrder cancelPriceTriggeredOrder(orderId)
+
+Cancel a single order
+
+### Example
+```javascript
+var GateApi = require('gate-api');
+var client = GateApi.ApiClient.instance;
+client.key = "YOUR API KEY";
+client.secret = "YOUR API SECRET";
+// uncomment the next line if you are using the API with other host
+// client.basePath = "https://some-other-hosts";
+
+var apiInstance = new GateApi.FuturesApi();
+var orderId = "orderId_example"; // String | ID returned on order successfully being created
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully. Returned data: ' + data);
+  }
+};
+apiInstance.cancelPriceTriggeredOrder(orderId, callback);
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **orderId** | **String**| ID returned on order successfully being created | 
+
+### Return type
+
+[**FuturesPriceTriggeredOrder**](FuturesPriceTriggeredOrder.md)
+
+### Authorization
+
+Authentication with API key and secret is required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+<a name="cancelPriceTriggeredOrderList"></a>
+# **cancelPriceTriggeredOrderList**
+> [FuturesPriceTriggeredOrder] cancelPriceTriggeredOrderList(contract)
+
+Cancel all open orders
+
+### Example
+```javascript
+var GateApi = require('gate-api');
+var client = GateApi.ApiClient.instance;
+client.key = "YOUR API KEY";
+client.secret = "YOUR API SECRET";
+// uncomment the next line if you are using the API with other host
+// client.basePath = "https://some-other-hosts";
+
+var apiInstance = new GateApi.FuturesApi();
+var contract = "BTC_USD"; // String | Futures contract
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully. Returned data: ' + data);
+  }
+};
+apiInstance.cancelPriceTriggeredOrderList(contract, callback);
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **contract** | **String**| Futures contract | 
+
+### Return type
+
+[**[FuturesPriceTriggeredOrder]**](FuturesPriceTriggeredOrder.md)
+
+### Authorization
+
+Authentication with API key and secret is required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
 <a name="createOrder"></a>
 # **createOrder**
 > FuturesOrder createOrder(futuresOrder)
@@ -160,6 +257,52 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**FuturesOrder**](FuturesOrder.md)
+
+### Authorization
+
+Authentication with API key and secret is required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+<a name="createPriceTriggeredOrder"></a>
+# **createPriceTriggeredOrder**
+> TriggerOrderResponse createPriceTriggeredOrder(futuresPriceTriggeredOrder)
+
+Create a price-triggered order
+
+### Example
+```javascript
+var GateApi = require('gate-api');
+var client = GateApi.ApiClient.instance;
+client.key = "YOUR API KEY";
+client.secret = "YOUR API SECRET";
+// uncomment the next line if you are using the API with other host
+// client.basePath = "https://some-other-hosts";
+
+var apiInstance = new GateApi.FuturesApi();
+var futuresPriceTriggeredOrder = new GateApi.FuturesPriceTriggeredOrder(); // FuturesPriceTriggeredOrder | 
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully. Returned data: ' + data);
+  }
+};
+apiInstance.createPriceTriggeredOrder(futuresPriceTriggeredOrder, callback);
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **futuresPriceTriggeredOrder** | [**FuturesPriceTriggeredOrder**](FuturesPriceTriggeredOrder.md)|  | 
+
+### Return type
+
+[**TriggerOrderResponse**](TriggerOrderResponse.md)
 
 ### Authorization
 
@@ -347,6 +490,52 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**Position**](Position.md)
+
+### Authorization
+
+Authentication with API key and secret is required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+<a name="getPriceTriggeredOrder"></a>
+# **getPriceTriggeredOrder**
+> FuturesPriceTriggeredOrder getPriceTriggeredOrder(orderId)
+
+Get a single order
+
+### Example
+```javascript
+var GateApi = require('gate-api');
+var client = GateApi.ApiClient.instance;
+client.key = "YOUR API KEY";
+client.secret = "YOUR API SECRET";
+// uncomment the next line if you are using the API with other host
+// client.basePath = "https://some-other-hosts";
+
+var apiInstance = new GateApi.FuturesApi();
+var orderId = "orderId_example"; // String | ID returned on order successfully being created
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully. Returned data: ' + data);
+  }
+};
+apiInstance.getPriceTriggeredOrder(orderId, callback);
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **orderId** | **String**| ID returned on order successfully being created | 
+
+### Return type
+
+[**FuturesPriceTriggeredOrder**](FuturesPriceTriggeredOrder.md)
 
 ### Authorization
 
@@ -906,6 +1095,60 @@ This endpoint does not need any parameter.
 ### Return type
 
 [**[Position]**](Position.md)
+
+### Authorization
+
+Authentication with API key and secret is required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+<a name="listPriceTriggeredOrders"></a>
+# **listPriceTriggeredOrders**
+> [FuturesPriceTriggeredOrder] listPriceTriggeredOrders(status, opts)
+
+List all auto orders
+
+### Example
+```javascript
+var GateApi = require('gate-api');
+var client = GateApi.ApiClient.instance;
+client.key = "YOUR API KEY";
+client.secret = "YOUR API SECRET";
+// uncomment the next line if you are using the API with other host
+// client.basePath = "https://some-other-hosts";
+
+var apiInstance = new GateApi.FuturesApi();
+var status = "status_example"; // String | List orders based on status
+var opts = {
+  'contract': "BTC_USD", // String | Futures contract, return related data only if specified
+  'limit': 100, // Number | Maximum number of record returned in one list
+  'offset': 0 // Number | List offset, starting from 0
+};
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully. Returned data: ' + data);
+  }
+};
+apiInstance.listPriceTriggeredOrders(status, opts, callback);
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **status** | **String**| List orders based on status | 
+ **contract** | **String**| Futures contract, return related data only if specified | [optional] 
+ **limit** | **Number**| Maximum number of record returned in one list | [optional] [default to 100]
+ **offset** | **Number**| List offset, starting from 0 | [optional] [default to 0]
+
+### Return type
+
+[**[FuturesPriceTriggeredOrder]**](FuturesPriceTriggeredOrder.md)
 
 ### Authorization
 
