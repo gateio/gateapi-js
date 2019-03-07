@@ -26,7 +26,7 @@
     if (!root.GateApi) {
       root.GateApi = {};
     }
-    root.GateApi.MyFuturesTrade = factory(root.GateApi.ApiClient);
+    root.GateApi.Trade = factory(root.GateApi.ApiClient);
   }
 }(this, function(ApiClient) {
   'use strict';
@@ -34,14 +34,14 @@
 
 
   /**
-   * The MyFuturesTrade model module.
-   * @module model/MyFuturesTrade
+   * The Trade model module.
+   * @module model/Trade
    * @version 4.5.0
    */
 
   /**
-   * Constructs a new <code>MyFuturesTrade</code>.
-   * @alias module:model/MyFuturesTrade
+   * Constructs a new <code>Trade</code>.
+   * @alias module:model/Trade
    * @class
    */
   var exports = function() {
@@ -50,35 +50,32 @@
   };
 
   /**
-   * Constructs a <code>MyFuturesTrade</code> from a plain JavaScript object, optionally creating a new instance.
+   * Constructs a <code>Trade</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:model/MyFuturesTrade} obj Optional instance to populate.
-   * @return {module:model/MyFuturesTrade} The populated <code>MyFuturesTrade</code> instance.
+   * @param {module:model/Trade} obj Optional instance to populate.
+   * @return {module:model/Trade} The populated <code>Trade</code> instance.
    */
   exports.constructFromObject = function(data, obj) {
     if (data) {
       obj = obj || new exports();
       if (data.hasOwnProperty('id')) {
-        obj['id'] = ApiClient.convertToType(data['id'], 'Number');
+        obj['id'] = ApiClient.convertToType(data['id'], 'String');
       }
       if (data.hasOwnProperty('create_time')) {
-        obj['create_time'] = ApiClient.convertToType(data['create_time'], 'Number');
+        obj['create_time'] = ApiClient.convertToType(data['create_time'], 'String');
       }
-      if (data.hasOwnProperty('contract')) {
-        obj['contract'] = ApiClient.convertToType(data['contract'], 'String');
+      if (data.hasOwnProperty('side')) {
+        obj['side'] = ApiClient.convertToType(data['side'], 'String');
       }
-      if (data.hasOwnProperty('order_id')) {
-        obj['order_id'] = ApiClient.convertToType(data['order_id'], 'String');
-      }
-      if (data.hasOwnProperty('size')) {
-        obj['size'] = ApiClient.convertToType(data['size'], 'Number');
+      if (data.hasOwnProperty('amount')) {
+        obj['amount'] = ApiClient.convertToType(data['amount'], 'String');
       }
       if (data.hasOwnProperty('price')) {
         obj['price'] = ApiClient.convertToType(data['price'], 'String');
       }
-      if (data.hasOwnProperty('role')) {
-        obj['role'] = ApiClient.convertToType(data['role'], 'String');
+      if (data.hasOwnProperty('order_id')) {
+        obj['order_id'] = ApiClient.convertToType(data['order_id'], 'String');
       }
     }
     return obj;
@@ -86,57 +83,52 @@
 
   /**
    * Trade ID
-   * @member {Number} id
+   * @member {String} id
    */
   exports.prototype['id'] = undefined;
   /**
    * Trading time
-   * @member {Number} create_time
+   * @member {String} create_time
    */
   exports.prototype['create_time'] = undefined;
   /**
-   * Futures contract
-   * @member {String} contract
+   * Order side
+   * @member {module:model/Trade.SideEnum} side
    */
-  exports.prototype['contract'] = undefined;
+  exports.prototype['side'] = undefined;
   /**
-   * Order ID related
-   * @member {String} order_id
+   * Trade amount
+   * @member {String} amount
    */
-  exports.prototype['order_id'] = undefined;
+  exports.prototype['amount'] = undefined;
   /**
-   * Trading size
-   * @member {Number} size
-   */
-  exports.prototype['size'] = undefined;
-  /**
-   * Trading price
+   * Order price
    * @member {String} price
    */
   exports.prototype['price'] = undefined;
   /**
-   * Trade role. Available values are `taker` and `maker`
-   * @member {module:model/MyFuturesTrade.RoleEnum} role
+   * Related order ID. No value in public endpoints
+   * @member {String} order_id
    */
-  exports.prototype['role'] = undefined;
+  exports.prototype['order_id'] = undefined;
 
 
   /**
-   * Allowed values for the <code>role</code> property.
+   * Allowed values for the <code>side</code> property.
    * @enum {String}
    * @readonly
    */
-  exports.RoleEnum = {
+  exports.SideEnum = {
     /**
-     * value: "taker"
+     * value: "buy"
      * @const
      */
-    "taker": "taker",
+    "buy": "buy",
     /**
-     * value: "maker"
+     * value: "sell"
      * @const
      */
-    "maker": "maker"  };
+    "sell": "sell"  };
 
 
   return exports;

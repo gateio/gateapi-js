@@ -26,7 +26,7 @@
     if (!root.GateApi) {
       root.GateApi = {};
     }
-    root.GateApi.PositionCloseOrder = factory(root.GateApi.ApiClient);
+    root.GateApi.FundingBookItem = factory(root.GateApi.ApiClient);
   }
 }(this, function(ApiClient) {
   'use strict';
@@ -34,15 +34,14 @@
 
 
   /**
-   * The PositionCloseOrder model module.
-   * @module model/PositionCloseOrder
+   * The FundingBookItem model module.
+   * @module model/FundingBookItem
    * @version 4.5.0
    */
 
   /**
-   * Constructs a new <code>PositionCloseOrder</code>.
-   * Current close order if any, or &#x60;null&#x60;
-   * @alias module:model/PositionCloseOrder
+   * Constructs a new <code>FundingBookItem</code>.
+   * @alias module:model/FundingBookItem
    * @class
    */
   var exports = function() {
@@ -51,43 +50,43 @@
   };
 
   /**
-   * Constructs a <code>PositionCloseOrder</code> from a plain JavaScript object, optionally creating a new instance.
+   * Constructs a <code>FundingBookItem</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:model/PositionCloseOrder} obj Optional instance to populate.
-   * @return {module:model/PositionCloseOrder} The populated <code>PositionCloseOrder</code> instance.
+   * @param {module:model/FundingBookItem} obj Optional instance to populate.
+   * @return {module:model/FundingBookItem} The populated <code>FundingBookItem</code> instance.
    */
   exports.constructFromObject = function(data, obj) {
     if (data) {
       obj = obj || new exports();
-      if (data.hasOwnProperty('id')) {
-        obj['id'] = ApiClient.convertToType(data['id'], 'Number');
+      if (data.hasOwnProperty('rate')) {
+        obj['rate'] = ApiClient.convertToType(data['rate'], 'String');
       }
-      if (data.hasOwnProperty('price')) {
-        obj['price'] = ApiClient.convertToType(data['price'], 'String');
+      if (data.hasOwnProperty('amount')) {
+        obj['amount'] = ApiClient.convertToType(data['amount'], 'String');
       }
-      if (data.hasOwnProperty('is_liq')) {
-        obj['is_liq'] = ApiClient.convertToType(data['is_liq'], 'Boolean');
+      if (data.hasOwnProperty('days')) {
+        obj['days'] = ApiClient.convertToType(data['days'], 'Number');
       }
     }
     return obj;
   }
 
   /**
-   * Close order ID
-   * @member {Number} id
+   * Loan rate
+   * @member {String} rate
    */
-  exports.prototype['id'] = undefined;
+  exports.prototype['rate'] = undefined;
   /**
-   * Close order price
-   * @member {String} price
+   * Borrowable amount
+   * @member {String} amount
    */
-  exports.prototype['price'] = undefined;
+  exports.prototype['amount'] = undefined;
   /**
-   * Is the close order from liquidation
-   * @member {Boolean} is_liq
+   * How long the loan should be repaid
+   * @member {Number} days
    */
-  exports.prototype['is_liq'] = undefined;
+  exports.prototype['days'] = undefined;
 
 
 
