@@ -21,7 +21,7 @@ Method | HTTP request | Description
 
 <a name="cancelOrder"></a>
 # **cancelOrder**
-> Order cancelOrder()
+> Order cancelOrder(orderId, currencyPair)
 
 Cancel a single order
 
@@ -35,6 +35,8 @@ client.secret = "YOUR API SECRET";
 // client.basePath = "https://some-other-hosts";
 
 var apiInstance = new GateApi.SpotApi();
+var orderId = "12345"; // String | ID returned on order successfully being created
+var currencyPair = "BTC_USDT"; // String | Currency pair
 var callback = function(error, data, response) {
   if (error) {
     console.error(error);
@@ -42,11 +44,15 @@ var callback = function(error, data, response) {
     console.log('API called successfully. Returned data: ' + data);
   }
 };
-apiInstance.cancelOrder(callback);
+apiInstance.cancelOrder(orderId, currencyPair, callback);
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **orderId** | **String**| ID returned on order successfully being created | 
+ **currencyPair** | **String**| Currency pair | 
 
 ### Return type
 
@@ -202,7 +208,7 @@ No authorization required
 
 <a name="getOrder"></a>
 # **getOrder**
-> Order getOrder()
+> Order getOrder(orderId, currencyPair)
 
 Get a single order
 
@@ -216,6 +222,8 @@ client.secret = "YOUR API SECRET";
 // client.basePath = "https://some-other-hosts";
 
 var apiInstance = new GateApi.SpotApi();
+var orderId = "12345"; // String | ID returned on order successfully being created
+var currencyPair = "BTC_USDT"; // String | Currency pair
 var callback = function(error, data, response) {
   if (error) {
     console.error(error);
@@ -223,11 +231,15 @@ var callback = function(error, data, response) {
     console.log('API called successfully. Returned data: ' + data);
   }
 };
-apiInstance.getOrder(callback);
+apiInstance.getOrder(orderId, currencyPair, callback);
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **orderId** | **String**| ID returned on order successfully being created | 
+ **currencyPair** | **String**| Currency pair | 
 
 ### Return type
 
