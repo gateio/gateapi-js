@@ -23,7 +23,7 @@ Method | HTTP request | Description
 
 <a name="cancelLoan"></a>
 # **cancelLoan**
-> Loan cancelLoan(currency)
+> Loan cancelLoan(loanId, currency)
 
 Cancel lending loan
 
@@ -39,6 +39,7 @@ client.secret = "YOUR API SECRET";
 // client.basePath = "https://some-other-hosts";
 
 var apiInstance = new GateApi.MarginApi();
+var loanId = "loanId_example"; // String | Loan ID
 var currency = "BTC"; // String | Retrieved specified currency related data
 var callback = function(error, data, response) {
   if (error) {
@@ -47,13 +48,14 @@ var callback = function(error, data, response) {
     console.log('API called successfully. Returned data: ' + data);
   }
 };
-apiInstance.cancelLoan(currency, callback);
+apiInstance.cancelLoan(loanId, currency, callback);
 ```
 
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **loanId** | **String**| Loan ID | 
  **currency** | **String**| Retrieved specified currency related data | 
 
 ### Return type
@@ -117,7 +119,7 @@ Authentication with API key and secret is required
 
 <a name="getLoan"></a>
 # **getLoan**
-> Loan getLoan(side)
+> Loan getLoan(loanId, side)
 
 Retrieve one single loan detail
 
@@ -131,6 +133,7 @@ client.secret = "YOUR API SECRET";
 // client.basePath = "https://some-other-hosts";
 
 var apiInstance = new GateApi.MarginApi();
+var loanId = "loanId_example"; // String | Loan ID
 var side = "lend"; // String | Lend or borrow
 var callback = function(error, data, response) {
   if (error) {
@@ -139,13 +142,14 @@ var callback = function(error, data, response) {
     console.log('API called successfully. Returned data: ' + data);
   }
 };
-apiInstance.getLoan(side, callback);
+apiInstance.getLoan(loanId, side, callback);
 ```
 
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **loanId** | **String**| Loan ID | 
  **side** | **String**| Lend or borrow | 
 
 ### Return type
@@ -163,7 +167,7 @@ Authentication with API key and secret is required
 
 <a name="getLoanRecord"></a>
 # **getLoanRecord**
-> LoanRecord getLoanRecord(loanId)
+> LoanRecord getLoanRecord(loanRecordId, loanId)
 
 Get one single loan record
 
@@ -177,6 +181,7 @@ client.secret = "YOUR API SECRET";
 // client.basePath = "https://some-other-hosts";
 
 var apiInstance = new GateApi.MarginApi();
+var loanRecordId = "loanRecordId_example"; // String | Loan record ID
 var loanId = "loanId_example"; // String | Loan ID
 var callback = function(error, data, response) {
   if (error) {
@@ -185,13 +190,14 @@ var callback = function(error, data, response) {
     console.log('API called successfully. Returned data: ' + data);
   }
 };
-apiInstance.getLoanRecord(loanId, callback);
+apiInstance.getLoanRecord(loanRecordId, loanId, callback);
 ```
 
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **loanRecordId** | **String**| Loan record ID | 
  **loanId** | **String**| Loan ID | 
 
 ### Return type
@@ -352,7 +358,7 @@ Authentication with API key and secret is required
 
 <a name="listLoanRepayments"></a>
 # **listLoanRepayments**
-> [Repayment] listLoanRepayments()
+> [Repayment] listLoanRepayments(loanId)
 
 List loan repayment records
 
@@ -366,6 +372,7 @@ client.secret = "YOUR API SECRET";
 // client.basePath = "https://some-other-hosts";
 
 var apiInstance = new GateApi.MarginApi();
+var loanId = "loanId_example"; // String | Loan ID
 var callback = function(error, data, response) {
   if (error) {
     console.error(error);
@@ -373,11 +380,14 @@ var callback = function(error, data, response) {
     console.log('API called successfully. Returned data: ' + data);
   }
 };
-apiInstance.listLoanRepayments(callback);
+apiInstance.listLoanRepayments(loanId, callback);
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **loanId** | **String**| Loan ID | 
 
 ### Return type
 
@@ -583,7 +593,7 @@ Authentication with API key and secret is required
 
 <a name="repayLoan"></a>
 # **repayLoan**
-> Loan repayLoan(repayRequest)
+> Loan repayLoan(loanId, repayRequest)
 
 Repay a loan
 
@@ -597,6 +607,7 @@ client.secret = "YOUR API SECRET";
 // client.basePath = "https://some-other-hosts";
 
 var apiInstance = new GateApi.MarginApi();
+var loanId = "loanId_example"; // String | Loan ID
 var repayRequest = new GateApi.RepayRequest(); // RepayRequest | 
 var callback = function(error, data, response) {
   if (error) {
@@ -605,13 +616,14 @@ var callback = function(error, data, response) {
     console.log('API called successfully. Returned data: ' + data);
   }
 };
-apiInstance.repayLoan(repayRequest, callback);
+apiInstance.repayLoan(loanId, repayRequest, callback);
 ```
 
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **loanId** | **String**| Loan ID | 
  **repayRequest** | [**RepayRequest**](RepayRequest.md)|  | 
 
 ### Return type
@@ -629,7 +641,7 @@ Authentication with API key and secret is required
 
 <a name="updateLoan"></a>
 # **updateLoan**
-> Loan updateLoan(loanPatch)
+> Loan updateLoan(loanId, loanPatch)
 
 Modify a loan
 
@@ -645,6 +657,7 @@ client.secret = "YOUR API SECRET";
 // client.basePath = "https://some-other-hosts";
 
 var apiInstance = new GateApi.MarginApi();
+var loanId = "loanId_example"; // String | Loan ID
 var loanPatch = new GateApi.LoanPatch(); // LoanPatch | 
 var callback = function(error, data, response) {
   if (error) {
@@ -653,13 +666,14 @@ var callback = function(error, data, response) {
     console.log('API called successfully. Returned data: ' + data);
   }
 };
-apiInstance.updateLoan(loanPatch, callback);
+apiInstance.updateLoan(loanId, loanPatch, callback);
 ```
 
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **loanId** | **String**| Loan ID | 
  **loanPatch** | [**LoanPatch**](LoanPatch.md)|  | 
 
 ### Return type
@@ -677,7 +691,7 @@ Authentication with API key and secret is required
 
 <a name="updateLoanRecord"></a>
 # **updateLoanRecord**
-> LoanRecord updateLoanRecord(loanPatch)
+> LoanRecord updateLoanRecord(loanRecordId, loanPatch)
 
 Modify a loan record
 
@@ -693,6 +707,7 @@ client.secret = "YOUR API SECRET";
 // client.basePath = "https://some-other-hosts";
 
 var apiInstance = new GateApi.MarginApi();
+var loanRecordId = "loanRecordId_example"; // String | Loan record ID
 var loanPatch = new GateApi.LoanPatch(); // LoanPatch | 
 var callback = function(error, data, response) {
   if (error) {
@@ -701,13 +716,14 @@ var callback = function(error, data, response) {
     console.log('API called successfully. Returned data: ' + data);
   }
 };
-apiInstance.updateLoanRecord(loanPatch, callback);
+apiInstance.updateLoanRecord(loanRecordId, loanPatch, callback);
 ```
 
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **loanRecordId** | **String**| Loan record ID | 
  **loanPatch** | [**LoanPatch**](LoanPatch.md)|  | 
 
 ### Return type
