@@ -396,7 +396,7 @@ Authentication with API key and secret is required
 
 <a name="listOrderBook"></a>
 # **listOrderBook**
-> OrderBook listOrderBook(opts)
+> OrderBook listOrderBook(currencyPair, opts)
 
 Retrieve order book
 
@@ -407,8 +407,8 @@ Order book will be sorted by price from high to low on bids; reversed on asks
 var GateApi = require('gate-api');
 
 var apiInstance = new GateApi.SpotApi();
+var currencyPair = "BTC_USDT"; // String | Currency pair
 var opts = {
-  'currencyPair': "BTC_USDT", // String | Currency pair
   'interval': "'0'", // String | Price precision of order book. 0 means no aggregation is applied
   'limit': 10 // Number | Maximum number of order depth data in asks or bids
 };
@@ -419,14 +419,14 @@ var callback = function(error, data, response) {
     console.log('API called successfully. Returned data: ' + data);
   }
 };
-apiInstance.listOrderBook(opts, callback);
+apiInstance.listOrderBook(currencyPair, opts, callback);
 ```
 
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **currencyPair** | **String**| Currency pair | [optional] 
+ **currencyPair** | **String**| Currency pair | 
  **interval** | **String**| Price precision of order book. 0 means no aggregation is applied | [optional] [default to &#39;0&#39;]
  **limit** | **Number**| Maximum number of order depth data in asks or bids | [optional] [default to 10]
 
