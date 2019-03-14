@@ -39,7 +39,7 @@ client.secret = "YOUR API SECRET";
 // client.basePath = "https://some-other-hosts";
 
 var apiInstance = new GateApi.MarginApi();
-var loanId = "loanId_example"; // String | Loan ID
+var loanId = "12345"; // String | Loan ID
 var currency = "BTC"; // String | Retrieved specified currency related data
 var callback = function(error, data, response) {
   if (error) {
@@ -133,7 +133,7 @@ client.secret = "YOUR API SECRET";
 // client.basePath = "https://some-other-hosts";
 
 var apiInstance = new GateApi.MarginApi();
-var loanId = "loanId_example"; // String | Loan ID
+var loanId = "12345"; // String | Loan ID
 var side = "lend"; // String | Lend or borrow
 var callback = function(error, data, response) {
   if (error) {
@@ -181,8 +181,8 @@ client.secret = "YOUR API SECRET";
 // client.basePath = "https://some-other-hosts";
 
 var apiInstance = new GateApi.MarginApi();
-var loanRecordId = "loanRecordId_example"; // String | Loan record ID
-var loanId = "loanId_example"; // String | Loan ID
+var loanRecordId = "12345"; // String | Loan record ID
+var loanId = "12345"; // String | Loan ID
 var callback = function(error, data, response) {
   if (error) {
     console.error(error);
@@ -318,9 +318,9 @@ client.secret = "YOUR API SECRET";
 // client.basePath = "https://some-other-hosts";
 
 var apiInstance = new GateApi.MarginApi();
-var loanId = "loanId_example"; // String | Loan ID
+var loanId = "12345"; // String | Loan ID
 var opts = {
-  'status': "status_example", // String | Loan record status
+  'status': "loaned", // String | Loan record status
   'page': 1, // Number | Page number
   'limit': 100 // Number | Maximum number of record returned in one list
 };
@@ -372,7 +372,7 @@ client.secret = "YOUR API SECRET";
 // client.basePath = "https://some-other-hosts";
 
 var apiInstance = new GateApi.MarginApi();
-var loanId = "loanId_example"; // String | Loan ID
+var loanId = "12345"; // String | Loan ID
 var callback = function(error, data, response) {
   if (error) {
     console.error(error);
@@ -607,7 +607,7 @@ client.secret = "YOUR API SECRET";
 // client.basePath = "https://some-other-hosts";
 
 var apiInstance = new GateApi.MarginApi();
-var loanId = "loanId_example"; // String | Loan ID
+var loanId = "12345"; // String | Loan ID
 var repayRequest = new GateApi.RepayRequest(); // RepayRequest | 
 var callback = function(error, data, response) {
   if (error) {
@@ -657,7 +657,7 @@ client.secret = "YOUR API SECRET";
 // client.basePath = "https://some-other-hosts";
 
 var apiInstance = new GateApi.MarginApi();
-var loanId = "loanId_example"; // String | Loan ID
+var loanId = "12345"; // String | Loan ID
 var loanPatch = new GateApi.LoanPatch(); // LoanPatch | 
 var callback = function(error, data, response) {
   if (error) {
@@ -707,7 +707,7 @@ client.secret = "YOUR API SECRET";
 // client.basePath = "https://some-other-hosts";
 
 var apiInstance = new GateApi.MarginApi();
-var loanRecordId = "loanRecordId_example"; // String | Loan record ID
+var loanRecordId = "12345"; // String | Loan record ID
 var loanPatch = new GateApi.LoanPatch(); // LoanPatch | 
 var callback = function(error, data, response) {
   if (error) {
