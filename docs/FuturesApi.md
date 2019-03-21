@@ -4,15 +4,15 @@ All URIs are relative to *https://api.gateio.ws/api/v4*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**cancelOrder**](FuturesApi.md#cancelOrder) | **DELETE** /futures/orders/{order_id} | Cancel a single order
-[**cancelOrders**](FuturesApi.md#cancelOrders) | **DELETE** /futures/orders | Cancel all &#x60;open&#x60; orders matched
+[**cancelFuturesOrder**](FuturesApi.md#cancelFuturesOrder) | **DELETE** /futures/orders/{order_id} | Cancel a single order
+[**cancelFuturesOrders**](FuturesApi.md#cancelFuturesOrders) | **DELETE** /futures/orders | Cancel all &#x60;open&#x60; orders matched
 [**cancelPriceTriggeredOrder**](FuturesApi.md#cancelPriceTriggeredOrder) | **DELETE** /futures/price_orders/{order_id} | Cancel a single order
 [**cancelPriceTriggeredOrderList**](FuturesApi.md#cancelPriceTriggeredOrderList) | **DELETE** /futures/price_orders | Cancel all open orders
-[**createOrder**](FuturesApi.md#createOrder) | **POST** /futures/orders | Create a futures order
+[**createFuturesOrder**](FuturesApi.md#createFuturesOrder) | **POST** /futures/orders | Create a futures order
 [**createPriceTriggeredOrder**](FuturesApi.md#createPriceTriggeredOrder) | **POST** /futures/price_orders | Create a price-triggered order
 [**getFuturesContract**](FuturesApi.md#getFuturesContract) | **GET** /futures/contracts/{contract} | Get a single contract
+[**getFuturesOrder**](FuturesApi.md#getFuturesOrder) | **GET** /futures/orders/{order_id} | Get a single order
 [**getMyTrades**](FuturesApi.md#getMyTrades) | **GET** /futures/my_trades | List personal trading history
-[**getOrder**](FuturesApi.md#getOrder) | **GET** /futures/orders/{order_id} | Get a single order
 [**getPosition**](FuturesApi.md#getPosition) | **GET** /futures/positions/{contract} | Get single position
 [**getPriceTriggeredOrder**](FuturesApi.md#getPriceTriggeredOrder) | **GET** /futures/price_orders/{order_id} | Get a single order
 [**listFuturesAccountBook**](FuturesApi.md#listFuturesAccountBook) | **GET** /futures/account_book | Query account book
@@ -22,9 +22,9 @@ Method | HTTP request | Description
 [**listFuturesFundingRateHistory**](FuturesApi.md#listFuturesFundingRateHistory) | **GET** /futures/funding_rate | Funding rate history
 [**listFuturesInsuranceLedger**](FuturesApi.md#listFuturesInsuranceLedger) | **GET** /futures/insurance | Futures insurance balance history
 [**listFuturesOrderBook**](FuturesApi.md#listFuturesOrderBook) | **GET** /futures/order_book | Futures order book
+[**listFuturesOrders**](FuturesApi.md#listFuturesOrders) | **GET** /futures/orders | List futures orders
 [**listFuturesTickers**](FuturesApi.md#listFuturesTickers) | **GET** /futures/tickers | List futures tickers
 [**listFuturesTrades**](FuturesApi.md#listFuturesTrades) | **GET** /futures/trades | Futures trading history
-[**listOrders**](FuturesApi.md#listOrders) | **GET** /futures/orders | List futures orders
 [**listPositionClose**](FuturesApi.md#listPositionClose) | **GET** /futures/position_close | List position close history
 [**listPositions**](FuturesApi.md#listPositions) | **GET** /futures/positions | List all positions of a user
 [**listPriceTriggeredOrders**](FuturesApi.md#listPriceTriggeredOrders) | **GET** /futures/price_orders | List all auto orders
@@ -33,9 +33,9 @@ Method | HTTP request | Description
 [**updatePositionRiskLimit**](FuturesApi.md#updatePositionRiskLimit) | **POST** /futures/positions/{contract}/risk_limit | Update position risk limit
 
 
-<a name="cancelOrder"></a>
-# **cancelOrder**
-> FuturesOrder cancelOrder(orderId)
+<a name="cancelFuturesOrder"></a>
+# **cancelFuturesOrder**
+> FuturesOrder cancelFuturesOrder(orderId)
 
 Cancel a single order
 
@@ -57,7 +57,7 @@ var callback = function(error, data, response) {
     console.log('API called successfully. Returned data: ' + data);
   }
 };
-apiInstance.cancelOrder(orderId, callback);
+apiInstance.cancelFuturesOrder(orderId, callback);
 ```
 
 ### Parameters
@@ -79,9 +79,9 @@ Authentication with API key and secret is required
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
-<a name="cancelOrders"></a>
-# **cancelOrders**
-> [FuturesOrder] cancelOrders(contract, opts)
+<a name="cancelFuturesOrders"></a>
+# **cancelFuturesOrders**
+> [FuturesOrder] cancelFuturesOrders(contract, opts)
 
 Cancel all &#x60;open&#x60; orders matched
 
@@ -106,7 +106,7 @@ var callback = function(error, data, response) {
     console.log('API called successfully. Returned data: ' + data);
   }
 };
-apiInstance.cancelOrders(contract, opts, callback);
+apiInstance.cancelFuturesOrders(contract, opts, callback);
 ```
 
 ### Parameters
@@ -221,9 +221,9 @@ Authentication with API key and secret is required
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
-<a name="createOrder"></a>
-# **createOrder**
-> FuturesOrder createOrder(futuresOrder)
+<a name="createFuturesOrder"></a>
+# **createFuturesOrder**
+> FuturesOrder createFuturesOrder(futuresOrder)
 
 Create a futures order
 
@@ -245,7 +245,7 @@ var callback = function(error, data, response) {
     console.log('API called successfully. Returned data: ' + data);
   }
 };
-apiInstance.createOrder(futuresOrder, callback);
+apiInstance.createFuturesOrder(futuresOrder, callback);
 ```
 
 ### Parameters
@@ -354,6 +354,52 @@ No authorization required
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
+<a name="getFuturesOrder"></a>
+# **getFuturesOrder**
+> FuturesOrder getFuturesOrder(orderId)
+
+Get a single order
+
+### Example
+```javascript
+var GateApi = require('gate-api');
+var client = GateApi.ApiClient.instance;
+client.key = "YOUR API KEY";
+client.secret = "YOUR API SECRET";
+// uncomment the next line if you are using the API with other host
+// client.basePath = "https://some-other-hosts";
+
+var apiInstance = new GateApi.FuturesApi();
+var orderId = "12345"; // String | ID returned on order successfully being created
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully. Returned data: ' + data);
+  }
+};
+apiInstance.getFuturesOrder(orderId, callback);
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **orderId** | **String**| ID returned on order successfully being created | 
+
+### Return type
+
+[**FuturesOrder**](FuturesOrder.md)
+
+### Authorization
+
+Authentication with API key and secret is required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
 <a name="getMyTrades"></a>
 # **getMyTrades**
 > [MyFuturesTrade] getMyTrades(opts)
@@ -398,52 +444,6 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**[MyFuturesTrade]**](MyFuturesTrade.md)
-
-### Authorization
-
-Authentication with API key and secret is required
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-<a name="getOrder"></a>
-# **getOrder**
-> FuturesOrder getOrder(orderId)
-
-Get a single order
-
-### Example
-```javascript
-var GateApi = require('gate-api');
-var client = GateApi.ApiClient.instance;
-client.key = "YOUR API KEY";
-client.secret = "YOUR API SECRET";
-// uncomment the next line if you are using the API with other host
-// client.basePath = "https://some-other-hosts";
-
-var apiInstance = new GateApi.FuturesApi();
-var orderId = "12345"; // String | ID returned on order successfully being created
-var callback = function(error, data, response) {
-  if (error) {
-    console.error(error);
-  } else {
-    console.log('API called successfully. Returned data: ' + data);
-  }
-};
-apiInstance.getOrder(orderId, callback);
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **orderId** | **String**| ID returned on order successfully being created | 
-
-### Return type
-
-[**FuturesOrder**](FuturesOrder.md)
 
 ### Authorization
 
@@ -869,6 +869,60 @@ No authorization required
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
+<a name="listFuturesOrders"></a>
+# **listFuturesOrders**
+> [FuturesOrder] listFuturesOrders(contract, status, opts)
+
+List futures orders
+
+### Example
+```javascript
+var GateApi = require('gate-api');
+var client = GateApi.ApiClient.instance;
+client.key = "YOUR API KEY";
+client.secret = "YOUR API SECRET";
+// uncomment the next line if you are using the API with other host
+// client.basePath = "https://some-other-hosts";
+
+var apiInstance = new GateApi.FuturesApi();
+var contract = "BTC_USD"; // String | Futures contract
+var status = "open"; // String | List orders based on status
+var opts = {
+  'limit': 100, // Number | Maximum number of record returned in one list
+  'lastId': "12345" // String | Specify list staring point using the last record of `id` in previous list-query results
+};
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully. Returned data: ' + data);
+  }
+};
+apiInstance.listFuturesOrders(contract, status, opts, callback);
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **contract** | **String**| Futures contract | 
+ **status** | **String**| List orders based on status | 
+ **limit** | **Number**| Maximum number of record returned in one list | [optional] [default to 100]
+ **lastId** | **String**| Specify list staring point using the last record of &#x60;id&#x60; in previous list-query results | [optional] 
+
+### Return type
+
+[**[FuturesOrder]**](FuturesOrder.md)
+
+### Authorization
+
+Authentication with API key and secret is required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
 <a name="listFuturesTickers"></a>
 # **listFuturesTickers**
 > [FuturesTicker] listFuturesTickers(opts)
@@ -953,60 +1007,6 @@ Name | Type | Description  | Notes
 ### Authorization
 
 No authorization required
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-<a name="listOrders"></a>
-# **listOrders**
-> [FuturesOrder] listOrders(contract, status, opts)
-
-List futures orders
-
-### Example
-```javascript
-var GateApi = require('gate-api');
-var client = GateApi.ApiClient.instance;
-client.key = "YOUR API KEY";
-client.secret = "YOUR API SECRET";
-// uncomment the next line if you are using the API with other host
-// client.basePath = "https://some-other-hosts";
-
-var apiInstance = new GateApi.FuturesApi();
-var contract = "BTC_USD"; // String | Futures contract
-var status = "open"; // String | List orders based on status
-var opts = {
-  'limit': 100, // Number | Maximum number of record returned in one list
-  'lastId': "12345" // String | Specify list staring point using the last record of `id` in previous list-query results
-};
-var callback = function(error, data, response) {
-  if (error) {
-    console.error(error);
-  } else {
-    console.log('API called successfully. Returned data: ' + data);
-  }
-};
-apiInstance.listOrders(contract, status, opts, callback);
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **contract** | **String**| Futures contract | 
- **status** | **String**| List orders based on status | 
- **limit** | **Number**| Maximum number of record returned in one list | [optional] [default to 100]
- **lastId** | **String**| Specify list staring point using the last record of &#x60;id&#x60; in previous list-query results | [optional] 
-
-### Return type
-
-[**[FuturesOrder]**](FuturesOrder.md)
-
-### Authorization
-
-Authentication with API key and secret is required
 
 ### HTTP request headers
 
