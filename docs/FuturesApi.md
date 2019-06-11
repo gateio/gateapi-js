@@ -25,6 +25,7 @@ Method | HTTP request | Description
 [**listFuturesOrders**](FuturesApi.md#listFuturesOrders) | **GET** /futures/orders | List futures orders
 [**listFuturesTickers**](FuturesApi.md#listFuturesTickers) | **GET** /futures/tickers | List futures tickers
 [**listFuturesTrades**](FuturesApi.md#listFuturesTrades) | **GET** /futures/trades | Futures trading history
+[**listLiquidates**](FuturesApi.md#listLiquidates) | **GET** /futures/liquidates | List liquidation history
 [**listPositionClose**](FuturesApi.md#listPositionClose) | **GET** /futures/position_close | List position close history
 [**listPositions**](FuturesApi.md#listPositions) | **GET** /futures/positions | List all positions of a user
 [**listPriceTriggeredOrders**](FuturesApi.md#listPriceTriggeredOrders) | **GET** /futures/price_orders | List all auto orders
@@ -566,7 +567,7 @@ var opts = {
   'limit': 100, // Number | Maximum number of record returned in one list
   'from': 1547706332, // Number | Start timestamp
   'to': 1547706332, // Number | End timestamp
-  'type': "dnw" // String | Changing Type  - dnw: Deposit & Withdraw - pnl: Profit & Loss by reducing position - fee: Trading fee - refr: Referrer rebate - fund: Funding
+  'type': "dnw" // String | Changing Type: - dnw: Deposit & Withdraw - pnl: Profit & Loss by reducing position - fee: Trading fee - refr: Referrer rebate - fund: Funding - point_dnw: POINT Deposit & Withdraw - point_fee: POINT Trading fee - point_refr: POINT Referrer rebate
 };
 var callback = function(error, data, response) {
   if (error) {
@@ -585,7 +586,7 @@ Name | Type | Description  | Notes
  **limit** | **Number**| Maximum number of record returned in one list | [optional] [default to 100]
  **from** | **Number**| Start timestamp | [optional] 
  **to** | **Number**| End timestamp | [optional] 
- **type** | **String**| Changing Type  - dnw: Deposit &amp; Withdraw - pnl: Profit &amp; Loss by reducing position - fee: Trading fee - refr: Referrer rebate - fund: Funding | [optional] 
+ **type** | **String**| Changing Type: - dnw: Deposit &amp; Withdraw - pnl: Profit &amp; Loss by reducing position - fee: Trading fee - refr: Referrer rebate - fund: Funding - point_dnw: POINT Deposit &amp; Withdraw - point_fee: POINT Trading fee - point_refr: POINT Referrer rebate | [optional] 
 
 ### Return type
 
@@ -1007,6 +1008,58 @@ Name | Type | Description  | Notes
 ### Authorization
 
 No authorization required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+<a name="listLiquidates"></a>
+# **listLiquidates**
+> [FuturesLiquidate] listLiquidates(opts)
+
+List liquidation history
+
+### Example
+```javascript
+var GateApi = require('gate-api');
+var client = GateApi.ApiClient.instance;
+client.key = "YOUR API KEY";
+client.secret = "YOUR API SECRET";
+// uncomment the next line if you are using the API with other host
+// client.basePath = "https://some-other-hosts";
+
+var apiInstance = new GateApi.FuturesApi();
+var opts = {
+  'contract': "BTC_USD", // String | Futures contract, return related data only if specified
+  'limit': 100, // Number | Maximum number of record returned in one list
+  'at': 0 // Number | Specify a liquidation timestamp
+};
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully. Returned data: ' + data);
+  }
+};
+apiInstance.listLiquidates(opts, callback);
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **contract** | **String**| Futures contract, return related data only if specified | [optional] 
+ **limit** | **Number**| Maximum number of record returned in one list | [optional] [default to 100]
+ **at** | **Number**| Specify a liquidation timestamp | [optional] [default to 0]
+
+### Return type
+
+[**[FuturesLiquidate]**](FuturesLiquidate.md)
+
+### Authorization
+
+Authentication with API key and secret is required
 
 ### HTTP request headers
 

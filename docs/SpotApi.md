@@ -13,7 +13,7 @@ Method | HTTP request | Description
 [**listCurrencyPairs**](SpotApi.md#listCurrencyPairs) | **GET** /spot/currency_pairs | List all currency pairs supported
 [**listMyTrades**](SpotApi.md#listMyTrades) | **GET** /spot/my_trades | List personal trading history
 [**listOrderBook**](SpotApi.md#listOrderBook) | **GET** /spot/order_book | Retrieve order book
-[**listOrders**](SpotApi.md#listOrders) | **GET** /spot/orders | List futures orders
+[**listOrders**](SpotApi.md#listOrders) | **GET** /spot/orders | List orders
 [**listSpotAccounts**](SpotApi.md#listSpotAccounts) | **GET** /spot/accounts | List spot accounts
 [**listTickers**](SpotApi.md#listTickers) | **GET** /spot/tickers | Retrieve ticker information
 [**listTrades**](SpotApi.md#listTrades) | **GET** /spot/trades | Retrieve market trades
@@ -447,7 +447,7 @@ No authorization required
 # **listOrders**
 > [Order] listOrders(currencyPair, status, opts)
 
-List futures orders
+List orders
 
 ### Example
 ```javascript

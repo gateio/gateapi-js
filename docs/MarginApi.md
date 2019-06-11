@@ -422,6 +422,9 @@ var status = "open"; // String | Loan status
 var side = "lend"; // String | Lend or borrow
 var opts = {
   'currency': "BTC", // String | Retrieved specified currency related data
+  'currencyPair': "BTC_USDT", // String | Currency pair
+  'sortBy': "rate", // String | Specify which field is used to sort. `create_time` or `rate` is supported. Default to `create_time`
+  'reverseSort': true, // Boolean | Whether to sort in descending order. Default to `true`
   'page': 1, // Number | Page number
   'limit': 100 // Number | Maximum number of record returned in one list
 };
@@ -442,6 +445,9 @@ Name | Type | Description  | Notes
  **status** | **String**| Loan status | 
  **side** | **String**| Lend or borrow | 
  **currency** | **String**| Retrieved specified currency related data | [optional] 
+ **currencyPair** | **String**| Currency pair | [optional] 
+ **sortBy** | **String**| Specify which field is used to sort. &#x60;create_time&#x60; or &#x60;rate&#x60; is supported. Default to &#x60;create_time&#x60; | [optional] 
+ **reverseSort** | **Boolean**| Whether to sort in descending order. Default to &#x60;true&#x60; | [optional] 
  **page** | **Number**| Page number | [optional] [default to 1]
  **limit** | **Number**| Maximum number of record returned in one list | [optional] [default to 100]
 
