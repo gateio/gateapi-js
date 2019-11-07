@@ -270,7 +270,7 @@ var apiInstance = new GateApi.SpotApi();
 var currencyPair = "BTC_USDT"; // String | Currency pair
 var opts = {
   'limit': 100, // Number | Maximum number of record returned in one list
-  'interval': "'30m'" // String | Interval time between data points
+  'interval': "30m" // String | Interval time between data points
 };
 var callback = function(error, data, response) {
   if (error) {
@@ -409,7 +409,7 @@ var GateApi = require('gate-api');
 var apiInstance = new GateApi.SpotApi();
 var currencyPair = "BTC_USDT"; // String | Currency pair
 var opts = {
-  'interval': "'0'", // String | Price precision of order book. 0 means no aggregation is applied
+  'interval': "0", // String | Order depth. 0 means no aggregation is applied. default to 0
   'limit': 10 // Number | Maximum number of order depth data in asks or bids
 };
 var callback = function(error, data, response) {
@@ -427,7 +427,7 @@ apiInstance.listOrderBook(currencyPair, opts, callback);
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **currencyPair** | **String**| Currency pair | 
- **interval** | **String**| Price precision of order book. 0 means no aggregation is applied | [optional] [default to &#39;0&#39;]
+ **interval** | **String**| Order depth. 0 means no aggregation is applied. default to 0 | [optional] [default to &#39;0&#39;]
  **limit** | **Number**| Maximum number of order depth data in asks or bids | [optional] [default to 10]
 
 ### Return type
