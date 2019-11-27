@@ -33,7 +33,7 @@
   /**
    * Futures service.
    * @module api/FuturesApi
-   * @version 4.8.0
+   * @version 4.8.1
    */
 
   /**
@@ -1332,14 +1332,21 @@
 
     /**
      * List all positions of a user
+     * @param {String} settle Settle currency
      * @param {module:api/FuturesApi~listPositionsCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link Array.<module:model/Position>}
      */
-    this.listPositions = function(callback) {
+    this.listPositions = function(settle, callback) {
       var postBody = null;
+
+      // verify the required parameter 'settle' is set
+      if (settle === undefined || settle === null) {
+        throw new Error("Missing the required parameter 'settle' when calling listPositions");
+      }
 
 
       var pathParams = {
+        'settle': settle
       };
       var queryParams = {
       };

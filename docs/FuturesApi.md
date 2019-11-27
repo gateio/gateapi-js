@@ -1176,7 +1176,7 @@ Authentication with API key and secret is required
 
 <a name="listPositions"></a>
 # **listPositions**
-> [Position] listPositions()
+> [Position] listPositions(settle)
 
 List all positions of a user
 
@@ -1190,6 +1190,7 @@ client.secret = "YOUR API SECRET";
 // client.basePath = "https://some-other-hosts";
 
 var apiInstance = new GateApi.FuturesApi();
+var settle = "btc"; // String | Settle currency
 var callback = function(error, data, response) {
   if (error) {
     console.error(error);
@@ -1197,11 +1198,14 @@ var callback = function(error, data, response) {
     console.log('API called successfully. Returned data: ' + data);
   }
 };
-apiInstance.listPositions(callback);
+apiInstance.listPositions(settle, callback);
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **settle** | **String**| Settle currency | [default to &#39;btc&#39;]
 
 ### Return type
 
