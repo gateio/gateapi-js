@@ -33,7 +33,7 @@
 
   /**
    * @module ApiClient
-   * @version 4.8.0
+   * @version 4.8.1
    */
 
   /**
