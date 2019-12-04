@@ -16,24 +16,24 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient', 'model/CurrencyPair', 'model/Order', 'model/OrderBook', 'model/SpotAccount', 'model/Ticker', 'model/Trade'], factory);
+    define(['ApiClient', 'model/BatchOrder', 'model/CurrencyPair', 'model/Order', 'model/OrderBook', 'model/SpotAccount', 'model/Ticker', 'model/Trade'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('../model/CurrencyPair'), require('../model/Order'), require('../model/OrderBook'), require('../model/SpotAccount'), require('../model/Ticker'), require('../model/Trade'));
+    module.exports = factory(require('../ApiClient'), require('../model/BatchOrder'), require('../model/CurrencyPair'), require('../model/Order'), require('../model/OrderBook'), require('../model/SpotAccount'), require('../model/Ticker'), require('../model/Trade'));
   } else {
     // Browser globals (root is window)
     if (!root.GateApi) {
       root.GateApi = {};
     }
-    root.GateApi.SpotApi = factory(root.GateApi.ApiClient, root.GateApi.CurrencyPair, root.GateApi.Order, root.GateApi.OrderBook, root.GateApi.SpotAccount, root.GateApi.Ticker, root.GateApi.Trade);
+    root.GateApi.SpotApi = factory(root.GateApi.ApiClient, root.GateApi.BatchOrder, root.GateApi.CurrencyPair, root.GateApi.Order, root.GateApi.OrderBook, root.GateApi.SpotAccount, root.GateApi.Ticker, root.GateApi.Trade);
   }
-}(this, function(ApiClient, CurrencyPair, Order, OrderBook, SpotAccount, Ticker, Trade) {
+}(this, function(ApiClient, BatchOrder, CurrencyPair, Order, OrderBook, SpotAccount, Ticker, Trade) {
   'use strict';
 
   /**
    * Spot service.
    * @module api/SpotApi
-   * @version 4.8.1
+   * @version 4.8.2
    */
 
   /**
@@ -149,6 +149,53 @@
 
       return this.apiClient.callApi(
         '/spot/orders', 'DELETE',
+        pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, callback
+      );
+    }
+
+    /**
+     * Callback function to receive the result of the createBatchOrders operation.
+     * @callback module:api/SpotApi~createBatchOrdersCallback
+     * @param {String} error Error message, if any.
+     * @param {Array.<module:model/BatchOrder>} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Create a batch of orders
+     * Batch orders requirements:  1. custom order field &#x60;text&#x60; is required 2. At most 4 currency pairs, maximum 5 orders each, are allowed in one request 3. No mixture of spot orders and margin orders, e.g. &#x60;account&#x60; must be identical for all orders 
+     * @param {Array.<module:model/Order>} order 
+     * @param {module:api/SpotApi~createBatchOrdersCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link Array.<module:model/BatchOrder>}
+     */
+    this.createBatchOrders = function(order, callback) {
+      var postBody = order;
+
+      // verify the required parameter 'order' is set
+      if (order === undefined || order === null) {
+        throw new Error("Missing the required parameter 'order' when calling createBatchOrders");
+      }
+
+
+      var pathParams = {
+      };
+      var queryParams = {
+      };
+      var collectionQueryParams = {
+      };
+      var headerParams = {
+      };
+      var formParams = {
+      };
+
+      var authNames = ['api_key', 'api_sign', 'api_timestamp'];
+      var contentTypes = ['application/json'];
+      var accepts = ['application/json'];
+      var returnType = [BatchOrder];
+
+      return this.apiClient.callApi(
+        '/spot/batch_orders', 'POST',
         pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, callback
       );

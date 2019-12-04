@@ -33,7 +33,7 @@
   /**
    * Futures service.
    * @module api/FuturesApi
-   * @version 4.8.1
+   * @version 4.8.2
    */
 
   /**
