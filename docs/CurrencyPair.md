@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **fee** | **String** | Trading fee | [optional] 
 **minBaseAmount** | **String** | Minimum amount of base currency to trade, &#x60;null&#x60; means no limit | [optional] 
 **minQuoteAmount** | **String** | Minimum amount of quote currency to trade, &#x60;null&#x60; means no limit | [optional] 
+**amountPrecision** | **Number** | Amount scale | [optional] 
 **precision** | **Number** | Price scale | [optional] 
 
 

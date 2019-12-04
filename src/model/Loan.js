@@ -111,6 +111,12 @@
       if (data.hasOwnProperty('unpaid_interest')) {
         obj['unpaid_interest'] = ApiClient.convertToType(data['unpaid_interest'], 'String');
       }
+      if (data.hasOwnProperty('fee_rate')) {
+        obj['fee_rate'] = ApiClient.convertToType(data['fee_rate'], 'String');
+      }
+      if (data.hasOwnProperty('orig_id')) {
+        obj['orig_id'] = ApiClient.convertToType(data['orig_id'], 'String');
+      }
     }
     return obj;
   }
@@ -191,6 +197,16 @@
    * @member {String} unpaid_interest
    */
   exports.prototype['unpaid_interest'] = undefined;
+  /**
+   * Loan fee rate
+   * @member {String} fee_rate
+   */
+  exports.prototype['fee_rate'] = undefined;
+  /**
+   * Original loan ID if the loan is auto-renewed. Equal to `id` if not
+   * @member {String} orig_id
+   */
+  exports.prototype['orig_id'] = undefined;
 
 
   /**

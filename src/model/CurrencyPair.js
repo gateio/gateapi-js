@@ -76,6 +76,9 @@
       if (data.hasOwnProperty('min_quote_amount')) {
         obj['min_quote_amount'] = ApiClient.convertToType(data['min_quote_amount'], 'String');
       }
+      if (data.hasOwnProperty('amount_precision')) {
+        obj['amount_precision'] = ApiClient.convertToType(data['amount_precision'], 'Number');
+      }
       if (data.hasOwnProperty('precision')) {
         obj['precision'] = ApiClient.convertToType(data['precision'], 'Number');
       }
@@ -113,6 +116,11 @@
    * @member {String} min_quote_amount
    */
   exports.prototype['min_quote_amount'] = undefined;
+  /**
+   * Amount scale
+   * @member {Number} amount_precision
+   */
+  exports.prototype['amount_precision'] = undefined;
   /**
    * Price scale
    * @member {Number} precision
