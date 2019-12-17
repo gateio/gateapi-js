@@ -33,7 +33,7 @@
   /**
    * Futures service.
    * @module api/FuturesApi
-   * @version 4.8.2
+   * @version 4.9.0
    */
 
   /**
@@ -499,7 +499,7 @@
      * @param {String} opts.contract Futures contract, return related data only if specified
      * @param {Number} opts.order Futures order ID, return related data only if specified
      * @param {Number} opts.limit Maximum number of record returned in one list (default to 100)
-     * @param {String} opts.lastId Specify list staring point using the last record of &#x60;id&#x60; in previous list-query results
+     * @param {String} opts.lastId Specify list staring point using the &#x60;id&#x60; of last record in previous list-query results
      * @param {module:api/FuturesApi~getMyTradesCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link Array.<module:model/MyFuturesTrade>}
      */
@@ -1051,7 +1051,7 @@
      * @param {String} status List orders based on status
      * @param {Object} opts Optional parameters
      * @param {Number} opts.limit Maximum number of record returned in one list (default to 100)
-     * @param {String} opts.lastId Specify list staring point using the last record of &#x60;id&#x60; in previous list-query results
+     * @param {String} opts.lastId Specify list staring point using the &#x60;id&#x60; of last record in previous list-query results
      * @param {module:api/FuturesApi~listFuturesOrdersCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link Array.<module:model/FuturesOrder>}
      */
@@ -1168,7 +1168,9 @@
      * @param {String} contract Futures contract
      * @param {Object} opts Optional parameters
      * @param {Number} opts.limit Maximum number of record returned in one list (default to 100)
-     * @param {String} opts.lastId Specify list staring point using the last record of &#x60;id&#x60; in previous list-query results
+     * @param {String} opts.lastId Specify list staring point using the id of last record in previous list-query results  This parameter is deprecated. Use &#x60;from&#x60; and &#x60;to&#x60; instead to limit time range
+     * @param {Number} opts.from Specify starting time in Unix seconds. If not specified, &#x60;to&#x60; and &#x60;limit&#x60; will be used to limit response items. If items between &#x60;from&#x60; and &#x60;to&#x60; are more than &#x60;limit&#x60;, only &#x60;limit&#x60; number will be returned. 
+     * @param {Number} opts.to Specify end time in Unix seconds, default to current time
      * @param {module:api/FuturesApi~listFuturesTradesCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link Array.<module:model/FuturesTrade>}
      */
@@ -1194,6 +1196,8 @@
         'contract': contract,
         'limit': opts['limit'],
         'last_id': opts['lastId'],
+        'from': opts['from'],
+        'to': opts['to'],
       };
       var collectionQueryParams = {
       };

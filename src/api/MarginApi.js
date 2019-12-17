@@ -33,7 +33,7 @@
   /**
    * Margin service.
    * @module api/MarginApi
-   * @version 4.8.2
+   * @version 4.9.0
    */
 
   /**

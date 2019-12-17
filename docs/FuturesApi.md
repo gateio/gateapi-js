@@ -444,7 +444,7 @@ var opts = {
   'contract': "BTC_USD", // String | Futures contract, return related data only if specified
   'order': 12345, // Number | Futures order ID, return related data only if specified
   'limit': 100, // Number | Maximum number of record returned in one list
-  'lastId': "12345" // String | Specify list staring point using the last record of `id` in previous list-query results
+  'lastId': "12345" // String | Specify list staring point using the `id` of last record in previous list-query results
 };
 var callback = function(error, data, response) {
   if (error) {
@@ -464,7 +464,7 @@ Name | Type | Description  | Notes
  **contract** | **String**| Futures contract, return related data only if specified | [optional] 
  **order** | **Number**| Futures order ID, return related data only if specified | [optional] 
  **limit** | **Number**| Maximum number of record returned in one list | [optional] [default to 100]
- **lastId** | **String**| Specify list staring point using the last record of &#x60;id&#x60; in previous list-query results | [optional] 
+ **lastId** | **String**| Specify list staring point using the &#x60;id&#x60; of last record in previous list-query results | [optional] 
 
 ### Return type
 
@@ -939,7 +939,7 @@ var contract = "BTC_USD"; // String | Futures contract
 var status = "open"; // String | List orders based on status
 var opts = {
   'limit': 100, // Number | Maximum number of record returned in one list
-  'lastId': "12345" // String | Specify list staring point using the last record of `id` in previous list-query results
+  'lastId': "12345" // String | Specify list staring point using the `id` of last record in previous list-query results
 };
 var callback = function(error, data, response) {
   if (error) {
@@ -959,7 +959,7 @@ Name | Type | Description  | Notes
  **contract** | **String**| Futures contract | 
  **status** | **String**| List orders based on status | 
  **limit** | **Number**| Maximum number of record returned in one list | [optional] [default to 100]
- **lastId** | **String**| Specify list staring point using the last record of &#x60;id&#x60; in previous list-query results | [optional] 
+ **lastId** | **String**| Specify list staring point using the &#x60;id&#x60; of last record in previous list-query results | [optional] 
 
 ### Return type
 
@@ -1034,7 +1034,9 @@ var settle = "btc"; // String | Settle currency
 var contract = "BTC_USD"; // String | Futures contract
 var opts = {
   'limit': 100, // Number | Maximum number of record returned in one list
-  'lastId': "12345" // String | Specify list staring point using the last record of `id` in previous list-query results
+  'lastId': "12345", // String | Specify list staring point using the id of last record in previous list-query results  This parameter is deprecated. Use `from` and `to` instead to limit time range
+  'from': 1546905600, // Number | Specify starting time in Unix seconds. If not specified, `to` and `limit` will be used to limit response items. If items between `from` and `to` are more than `limit`, only `limit` number will be returned. 
+  'to': 1546935600 // Number | Specify end time in Unix seconds, default to current time
 };
 var callback = function(error, data, response) {
   if (error) {
@@ -1053,7 +1055,9 @@ Name | Type | Description  | Notes
  **settle** | **String**| Settle currency | [default to &#39;btc&#39;]
  **contract** | **String**| Futures contract | 
  **limit** | **Number**| Maximum number of record returned in one list | [optional] [default to 100]
- **lastId** | **String**| Specify list staring point using the last record of &#x60;id&#x60; in previous list-query results | [optional] 
+ **lastId** | **String**| Specify list staring point using the id of last record in previous list-query results  This parameter is deprecated. Use &#x60;from&#x60; and &#x60;to&#x60; instead to limit time range | [optional] 
+ **from** | **Number**| Specify starting time in Unix seconds. If not specified, &#x60;to&#x60; and &#x60;limit&#x60; will be used to limit response items. If items between &#x60;from&#x60; and &#x60;to&#x60; are more than &#x60;limit&#x60;, only &#x60;limit&#x60; number will be returned.  | [optional] 
+ **to** | **Number**| Specify end time in Unix seconds, default to current time | [optional] 
 
 ### Return type
 
