@@ -33,7 +33,7 @@
   /**
    * Spot service.
    * @module api/SpotApi
-   * @version 4.8.2
+   * @version 4.9.0
    */
 
   /**
@@ -713,7 +713,7 @@
      * @param {String} currencyPair Currency pair
      * @param {Object} opts Optional parameters
      * @param {Number} opts.limit Maximum number of record returned in one list (default to 100)
-     * @param {String} opts.lastId Specify list staring point using the last record of &#x60;id&#x60; in previous list-query results
+     * @param {String} opts.lastId Specify list staring point using the &#x60;id&#x60; of last record in previous list-query results
      * @param {module:api/SpotApi~listTradesCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link Array.<module:model/Trade>}
      */
