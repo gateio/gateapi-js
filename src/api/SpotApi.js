@@ -33,7 +33,6 @@
   /**
    * Spot service.
    * @module api/SpotApi
-   * @version 4.9.0
    */
 
   /**
