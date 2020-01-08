@@ -75,6 +75,18 @@
       if (data.hasOwnProperty('order_id')) {
         obj['order_id'] = ApiClient.convertToType(data['order_id'], 'String');
       }
+      if (data.hasOwnProperty('fee')) {
+        obj['fee'] = ApiClient.convertToType(data['fee'], 'String');
+      }
+      if (data.hasOwnProperty('fee_currency')) {
+        obj['fee_currency'] = ApiClient.convertToType(data['fee_currency'], 'String');
+      }
+      if (data.hasOwnProperty('point_fee')) {
+        obj['point_fee'] = ApiClient.convertToType(data['point_fee'], 'String');
+      }
+      if (data.hasOwnProperty('gt_fee')) {
+        obj['gt_fee'] = ApiClient.convertToType(data['gt_fee'], 'String');
+      }
     }
     return obj;
   }
@@ -109,6 +121,26 @@
    * @member {String} order_id
    */
   exports.prototype['order_id'] = undefined;
+  /**
+   * Fee deducted. No value in public endpoints
+   * @member {String} fee
+   */
+  exports.prototype['fee'] = undefined;
+  /**
+   * Fee currency unit. No value in public endpoints
+   * @member {String} fee_currency
+   */
+  exports.prototype['fee_currency'] = undefined;
+  /**
+   * Point used to deduct fee
+   * @member {String} point_fee
+   */
+  exports.prototype['point_fee'] = undefined;
+  /**
+   * GT used to deduct fee
+   * @member {String} gt_fee
+   */
+  exports.prototype['gt_fee'] = undefined;
 
 
   /**

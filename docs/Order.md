@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 **id** | **String** | Order ID | [optional] 
 **text** | **String** | User defined information. If not empty, must follow the rules below:  1. prefixed with &#x60;t-&#x60; 2. no longer than 16 bytes without &#x60;t-&#x60; prefix 3. can only include 0-9, A-Z, a-z, underscore(_), hyphen(-) or dot(.)  | [optional] 
 **createTime** | **String** | Order creation time | [optional] 
+**updateTime** | **String** | Order last modification time | [optional] 
 **status** | **String** | Order status  - &#x60;open&#x60;: to be filled - &#x60;closed&#x60;: filled - &#x60;cancelled&#x60;: cancelled | [optional] 
 **currencyPair** | **String** | Currency pair | 
 **type** | **String** | Order type. limit - limit order | [optional] [default to &#39;limit&#39;]
@@ -15,7 +16,11 @@ Name | Type | Description | Notes
 **price** | **String** | Order price | 
 **timeInForce** | **String** | Time in force | [optional] [default to &#39;gtc&#39;]
 **left** | **String** | Amount left to fill | [optional] 
-**fillPrice** | **String** | Fill price of the order | [optional] 
+**fillPrice** | **String** | Total filled in quote currency | [optional] 
+**fee** | **String** | Fee deducted | [optional] 
+**feeCurrency** | **String** | Fee currency unit | [optional] 
+**pointFee** | **String** | Point used to deduct fee | [optional] 
+**gtFee** | **String** | GT used to deduct fee | [optional] 
 
 
 <a name="StatusEnum"></a>

@@ -75,6 +75,9 @@
       if (data.hasOwnProperty('create_time')) {
         obj['create_time'] = ApiClient.convertToType(data['create_time'], 'String');
       }
+      if (data.hasOwnProperty('update_time')) {
+        obj['update_time'] = ApiClient.convertToType(data['update_time'], 'String');
+      }
       if (data.hasOwnProperty('status')) {
         obj['status'] = ApiClient.convertToType(data['status'], 'String');
       }
@@ -105,6 +108,18 @@
       if (data.hasOwnProperty('fill_price')) {
         obj['fill_price'] = ApiClient.convertToType(data['fill_price'], 'String');
       }
+      if (data.hasOwnProperty('fee')) {
+        obj['fee'] = ApiClient.convertToType(data['fee'], 'String');
+      }
+      if (data.hasOwnProperty('fee_currency')) {
+        obj['fee_currency'] = ApiClient.convertToType(data['fee_currency'], 'String');
+      }
+      if (data.hasOwnProperty('point_fee')) {
+        obj['point_fee'] = ApiClient.convertToType(data['point_fee'], 'String');
+      }
+      if (data.hasOwnProperty('gt_fee')) {
+        obj['gt_fee'] = ApiClient.convertToType(data['gt_fee'], 'String');
+      }
     }
     return obj;
   }
@@ -124,6 +139,11 @@
    * @member {String} create_time
    */
   exports.prototype['create_time'] = undefined;
+  /**
+   * Order last modification time
+   * @member {String} update_time
+   */
+  exports.prototype['update_time'] = undefined;
   /**
    * Order status  - `open`: to be filled - `closed`: filled - `cancelled`: cancelled
    * @member {module:model/Order.StatusEnum} status
@@ -173,10 +193,30 @@
    */
   exports.prototype['left'] = undefined;
   /**
-   * Fill price of the order
+   * Total filled in quote currency
    * @member {String} fill_price
    */
   exports.prototype['fill_price'] = undefined;
+  /**
+   * Fee deducted
+   * @member {String} fee
+   */
+  exports.prototype['fee'] = undefined;
+  /**
+   * Fee currency unit
+   * @member {String} fee_currency
+   */
+  exports.prototype['fee_currency'] = undefined;
+  /**
+   * Point used to deduct fee
+   * @member {String} point_fee
+   */
+  exports.prototype['point_fee'] = undefined;
+  /**
+   * GT used to deduct fee
+   * @member {String} gt_fee
+   */
+  exports.prototype['gt_fee'] = undefined;
 
 
   /**
