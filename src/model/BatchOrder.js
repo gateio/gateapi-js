@@ -103,6 +103,9 @@
       if (data.hasOwnProperty('time_in_force')) {
         obj['time_in_force'] = ApiClient.convertToType(data['time_in_force'], 'String');
       }
+      if (data.hasOwnProperty('auto_borrow')) {
+        obj['auto_borrow'] = ApiClient.convertToType(data['auto_borrow'], 'Boolean');
+      }
       if (data.hasOwnProperty('left')) {
         obj['left'] = ApiClient.convertToType(data['left'], 'String');
       }
@@ -203,6 +206,11 @@
    * @default 'gtc'
    */
   exports.prototype['time_in_force'] = 'gtc';
+  /**
+   * Used in margin trading(e.g. `account` is `margin`) to allow automatic loan of insufficient part if balance is not enough.
+   * @member {Boolean} auto_borrow
+   */
+  exports.prototype['auto_borrow'] = undefined;
   /**
    * Amount left to fill
    * @member {String} left
