@@ -16,18 +16,18 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient', 'model/BatchOrder', 'model/CurrencyPair', 'model/Order', 'model/OrderBook', 'model/SpotAccount', 'model/Ticker', 'model/Trade'], factory);
+    define(['ApiClient', 'model/BatchOrder', 'model/CancelOrder', 'model/CancelOrderResult', 'model/CurrencyPair', 'model/Order', 'model/OrderBook', 'model/SpotAccount', 'model/Ticker', 'model/Trade'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('../model/BatchOrder'), require('../model/CurrencyPair'), require('../model/Order'), require('../model/OrderBook'), require('../model/SpotAccount'), require('../model/Ticker'), require('../model/Trade'));
+    module.exports = factory(require('../ApiClient'), require('../model/BatchOrder'), require('../model/CancelOrder'), require('../model/CancelOrderResult'), require('../model/CurrencyPair'), require('../model/Order'), require('../model/OrderBook'), require('../model/SpotAccount'), require('../model/Ticker'), require('../model/Trade'));
   } else {
     // Browser globals (root is window)
     if (!root.GateApi) {
       root.GateApi = {};
     }
-    root.GateApi.SpotApi = factory(root.GateApi.ApiClient, root.GateApi.BatchOrder, root.GateApi.CurrencyPair, root.GateApi.Order, root.GateApi.OrderBook, root.GateApi.SpotAccount, root.GateApi.Ticker, root.GateApi.Trade);
+    root.GateApi.SpotApi = factory(root.GateApi.ApiClient, root.GateApi.BatchOrder, root.GateApi.CancelOrder, root.GateApi.CancelOrderResult, root.GateApi.CurrencyPair, root.GateApi.Order, root.GateApi.OrderBook, root.GateApi.SpotAccount, root.GateApi.Ticker, root.GateApi.Trade);
   }
-}(this, function(ApiClient, BatchOrder, CurrencyPair, Order, OrderBook, SpotAccount, Ticker, Trade) {
+}(this, function(ApiClient, BatchOrder, CancelOrder, CancelOrderResult, CurrencyPair, Order, OrderBook, SpotAccount, Ticker, Trade) {
   'use strict';
 
   /**
@@ -45,6 +45,53 @@
   var exports = function(apiClient) {
     this.apiClient = apiClient || ApiClient.instance;
 
+
+    /**
+     * Callback function to receive the result of the cancelBatchOrders operation.
+     * @callback module:api/SpotApi~cancelBatchOrdersCallback
+     * @param {String} error Error message, if any.
+     * @param {Array.<module:model/CancelOrderResult>} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Cancel a batch of orders with an ID list
+     * Multiple currency pairs can be specified, but maximum 20 orders are allowed per request
+     * @param {Array.<module:model/CancelOrder>} cancelOrder 
+     * @param {module:api/SpotApi~cancelBatchOrdersCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link Array.<module:model/CancelOrderResult>}
+     */
+    this.cancelBatchOrders = function(cancelOrder, callback) {
+      var postBody = cancelOrder;
+
+      // verify the required parameter 'cancelOrder' is set
+      if (cancelOrder === undefined || cancelOrder === null) {
+        throw new Error("Missing the required parameter 'cancelOrder' when calling cancelBatchOrders");
+      }
+
+
+      var pathParams = {
+      };
+      var queryParams = {
+      };
+      var collectionQueryParams = {
+      };
+      var headerParams = {
+      };
+      var formParams = {
+      };
+
+      var authNames = ['api_key', 'api_sign', 'api_timestamp'];
+      var contentTypes = ['application/json'];
+      var accepts = ['application/json'];
+      var returnType = [CancelOrderResult];
+
+      return this.apiClient.callApi(
+        '/spot/cancel_batch_orders', 'POST',
+        pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, callback
+      );
+    }
 
     /**
      * Callback function to receive the result of the cancelOrder operation.

@@ -4,6 +4,7 @@ All URIs are relative to *https://api.gateio.ws/api/v4*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**cancelBatchOrders**](SpotApi.md#cancelBatchOrders) | **POST** /spot/cancel_batch_orders | Cancel a batch of orders with an ID list
 [**cancelOrder**](SpotApi.md#cancelOrder) | **DELETE** /spot/orders/{order_id} | Cancel a single order
 [**cancelOrders**](SpotApi.md#cancelOrders) | **DELETE** /spot/orders | Cancel all &#x60;open&#x60; orders in specified currency pair
 [**createBatchOrders**](SpotApi.md#createBatchOrders) | **POST** /spot/batch_orders | Create a batch of orders
@@ -19,6 +20,54 @@ Method | HTTP request | Description
 [**listTickers**](SpotApi.md#listTickers) | **GET** /spot/tickers | Retrieve ticker information
 [**listTrades**](SpotApi.md#listTrades) | **GET** /spot/trades | Retrieve market trades
 
+
+<a name="cancelBatchOrders"></a>
+# **cancelBatchOrders**
+> [CancelOrderResult] cancelBatchOrders(cancelOrder)
+
+Cancel a batch of orders with an ID list
+
+Multiple currency pairs can be specified, but maximum 20 orders are allowed per request
+
+### Example
+```javascript
+var GateApi = require('gate-api');
+var client = GateApi.ApiClient.instance;
+client.key = "YOUR API KEY";
+client.secret = "YOUR API SECRET";
+// uncomment the next line if you are using the API with other host
+// client.basePath = "https://some-other-hosts";
+
+var apiInstance = new GateApi.SpotApi();
+var cancelOrder = [new GateApi.CancelOrder()]; // [CancelOrder] | 
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully. Returned data: ' + data);
+  }
+};
+apiInstance.cancelBatchOrders(cancelOrder, callback);
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **cancelOrder** | [**[CancelOrder]**](CancelOrder.md)|  | 
+
+### Return type
+
+[**[CancelOrderResult]**](CancelOrderResult.md)
+
+### Authorization
+
+Authentication with API key and secret is required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
 
 <a name="cancelOrder"></a>
 # **cancelOrder**
