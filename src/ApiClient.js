@@ -462,7 +462,12 @@
         }
       }
     } else if (bodyParam !== null && bodyParam !== undefined) {
-      request.send(bodyParam);
+      if ((typeof bodyParam) == "string") {
+        request.send(bodyParam)
+      } else {
+        // FIXME: assume application/json body only
+        request.send(JSON.stringify(bodyParam));
+      }
     }
 
     if (typeof window === 'undefined' && authNames !== undefined && authNames.length > 0) {
