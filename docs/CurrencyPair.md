@@ -11,5 +11,21 @@ Name | Type | Description | Notes
 **minQuoteAmount** | **String** | Minimum amount of quote currency to trade, &#x60;null&#x60; means no limit | [optional] 
 **amountPrecision** | **Number** | Amount scale | [optional] 
 **precision** | **Number** | Price scale | [optional] 
+**tradeStatus** | **String** | How currency pair can be traded  - untradable: cannot be bought or sold - buyable: can be bought - sellable: can be sold - tradable: can be bought or sold | [optional] 
+
+
+<a name="TradeStatusEnum"></a>
+## Enum: TradeStatusEnum
+
+
+* `untradable` (value: `"untradable"`)
+
+* `buyable` (value: `"buyable"`)
+
+* `sellable` (value: `"sellable"`)
+
+* `tradable` (value: `"tradable"`)
+
+
 
 

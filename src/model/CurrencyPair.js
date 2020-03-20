@@ -82,6 +82,9 @@
       if (data.hasOwnProperty('precision')) {
         obj['precision'] = ApiClient.convertToType(data['precision'], 'Number');
       }
+      if (data.hasOwnProperty('trade_status')) {
+        obj['trade_status'] = ApiClient.convertToType(data['trade_status'], 'String');
+      }
     }
     return obj;
   }
@@ -126,7 +129,39 @@
    * @member {Number} precision
    */
   exports.prototype['precision'] = undefined;
+  /**
+   * How currency pair can be traded  - untradable: cannot be bought or sold - buyable: can be bought - sellable: can be sold - tradable: can be bought or sold
+   * @member {module:model/CurrencyPair.TradeStatusEnum} trade_status
+   */
+  exports.prototype['trade_status'] = undefined;
 
+
+  /**
+   * Allowed values for the <code>trade_status</code> property.
+   * @enum {String}
+   * @readonly
+   */
+  exports.TradeStatusEnum = {
+    /**
+     * value: "untradable"
+     * @const
+     */
+    "untradable": "untradable",
+    /**
+     * value: "buyable"
+     * @const
+     */
+    "buyable": "buyable",
+    /**
+     * value: "sellable"
+     * @const
+     */
+    "sellable": "sellable",
+    /**
+     * value: "tradable"
+     * @const
+     */
+    "tradable": "tradable"  };
 
 
   return exports;
