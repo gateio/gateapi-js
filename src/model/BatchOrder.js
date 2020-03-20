@@ -124,6 +124,15 @@
       if (data.hasOwnProperty('gt_fee')) {
         obj['gt_fee'] = ApiClient.convertToType(data['gt_fee'], 'String');
       }
+      if (data.hasOwnProperty('gt_discount')) {
+        obj['gt_discount'] = ApiClient.convertToType(data['gt_discount'], 'Boolean');
+      }
+      if (data.hasOwnProperty('rebated_fee')) {
+        obj['rebated_fee'] = ApiClient.convertToType(data['rebated_fee'], 'String');
+      }
+      if (data.hasOwnProperty('rebated_fee_currency')) {
+        obj['rebated_fee_currency'] = ApiClient.convertToType(data['rebated_fee_currency'], 'String');
+      }
     }
     return obj;
   }
@@ -201,7 +210,7 @@
    */
   exports.prototype['price'] = undefined;
   /**
-   * Time in force
+   * Time in force  - gtc: GoodTillCancelled - ioc: ImmediateOrCancelled, taker only - poc: PendingOrCancelled, reduce only
    * @member {module:model/BatchOrder.TimeInForceEnum} time_in_force
    * @default 'gtc'
    */
@@ -241,6 +250,21 @@
    * @member {String} gt_fee
    */
   exports.prototype['gt_fee'] = undefined;
+  /**
+   * Whether GT fee discount is used
+   * @member {Boolean} gt_discount
+   */
+  exports.prototype['gt_discount'] = undefined;
+  /**
+   * Rebated fee
+   * @member {String} rebated_fee
+   */
+  exports.prototype['rebated_fee'] = undefined;
+  /**
+   * Rebated fee currency unit
+   * @member {String} rebated_fee_currency
+   */
+  exports.prototype['rebated_fee_currency'] = undefined;
 
 
   /**
@@ -326,7 +350,12 @@
      * value: "ioc"
      * @const
      */
-    "ioc": "ioc"  };
+    "ioc": "ioc",
+    /**
+     * value: "poc"
+     * @const
+     */
+    "poc": "poc"  };
 
 
   return exports;
