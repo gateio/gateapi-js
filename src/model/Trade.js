@@ -66,6 +66,9 @@
       if (data.hasOwnProperty('side')) {
         obj['side'] = ApiClient.convertToType(data['side'], 'String');
       }
+      if (data.hasOwnProperty('role')) {
+        obj['role'] = ApiClient.convertToType(data['role'], 'String');
+      }
       if (data.hasOwnProperty('amount')) {
         obj['amount'] = ApiClient.convertToType(data['amount'], 'String');
       }
@@ -106,6 +109,11 @@
    * @member {module:model/Trade.SideEnum} side
    */
   exports.prototype['side'] = undefined;
+  /**
+   * Trade role
+   * @member {module:model/Trade.RoleEnum} role
+   */
+  exports.prototype['role'] = undefined;
   /**
    * Trade amount
    * @member {String} amount
@@ -159,6 +167,23 @@
      * @const
      */
     "sell": "sell"  };
+
+  /**
+   * Allowed values for the <code>role</code> property.
+   * @enum {String}
+   * @readonly
+   */
+  exports.RoleEnum = {
+    /**
+     * value: "taker"
+     * @const
+     */
+    "taker": "taker",
+    /**
+     * value: "maker"
+     * @const
+     */
+    "maker": "maker"  };
 
 
   return exports;

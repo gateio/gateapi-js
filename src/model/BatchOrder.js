@@ -216,7 +216,7 @@
    */
   exports.prototype['time_in_force'] = 'gtc';
   /**
-   * Used in margin trading(e.g. `account` is `margin`) to allow automatic loan of insufficient part if balance is not enough.
+   * Used in margin trading(i.e. `account` is `margin`) to allow automatic loan of insufficient part if balance is not enough.
    * @member {Boolean} auto_borrow
    */
   exports.prototype['auto_borrow'] = undefined;
