@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 **id** | **String** | Trade ID | [optional] 
 **createTime** | **String** | Trading time | [optional] 
 **side** | **String** | Order side | [optional] 
+**role** | **String** | Trade role | [optional] 
 **amount** | **String** | Trade amount | [optional] 
 **price** | **String** | Order price | [optional] 
 **orderId** | **String** | Related order ID. No value in public endpoints | [optional] 
@@ -22,6 +23,17 @@ Name | Type | Description | Notes
 * `buy` (value: `"buy"`)
 
 * `sell` (value: `"sell"`)
+
+
+
+
+<a name="RoleEnum"></a>
+## Enum: RoleEnum
+
+
+* `taker` (value: `"taker"`)
+
+* `maker` (value: `"maker"`)
 
 
 
