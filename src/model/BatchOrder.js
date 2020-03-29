@@ -112,6 +112,9 @@
       if (data.hasOwnProperty('fill_price')) {
         obj['fill_price'] = ApiClient.convertToType(data['fill_price'], 'String');
       }
+      if (data.hasOwnProperty('filled_total')) {
+        obj['filled_total'] = ApiClient.convertToType(data['filled_total'], 'String');
+      }
       if (data.hasOwnProperty('fee')) {
         obj['fee'] = ApiClient.convertToType(data['fee'], 'String');
       }
@@ -226,10 +229,15 @@
    */
   exports.prototype['left'] = undefined;
   /**
-   * Fill price of the order
+   * Total filled in quote currency. Deprecated in favor of `filled_total`
    * @member {String} fill_price
    */
   exports.prototype['fill_price'] = undefined;
+  /**
+   * Total filled in quote currency
+   * @member {String} filled_total
+   */
+  exports.prototype['filled_total'] = undefined;
   /**
    * Fee deducted
    * @member {String} fee
