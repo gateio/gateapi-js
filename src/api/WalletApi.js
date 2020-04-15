@@ -16,18 +16,18 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient', 'model/Transfer'], factory);
+    define(['ApiClient', 'model/SubAccountTransfer', 'model/Transfer'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('../model/Transfer'));
+    module.exports = factory(require('../ApiClient'), require('../model/SubAccountTransfer'), require('../model/Transfer'));
   } else {
     // Browser globals (root is window)
     if (!root.GateApi) {
       root.GateApi = {};
     }
-    root.GateApi.WalletApi = factory(root.GateApi.ApiClient, root.GateApi.Transfer);
+    root.GateApi.WalletApi = factory(root.GateApi.ApiClient, root.GateApi.SubAccountTransfer, root.GateApi.Transfer);
   }
-}(this, function(ApiClient, Transfer) {
+}(this, function(ApiClient, SubAccountTransfer, Transfer) {
   'use strict';
 
   /**
@@ -87,6 +87,51 @@
 
       return this.apiClient.callApi(
         '/wallet/transfers', 'POST',
+        pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, callback
+      );
+    }
+
+    /**
+     * Callback function to receive the result of the transferWithSubAccount operation.
+     * @callback module:api/WalletApi~transferWithSubAccountCallback
+     * @param {String} error Error message, if any.
+     * @param data This operation does not return a value.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Transfer between main and sub accounts
+     * @param {module:model/SubAccountTransfer} subAccountTransfer 
+     * @param {module:api/WalletApi~transferWithSubAccountCallback} callback The callback function, accepting three arguments: error, data, response
+     */
+    this.transferWithSubAccount = function(subAccountTransfer, callback) {
+      var postBody = subAccountTransfer;
+
+      // verify the required parameter 'subAccountTransfer' is set
+      if (subAccountTransfer === undefined || subAccountTransfer === null) {
+        throw new Error("Missing the required parameter 'subAccountTransfer' when calling transferWithSubAccount");
+      }
+
+
+      var pathParams = {
+      };
+      var queryParams = {
+      };
+      var collectionQueryParams = {
+      };
+      var headerParams = {
+      };
+      var formParams = {
+      };
+
+      var authNames = ['api_key', 'api_sign', 'api_timestamp'];
+      var contentTypes = ['application/json'];
+      var accepts = [];
+      var returnType = null;
+
+      return this.apiClient.callApi(
+        '/wallet/sub_account_transfers', 'POST',
         pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, callback
       );

@@ -5,6 +5,7 @@ All URIs are relative to *https://api.gateio.ws/api/v4*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**transfer**](WalletApi.md#transfer) | **POST** /wallet/transfers | Transfer between accounts
+[**transferWithSubAccount**](WalletApi.md#transferWithSubAccount) | **POST** /wallet/sub_account_transfers | Transfer between main and sub accounts
 
 
 <a name="transfer"></a>
@@ -41,6 +42,52 @@ apiInstance.transfer(transfer, callback);
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **transfer** | [**Transfer**](Transfer.md)|  | 
+
+### Return type
+
+null (empty response body)
+
+### Authorization
+
+Authentication with API key and secret is required
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: Not defined
+
+<a name="transferWithSubAccount"></a>
+# **transferWithSubAccount**
+> transferWithSubAccount(subAccountTransfer)
+
+Transfer between main and sub accounts
+
+### Example
+```javascript
+var GateApi = require('gate-api');
+var client = GateApi.ApiClient.instance;
+client.key = "YOUR API KEY";
+client.secret = "YOUR API SECRET";
+// uncomment the next line if you are using the API with other host
+// client.basePath = "https://some-other-hosts";
+
+var apiInstance = new GateApi.WalletApi();
+var subAccountTransfer = new GateApi.SubAccountTransfer(); // SubAccountTransfer | 
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully.');
+  }
+};
+apiInstance.transferWithSubAccount(subAccountTransfer, callback);
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **subAccountTransfer** | [**SubAccountTransfer**](SubAccountTransfer.md)|  | 
 
 ### Return type
 
