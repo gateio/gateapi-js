@@ -404,10 +404,12 @@
 
     /**
      * Market candlesticks
-     * Candlestick data will start from (current time - limit * interval), end at current time
+     * Maximum of 1000 points are returned in one query. Be sure not to exceed the limit when specifying &#x60;from&#x60;, &#x60;to&#x60; and &#x60;interval&#x60;
      * @param {String} currencyPair Currency pair
      * @param {Object} opts Optional parameters
-     * @param {Number} opts.limit Maximum number of record returned in one list (default to 100)
+     * @param {Number} opts.limit Maximum recent data points returned. &#x60;limit&#x60; is conflicted with &#x60;from&#x60; and &#x60;to&#x60;. If either &#x60;from&#x60; or &#x60;to&#x60; is specified, request will be rejected. (default to 100)
+     * @param {Number} opts.from Start time of candlesticks, formatted in Unix timestamp in seconds. Default to&#x60;to - 100 * interval&#x60; if not specified
+     * @param {Number} opts.to End time of candlesticks, formatted in Unix timestamp in seconds. Default to current time
      * @param {String} opts.interval Interval time between data points (default to &#39;30m&#39;)
      * @param {module:api/SpotApi~listCandlesticksCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link Array.<[String]>}
@@ -427,6 +429,8 @@
       var queryParams = {
         'currency_pair': currencyPair,
         'limit': opts['limit'],
+        'from': opts['from'],
+        'to': opts['to'],
         'interval': opts['interval'],
       };
       var collectionQueryParams = {

@@ -358,7 +358,7 @@ Authentication with API key and secret is required
 
 Market candlesticks
 
-Candlestick data will start from (current time - limit * interval), end at current time
+Maximum of 1000 points are returned in one query. Be sure not to exceed the limit when specifying &#x60;from&#x60;, &#x60;to&#x60; and &#x60;interval&#x60;
 
 ### Example
 ```javascript
@@ -367,7 +367,9 @@ var GateApi = require('gate-api');
 var apiInstance = new GateApi.SpotApi();
 var currencyPair = "BTC_USDT"; // String | Currency pair
 var opts = {
-  'limit': 100, // Number | Maximum number of record returned in one list
+  'limit': 100, // Number | Maximum recent data points returned. `limit` is conflicted with `from` and `to`. If either `from` or `to` is specified, request will be rejected.
+  'from': 1546905600, // Number | Start time of candlesticks, formatted in Unix timestamp in seconds. Default to`to - 100 * interval` if not specified
+  'to': 1546935600, // Number | End time of candlesticks, formatted in Unix timestamp in seconds. Default to current time
   'interval': "30m" // String | Interval time between data points
 };
 var callback = function(error, data, response) {
@@ -385,7 +387,9 @@ apiInstance.listCandlesticks(currencyPair, opts, callback);
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **currencyPair** | **String**| Currency pair | 
- **limit** | **Number**| Maximum number of record returned in one list | [optional] [default to 100]
+ **limit** | **Number**| Maximum recent data points returned. &#x60;limit&#x60; is conflicted with &#x60;from&#x60; and &#x60;to&#x60;. If either &#x60;from&#x60; or &#x60;to&#x60; is specified, request will be rejected. | [optional] [default to 100]
+ **from** | **Number**| Start time of candlesticks, formatted in Unix timestamp in seconds. Default to&#x60;to - 100 * interval&#x60; if not specified | [optional] 
+ **to** | **Number**| End time of candlesticks, formatted in Unix timestamp in seconds. Default to current time | [optional] 
  **interval** | **String**| Interval time between data points | [optional] [default to &#39;30m&#39;]
 
 ### Return type
