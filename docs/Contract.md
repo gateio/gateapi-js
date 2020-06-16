@@ -31,6 +31,7 @@ Name | Type | Description | Notes
 **tradeSize** | **Number** | Historical accumulation trade size | [optional] 
 **positionSize** | **Number** | Current total long position size | [optional] 
 **configChangeTime** | **Number** | Configuration&#39;s last changed time | [optional] 
+**inDelisting** | **Boolean** | Contract is delisting | [optional] 
 
 
 <a name="TypeEnum"></a>

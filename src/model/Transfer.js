@@ -41,20 +41,18 @@
    * Constructs a new <code>Transfer</code>.
    * @alias module:model/Transfer
    * @class
-   * @param currency {String} Transfer currency name
-   * @param from {module:model/Transfer.FromEnum} Account transferred from. `spot` - spot account. `margin` - margin account
-   * @param to {module:model/Transfer.ToEnum} Account transferred to. `spot` - spot account. `margin` - margin account
+   * @param currency {String} Transfer currency. For futures account, `currency` can be set to `POINT` or settle currency
+   * @param from {module:model/Transfer.FromEnum} Account transferred from. `spot` - spot account. `margin` - margin account, `futures` - futures account
+   * @param to {module:model/Transfer.ToEnum} Account transferred to. `spot` - spot account. `margin` - margin account, `futures` - futures account
    * @param amount {String} Transfer amount
-   * @param currencyPair {String} Required if transfer from or to margin account
    */
-  var exports = function(currency, from, to, amount, currencyPair) {
+  var exports = function(currency, from, to, amount) {
     var _this = this;
 
     _this['currency'] = currency;
     _this['from'] = from;
     _this['to'] = to;
     _this['amount'] = amount;
-    _this['currency_pair'] = currencyPair;
   };
 
   /**
@@ -82,22 +80,25 @@
       if (data.hasOwnProperty('currency_pair')) {
         obj['currency_pair'] = ApiClient.convertToType(data['currency_pair'], 'String');
       }
+      if (data.hasOwnProperty('settle')) {
+        obj['settle'] = ApiClient.convertToType(data['settle'], 'String');
+      }
     }
     return obj;
   }
 
   /**
-   * Transfer currency name
+   * Transfer currency. For futures account, `currency` can be set to `POINT` or settle currency
    * @member {String} currency
    */
   exports.prototype['currency'] = undefined;
   /**
-   * Account transferred from. `spot` - spot account. `margin` - margin account
+   * Account transferred from. `spot` - spot account. `margin` - margin account, `futures` - futures account
    * @member {module:model/Transfer.FromEnum} from
    */
   exports.prototype['from'] = undefined;
   /**
-   * Account transferred to. `spot` - spot account. `margin` - margin account
+   * Account transferred to. `spot` - spot account. `margin` - margin account, `futures` - futures account
    * @member {module:model/Transfer.ToEnum} to
    */
   exports.prototype['to'] = undefined;
@@ -107,10 +108,15 @@
    */
   exports.prototype['amount'] = undefined;
   /**
-   * Required if transfer from or to margin account
+   * Margin currency pair. Required if transfer from or to margin account
    * @member {String} currency_pair
    */
   exports.prototype['currency_pair'] = undefined;
+  /**
+   * Futures settle currency. Required if `currency` is `POINT`
+   * @member {String} settle
+   */
+  exports.prototype['settle'] = undefined;
 
 
   /**
@@ -128,7 +134,12 @@
      * value: "margin"
      * @const
      */
-    "margin": "margin"  };
+    "margin": "margin",
+    /**
+     * value: "futures"
+     * @const
+     */
+    "futures": "futures"  };
 
   /**
    * Allowed values for the <code>to</code> property.
@@ -145,7 +156,12 @@
      * value: "margin"
      * @const
      */
-    "margin": "margin"  };
+    "margin": "margin",
+    /**
+     * value: "futures"
+     * @const
+     */
+    "futures": "futures"  };
 
 
   return exports;

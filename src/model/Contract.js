@@ -142,6 +142,9 @@
       if (data.hasOwnProperty('config_change_time')) {
         obj['config_change_time'] = ApiClient.convertToType(data['config_change_time'], 'Number');
       }
+      if (data.hasOwnProperty('in_delisting')) {
+        obj['in_delisting'] = ApiClient.convertToType(data['in_delisting'], 'Boolean');
+      }
     }
     return obj;
   }
@@ -286,6 +289,11 @@
    * @member {Number} config_change_time
    */
   exports.prototype['config_change_time'] = undefined;
+  /**
+   * Contract is delisting
+   * @member {Boolean} in_delisting
+   */
+  exports.prototype['in_delisting'] = undefined;
 
 
   /**

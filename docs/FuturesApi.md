@@ -444,7 +444,9 @@ var opts = {
   'contract': "BTC_USD", // String | Futures contract, return related data only if specified
   'order': 12345, // Number | Futures order ID, return related data only if specified
   'limit': 100, // Number | Maximum number of record returned in one list
-  'lastId': "12345" // String | Specify list staring point using the `id` of last record in previous list-query results
+  'offset': 0, // Number | List offset, starting from 0
+  'lastId': "12345", // String | Specify list staring point using the `id` of last record in previous list-query results
+  'countTotal': 0 // Number | Whether to return total number matched. Default to 0(no return)
 };
 var callback = function(error, data, response) {
   if (error) {
@@ -464,7 +466,9 @@ Name | Type | Description  | Notes
  **contract** | **String**| Futures contract, return related data only if specified | [optional] 
  **order** | **Number**| Futures order ID, return related data only if specified | [optional] 
  **limit** | **Number**| Maximum number of record returned in one list | [optional] [default to 100]
+ **offset** | **Number**| List offset, starting from 0 | [optional] [default to 0]
  **lastId** | **String**| Specify list staring point using the &#x60;id&#x60; of last record in previous list-query results | [optional] 
+ **countTotal** | **Number**| Whether to return total number matched. Default to 0(no return) | [optional] [default to 0]
 
 ### Return type
 
@@ -939,7 +943,9 @@ var contract = "BTC_USD"; // String | Futures contract
 var status = "open"; // String | List orders based on status
 var opts = {
   'limit': 100, // Number | Maximum number of record returned in one list
-  'lastId': "12345" // String | Specify list staring point using the `id` of last record in previous list-query results
+  'offset': 0, // Number | List offset, starting from 0
+  'lastId': "12345", // String | Specify list staring point using the `id` of last record in previous list-query results
+  'countTotal': 0 // Number | Whether to return total number matched. Default to 0(no return)
 };
 var callback = function(error, data, response) {
   if (error) {
@@ -959,7 +965,9 @@ Name | Type | Description  | Notes
  **contract** | **String**| Futures contract | 
  **status** | **String**| List orders based on status | 
  **limit** | **Number**| Maximum number of record returned in one list | [optional] [default to 100]
+ **offset** | **Number**| List offset, starting from 0 | [optional] [default to 0]
  **lastId** | **String**| Specify list staring point using the &#x60;id&#x60; of last record in previous list-query results | [optional] 
+ **countTotal** | **Number**| Whether to return total number matched. Default to 0(no return) | [optional] [default to 0]
 
 ### Return type
 
