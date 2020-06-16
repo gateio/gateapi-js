@@ -16,18 +16,18 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient', 'model/SubAccountTransfer', 'model/Transfer'], factory);
+    define(['ApiClient', 'model/DepositAddress', 'model/LedgerRecord', 'model/SubAccountTransfer', 'model/Transfer'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('../model/SubAccountTransfer'), require('../model/Transfer'));
+    module.exports = factory(require('../ApiClient'), require('../model/DepositAddress'), require('../model/LedgerRecord'), require('../model/SubAccountTransfer'), require('../model/Transfer'));
   } else {
     // Browser globals (root is window)
     if (!root.GateApi) {
       root.GateApi = {};
     }
-    root.GateApi.WalletApi = factory(root.GateApi.ApiClient, root.GateApi.SubAccountTransfer, root.GateApi.Transfer);
+    root.GateApi.WalletApi = factory(root.GateApi.ApiClient, root.GateApi.DepositAddress, root.GateApi.LedgerRecord, root.GateApi.SubAccountTransfer, root.GateApi.Transfer);
   }
-}(this, function(ApiClient, SubAccountTransfer, Transfer) {
+}(this, function(ApiClient, DepositAddress, LedgerRecord, SubAccountTransfer, Transfer) {
   'use strict';
 
   /**
@@ -47,6 +47,157 @@
 
 
     /**
+     * Callback function to receive the result of the getDepositAddress operation.
+     * @callback module:api/WalletApi~getDepositAddressCallback
+     * @param {String} error Error message, if any.
+     * @param {module:model/DepositAddress} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Generate currency deposit address
+     * @param {String} currency Currency name
+     * @param {module:api/WalletApi~getDepositAddressCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:model/DepositAddress}
+     */
+    this.getDepositAddress = function(currency, callback) {
+      var postBody = null;
+
+      // verify the required parameter 'currency' is set
+      if (currency === undefined || currency === null) {
+        throw new Error("Missing the required parameter 'currency' when calling getDepositAddress");
+      }
+
+
+      var pathParams = {
+      };
+      var queryParams = {
+        'currency': currency,
+      };
+      var collectionQueryParams = {
+      };
+      var headerParams = {
+      };
+      var formParams = {
+      };
+
+      var authNames = ['api_key', 'api_sign', 'api_timestamp'];
+      var contentTypes = [];
+      var accepts = ['application/json'];
+      var returnType = DepositAddress;
+
+      return this.apiClient.callApi(
+        '/wallet/deposit_address', 'GET',
+        pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, callback
+      );
+    }
+
+    /**
+     * Callback function to receive the result of the listDeposits operation.
+     * @callback module:api/WalletApi~listDepositsCallback
+     * @param {String} error Error message, if any.
+     * @param {Array.<module:model/LedgerRecord>} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Retrieve deposit records. Time range cannot exceed 30 days
+     * @param {Object} opts Optional parameters
+     * @param {String} opts.currency Filter by currency. Return all currency records if not specified
+     * @param {Number} opts.from Time range beginning, default to 7 days before current time
+     * @param {Number} opts.to Time range ending, default to current time
+     * @param {Number} opts.limit Maximum number of record returned in one list (default to 100)
+     * @param {Number} opts.offset List offset, starting from 0 (default to 0)
+     * @param {module:api/WalletApi~listDepositsCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link Array.<module:model/LedgerRecord>}
+     */
+    this.listDeposits = function(opts, callback) {
+      opts = opts || {};
+      var postBody = null;
+
+
+      var pathParams = {
+      };
+      var queryParams = {
+        'currency': opts['currency'],
+        'from': opts['from'],
+        'to': opts['to'],
+        'limit': opts['limit'],
+        'offset': opts['offset'],
+      };
+      var collectionQueryParams = {
+      };
+      var headerParams = {
+      };
+      var formParams = {
+      };
+
+      var authNames = ['api_key', 'api_sign', 'api_timestamp'];
+      var contentTypes = [];
+      var accepts = ['application/json'];
+      var returnType = [LedgerRecord];
+
+      return this.apiClient.callApi(
+        '/wallet/deposits', 'GET',
+        pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, callback
+      );
+    }
+
+    /**
+     * Callback function to receive the result of the listWithdrawals operation.
+     * @callback module:api/WalletApi~listWithdrawalsCallback
+     * @param {String} error Error message, if any.
+     * @param {Array.<module:model/LedgerRecord>} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Retrieve withdrawal records. Time range cannot exceed 30 days
+     * @param {Object} opts Optional parameters
+     * @param {String} opts.currency Filter by currency. Return all currency records if not specified
+     * @param {Number} opts.from Time range beginning, default to 7 days before current time
+     * @param {Number} opts.to Time range ending, default to current time
+     * @param {Number} opts.limit Maximum number of record returned in one list (default to 100)
+     * @param {Number} opts.offset List offset, starting from 0 (default to 0)
+     * @param {module:api/WalletApi~listWithdrawalsCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link Array.<module:model/LedgerRecord>}
+     */
+    this.listWithdrawals = function(opts, callback) {
+      opts = opts || {};
+      var postBody = null;
+
+
+      var pathParams = {
+      };
+      var queryParams = {
+        'currency': opts['currency'],
+        'from': opts['from'],
+        'to': opts['to'],
+        'limit': opts['limit'],
+        'offset': opts['offset'],
+      };
+      var collectionQueryParams = {
+      };
+      var headerParams = {
+      };
+      var formParams = {
+      };
+
+      var authNames = ['api_key', 'api_sign', 'api_timestamp'];
+      var contentTypes = [];
+      var accepts = ['application/json'];
+      var returnType = [LedgerRecord];
+
+      return this.apiClient.callApi(
+        '/wallet/withdrawals', 'GET',
+        pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, callback
+      );
+    }
+
+    /**
      * Callback function to receive the result of the transfer operation.
      * @callback module:api/WalletApi~transferCallback
      * @param {String} error Error message, if any.
@@ -56,7 +207,7 @@
 
     /**
      * Transfer between accounts
-     * Transfer between different accounts. Currently support transfers between the following:  1. spot - margin
+     * Transfer between different accounts. Currently support transfers between the following:  1. spot - margin 2. spot - futures
      * @param {module:model/Transfer} transfer 
      * @param {module:api/WalletApi~transferCallback} callback The callback function, accepting three arguments: error, data, response
      */

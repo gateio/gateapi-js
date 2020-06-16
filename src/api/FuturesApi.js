@@ -498,7 +498,9 @@
      * @param {String} opts.contract Futures contract, return related data only if specified
      * @param {Number} opts.order Futures order ID, return related data only if specified
      * @param {Number} opts.limit Maximum number of record returned in one list (default to 100)
+     * @param {Number} opts.offset List offset, starting from 0 (default to 0)
      * @param {String} opts.lastId Specify list staring point using the &#x60;id&#x60; of last record in previous list-query results
+     * @param {Number} opts.countTotal Whether to return total number matched. Default to 0(no return) (default to 0)
      * @param {module:api/FuturesApi~getMyTradesCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link Array.<module:model/MyFuturesTrade>}
      */
@@ -519,7 +521,9 @@
         'contract': opts['contract'],
         'order': opts['order'],
         'limit': opts['limit'],
+        'offset': opts['offset'],
         'last_id': opts['lastId'],
+        'count_total': opts['countTotal'],
       };
       var collectionQueryParams = {
       };
@@ -1050,7 +1054,9 @@
      * @param {String} status List orders based on status
      * @param {Object} opts Optional parameters
      * @param {Number} opts.limit Maximum number of record returned in one list (default to 100)
+     * @param {Number} opts.offset List offset, starting from 0 (default to 0)
      * @param {String} opts.lastId Specify list staring point using the &#x60;id&#x60; of last record in previous list-query results
+     * @param {Number} opts.countTotal Whether to return total number matched. Default to 0(no return) (default to 0)
      * @param {module:api/FuturesApi~listFuturesOrdersCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link Array.<module:model/FuturesOrder>}
      */
@@ -1081,7 +1087,9 @@
         'contract': contract,
         'status': status,
         'limit': opts['limit'],
+        'offset': opts['offset'],
         'last_id': opts['lastId'],
+        'count_total': opts['countTotal'],
       };
       var collectionQueryParams = {
       };

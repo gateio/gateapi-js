@@ -213,7 +213,7 @@
    */
   exports.prototype['price'] = undefined;
   /**
-   * Time in force  - gtc: GoodTillCancelled - ioc: ImmediateOrCancelled, taker only - poc: PendingOrCancelled, reduce only
+   * Time in force  - gtc: GoodTillCancelled - ioc: ImmediateOrCancelled, taker only - poc: PendingOrCancelled, makes a post-only order that always enjoys a maker fee
    * @member {module:model/BatchOrder.TimeInForceEnum} time_in_force
    * @default 'gtc'
    */
