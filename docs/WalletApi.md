@@ -5,8 +5,9 @@ All URIs are relative to *https://api.gateio.ws/api/v4*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**getDepositAddress**](WalletApi.md#getDepositAddress) | **GET** /wallet/deposit_address | Generate currency deposit address
-[**listDeposits**](WalletApi.md#listDeposits) | **GET** /wallet/deposits | Retrieve deposit records. Time range cannot exceed 30 days
-[**listWithdrawals**](WalletApi.md#listWithdrawals) | **GET** /wallet/withdrawals | Retrieve withdrawal records. Time range cannot exceed 30 days
+[**listDeposits**](WalletApi.md#listDeposits) | **GET** /wallet/deposits | Retrieve deposit records
+[**listSubAccountTransfers**](WalletApi.md#listSubAccountTransfers) | **GET** /wallet/sub_account_transfers | Transfer records between main and sub accounts
+[**listWithdrawals**](WalletApi.md#listWithdrawals) | **GET** /wallet/withdrawals | Retrieve withdrawal records
 [**transfer**](WalletApi.md#transfer) | **POST** /wallet/transfers | Transfer between accounts
 [**transferWithSubAccount**](WalletApi.md#transferWithSubAccount) | **POST** /wallet/sub_account_transfers | Transfer between main and sub accounts
 
@@ -61,7 +62,9 @@ Authentication with API key and secret is required
 # **listDeposits**
 > [LedgerRecord] listDeposits(opts)
 
-Retrieve deposit records. Time range cannot exceed 30 days
+Retrieve deposit records
+
+Record time range cannot exceed 30 days
 
 ### Example
 ```javascript
@@ -113,11 +116,71 @@ Authentication with API key and secret is required
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
+<a name="listSubAccountTransfers"></a>
+# **listSubAccountTransfers**
+> [SubAccountTransfer] listSubAccountTransfers(opts)
+
+Transfer records between main and sub accounts
+
+Record time range cannot exceed 30 days  &gt; Note: only records after 2020-04-10 can be retrieved
+
+### Example
+```javascript
+var GateApi = require('gate-api');
+var client = GateApi.ApiClient.instance;
+client.key = "YOUR API KEY";
+client.secret = "YOUR API SECRET";
+// uncomment the next line if you are using the API with other host
+// client.basePath = "https://some-other-hosts";
+
+var apiInstance = new GateApi.WalletApi();
+var opts = {
+  'subUid': "10003", // String | Sub account user ID. Return records related to all sub accounts if not specified
+  'from': 789, // Number | Time range beginning, default to 7 days before current time
+  'to': 789, // Number | Time range ending, default to current time
+  'limit': 100, // Number | Maximum number of record returned in one list
+  'offset': 0 // Number | List offset, starting from 0
+};
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully. Returned data: ' + data);
+  }
+};
+apiInstance.listSubAccountTransfers(opts, callback);
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **subUid** | **String**| Sub account user ID. Return records related to all sub accounts if not specified | [optional] 
+ **from** | **Number**| Time range beginning, default to 7 days before current time | [optional] 
+ **to** | **Number**| Time range ending, default to current time | [optional] 
+ **limit** | **Number**| Maximum number of record returned in one list | [optional] [default to 100]
+ **offset** | **Number**| List offset, starting from 0 | [optional] [default to 0]
+
+### Return type
+
+[**[SubAccountTransfer]**](SubAccountTransfer.md)
+
+### Authorization
+
+Authentication with API key and secret is required
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
 <a name="listWithdrawals"></a>
 # **listWithdrawals**
 > [LedgerRecord] listWithdrawals(opts)
 
-Retrieve withdrawal records. Time range cannot exceed 30 days
+Retrieve withdrawal records
+
+Record time range cannot exceed 30 days
 
 ### Example
 ```javascript

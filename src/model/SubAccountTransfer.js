@@ -77,6 +77,15 @@
       if (data.hasOwnProperty('amount')) {
         obj['amount'] = ApiClient.convertToType(data['amount'], 'String');
       }
+      if (data.hasOwnProperty('uid')) {
+        obj['uid'] = ApiClient.convertToType(data['uid'], 'String');
+      }
+      if (data.hasOwnProperty('timest')) {
+        obj['timest'] = ApiClient.convertToType(data['timest'], 'String');
+      }
+      if (data.hasOwnProperty('source')) {
+        obj['source'] = ApiClient.convertToType(data['source'], 'String');
+      }
     }
     return obj;
   }
@@ -101,6 +110,21 @@
    * @member {String} amount
    */
   exports.prototype['amount'] = undefined;
+  /**
+   * Main account user ID
+   * @member {String} uid
+   */
+  exports.prototype['uid'] = undefined;
+  /**
+   * Transfer timestamp
+   * @member {String} timest
+   */
+  exports.prototype['timest'] = undefined;
+  /**
+   * Where the operation is initiated from
+   * @member {String} source
+   */
+  exports.prototype['source'] = undefined;
 
 
   /**

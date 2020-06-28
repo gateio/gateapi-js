@@ -102,7 +102,8 @@
      */
 
     /**
-     * Retrieve deposit records. Time range cannot exceed 30 days
+     * Retrieve deposit records
+     * Record time range cannot exceed 30 days
      * @param {Object} opts Optional parameters
      * @param {String} opts.currency Filter by currency. Return all currency records if not specified
      * @param {Number} opts.from Time range beginning, default to 7 days before current time
@@ -146,6 +147,59 @@
     }
 
     /**
+     * Callback function to receive the result of the listSubAccountTransfers operation.
+     * @callback module:api/WalletApi~listSubAccountTransfersCallback
+     * @param {String} error Error message, if any.
+     * @param {Array.<module:model/SubAccountTransfer>} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Transfer records between main and sub accounts
+     * Record time range cannot exceed 30 days  &gt; Note: only records after 2020-04-10 can be retrieved
+     * @param {Object} opts Optional parameters
+     * @param {String} opts.subUid Sub account user ID. Return records related to all sub accounts if not specified
+     * @param {Number} opts.from Time range beginning, default to 7 days before current time
+     * @param {Number} opts.to Time range ending, default to current time
+     * @param {Number} opts.limit Maximum number of record returned in one list (default to 100)
+     * @param {Number} opts.offset List offset, starting from 0 (default to 0)
+     * @param {module:api/WalletApi~listSubAccountTransfersCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link Array.<module:model/SubAccountTransfer>}
+     */
+    this.listSubAccountTransfers = function(opts, callback) {
+      opts = opts || {};
+      var postBody = null;
+
+
+      var pathParams = {
+      };
+      var queryParams = {
+        'sub_uid': opts['subUid'],
+        'from': opts['from'],
+        'to': opts['to'],
+        'limit': opts['limit'],
+        'offset': opts['offset'],
+      };
+      var collectionQueryParams = {
+      };
+      var headerParams = {
+      };
+      var formParams = {
+      };
+
+      var authNames = ['api_key', 'api_sign', 'api_timestamp'];
+      var contentTypes = [];
+      var accepts = ['application/json'];
+      var returnType = [SubAccountTransfer];
+
+      return this.apiClient.callApi(
+        '/wallet/sub_account_transfers', 'GET',
+        pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, callback
+      );
+    }
+
+    /**
      * Callback function to receive the result of the listWithdrawals operation.
      * @callback module:api/WalletApi~listWithdrawalsCallback
      * @param {String} error Error message, if any.
@@ -154,7 +208,8 @@
      */
 
     /**
-     * Retrieve withdrawal records. Time range cannot exceed 30 days
+     * Retrieve withdrawal records
+     * Record time range cannot exceed 30 days
      * @param {Object} opts Optional parameters
      * @param {String} opts.currency Filter by currency. Return all currency records if not specified
      * @param {Number} opts.from Time range beginning, default to 7 days before current time
