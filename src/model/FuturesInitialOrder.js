@@ -121,7 +121,7 @@
   exports.prototype['tif'] = 'gtc';
   /**
    * How the order is created. Possible values are: web, api and app
-   * @member {module:model/FuturesInitialOrder.TextEnum} text
+   * @member {String} text
    */
   exports.prototype['text'] = undefined;
   /**
@@ -158,28 +158,6 @@
      * @const
      */
     "ioc": "ioc"  };
-
-  /**
-   * Allowed values for the <code>text</code> property.
-   * @enum {String}
-   * @readonly
-   */
-  exports.TextEnum = {
-    /**
-     * value: "web"
-     * @const
-     */
-    "web": "web",
-    /**
-     * value: "api"
-     * @const
-     */
-    "api": "api",
-    /**
-     * value: "app"
-     * @const
-     */
-    "app": "app"  };
 
 
   return exports;

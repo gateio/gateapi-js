@@ -39,11 +39,12 @@
 
   /**
    * Constructs a new <code>Transfer</code>.
+   * Accounts available to transfer:  - &#x60;spot&#x60;: spot account - &#x60;margin&#x60;: margin account - &#x60;futures&#x60;: perpetual futures account - &#x60;delivery&#x60;: delivery futures account
    * @alias module:model/Transfer
    * @class
    * @param currency {String} Transfer currency. For futures account, `currency` can be set to `POINT` or settle currency
-   * @param from {module:model/Transfer.FromEnum} Account transferred from. `spot` - spot account. `margin` - margin account, `futures` - futures account
-   * @param to {module:model/Transfer.ToEnum} Account transferred to. `spot` - spot account. `margin` - margin account, `futures` - futures account
+   * @param from {module:model/Transfer.FromEnum} Account transferred from
+   * @param to {module:model/Transfer.ToEnum} Account transferred to
    * @param amount {String} Transfer amount
    */
   var exports = function(currency, from, to, amount) {
@@ -93,12 +94,12 @@
    */
   exports.prototype['currency'] = undefined;
   /**
-   * Account transferred from. `spot` - spot account. `margin` - margin account, `futures` - futures account
+   * Account transferred from
    * @member {module:model/Transfer.FromEnum} from
    */
   exports.prototype['from'] = undefined;
   /**
-   * Account transferred to. `spot` - spot account. `margin` - margin account, `futures` - futures account
+   * Account transferred to
    * @member {module:model/Transfer.ToEnum} to
    */
   exports.prototype['to'] = undefined;
@@ -139,7 +140,12 @@
      * value: "futures"
      * @const
      */
-    "futures": "futures"  };
+    "futures": "futures",
+    /**
+     * value: "delivery"
+     * @const
+     */
+    "delivery": "delivery"  };
 
   /**
    * Allowed values for the <code>to</code> property.
@@ -161,7 +167,12 @@
      * value: "futures"
      * @const
      */
-    "futures": "futures"  };
+    "futures": "futures",
+    /**
+     * value: "delivery"
+     * @const
+     */
+    "delivery": "delivery"  };
 
 
   return exports;

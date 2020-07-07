@@ -89,7 +89,7 @@
       var formParams = {
       };
 
-      var authNames = ['api_key', 'api_sign', 'api_timestamp'];
+      var authNames = ['apiv4'];
       var contentTypes = [];
       var accepts = ['application/json'];
       var returnType = Loan;
@@ -135,7 +135,7 @@
       var formParams = {
       };
 
-      var authNames = ['api_key', 'api_sign', 'api_timestamp'];
+      var authNames = ['apiv4'];
       var contentTypes = ['application/json'];
       var accepts = ['application/json'];
       var returnType = Loan;
@@ -189,7 +189,7 @@
       var formParams = {
       };
 
-      var authNames = ['api_key', 'api_sign', 'api_timestamp'];
+      var authNames = ['apiv4'];
       var contentTypes = [];
       var accepts = ['application/json'];
       var returnType = Loan;
@@ -243,7 +243,7 @@
       var formParams = {
       };
 
-      var authNames = ['api_key', 'api_sign', 'api_timestamp'];
+      var authNames = ['apiv4'];
       var contentTypes = [];
       var accepts = ['application/json'];
       var returnType = LoanRecord;
@@ -287,7 +287,7 @@
       var formParams = {
       };
 
-      var authNames = ['api_key', 'api_sign', 'api_timestamp'];
+      var authNames = ['apiv4'];
       var contentTypes = [];
       var accepts = ['application/json'];
       var returnType = [FundingAccount];
@@ -360,7 +360,7 @@
      * @param {Object} opts Optional parameters
      * @param {String} opts.status Loan record status
      * @param {Number} opts.page Page number (default to 1)
-     * @param {Number} opts.limit Maximum number of record returned in one list (default to 100)
+     * @param {Number} opts.limit Maximum number of records returned in one list (default to 100)
      * @param {module:api/MarginApi~listLoanRecordsCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link Array.<module:model/LoanRecord>}
      */
@@ -389,7 +389,7 @@
       var formParams = {
       };
 
-      var authNames = ['api_key', 'api_sign', 'api_timestamp'];
+      var authNames = ['apiv4'];
       var contentTypes = [];
       var accepts = ['application/json'];
       var returnType = [LoanRecord];
@@ -436,7 +436,7 @@
       var formParams = {
       };
 
-      var authNames = ['api_key', 'api_sign', 'api_timestamp'];
+      var authNames = ['apiv4'];
       var contentTypes = [];
       var accepts = ['application/json'];
       var returnType = [Repayment];
@@ -466,7 +466,7 @@
      * @param {String} opts.sortBy Specify which field is used to sort. &#x60;create_time&#x60; or &#x60;rate&#x60; is supported. Default to &#x60;create_time&#x60;
      * @param {Boolean} opts.reverseSort Whether to sort in descending order. Default to &#x60;true&#x60;
      * @param {Number} opts.page Page number (default to 1)
-     * @param {Number} opts.limit Maximum number of record returned in one list (default to 100)
+     * @param {Number} opts.limit Maximum number of records returned in one list (default to 100)
      * @param {module:api/MarginApi~listLoansCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link Array.<module:model/Loan>}
      */
@@ -504,7 +504,7 @@
       var formParams = {
       };
 
-      var authNames = ['api_key', 'api_sign', 'api_timestamp'];
+      var authNames = ['apiv4'];
       var contentTypes = [];
       var accepts = ['application/json'];
       var returnType = [Loan];
@@ -548,7 +548,7 @@
       var formParams = {
       };
 
-      var authNames = ['api_key', 'api_sign', 'api_timestamp'];
+      var authNames = ['apiv4'];
       var contentTypes = [];
       var accepts = ['application/json'];
       var returnType = [MarginAccount];
@@ -642,7 +642,7 @@
       var formParams = {
       };
 
-      var authNames = ['api_key', 'api_sign', 'api_timestamp'];
+      var authNames = ['apiv4'];
       var contentTypes = [];
       var accepts = ['application/json'];
       var returnType = Loan;
@@ -695,7 +695,7 @@
       var formParams = {
       };
 
-      var authNames = ['api_key', 'api_sign', 'api_timestamp'];
+      var authNames = ['apiv4'];
       var contentTypes = ['application/json'];
       var accepts = ['application/json'];
       var returnType = Loan;
@@ -749,7 +749,7 @@
       var formParams = {
       };
 
-      var authNames = ['api_key', 'api_sign', 'api_timestamp'];
+      var authNames = ['apiv4'];
       var contentTypes = ['application/json'];
       var accepts = ['application/json'];
       var returnType = Loan;
@@ -803,7 +803,7 @@
       var formParams = {
       };
 
-      var authNames = ['api_key', 'api_sign', 'api_timestamp'];
+      var authNames = ['apiv4'];
       var contentTypes = ['application/json'];
       var accepts = ['application/json'];
       var returnType = LoanRecord;

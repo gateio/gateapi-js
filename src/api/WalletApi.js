@@ -81,7 +81,7 @@
       var formParams = {
       };
 
-      var authNames = ['api_key', 'api_sign', 'api_timestamp'];
+      var authNames = ['apiv4'];
       var contentTypes = [];
       var accepts = ['application/json'];
       var returnType = DepositAddress;
@@ -108,7 +108,7 @@
      * @param {String} opts.currency Filter by currency. Return all currency records if not specified
      * @param {Number} opts.from Time range beginning, default to 7 days before current time
      * @param {Number} opts.to Time range ending, default to current time
-     * @param {Number} opts.limit Maximum number of record returned in one list (default to 100)
+     * @param {Number} opts.limit Maximum number of records returned in one list (default to 100)
      * @param {Number} opts.offset List offset, starting from 0 (default to 0)
      * @param {module:api/WalletApi~listDepositsCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link Array.<module:model/LedgerRecord>}
@@ -134,7 +134,7 @@
       var formParams = {
       };
 
-      var authNames = ['api_key', 'api_sign', 'api_timestamp'];
+      var authNames = ['apiv4'];
       var contentTypes = [];
       var accepts = ['application/json'];
       var returnType = [LedgerRecord];
@@ -161,7 +161,7 @@
      * @param {String} opts.subUid Sub account user ID. Return records related to all sub accounts if not specified
      * @param {Number} opts.from Time range beginning, default to 7 days before current time
      * @param {Number} opts.to Time range ending, default to current time
-     * @param {Number} opts.limit Maximum number of record returned in one list (default to 100)
+     * @param {Number} opts.limit Maximum number of records returned in one list (default to 100)
      * @param {Number} opts.offset List offset, starting from 0 (default to 0)
      * @param {module:api/WalletApi~listSubAccountTransfersCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link Array.<module:model/SubAccountTransfer>}
@@ -187,7 +187,7 @@
       var formParams = {
       };
 
-      var authNames = ['api_key', 'api_sign', 'api_timestamp'];
+      var authNames = ['apiv4'];
       var contentTypes = [];
       var accepts = ['application/json'];
       var returnType = [SubAccountTransfer];
@@ -214,7 +214,7 @@
      * @param {String} opts.currency Filter by currency. Return all currency records if not specified
      * @param {Number} opts.from Time range beginning, default to 7 days before current time
      * @param {Number} opts.to Time range ending, default to current time
-     * @param {Number} opts.limit Maximum number of record returned in one list (default to 100)
+     * @param {Number} opts.limit Maximum number of records returned in one list (default to 100)
      * @param {Number} opts.offset List offset, starting from 0 (default to 0)
      * @param {module:api/WalletApi~listWithdrawalsCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link Array.<module:model/LedgerRecord>}
@@ -240,7 +240,7 @@
       var formParams = {
       };
 
-      var authNames = ['api_key', 'api_sign', 'api_timestamp'];
+      var authNames = ['apiv4'];
       var contentTypes = [];
       var accepts = ['application/json'];
       var returnType = [LedgerRecord];
@@ -262,7 +262,7 @@
 
     /**
      * Transfer between accounts
-     * Transfer between different accounts. Currently support transfers between the following:  1. spot - margin 2. spot - futures
+     * Transfer between different accounts. Currently support transfers between the following:  1. spot - margin 2. spot - futures(perpetual) 2. spot - delivery
      * @param {module:model/Transfer} transfer 
      * @param {module:api/WalletApi~transferCallback} callback The callback function, accepting three arguments: error, data, response
      */
@@ -286,7 +286,7 @@
       var formParams = {
       };
 
-      var authNames = ['api_key', 'api_sign', 'api_timestamp'];
+      var authNames = ['apiv4'];
       var contentTypes = ['application/json'];
       var accepts = [];
       var returnType = null;
@@ -331,7 +331,7 @@
       var formParams = {
       };
 
-      var authNames = ['api_key', 'api_sign', 'api_timestamp'];
+      var authNames = ['apiv4'];
       var contentTypes = ['application/json'];
       var accepts = [];
       var returnType = null;

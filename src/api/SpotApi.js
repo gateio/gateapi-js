@@ -81,7 +81,7 @@
       var formParams = {
       };
 
-      var authNames = ['api_key', 'api_sign', 'api_timestamp'];
+      var authNames = ['apiv4'];
       var contentTypes = ['application/json'];
       var accepts = ['application/json'];
       var returnType = [CancelOrderResult];
@@ -135,7 +135,7 @@
       var formParams = {
       };
 
-      var authNames = ['api_key', 'api_sign', 'api_timestamp'];
+      var authNames = ['apiv4'];
       var contentTypes = [];
       var accepts = ['application/json'];
       var returnType = Order;
@@ -188,7 +188,7 @@
       var formParams = {
       };
 
-      var authNames = ['api_key', 'api_sign', 'api_timestamp'];
+      var authNames = ['apiv4'];
       var contentTypes = [];
       var accepts = ['application/json'];
       var returnType = [Order];
@@ -235,7 +235,7 @@
       var formParams = {
       };
 
-      var authNames = ['api_key', 'api_sign', 'api_timestamp'];
+      var authNames = ['apiv4'];
       var contentTypes = ['application/json'];
       var accepts = ['application/json'];
       var returnType = [BatchOrder];
@@ -281,7 +281,7 @@
       var formParams = {
       };
 
-      var authNames = ['api_key', 'api_sign', 'api_timestamp'];
+      var authNames = ['apiv4'];
       var contentTypes = ['application/json'];
       var accepts = ['application/json'];
       var returnType = Order;
@@ -382,7 +382,7 @@
       var formParams = {
       };
 
-      var authNames = ['api_key', 'api_sign', 'api_timestamp'];
+      var authNames = ['apiv4'];
       var contentTypes = [];
       var accepts = ['application/json'];
       var returnType = Order;
@@ -504,7 +504,7 @@
      * List personal trading history
      * @param {String} currencyPair Currency pair
      * @param {Object} opts Optional parameters
-     * @param {Number} opts.limit Maximum number of record returned in one list (default to 100)
+     * @param {Number} opts.limit Maximum number of records returned in one list (default to 100)
      * @param {Number} opts.page Page number (default to 1)
      * @param {String} opts.orderId List all trades of specified order
      * @param {module:api/SpotApi~listMyTradesCallback} callback The callback function, accepting three arguments: error, data, response
@@ -535,7 +535,7 @@
       var formParams = {
       };
 
-      var authNames = ['api_key', 'api_sign', 'api_timestamp'];
+      var authNames = ['apiv4'];
       var contentTypes = [];
       var accepts = ['application/json'];
       var returnType = [Trade];
@@ -615,7 +615,7 @@
      * @param {String} status List orders based on status  &#x60;open&#x60; - order is waiting to be filled &#x60;finished&#x60; - order has been filled or cancelled 
      * @param {Object} opts Optional parameters
      * @param {Number} opts.page Page number (default to 1)
-     * @param {Number} opts.limit Maximum number of record returned in one list (default to 100)
+     * @param {Number} opts.limit Maximum number of records returned in one list (default to 100)
      * @param {module:api/SpotApi~listOrdersCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link Array.<module:model/Order>}
      */
@@ -649,7 +649,7 @@
       var formParams = {
       };
 
-      var authNames = ['api_key', 'api_sign', 'api_timestamp'];
+      var authNames = ['apiv4'];
       var contentTypes = [];
       var accepts = ['application/json'];
       var returnType = [Order];
@@ -693,7 +693,7 @@
       var formParams = {
       };
 
-      var authNames = ['api_key', 'api_sign', 'api_timestamp'];
+      var authNames = ['apiv4'];
       var contentTypes = [];
       var accepts = ['application/json'];
       var returnType = [SpotAccount];
@@ -762,7 +762,7 @@
      * Retrieve market trades
      * @param {String} currencyPair Currency pair
      * @param {Object} opts Optional parameters
-     * @param {Number} opts.limit Maximum number of record returned in one list (default to 100)
+     * @param {Number} opts.limit Maximum number of records returned in one list (default to 100)
      * @param {String} opts.lastId Specify list staring point using the &#x60;id&#x60; of last record in previous list-query results
      * @param {module:api/SpotApi~listTradesCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link Array.<module:model/Trade>}

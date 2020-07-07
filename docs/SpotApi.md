@@ -460,7 +460,7 @@ client.secret = "YOUR API SECRET";
 var apiInstance = new GateApi.SpotApi();
 var currencyPair = "BTC_USDT"; // String | Currency pair
 var opts = {
-  'limit': 100, // Number | Maximum number of record returned in one list
+  'limit': 100, // Number | Maximum number of records returned in one list
   'page': 1, // Number | Page number
   'orderId': "12345" // String | List all trades of specified order
 };
@@ -479,7 +479,7 @@ apiInstance.listMyTrades(currencyPair, opts, callback);
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **currencyPair** | **String**| Currency pair | 
- **limit** | **Number**| Maximum number of record returned in one list | [optional] [default to 100]
+ **limit** | **Number**| Maximum number of records returned in one list | [optional] [default to 100]
  **page** | **Number**| Page number | [optional] [default to 1]
  **orderId** | **String**| List all trades of specified order | [optional] 
 
@@ -565,7 +565,7 @@ var currencyPair = "BTC_USDT"; // String | Currency pair
 var status = "open"; // String | List orders based on status  `open` - order is waiting to be filled `finished` - order has been filled or cancelled 
 var opts = {
   'page': 1, // Number | Page number
-  'limit': 100 // Number | Maximum number of record returned in one list
+  'limit': 100 // Number | Maximum number of records returned in one list
 };
 var callback = function(error, data, response) {
   if (error) {
@@ -584,7 +584,7 @@ Name | Type | Description  | Notes
  **currencyPair** | **String**| Currency pair | 
  **status** | **String**| List orders based on status  &#x60;open&#x60; - order is waiting to be filled &#x60;finished&#x60; - order has been filled or cancelled  | 
  **page** | **Number**| Page number | [optional] [default to 1]
- **limit** | **Number**| Maximum number of record returned in one list | [optional] [default to 100]
+ **limit** | **Number**| Maximum number of records returned in one list | [optional] [default to 100]
 
 ### Return type
 
@@ -705,7 +705,7 @@ var GateApi = require('gate-api');
 var apiInstance = new GateApi.SpotApi();
 var currencyPair = "BTC_USDT"; // String | Currency pair
 var opts = {
-  'limit': 100, // Number | Maximum number of record returned in one list
+  'limit': 100, // Number | Maximum number of records returned in one list
   'lastId': "12345" // String | Specify list staring point using the `id` of last record in previous list-query results
 };
 var callback = function(error, data, response) {
@@ -723,7 +723,7 @@ apiInstance.listTrades(currencyPair, opts, callback);
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **currencyPair** | **String**| Currency pair | 
- **limit** | **Number**| Maximum number of record returned in one list | [optional] [default to 100]
+ **limit** | **Number**| Maximum number of records returned in one list | [optional] [default to 100]
  **lastId** | **String**| Specify list staring point using the &#x60;id&#x60; of last record in previous list-query results | [optional] 
 
 ### Return type

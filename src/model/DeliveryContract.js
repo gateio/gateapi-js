@@ -25,7 +25,7 @@
     if (!root.GateApi) {
       root.GateApi = {};
     }
-    root.GateApi.Contract = factory(root.GateApi.ApiClient);
+    root.GateApi.DeliveryContract = factory(root.GateApi.ApiClient);
   }
 }(this, function(ApiClient) {
   'use strict';
@@ -33,14 +33,14 @@
 
 
   /**
-   * The Contract model module.
-   * @module model/Contract
+   * The DeliveryContract model module.
+   * @module model/DeliveryContract
    */
 
   /**
-   * Constructs a new <code>Contract</code>.
+   * Constructs a new <code>DeliveryContract</code>.
    * Futures contract details
-   * @alias module:model/Contract
+   * @alias module:model/DeliveryContract
    * @class
    */
   var exports = function() {
@@ -49,17 +49,23 @@
   };
 
   /**
-   * Constructs a <code>Contract</code> from a plain JavaScript object, optionally creating a new instance.
+   * Constructs a <code>DeliveryContract</code> from a plain JavaScript object, optionally creating a new instance.
    * Copies all relevant properties from <code>data</code> to <code>obj</code> if supplied or a new instance if not.
    * @param {Object} data The plain JavaScript object bearing properties of interest.
-   * @param {module:model/Contract} obj Optional instance to populate.
-   * @return {module:model/Contract} The populated <code>Contract</code> instance.
+   * @param {module:model/DeliveryContract} obj Optional instance to populate.
+   * @return {module:model/DeliveryContract} The populated <code>DeliveryContract</code> instance.
    */
   exports.constructFromObject = function(data, obj) {
     if (data) {
       obj = obj || new exports();
       if (data.hasOwnProperty('name')) {
         obj['name'] = ApiClient.convertToType(data['name'], 'String');
+      }
+      if (data.hasOwnProperty('underling')) {
+        obj['underling'] = ApiClient.convertToType(data['underling'], 'String');
+      }
+      if (data.hasOwnProperty('cycle')) {
+        obj['cycle'] = ApiClient.convertToType(data['cycle'], 'String');
       }
       if (data.hasOwnProperty('type')) {
         obj['type'] = ApiClient.convertToType(data['type'], 'String');
@@ -100,14 +106,26 @@
       if (data.hasOwnProperty('mark_price_round')) {
         obj['mark_price_round'] = ApiClient.convertToType(data['mark_price_round'], 'String');
       }
-      if (data.hasOwnProperty('funding_rate')) {
-        obj['funding_rate'] = ApiClient.convertToType(data['funding_rate'], 'String');
+      if (data.hasOwnProperty('basis_rate')) {
+        obj['basis_rate'] = ApiClient.convertToType(data['basis_rate'], 'String');
       }
-      if (data.hasOwnProperty('funding_interval')) {
-        obj['funding_interval'] = ApiClient.convertToType(data['funding_interval'], 'Number');
+      if (data.hasOwnProperty('basis_value')) {
+        obj['basis_value'] = ApiClient.convertToType(data['basis_value'], 'String');
       }
-      if (data.hasOwnProperty('funding_next_apply')) {
-        obj['funding_next_apply'] = ApiClient.convertToType(data['funding_next_apply'], 'Number');
+      if (data.hasOwnProperty('basis_impact_value')) {
+        obj['basis_impact_value'] = ApiClient.convertToType(data['basis_impact_value'], 'String');
+      }
+      if (data.hasOwnProperty('settle_price')) {
+        obj['settle_price'] = ApiClient.convertToType(data['settle_price'], 'String');
+      }
+      if (data.hasOwnProperty('settle_price_interval')) {
+        obj['settle_price_interval'] = ApiClient.convertToType(data['settle_price_interval'], 'Number');
+      }
+      if (data.hasOwnProperty('settle_price_duration')) {
+        obj['settle_price_duration'] = ApiClient.convertToType(data['settle_price_duration'], 'Number');
+      }
+      if (data.hasOwnProperty('expire_time')) {
+        obj['expire_time'] = ApiClient.convertToType(data['expire_time'], 'Number');
       }
       if (data.hasOwnProperty('risk_limit_base')) {
         obj['risk_limit_base'] = ApiClient.convertToType(data['risk_limit_base'], 'String');
@@ -161,8 +179,18 @@
    */
   exports.prototype['name'] = undefined;
   /**
+   * Underlying
+   * @member {String} underling
+   */
+  exports.prototype['underling'] = undefined;
+  /**
+   * Cycle type, e.g. WEEKLY, QUARTERLY
+   * @member {module:model/DeliveryContract.CycleEnum} cycle
+   */
+  exports.prototype['cycle'] = undefined;
+  /**
    * Futures contract type
-   * @member {module:model/Contract.TypeEnum} type
+   * @member {module:model/DeliveryContract.TypeEnum} type
    */
   exports.prototype['type'] = undefined;
   /**
@@ -187,7 +215,7 @@
   exports.prototype['maintenance_rate'] = undefined;
   /**
    * Mark price type, internal - based on internal trading, index - based on external index price
-   * @member {module:model/Contract.MarkTypeEnum} mark_type
+   * @member {module:model/DeliveryContract.MarkTypeEnum} mark_type
    */
   exports.prototype['mark_type'] = undefined;
   /**
@@ -226,20 +254,40 @@
    */
   exports.prototype['mark_price_round'] = undefined;
   /**
-   * Current funding rate
-   * @member {String} funding_rate
+   * Fair basis rate
+   * @member {String} basis_rate
    */
-  exports.prototype['funding_rate'] = undefined;
+  exports.prototype['basis_rate'] = undefined;
   /**
-   * Funding application interval, unit in seconds
-   * @member {Number} funding_interval
+   * Fair basis value
+   * @member {String} basis_value
    */
-  exports.prototype['funding_interval'] = undefined;
+  exports.prototype['basis_value'] = undefined;
   /**
-   * Next funding time
-   * @member {Number} funding_next_apply
+   * Funding used for calculating impact bid, ask price
+   * @member {String} basis_impact_value
    */
-  exports.prototype['funding_next_apply'] = undefined;
+  exports.prototype['basis_impact_value'] = undefined;
+  /**
+   * Settle price
+   * @member {String} settle_price
+   */
+  exports.prototype['settle_price'] = undefined;
+  /**
+   * Settle price update interval
+   * @member {Number} settle_price_interval
+   */
+  exports.prototype['settle_price_interval'] = undefined;
+  /**
+   * Settle price update duration in seconds
+   * @member {Number} settle_price_duration
+   */
+  exports.prototype['settle_price_duration'] = undefined;
+  /**
+   * Contract expiry timestamp
+   * @member {Number} expire_time
+   */
+  exports.prototype['expire_time'] = undefined;
   /**
    * Risk limit base
    * @member {String} risk_limit_base
@@ -311,6 +359,33 @@
    */
   exports.prototype['in_delisting'] = undefined;
 
+
+  /**
+   * Allowed values for the <code>cycle</code> property.
+   * @enum {String}
+   * @readonly
+   */
+  exports.CycleEnum = {
+    /**
+     * value: "WEEKLY"
+     * @const
+     */
+    "WEEKLY": "WEEKLY",
+    /**
+     * value: "BI-WEEKLY"
+     * @const
+     */
+    "BI-WEEKLY": "BI-WEEKLY",
+    /**
+     * value: "QUARTERLY"
+     * @const
+     */
+    "QUARTERLY": "QUARTERLY",
+    /**
+     * value: "BI-QUARTERLY"
+     * @const
+     */
+    "BI-QUARTERLY": "BI-QUARTERLY"  };
 
   /**
    * Allowed values for the <code>type</code> property.

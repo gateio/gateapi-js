@@ -80,7 +80,7 @@
       var formParams = {
       };
 
-      var authNames = ['api_key', 'api_sign', 'api_timestamp'];
+      var authNames = ['apiv4'];
       var contentTypes = ['application/json'];
       var accepts = ['application/json'];
       var returnType = LedgerRecord;

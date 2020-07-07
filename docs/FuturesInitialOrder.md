@@ -25,16 +25,3 @@ Name | Type | Description | Notes
 
 
 
-<a name="TextEnum"></a>
-## Enum: TextEnum
-
-
-* `web` (value: `"web"`)
-
-* `api` (value: `"api"`)
-
-* `app` (value: `"app"`)
-
-
-
-

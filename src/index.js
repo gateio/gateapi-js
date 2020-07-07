@@ -16,12 +16,12 @@
 (function(factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient', 'model/BatchOrder', 'model/CancelOrder', 'model/CancelOrderResult', 'model/Contract', 'model/CurrencyPair', 'model/DepositAddress', 'model/FundingAccount', 'model/FundingBookItem', 'model/FundingRateRecord', 'model/FuturesAccount', 'model/FuturesAccountBook', 'model/FuturesCandlestick', 'model/FuturesInitialOrder', 'model/FuturesLiquidate', 'model/FuturesOrder', 'model/FuturesOrderBook', 'model/FuturesOrderBookItem', 'model/FuturesPriceTrigger', 'model/FuturesPriceTriggeredOrder', 'model/FuturesTicker', 'model/FuturesTrade', 'model/InsuranceRecord', 'model/LedgerRecord', 'model/Loan', 'model/LoanPatch', 'model/LoanRecord', 'model/MarginAccount', 'model/MarginAccountCurrency', 'model/MarginCurrencyPair', 'model/MyFuturesTrade', 'model/Order', 'model/OrderBook', 'model/Position', 'model/PositionClose', 'model/PositionCloseOrder', 'model/RepayRequest', 'model/Repayment', 'model/SpotAccount', 'model/SubAccountTransfer', 'model/Ticker', 'model/Trade', 'model/Transfer', 'model/TriggerOrderResponse', 'api/FuturesApi', 'api/MarginApi', 'api/SpotApi', 'api/WalletApi', 'api/WithdrawalApi'], factory);
+    define(['ApiClient', 'model/BatchOrder', 'model/CancelOrder', 'model/CancelOrderResult', 'model/Contract', 'model/CurrencyPair', 'model/DeliveryContract', 'model/DeliverySettlement', 'model/DepositAddress', 'model/FundingAccount', 'model/FundingBookItem', 'model/FundingRateRecord', 'model/FuturesAccount', 'model/FuturesAccountBook', 'model/FuturesCandlestick', 'model/FuturesInitialOrder', 'model/FuturesLiquidate', 'model/FuturesOrder', 'model/FuturesOrderBook', 'model/FuturesOrderBookItem', 'model/FuturesPriceTrigger', 'model/FuturesPriceTriggeredOrder', 'model/FuturesTicker', 'model/FuturesTrade', 'model/GateErrorResponse', 'model/InsuranceRecord', 'model/LedgerRecord', 'model/Loan', 'model/LoanPatch', 'model/LoanRecord', 'model/MarginAccount', 'model/MarginAccountCurrency', 'model/MarginCurrencyPair', 'model/MyFuturesTrade', 'model/Order', 'model/OrderBook', 'model/Position', 'model/PositionClose', 'model/PositionCloseOrder', 'model/RepayRequest', 'model/Repayment', 'model/SpotAccount', 'model/SubAccountTransfer', 'model/Ticker', 'model/Trade', 'model/Transfer', 'model/TriggerOrderResponse', 'api/DeliveryApi', 'api/FuturesApi', 'api/MarginApi', 'api/SpotApi', 'api/WalletApi', 'api/WithdrawalApi'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('./ApiClient'), require('./model/BatchOrder'), require('./model/CancelOrder'), require('./model/CancelOrderResult'), require('./model/Contract'), require('./model/CurrencyPair'), require('./model/DepositAddress'), require('./model/FundingAccount'), require('./model/FundingBookItem'), require('./model/FundingRateRecord'), require('./model/FuturesAccount'), require('./model/FuturesAccountBook'), require('./model/FuturesCandlestick'), require('./model/FuturesInitialOrder'), require('./model/FuturesLiquidate'), require('./model/FuturesOrder'), require('./model/FuturesOrderBook'), require('./model/FuturesOrderBookItem'), require('./model/FuturesPriceTrigger'), require('./model/FuturesPriceTriggeredOrder'), require('./model/FuturesTicker'), require('./model/FuturesTrade'), require('./model/InsuranceRecord'), require('./model/LedgerRecord'), require('./model/Loan'), require('./model/LoanPatch'), require('./model/LoanRecord'), require('./model/MarginAccount'), require('./model/MarginAccountCurrency'), require('./model/MarginCurrencyPair'), require('./model/MyFuturesTrade'), require('./model/Order'), require('./model/OrderBook'), require('./model/Position'), require('./model/PositionClose'), require('./model/PositionCloseOrder'), require('./model/RepayRequest'), require('./model/Repayment'), require('./model/SpotAccount'), require('./model/SubAccountTransfer'), require('./model/Ticker'), require('./model/Trade'), require('./model/Transfer'), require('./model/TriggerOrderResponse'), require('./api/FuturesApi'), require('./api/MarginApi'), require('./api/SpotApi'), require('./api/WalletApi'), require('./api/WithdrawalApi'));
+    module.exports = factory(require('./ApiClient'), require('./model/BatchOrder'), require('./model/CancelOrder'), require('./model/CancelOrderResult'), require('./model/Contract'), require('./model/CurrencyPair'), require('./model/DeliveryContract'), require('./model/DeliverySettlement'), require('./model/DepositAddress'), require('./model/FundingAccount'), require('./model/FundingBookItem'), require('./model/FundingRateRecord'), require('./model/FuturesAccount'), require('./model/FuturesAccountBook'), require('./model/FuturesCandlestick'), require('./model/FuturesInitialOrder'), require('./model/FuturesLiquidate'), require('./model/FuturesOrder'), require('./model/FuturesOrderBook'), require('./model/FuturesOrderBookItem'), require('./model/FuturesPriceTrigger'), require('./model/FuturesPriceTriggeredOrder'), require('./model/FuturesTicker'), require('./model/FuturesTrade'), require('./model/GateErrorResponse'), require('./model/InsuranceRecord'), require('./model/LedgerRecord'), require('./model/Loan'), require('./model/LoanPatch'), require('./model/LoanRecord'), require('./model/MarginAccount'), require('./model/MarginAccountCurrency'), require('./model/MarginCurrencyPair'), require('./model/MyFuturesTrade'), require('./model/Order'), require('./model/OrderBook'), require('./model/Position'), require('./model/PositionClose'), require('./model/PositionCloseOrder'), require('./model/RepayRequest'), require('./model/Repayment'), require('./model/SpotAccount'), require('./model/SubAccountTransfer'), require('./model/Ticker'), require('./model/Trade'), require('./model/Transfer'), require('./model/TriggerOrderResponse'), require('./api/DeliveryApi'), require('./api/FuturesApi'), require('./api/MarginApi'), require('./api/SpotApi'), require('./api/WalletApi'), require('./api/WithdrawalApi'));
   }
-}(function(ApiClient, BatchOrder, CancelOrder, CancelOrderResult, Contract, CurrencyPair, DepositAddress, FundingAccount, FundingBookItem, FundingRateRecord, FuturesAccount, FuturesAccountBook, FuturesCandlestick, FuturesInitialOrder, FuturesLiquidate, FuturesOrder, FuturesOrderBook, FuturesOrderBookItem, FuturesPriceTrigger, FuturesPriceTriggeredOrder, FuturesTicker, FuturesTrade, InsuranceRecord, LedgerRecord, Loan, LoanPatch, LoanRecord, MarginAccount, MarginAccountCurrency, MarginCurrencyPair, MyFuturesTrade, Order, OrderBook, Position, PositionClose, PositionCloseOrder, RepayRequest, Repayment, SpotAccount, SubAccountTransfer, Ticker, Trade, Transfer, TriggerOrderResponse, FuturesApi, MarginApi, SpotApi, WalletApi, WithdrawalApi) {
+}(function(ApiClient, BatchOrder, CancelOrder, CancelOrderResult, Contract, CurrencyPair, DeliveryContract, DeliverySettlement, DepositAddress, FundingAccount, FundingBookItem, FundingRateRecord, FuturesAccount, FuturesAccountBook, FuturesCandlestick, FuturesInitialOrder, FuturesLiquidate, FuturesOrder, FuturesOrderBook, FuturesOrderBookItem, FuturesPriceTrigger, FuturesPriceTriggeredOrder, FuturesTicker, FuturesTrade, GateErrorResponse, InsuranceRecord, LedgerRecord, Loan, LoanPatch, LoanRecord, MarginAccount, MarginAccountCurrency, MarginCurrencyPair, MyFuturesTrade, Order, OrderBook, Position, PositionClose, PositionCloseOrder, RepayRequest, Repayment, SpotAccount, SubAccountTransfer, Ticker, Trade, Transfer, TriggerOrderResponse, DeliveryApi, FuturesApi, MarginApi, SpotApi, WalletApi, WithdrawalApi) {
   'use strict';
 
   /**
@@ -85,6 +85,16 @@
      * @property {module:model/CurrencyPair}
      */
     CurrencyPair: CurrencyPair,
+    /**
+     * The DeliveryContract model constructor.
+     * @property {module:model/DeliveryContract}
+     */
+    DeliveryContract: DeliveryContract,
+    /**
+     * The DeliverySettlement model constructor.
+     * @property {module:model/DeliverySettlement}
+     */
+    DeliverySettlement: DeliverySettlement,
     /**
      * The DepositAddress model constructor.
      * @property {module:model/DepositAddress}
@@ -165,6 +175,11 @@
      * @property {module:model/FuturesTrade}
      */
     FuturesTrade: FuturesTrade,
+    /**
+     * The GateErrorResponse model constructor.
+     * @property {module:model/GateErrorResponse}
+     */
+    GateErrorResponse: GateErrorResponse,
     /**
      * The InsuranceRecord model constructor.
      * @property {module:model/InsuranceRecord}
@@ -275,6 +290,11 @@
      * @property {module:model/TriggerOrderResponse}
      */
     TriggerOrderResponse: TriggerOrderResponse,
+    /**
+     * The DeliveryApi service constructor.
+     * @property {module:api/DeliveryApi}
+     */
+    DeliveryApi: DeliveryApi,
     /**
      * The FuturesApi service constructor.
      * @property {module:api/FuturesApi}

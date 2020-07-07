@@ -80,7 +80,7 @@ var opts = {
   'currency': "BTC", // String | Filter by currency. Return all currency records if not specified
   'from': 789, // Number | Time range beginning, default to 7 days before current time
   'to': 789, // Number | Time range ending, default to current time
-  'limit': 100, // Number | Maximum number of record returned in one list
+  'limit': 100, // Number | Maximum number of records returned in one list
   'offset': 0 // Number | List offset, starting from 0
 };
 var callback = function(error, data, response) {
@@ -100,7 +100,7 @@ Name | Type | Description  | Notes
  **currency** | **String**| Filter by currency. Return all currency records if not specified | [optional] 
  **from** | **Number**| Time range beginning, default to 7 days before current time | [optional] 
  **to** | **Number**| Time range ending, default to current time | [optional] 
- **limit** | **Number**| Maximum number of record returned in one list | [optional] [default to 100]
+ **limit** | **Number**| Maximum number of records returned in one list | [optional] [default to 100]
  **offset** | **Number**| List offset, starting from 0 | [optional] [default to 0]
 
 ### Return type
@@ -138,7 +138,7 @@ var opts = {
   'subUid': "10003", // String | Sub account user ID. Return records related to all sub accounts if not specified
   'from': 789, // Number | Time range beginning, default to 7 days before current time
   'to': 789, // Number | Time range ending, default to current time
-  'limit': 100, // Number | Maximum number of record returned in one list
+  'limit': 100, // Number | Maximum number of records returned in one list
   'offset': 0 // Number | List offset, starting from 0
 };
 var callback = function(error, data, response) {
@@ -158,7 +158,7 @@ Name | Type | Description  | Notes
  **subUid** | **String**| Sub account user ID. Return records related to all sub accounts if not specified | [optional] 
  **from** | **Number**| Time range beginning, default to 7 days before current time | [optional] 
  **to** | **Number**| Time range ending, default to current time | [optional] 
- **limit** | **Number**| Maximum number of record returned in one list | [optional] [default to 100]
+ **limit** | **Number**| Maximum number of records returned in one list | [optional] [default to 100]
  **offset** | **Number**| List offset, starting from 0 | [optional] [default to 0]
 
 ### Return type
@@ -196,7 +196,7 @@ var opts = {
   'currency': "BTC", // String | Filter by currency. Return all currency records if not specified
   'from': 789, // Number | Time range beginning, default to 7 days before current time
   'to': 789, // Number | Time range ending, default to current time
-  'limit': 100, // Number | Maximum number of record returned in one list
+  'limit': 100, // Number | Maximum number of records returned in one list
   'offset': 0 // Number | List offset, starting from 0
 };
 var callback = function(error, data, response) {
@@ -216,7 +216,7 @@ Name | Type | Description  | Notes
  **currency** | **String**| Filter by currency. Return all currency records if not specified | [optional] 
  **from** | **Number**| Time range beginning, default to 7 days before current time | [optional] 
  **to** | **Number**| Time range ending, default to current time | [optional] 
- **limit** | **Number**| Maximum number of record returned in one list | [optional] [default to 100]
+ **limit** | **Number**| Maximum number of records returned in one list | [optional] [default to 100]
  **offset** | **Number**| List offset, starting from 0 | [optional] [default to 0]
 
 ### Return type
@@ -238,7 +238,7 @@ Authentication with API key and secret is required
 
 Transfer between accounts
 
-Transfer between different accounts. Currently support transfers between the following:  1. spot - margin 2. spot - futures
+Transfer between different accounts. Currently support transfers between the following:  1. spot - margin 2. spot - futures(perpetual) 2. spot - delivery
 
 ### Example
 ```javascript
