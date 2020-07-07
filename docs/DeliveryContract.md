@@ -1,9 +1,11 @@
-# GateApi.Contract
+# GateApi.DeliveryContract
 
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **name** | **String** | Futures contract | [optional] 
+**underling** | **String** | Underlying | [optional] 
+**cycle** | **String** | Cycle type, e.g. WEEKLY, QUARTERLY | [optional] 
 **type** | **String** | Futures contract type | [optional] 
 **quantoMultiplier** | **String** | Multiplier used in converting from invoicing to settlement currency in quanto futures | [optional] 
 **leverageMin** | **String** | Minimum leverage | [optional] 
@@ -17,9 +19,13 @@ Name | Type | Description | Notes
 **takerFeeRate** | **String** | Taker fee rate | [optional] 
 **orderPriceRound** | **String** | Minimum order price increment | [optional] 
 **markPriceRound** | **String** | Minimum mark price increment | [optional] 
-**fundingRate** | **String** | Current funding rate | [optional] 
-**fundingInterval** | **Number** | Funding application interval, unit in seconds | [optional] 
-**fundingNextApply** | **Number** | Next funding time | [optional] 
+**basisRate** | **String** | Fair basis rate | [optional] 
+**basisValue** | **String** | Fair basis value | [optional] 
+**basisImpactValue** | **String** | Funding used for calculating impact bid, ask price | [optional] 
+**settlePrice** | **String** | Settle price | [optional] 
+**settlePriceInterval** | **Number** | Settle price update interval | [optional] 
+**settlePriceDuration** | **Number** | Settle price update duration in seconds | [optional] 
+**expireTime** | **Number** | Contract expiry timestamp | [optional] 
 **riskLimitBase** | **String** | Risk limit base | [optional] 
 **riskLimitStep** | **String** | Step of adjusting risk limit | [optional] 
 **riskLimitMax** | **String** | Maximum risk limit the contract allowed | [optional] 
@@ -34,6 +40,21 @@ Name | Type | Description | Notes
 **positionSize** | **Number** | Current total long position size | [optional] 
 **configChangeTime** | **Number** | Configuration&#39;s last changed time | [optional] 
 **inDelisting** | **Boolean** | Contract is delisting | [optional] 
+
+
+<a name="CycleEnum"></a>
+## Enum: CycleEnum
+
+
+* `WEEKLY` (value: `"WEEKLY"`)
+
+* `BI-WEEKLY` (value: `"BI-WEEKLY"`)
+
+* `QUARTERLY` (value: `"QUARTERLY"`)
+
+* `BI-QUARTERLY` (value: `"BI-QUARTERLY"`)
+
+
 
 
 <a name="TypeEnum"></a>

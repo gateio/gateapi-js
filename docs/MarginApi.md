@@ -322,7 +322,7 @@ var loanId = "12345"; // String | Loan ID
 var opts = {
   'status': "loaned", // String | Loan record status
   'page': 1, // Number | Page number
-  'limit': 100 // Number | Maximum number of record returned in one list
+  'limit': 100 // Number | Maximum number of records returned in one list
 };
 var callback = function(error, data, response) {
   if (error) {
@@ -341,7 +341,7 @@ Name | Type | Description  | Notes
  **loanId** | **String**| Loan ID | 
  **status** | **String**| Loan record status | [optional] 
  **page** | **Number**| Page number | [optional] [default to 1]
- **limit** | **Number**| Maximum number of record returned in one list | [optional] [default to 100]
+ **limit** | **Number**| Maximum number of records returned in one list | [optional] [default to 100]
 
 ### Return type
 
@@ -426,7 +426,7 @@ var opts = {
   'sortBy': "rate", // String | Specify which field is used to sort. `create_time` or `rate` is supported. Default to `create_time`
   'reverseSort': true, // Boolean | Whether to sort in descending order. Default to `true`
   'page': 1, // Number | Page number
-  'limit': 100 // Number | Maximum number of record returned in one list
+  'limit': 100 // Number | Maximum number of records returned in one list
 };
 var callback = function(error, data, response) {
   if (error) {
@@ -449,7 +449,7 @@ Name | Type | Description  | Notes
  **sortBy** | **String**| Specify which field is used to sort. &#x60;create_time&#x60; or &#x60;rate&#x60; is supported. Default to &#x60;create_time&#x60; | [optional] 
  **reverseSort** | **Boolean**| Whether to sort in descending order. Default to &#x60;true&#x60; | [optional] 
  **page** | **Number**| Page number | [optional] [default to 1]
- **limit** | **Number**| Maximum number of record returned in one list | [optional] [default to 100]
+ **limit** | **Number**| Maximum number of records returned in one list | [optional] [default to 100]
 
 ### Return type
 
