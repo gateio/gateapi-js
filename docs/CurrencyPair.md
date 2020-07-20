@@ -1,6 +1,7 @@
 # GateApi.CurrencyPair
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **String** | Currency pair | [optional] 
@@ -13,10 +14,7 @@ Name | Type | Description | Notes
 **precision** | **Number** | Price scale | [optional] 
 **tradeStatus** | **String** | How currency pair can be traded  - untradable: cannot be bought or sold - buyable: can be bought - sellable: can be sold - tradable: can be bought or sold | [optional] 
 
-
-<a name="TradeStatusEnum"></a>
 ## Enum: TradeStatusEnum
-
 
 * `untradable` (value: `"untradable"`)
 
@@ -25,7 +23,5 @@ Name | Type | Description | Notes
 * `sellable` (value: `"sellable"`)
 
 * `tradable` (value: `"tradable"`)
-
-
 
 

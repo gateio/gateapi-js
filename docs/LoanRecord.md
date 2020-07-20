@@ -1,6 +1,7 @@
 # GateApi.LoanRecord
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **String** | Loan record ID | [optional] 
@@ -15,18 +16,13 @@ Name | Type | Description | Notes
 **days** | **Number** | Loan days | [optional] 
 **autoRenew** | **Boolean** | Whether the record will auto renew on expiration | [optional] [default to false]
 **repaid** | **String** | Repaid amount | [optional] 
-**paidInterest** | **String** | Repaid interest | [optional] 
-**unpaidInterest** | **String** | Interest not repaid | [optional] 
+**paidInterest** | **String** | Repaid interest | [optional] [readonly] 
+**unpaidInterest** | **String** | Interest not repaid | [optional] [readonly] 
 
-
-<a name="StatusEnum"></a>
 ## Enum: StatusEnum
-
 
 * `loaned` (value: `"loaned"`)
 
 * `finished` (value: `"finished"`)
-
-
 
 

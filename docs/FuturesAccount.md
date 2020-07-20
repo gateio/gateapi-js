@@ -1,6 +1,7 @@
 # GateApi.FuturesAccount
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **total** | **String** | Total assets, total &#x3D; position_margin + order_margin + available | [optional] 
@@ -10,5 +11,4 @@ Name | Type | Description | Notes
 **available** | **String** | Available balance to transfer out or trade | [optional] 
 **point** | **String** | POINT amount | [optional] 
 **currency** | **String** | Settle currency | [optional] 
-
 

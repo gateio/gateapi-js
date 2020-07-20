@@ -1,6 +1,7 @@
 # GateApi.Contract
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **name** | **String** | Futures contract | [optional] 
@@ -35,26 +36,17 @@ Name | Type | Description | Notes
 **configChangeTime** | **Number** | Configuration&#39;s last changed time | [optional] 
 **inDelisting** | **Boolean** | Contract is delisting | [optional] 
 
-
-<a name="TypeEnum"></a>
 ## Enum: TypeEnum
-
 
 * `inverse` (value: `"inverse"`)
 
 * `direct` (value: `"direct"`)
 
 
-
-
-<a name="MarkTypeEnum"></a>
 ## Enum: MarkTypeEnum
-
 
 * `internal` (value: `"internal"`)
 
 * `index` (value: `"index"`)
-
-
 
 

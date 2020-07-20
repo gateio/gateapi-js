@@ -1,21 +1,19 @@
 # GateApi.LedgerRecord
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **String** | Record ID | [optional] 
-**txid** | **String** | Hash record of the withdrawal | [optional] 
-**timestamp** | **String** | Record time | [optional] 
+**id** | **String** | Record ID | [optional] [readonly] 
+**txid** | **String** | Hash record of the withdrawal | [optional] [readonly] 
+**timestamp** | **String** | Record time | [optional] [readonly] 
 **amount** | **String** | Trade amount | 
 **currency** | **String** | Record currency | 
 **address** | **String** | Withdrawal address. Required for withdrawals | [optional] 
 **memo** | **String** | Extra withdrawal memo | [optional] 
-**status** | **String** | Record status.  - DONE: done - CANCEL: cancelled - REQUEST: requesting - MANUAL: waiting for manual approval - BCODE: GateCode operation | [optional] 
+**status** | **String** | Record status.  - DONE: done - CANCEL: cancelled - REQUEST: requesting - MANUAL: waiting for manual approval - BCODE: GateCode operation | [optional] [readonly] 
 
-
-<a name="StatusEnum"></a>
 ## Enum: StatusEnum
-
 
 * `DONE` (value: `"DONE"`)
 
@@ -26,7 +24,5 @@ Name | Type | Description | Notes
 * `MANUAL` (value: `"MANUAL"`)
 
 * `BCODE` (value: `"BCODE"`)
-
-
 
 

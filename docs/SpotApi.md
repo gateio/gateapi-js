@@ -21,8 +21,8 @@ Method | HTTP request | Description
 [**listTrades**](SpotApi.md#listTrades) | **GET** /spot/trades | Retrieve market trades
 
 
-<a name="cancelBatchOrders"></a>
-# **cancelBatchOrders**
+## cancelBatchOrders
+
 > [CancelOrderResult] cancelBatchOrders(cancelOrder)
 
 Cancel a batch of orders with an ID list
@@ -30,16 +30,18 @@ Cancel a batch of orders with an ID list
 Multiple currency pairs can be specified, but maximum 20 orders are allowed per request
 
 ### Example
+
 ```javascript
 var GateApi = require('gate-api');
-var client = GateApi.ApiClient.instance;
-client.key = "YOUR API KEY";
-client.secret = "YOUR API SECRET";
-// uncomment the next line if you are using the API with other host
-// client.basePath = "https://some-other-hosts";
+
+var defaultClient = GateApi.ApiClient.instance;
+// Configure Gate APIv4 key authentication: apiv4
+var apiv4 = defaultClient.authentications['apiv4'];
+apiv4.key = 'YOUR_API_KEY'
+apiv4.secret = 'YOUR_API_SECRET'
 
 var apiInstance = new GateApi.SpotApi();
-var cancelOrder = [new GateApi.CancelOrder()]; // [CancelOrder] | 
+var cancelOrder = [{"currency_pair":"BTC_USDT","id":"123456"}]; // [CancelOrder] | 
 var callback = function(error, data, response) {
   if (error) {
     console.error(error);
@@ -52,6 +54,7 @@ apiInstance.cancelBatchOrders(cancelOrder, callback);
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **cancelOrder** | [**[CancelOrder]**](CancelOrder.md)|  | 
@@ -62,31 +65,33 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-Authentication with API key and secret is required
+[apiv4](../README.md#apiv4)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
-<a name="cancelOrder"></a>
-# **cancelOrder**
+## cancelOrder
+
 > Order cancelOrder(orderId, currencyPair)
 
 Cancel a single order
 
 ### Example
+
 ```javascript
 var GateApi = require('gate-api');
-var client = GateApi.ApiClient.instance;
-client.key = "YOUR API KEY";
-client.secret = "YOUR API SECRET";
-// uncomment the next line if you are using the API with other host
-// client.basePath = "https://some-other-hosts";
+
+var defaultClient = GateApi.ApiClient.instance;
+// Configure Gate APIv4 key authentication: apiv4
+var apiv4 = defaultClient.authentications['apiv4'];
+apiv4.key = 'YOUR_API_KEY'
+apiv4.secret = 'YOUR_API_SECRET'
 
 var apiInstance = new GateApi.SpotApi();
-var orderId = "12345"; // String | ID returned on order successfully being created
-var currencyPair = "BTC_USDT"; // String | Currency pair
+var orderId = 12345; // String | ID returned on order successfully being created
+var currencyPair = BTC_USDT; // String | Currency pair
 var callback = function(error, data, response) {
   if (error) {
     console.error(error);
@@ -99,6 +104,7 @@ apiInstance.cancelOrder(orderId, currencyPair, callback);
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **orderId** | **String**| ID returned on order successfully being created | 
@@ -110,33 +116,35 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-Authentication with API key and secret is required
+[apiv4](../README.md#apiv4)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
-<a name="cancelOrders"></a>
-# **cancelOrders**
+## cancelOrders
+
 > [Order] cancelOrders(currencyPair, opts)
 
 Cancel all &#x60;open&#x60; orders in specified currency pair
 
 ### Example
+
 ```javascript
 var GateApi = require('gate-api');
-var client = GateApi.ApiClient.instance;
-client.key = "YOUR API KEY";
-client.secret = "YOUR API SECRET";
-// uncomment the next line if you are using the API with other host
-// client.basePath = "https://some-other-hosts";
+
+var defaultClient = GateApi.ApiClient.instance;
+// Configure Gate APIv4 key authentication: apiv4
+var apiv4 = defaultClient.authentications['apiv4'];
+apiv4.key = 'YOUR_API_KEY'
+apiv4.secret = 'YOUR_API_SECRET'
 
 var apiInstance = new GateApi.SpotApi();
-var currencyPair = "BTC_USDT"; // String | Currency pair
+var currencyPair = BTC_USDT; // String | Currency pair
 var opts = {
-  'side': "sell", // String | All bids or asks. Both included in not specified
-  'account': "spot" // String | Specify account type. Default to all account types being included
+  'side': sell, // String | All bids or asks. Both included in not specified
+  'account': spot // String | Specify account type. Default to all account types being included
 };
 var callback = function(error, data, response) {
   if (error) {
@@ -150,6 +158,7 @@ apiInstance.cancelOrders(currencyPair, opts, callback);
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **currencyPair** | **String**| Currency pair | 
@@ -162,15 +171,15 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-Authentication with API key and secret is required
+[apiv4](../README.md#apiv4)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
-<a name="createBatchOrders"></a>
-# **createBatchOrders**
+## createBatchOrders
+
 > [BatchOrder] createBatchOrders(order)
 
 Create a batch of orders
@@ -178,16 +187,18 @@ Create a batch of orders
 Batch orders requirements:  1. custom order field &#x60;text&#x60; is required 2. At most 4 currency pairs, maximum 5 orders each, are allowed in one request 3. No mixture of spot orders and margin orders, i.e. &#x60;account&#x60; must be identical for all orders 
 
 ### Example
+
 ```javascript
 var GateApi = require('gate-api');
-var client = GateApi.ApiClient.instance;
-client.key = "YOUR API KEY";
-client.secret = "YOUR API SECRET";
-// uncomment the next line if you are using the API with other host
-// client.basePath = "https://some-other-hosts";
+
+var defaultClient = GateApi.ApiClient.instance;
+// Configure Gate APIv4 key authentication: apiv4
+var apiv4 = defaultClient.authentications['apiv4'];
+apiv4.key = 'YOUR_API_KEY'
+apiv4.secret = 'YOUR_API_SECRET'
 
 var apiInstance = new GateApi.SpotApi();
-var order = [new GateApi.Order()]; // [Order] | 
+var order = [{"id":"12332324","text":"t-123456","create_time":"1548000000","update_time":"1548000100","currency_pair":"ETH_BTC","status":"cancelled","type":"limit","account":"spot","side":"buy","amount":"1","price":"5.00032","time_in_force":"gtc","auto_borrow":false,"left":"0.5","filled_total":"2.50016","fee":"0.005","fee_currency":"ETH","point_fee":"0","gt_fee":"0","gt_discount":false,"rebated_fee":"0","rebated_fee_currency":"BTC"}]; // [Order] | 
 var callback = function(error, data, response) {
   if (error) {
     console.error(error);
@@ -200,6 +211,7 @@ apiInstance.createBatchOrders(order, callback);
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **order** | [**[Order]**](Order.md)|  | 
@@ -210,30 +222,32 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-Authentication with API key and secret is required
+[apiv4](../README.md#apiv4)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
-<a name="createOrder"></a>
-# **createOrder**
+## createOrder
+
 > Order createOrder(order)
 
 Create an order
 
 ### Example
+
 ```javascript
 var GateApi = require('gate-api');
-var client = GateApi.ApiClient.instance;
-client.key = "YOUR API KEY";
-client.secret = "YOUR API SECRET";
-// uncomment the next line if you are using the API with other host
-// client.basePath = "https://some-other-hosts";
+
+var defaultClient = GateApi.ApiClient.instance;
+// Configure Gate APIv4 key authentication: apiv4
+var apiv4 = defaultClient.authentications['apiv4'];
+apiv4.key = 'YOUR_API_KEY'
+apiv4.secret = 'YOUR_API_SECRET'
 
 var apiInstance = new GateApi.SpotApi();
-var order = new GateApi.Order(); // Order | 
+var order = {"id":"12332324","text":"t-123456","create_time":"1548000000","update_time":"1548000100","currency_pair":"ETH_BTC","status":"cancelled","type":"limit","account":"spot","side":"buy","amount":"1","price":"5.00032","time_in_force":"gtc","auto_borrow":false,"left":"0.5","filled_total":"2.50016","fee":"0.005","fee_currency":"ETH","point_fee":"0","gt_fee":"0","gt_discount":false,"rebated_fee":"0","rebated_fee_currency":"BTC"}; // Order | 
 var callback = function(error, data, response) {
   if (error) {
     console.error(error);
@@ -246,6 +260,7 @@ apiInstance.createOrder(order, callback);
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **order** | [**Order**](Order.md)|  | 
@@ -256,25 +271,26 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-Authentication with API key and secret is required
+[apiv4](../README.md#apiv4)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
-<a name="getCurrencyPair"></a>
-# **getCurrencyPair**
+## getCurrencyPair
+
 > CurrencyPair getCurrencyPair(currencyPair)
 
 Get detail of one single order
 
 ### Example
+
 ```javascript
 var GateApi = require('gate-api');
 
 var apiInstance = new GateApi.SpotApi();
-var currencyPair = "ETH_BTC"; // String | Currency pair
+var currencyPair = ETH_BTC; // String | Currency pair
 var callback = function(error, data, response) {
   if (error) {
     console.error(error);
@@ -286,6 +302,7 @@ apiInstance.getCurrencyPair(currencyPair, callback);
 ```
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -301,27 +318,29 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
-<a name="getOrder"></a>
-# **getOrder**
+## getOrder
+
 > Order getOrder(orderId, currencyPair)
 
 Get a single order
 
 ### Example
+
 ```javascript
 var GateApi = require('gate-api');
-var client = GateApi.ApiClient.instance;
-client.key = "YOUR API KEY";
-client.secret = "YOUR API SECRET";
-// uncomment the next line if you are using the API with other host
-// client.basePath = "https://some-other-hosts";
+
+var defaultClient = GateApi.ApiClient.instance;
+// Configure Gate APIv4 key authentication: apiv4
+var apiv4 = defaultClient.authentications['apiv4'];
+apiv4.key = 'YOUR_API_KEY'
+apiv4.secret = 'YOUR_API_SECRET'
 
 var apiInstance = new GateApi.SpotApi();
-var orderId = "12345"; // String | ID returned on order successfully being created
-var currencyPair = "BTC_USDT"; // String | Currency pair
+var orderId = 12345; // String | ID returned on order successfully being created
+var currencyPair = BTC_USDT; // String | Currency pair
 var callback = function(error, data, response) {
   if (error) {
     console.error(error);
@@ -334,6 +353,7 @@ apiInstance.getOrder(orderId, currencyPair, callback);
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **orderId** | **String**| ID returned on order successfully being created | 
@@ -345,15 +365,15 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-Authentication with API key and secret is required
+[apiv4](../README.md#apiv4)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
-<a name="listCandlesticks"></a>
-# **listCandlesticks**
+## listCandlesticks
+
 > [[String]] listCandlesticks(currencyPair, opts)
 
 Market candlesticks
@@ -361,16 +381,17 @@ Market candlesticks
 Maximum of 1000 points are returned in one query. Be sure not to exceed the limit when specifying &#x60;from&#x60;, &#x60;to&#x60; and &#x60;interval&#x60;
 
 ### Example
+
 ```javascript
 var GateApi = require('gate-api');
 
 var apiInstance = new GateApi.SpotApi();
-var currencyPair = "BTC_USDT"; // String | Currency pair
+var currencyPair = BTC_USDT; // String | Currency pair
 var opts = {
   'limit': 100, // Number | Maximum recent data points returned. `limit` is conflicted with `from` and `to`. If either `from` or `to` is specified, request will be rejected.
   'from': 1546905600, // Number | Start time of candlesticks, formatted in Unix timestamp in seconds. Default to`to - 100 * interval` if not specified
   'to': 1546935600, // Number | End time of candlesticks, formatted in Unix timestamp in seconds. Default to current time
-  'interval': "30m" // String | Interval time between data points
+  'interval': 5m // String | Interval time between data points
 };
 var callback = function(error, data, response) {
   if (error) {
@@ -383,6 +404,7 @@ apiInstance.listCandlesticks(currencyPair, opts, callback);
 ```
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -402,16 +424,17 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
-<a name="listCurrencyPairs"></a>
-# **listCurrencyPairs**
+## listCurrencyPairs
+
 > [CurrencyPair] listCurrencyPairs()
 
 List all currency pairs supported
 
 ### Example
+
 ```javascript
 var GateApi = require('gate-api');
 
@@ -427,6 +450,7 @@ apiInstance.listCurrencyPairs(callback);
 ```
 
 ### Parameters
+
 This endpoint does not need any parameter.
 
 ### Return type
@@ -439,30 +463,32 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
-<a name="listMyTrades"></a>
-# **listMyTrades**
+## listMyTrades
+
 > [Trade] listMyTrades(currencyPair, opts)
 
 List personal trading history
 
 ### Example
+
 ```javascript
 var GateApi = require('gate-api');
-var client = GateApi.ApiClient.instance;
-client.key = "YOUR API KEY";
-client.secret = "YOUR API SECRET";
-// uncomment the next line if you are using the API with other host
-// client.basePath = "https://some-other-hosts";
+
+var defaultClient = GateApi.ApiClient.instance;
+// Configure Gate APIv4 key authentication: apiv4
+var apiv4 = defaultClient.authentications['apiv4'];
+apiv4.key = 'YOUR_API_KEY'
+apiv4.secret = 'YOUR_API_SECRET'
 
 var apiInstance = new GateApi.SpotApi();
-var currencyPair = "BTC_USDT"; // String | Currency pair
+var currencyPair = BTC_USDT; // String | Currency pair
 var opts = {
   'limit': 100, // Number | Maximum number of records returned in one list
   'page': 1, // Number | Page number
-  'orderId': "12345" // String | List all trades of specified order
+  'orderId': 12345 // String | List all trades of specified order
 };
 var callback = function(error, data, response) {
   if (error) {
@@ -475,6 +501,7 @@ apiInstance.listMyTrades(currencyPair, opts, callback);
 ```
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -489,15 +516,15 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-Authentication with API key and secret is required
+[apiv4](../README.md#apiv4)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
-<a name="listOrderBook"></a>
-# **listOrderBook**
+## listOrderBook
+
 > OrderBook listOrderBook(currencyPair, opts)
 
 Retrieve order book
@@ -505,13 +532,14 @@ Retrieve order book
 Order book will be sorted by price from high to low on bids; reversed on asks
 
 ### Example
+
 ```javascript
 var GateApi = require('gate-api');
 
 var apiInstance = new GateApi.SpotApi();
-var currencyPair = "BTC_USDT"; // String | Currency pair
+var currencyPair = BTC_USDT; // String | Currency pair
 var opts = {
-  'interval': "0", // String | Order depth. 0 means no aggregation is applied. default to 0
+  'interval': 0, // String | Order depth. 0 means no aggregation is applied. default to 0
   'limit': 10 // Number | Maximum number of order depth data in asks or bids
 };
 var callback = function(error, data, response) {
@@ -525,6 +553,7 @@ apiInstance.listOrderBook(currencyPair, opts, callback);
 ```
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -542,27 +571,29 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
-<a name="listOrders"></a>
-# **listOrders**
+## listOrders
+
 > [Order] listOrders(currencyPair, status, opts)
 
 List orders
 
 ### Example
+
 ```javascript
 var GateApi = require('gate-api');
-var client = GateApi.ApiClient.instance;
-client.key = "YOUR API KEY";
-client.secret = "YOUR API SECRET";
-// uncomment the next line if you are using the API with other host
-// client.basePath = "https://some-other-hosts";
+
+var defaultClient = GateApi.ApiClient.instance;
+// Configure Gate APIv4 key authentication: apiv4
+var apiv4 = defaultClient.authentications['apiv4'];
+apiv4.key = 'YOUR_API_KEY'
+apiv4.secret = 'YOUR_API_SECRET'
 
 var apiInstance = new GateApi.SpotApi();
-var currencyPair = "BTC_USDT"; // String | Currency pair
-var status = "open"; // String | List orders based on status  `open` - order is waiting to be filled `finished` - order has been filled or cancelled 
+var currencyPair = BTC_USDT; // String | Currency pair
+var status = open; // String | List orders based on status  `open` - order is waiting to be filled `finished` - order has been filled or cancelled 
 var opts = {
   'page': 1, // Number | Page number
   'limit': 100 // Number | Maximum number of records returned in one list
@@ -579,6 +610,7 @@ apiInstance.listOrders(currencyPair, status, opts, callback);
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **currencyPair** | **String**| Currency pair | 
@@ -592,31 +624,33 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-Authentication with API key and secret is required
+[apiv4](../README.md#apiv4)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
-<a name="listSpotAccounts"></a>
-# **listSpotAccounts**
+## listSpotAccounts
+
 > [SpotAccount] listSpotAccounts(opts)
 
 List spot accounts
 
 ### Example
+
 ```javascript
 var GateApi = require('gate-api');
-var client = GateApi.ApiClient.instance;
-client.key = "YOUR API KEY";
-client.secret = "YOUR API SECRET";
-// uncomment the next line if you are using the API with other host
-// client.basePath = "https://some-other-hosts";
+
+var defaultClient = GateApi.ApiClient.instance;
+// Configure Gate APIv4 key authentication: apiv4
+var apiv4 = defaultClient.authentications['apiv4'];
+apiv4.key = 'YOUR_API_KEY'
+apiv4.secret = 'YOUR_API_SECRET'
 
 var apiInstance = new GateApi.SpotApi();
 var opts = {
-  'currency': "BTC" // String | Retrieved specified currency related data
+  'currency': BTC // String | Retrieved specified currency related data
 };
 var callback = function(error, data, response) {
   if (error) {
@@ -630,6 +664,7 @@ apiInstance.listSpotAccounts(opts, callback);
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **currency** | **String**| Retrieved specified currency related data | [optional] 
@@ -640,15 +675,15 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-Authentication with API key and secret is required
+[apiv4](../README.md#apiv4)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
-<a name="listTickers"></a>
-# **listTickers**
+## listTickers
+
 > [Ticker] listTickers(opts)
 
 Retrieve ticker information
@@ -656,12 +691,13 @@ Retrieve ticker information
 Return only related data if &#x60;currency_pair&#x60; is specified; otherwise return all of them
 
 ### Example
+
 ```javascript
 var GateApi = require('gate-api');
 
 var apiInstance = new GateApi.SpotApi();
 var opts = {
-  'currencyPair': "BTC_USDT" // String | Currency pair
+  'currencyPair': BTC_USDT // String | Currency pair
 };
 var callback = function(error, data, response) {
   if (error) {
@@ -674,6 +710,7 @@ apiInstance.listTickers(opts, callback);
 ```
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -689,24 +726,25 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
-<a name="listTrades"></a>
-# **listTrades**
+## listTrades
+
 > [Trade] listTrades(currencyPair, opts)
 
 Retrieve market trades
 
 ### Example
+
 ```javascript
 var GateApi = require('gate-api');
 
 var apiInstance = new GateApi.SpotApi();
-var currencyPair = "BTC_USDT"; // String | Currency pair
+var currencyPair = BTC_USDT; // String | Currency pair
 var opts = {
   'limit': 100, // Number | Maximum number of records returned in one list
-  'lastId': "12345" // String | Specify list staring point using the `id` of last record in previous list-query results
+  'lastId': 12345 // String | Specify list staring point using the `id` of last record in previous list-query results
 };
 var callback = function(error, data, response) {
   if (error) {
@@ -719,6 +757,7 @@ apiInstance.listTrades(currencyPair, opts, callback);
 ```
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -736,6 +775,5 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
+- **Content-Type**: Not defined
+- **Accept**: application/json

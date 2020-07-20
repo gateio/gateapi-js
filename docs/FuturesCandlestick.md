@@ -1,6 +1,7 @@
 # GateApi.FuturesCandlestick
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **t** | **Number** | Unix timestamp in seconds | [optional] 
@@ -9,5 +10,4 @@ Name | Type | Description | Notes
 **h** | **String** | Highest price | [optional] 
 **l** | **String** | Lowest price | [optional] 
 **o** | **String** | Open price | [optional] 
-
 

@@ -1,6 +1,7 @@
 # GateApi.FundingAccount
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **currency** | **String** | Currency name | [optional] 
@@ -8,5 +9,4 @@ Name | Type | Description | Notes
 **locked** | **String** | Locked amount. i.e. amount in &#x60;open&#x60; loans | [optional] 
 **lent** | **String** | Amount that is loaned but not repaid | [optional] 
 **totalLent** | **String** | Amount used for lending. total_lent &#x3D; lent + locked | [optional] 
-
 

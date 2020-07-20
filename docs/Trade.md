@@ -1,6 +1,7 @@
 # GateApi.Trade
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **String** | Trade ID | [optional] 
@@ -15,26 +16,17 @@ Name | Type | Description | Notes
 **pointFee** | **String** | Point used to deduct fee | [optional] 
 **gtFee** | **String** | GT used to deduct fee | [optional] 
 
-
-<a name="SideEnum"></a>
 ## Enum: SideEnum
-
 
 * `buy` (value: `"buy"`)
 
 * `sell` (value: `"sell"`)
 
 
-
-
-<a name="RoleEnum"></a>
 ## Enum: RoleEnum
-
 
 * `taker` (value: `"taker"`)
 
 * `maker` (value: `"maker"`)
-
-
 
 

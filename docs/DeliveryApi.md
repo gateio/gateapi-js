@@ -34,24 +34,26 @@ Method | HTTP request | Description
 [**updateDeliveryPositionRiskLimit**](DeliveryApi.md#updateDeliveryPositionRiskLimit) | **POST** /delivery/{settle}/positions/{contract}/risk_limit | Update position risk limit
 
 
-<a name="cancelDeliveryOrder"></a>
-# **cancelDeliveryOrder**
+## cancelDeliveryOrder
+
 > FuturesOrder cancelDeliveryOrder(settle, orderId)
 
 Cancel a single order
 
 ### Example
+
 ```javascript
 var GateApi = require('gate-api');
-var client = GateApi.ApiClient.instance;
-client.key = "YOUR API KEY";
-client.secret = "YOUR API SECRET";
-// uncomment the next line if you are using the API with other host
-// client.basePath = "https://some-other-hosts";
+
+var defaultClient = GateApi.ApiClient.instance;
+// Configure Gate APIv4 key authentication: apiv4
+var apiv4 = defaultClient.authentications['apiv4'];
+apiv4.key = 'YOUR_API_KEY'
+apiv4.secret = 'YOUR_API_SECRET'
 
 var apiInstance = new GateApi.DeliveryApi();
-var settle = "usdt"; // String | Settle currency
-var orderId = "12345"; // String | ID returned on order successfully being created
+var settle = usdt; // String | Settle currency
+var orderId = 12345; // String | ID returned on order successfully being created
 var callback = function(error, data, response) {
   if (error) {
     console.error(error);
@@ -64,6 +66,7 @@ apiInstance.cancelDeliveryOrder(settle, orderId, callback);
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **settle** | **String**| Settle currency | 
@@ -75,15 +78,15 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-Authentication with API key and secret is required
+[apiv4](../README.md#apiv4)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
-<a name="cancelDeliveryOrders"></a>
-# **cancelDeliveryOrders**
+## cancelDeliveryOrders
+
 > [FuturesOrder] cancelDeliveryOrders(settle, contract, opts)
 
 Cancel all &#x60;open&#x60; orders matched
@@ -91,19 +94,21 @@ Cancel all &#x60;open&#x60; orders matched
 Zero-fill order cannot be retrieved 60 seconds after cancellation
 
 ### Example
+
 ```javascript
 var GateApi = require('gate-api');
-var client = GateApi.ApiClient.instance;
-client.key = "YOUR API KEY";
-client.secret = "YOUR API SECRET";
-// uncomment the next line if you are using the API with other host
-// client.basePath = "https://some-other-hosts";
+
+var defaultClient = GateApi.ApiClient.instance;
+// Configure Gate APIv4 key authentication: apiv4
+var apiv4 = defaultClient.authentications['apiv4'];
+apiv4.key = 'YOUR_API_KEY'
+apiv4.secret = 'YOUR_API_SECRET'
 
 var apiInstance = new GateApi.DeliveryApi();
-var settle = "usdt"; // String | Settle currency
-var contract = "BTC_USDT_WEEKLY_20200703"; // String | Futures contract
+var settle = usdt; // String | Settle currency
+var contract = BTC_USDT_WEEKLY_20200703; // String | Futures contract
 var opts = {
-  'side': "ask" // String | All bids or asks. Both included in not specified
+  'side': ask // String | All bids or asks. Both included in not specified
 };
 var callback = function(error, data, response) {
   if (error) {
@@ -117,6 +122,7 @@ apiInstance.cancelDeliveryOrders(settle, contract, opts, callback);
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **settle** | **String**| Settle currency | 
@@ -129,30 +135,32 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-Authentication with API key and secret is required
+[apiv4](../README.md#apiv4)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
-<a name="cancelPriceTriggeredDeliveryOrder"></a>
-# **cancelPriceTriggeredDeliveryOrder**
+## cancelPriceTriggeredDeliveryOrder
+
 > FuturesPriceTriggeredOrder cancelPriceTriggeredDeliveryOrder(settle, orderId)
 
 Cancel a single order
 
 ### Example
+
 ```javascript
 var GateApi = require('gate-api');
-var client = GateApi.ApiClient.instance;
-client.key = "YOUR API KEY";
-client.secret = "YOUR API SECRET";
-// uncomment the next line if you are using the API with other host
-// client.basePath = "https://some-other-hosts";
+
+var defaultClient = GateApi.ApiClient.instance;
+// Configure Gate APIv4 key authentication: apiv4
+var apiv4 = defaultClient.authentications['apiv4'];
+apiv4.key = 'YOUR_API_KEY'
+apiv4.secret = 'YOUR_API_SECRET'
 
 var apiInstance = new GateApi.DeliveryApi();
-var settle = "usdt"; // String | Settle currency
+var settle = usdt; // String | Settle currency
 var orderId = "orderId_example"; // String | ID returned on order successfully being created
 var callback = function(error, data, response) {
   if (error) {
@@ -166,6 +174,7 @@ apiInstance.cancelPriceTriggeredDeliveryOrder(settle, orderId, callback);
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **settle** | **String**| Settle currency | 
@@ -177,31 +186,33 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-Authentication with API key and secret is required
+[apiv4](../README.md#apiv4)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
-<a name="cancelPriceTriggeredDeliveryOrderList"></a>
-# **cancelPriceTriggeredDeliveryOrderList**
+## cancelPriceTriggeredDeliveryOrderList
+
 > [FuturesPriceTriggeredOrder] cancelPriceTriggeredDeliveryOrderList(settle, contract)
 
 Cancel all open orders
 
 ### Example
+
 ```javascript
 var GateApi = require('gate-api');
-var client = GateApi.ApiClient.instance;
-client.key = "YOUR API KEY";
-client.secret = "YOUR API SECRET";
-// uncomment the next line if you are using the API with other host
-// client.basePath = "https://some-other-hosts";
+
+var defaultClient = GateApi.ApiClient.instance;
+// Configure Gate APIv4 key authentication: apiv4
+var apiv4 = defaultClient.authentications['apiv4'];
+apiv4.key = 'YOUR_API_KEY'
+apiv4.secret = 'YOUR_API_SECRET'
 
 var apiInstance = new GateApi.DeliveryApi();
-var settle = "usdt"; // String | Settle currency
-var contract = "BTC_USD"; // String | Futures contract
+var settle = usdt; // String | Settle currency
+var contract = BTC_USD; // String | Futures contract
 var callback = function(error, data, response) {
   if (error) {
     console.error(error);
@@ -214,6 +225,7 @@ apiInstance.cancelPriceTriggeredDeliveryOrderList(settle, contract, callback);
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **settle** | **String**| Settle currency | 
@@ -225,15 +237,15 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-Authentication with API key and secret is required
+[apiv4](../README.md#apiv4)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
-<a name="createDeliveryOrder"></a>
-# **createDeliveryOrder**
+## createDeliveryOrder
+
 > FuturesOrder createDeliveryOrder(settle, futuresOrder)
 
 Create a futures order
@@ -241,17 +253,19 @@ Create a futures order
 Zero-fill order cannot be retrieved 60 seconds after cancellation
 
 ### Example
+
 ```javascript
 var GateApi = require('gate-api');
-var client = GateApi.ApiClient.instance;
-client.key = "YOUR API KEY";
-client.secret = "YOUR API SECRET";
-// uncomment the next line if you are using the API with other host
-// client.basePath = "https://some-other-hosts";
+
+var defaultClient = GateApi.ApiClient.instance;
+// Configure Gate APIv4 key authentication: apiv4
+var apiv4 = defaultClient.authentications['apiv4'];
+apiv4.key = 'YOUR_API_KEY'
+apiv4.secret = 'YOUR_API_SECRET'
 
 var apiInstance = new GateApi.DeliveryApi();
-var settle = "usdt"; // String | Settle currency
-var futuresOrder = new GateApi.FuturesOrder(); // FuturesOrder | 
+var settle = usdt; // String | Settle currency
+var futuresOrder = {"id":15675394,"user":100000,"contract":"BTC_USD","create_time":1546569968,"size":6024,"iceberg":0,"left":6024,"price":"3765","fill_price":"0","mkfr":"-0.00025","tkfr":"0.00075","tif":"gtc","refu":0,"is_reduce_only":false,"is_close":false,"is_liq":false,"text":"t-my-custom-id","status":"finished","finish_time":1514764900,"finish_as":"cancelled"}; // FuturesOrder | 
 var callback = function(error, data, response) {
   if (error) {
     console.error(error);
@@ -264,6 +278,7 @@ apiInstance.createDeliveryOrder(settle, futuresOrder, callback);
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **settle** | **String**| Settle currency | 
@@ -275,31 +290,33 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-Authentication with API key and secret is required
+[apiv4](../README.md#apiv4)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
-<a name="createPriceTriggeredDeliveryOrder"></a>
-# **createPriceTriggeredDeliveryOrder**
+## createPriceTriggeredDeliveryOrder
+
 > TriggerOrderResponse createPriceTriggeredDeliveryOrder(settle, futuresPriceTriggeredOrder)
 
 Create a price-triggered order
 
 ### Example
+
 ```javascript
 var GateApi = require('gate-api');
-var client = GateApi.ApiClient.instance;
-client.key = "YOUR API KEY";
-client.secret = "YOUR API SECRET";
-// uncomment the next line if you are using the API with other host
-// client.basePath = "https://some-other-hosts";
+
+var defaultClient = GateApi.ApiClient.instance;
+// Configure Gate APIv4 key authentication: apiv4
+var apiv4 = defaultClient.authentications['apiv4'];
+apiv4.key = 'YOUR_API_KEY'
+apiv4.secret = 'YOUR_API_SECRET'
 
 var apiInstance = new GateApi.DeliveryApi();
-var settle = "usdt"; // String | Settle currency
-var futuresPriceTriggeredOrder = new GateApi.FuturesPriceTriggeredOrder(); // FuturesPriceTriggeredOrder | 
+var settle = usdt; // String | Settle currency
+var futuresPriceTriggeredOrder = {"initial":{"contract":"BTC_USD","size":100,"price":"5.03","close":false,"tif":"gtc","text":"web"},"trigger":{"strategy_type":0,"price_type":0,"price":"3000","rule":1,"expiration":86400},"id":1283293,"user":1234,"create_time":1514764800,"finish_time":1514764900,"trade_id":13566,"status":"finished","finish_as":"cancelled","reason":""}; // FuturesPriceTriggeredOrder | 
 var callback = function(error, data, response) {
   if (error) {
     console.error(error);
@@ -312,6 +329,7 @@ apiInstance.createPriceTriggeredDeliveryOrder(settle, futuresPriceTriggeredOrder
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **settle** | **String**| Settle currency | 
@@ -323,26 +341,27 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-Authentication with API key and secret is required
+[apiv4](../README.md#apiv4)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
-<a name="getDeliveryContract"></a>
-# **getDeliveryContract**
+## getDeliveryContract
+
 > DeliveryContract getDeliveryContract(settle, contract)
 
 Get a single contract
 
 ### Example
+
 ```javascript
 var GateApi = require('gate-api');
 
 var apiInstance = new GateApi.DeliveryApi();
-var settle = "usdt"; // String | Settle currency
-var contract = "BTC_USDT_WEEKLY_20200703"; // String | Futures contract
+var settle = usdt; // String | Settle currency
+var contract = BTC_USDT_WEEKLY_20200703; // String | Futures contract
 var callback = function(error, data, response) {
   if (error) {
     console.error(error);
@@ -354,6 +373,7 @@ apiInstance.getDeliveryContract(settle, contract, callback);
 ```
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -370,11 +390,11 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
-<a name="getDeliveryOrder"></a>
-# **getDeliveryOrder**
+## getDeliveryOrder
+
 > FuturesOrder getDeliveryOrder(settle, orderId)
 
 Get a single order
@@ -382,17 +402,19 @@ Get a single order
 Zero-fill order cannot be retrieved 60 seconds after cancellation
 
 ### Example
+
 ```javascript
 var GateApi = require('gate-api');
-var client = GateApi.ApiClient.instance;
-client.key = "YOUR API KEY";
-client.secret = "YOUR API SECRET";
-// uncomment the next line if you are using the API with other host
-// client.basePath = "https://some-other-hosts";
+
+var defaultClient = GateApi.ApiClient.instance;
+// Configure Gate APIv4 key authentication: apiv4
+var apiv4 = defaultClient.authentications['apiv4'];
+apiv4.key = 'YOUR_API_KEY'
+apiv4.secret = 'YOUR_API_SECRET'
 
 var apiInstance = new GateApi.DeliveryApi();
-var settle = "usdt"; // String | Settle currency
-var orderId = "12345"; // String | ID returned on order successfully being created
+var settle = usdt; // String | Settle currency
+var orderId = 12345; // String | ID returned on order successfully being created
 var callback = function(error, data, response) {
   if (error) {
     console.error(error);
@@ -405,6 +427,7 @@ apiInstance.getDeliveryOrder(settle, orderId, callback);
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **settle** | **String**| Settle currency | 
@@ -416,31 +439,33 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-Authentication with API key and secret is required
+[apiv4](../README.md#apiv4)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
-<a name="getDeliveryPosition"></a>
-# **getDeliveryPosition**
+## getDeliveryPosition
+
 > Position getDeliveryPosition(settle, contract)
 
 Get single position
 
 ### Example
+
 ```javascript
 var GateApi = require('gate-api');
-var client = GateApi.ApiClient.instance;
-client.key = "YOUR API KEY";
-client.secret = "YOUR API SECRET";
-// uncomment the next line if you are using the API with other host
-// client.basePath = "https://some-other-hosts";
+
+var defaultClient = GateApi.ApiClient.instance;
+// Configure Gate APIv4 key authentication: apiv4
+var apiv4 = defaultClient.authentications['apiv4'];
+apiv4.key = 'YOUR_API_KEY'
+apiv4.secret = 'YOUR_API_SECRET'
 
 var apiInstance = new GateApi.DeliveryApi();
-var settle = "usdt"; // String | Settle currency
-var contract = "BTC_USDT_WEEKLY_20200703"; // String | Futures contract
+var settle = usdt; // String | Settle currency
+var contract = BTC_USDT_WEEKLY_20200703; // String | Futures contract
 var callback = function(error, data, response) {
   if (error) {
     console.error(error);
@@ -453,6 +478,7 @@ apiInstance.getDeliveryPosition(settle, contract, callback);
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **settle** | **String**| Settle currency | 
@@ -464,36 +490,38 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-Authentication with API key and secret is required
+[apiv4](../README.md#apiv4)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
-<a name="getMyDeliveryTrades"></a>
-# **getMyDeliveryTrades**
+## getMyDeliveryTrades
+
 > [MyFuturesTrade] getMyDeliveryTrades(settle, opts)
 
 List personal trading history
 
 ### Example
+
 ```javascript
 var GateApi = require('gate-api');
-var client = GateApi.ApiClient.instance;
-client.key = "YOUR API KEY";
-client.secret = "YOUR API SECRET";
-// uncomment the next line if you are using the API with other host
-// client.basePath = "https://some-other-hosts";
+
+var defaultClient = GateApi.ApiClient.instance;
+// Configure Gate APIv4 key authentication: apiv4
+var apiv4 = defaultClient.authentications['apiv4'];
+apiv4.key = 'YOUR_API_KEY'
+apiv4.secret = 'YOUR_API_SECRET'
 
 var apiInstance = new GateApi.DeliveryApi();
-var settle = "usdt"; // String | Settle currency
+var settle = usdt; // String | Settle currency
 var opts = {
-  'contract': "BTC_USDT_WEEKLY_20200703", // String | Futures contract
+  'contract': BTC_USDT_WEEKLY_20200703, // String | Futures contract
   'order': 12345, // Number | Futures order ID, return related data only if specified
   'limit': 100, // Number | Maximum number of records returned in one list
   'offset': 0, // Number | List offset, starting from 0
-  'lastId': "12345", // String | Specify list staring point using the `id` of last record in previous list-query results
+  'lastId': 12345, // String | Specify list staring point using the `id` of last record in previous list-query results
   'countTotal': 0 // Number | Whether to return total number matched. Default to 0(no return)
 };
 var callback = function(error, data, response) {
@@ -507,6 +535,7 @@ apiInstance.getMyDeliveryTrades(settle, opts, callback);
 ```
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -524,30 +553,32 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-Authentication with API key and secret is required
+[apiv4](../README.md#apiv4)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
-<a name="getPriceTriggeredDeliveryOrder"></a>
-# **getPriceTriggeredDeliveryOrder**
+## getPriceTriggeredDeliveryOrder
+
 > FuturesPriceTriggeredOrder getPriceTriggeredDeliveryOrder(settle, orderId)
 
 Get a single order
 
 ### Example
+
 ```javascript
 var GateApi = require('gate-api');
-var client = GateApi.ApiClient.instance;
-client.key = "YOUR API KEY";
-client.secret = "YOUR API SECRET";
-// uncomment the next line if you are using the API with other host
-// client.basePath = "https://some-other-hosts";
+
+var defaultClient = GateApi.ApiClient.instance;
+// Configure Gate APIv4 key authentication: apiv4
+var apiv4 = defaultClient.authentications['apiv4'];
+apiv4.key = 'YOUR_API_KEY'
+apiv4.secret = 'YOUR_API_SECRET'
 
 var apiInstance = new GateApi.DeliveryApi();
-var settle = "usdt"; // String | Settle currency
+var settle = usdt; // String | Settle currency
 var orderId = "orderId_example"; // String | ID returned on order successfully being created
 var callback = function(error, data, response) {
   if (error) {
@@ -561,6 +592,7 @@ apiInstance.getPriceTriggeredDeliveryOrder(settle, orderId, callback);
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **settle** | **String**| Settle currency | 
@@ -572,35 +604,37 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-Authentication with API key and secret is required
+[apiv4](../README.md#apiv4)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
-<a name="listDeliveryAccountBook"></a>
-# **listDeliveryAccountBook**
+## listDeliveryAccountBook
+
 > [FuturesAccountBook] listDeliveryAccountBook(settle, opts)
 
 Query account book
 
 ### Example
+
 ```javascript
 var GateApi = require('gate-api');
-var client = GateApi.ApiClient.instance;
-client.key = "YOUR API KEY";
-client.secret = "YOUR API SECRET";
-// uncomment the next line if you are using the API with other host
-// client.basePath = "https://some-other-hosts";
+
+var defaultClient = GateApi.ApiClient.instance;
+// Configure Gate APIv4 key authentication: apiv4
+var apiv4 = defaultClient.authentications['apiv4'];
+apiv4.key = 'YOUR_API_KEY'
+apiv4.secret = 'YOUR_API_SECRET'
 
 var apiInstance = new GateApi.DeliveryApi();
-var settle = "usdt"; // String | Settle currency
+var settle = usdt; // String | Settle currency
 var opts = {
   'limit': 100, // Number | Maximum number of records returned in one list
   'from': 1547706332, // Number | Start timestamp
   'to': 1547706332, // Number | End timestamp
-  'type': "dnw" // String | Changing Type: - dnw: Deposit & Withdraw - pnl: Profit & Loss by reducing position - fee: Trading fee - refr: Referrer rebate - fund: Funding - point_dnw: POINT Deposit & Withdraw - point_fee: POINT Trading fee - point_refr: POINT Referrer rebate
+  'type': dnw // String | Changing Type: - dnw: Deposit & Withdraw - pnl: Profit & Loss by reducing position - fee: Trading fee - refr: Referrer rebate - fund: Funding - point_dnw: POINT Deposit & Withdraw - point_fee: POINT Trading fee - point_refr: POINT Referrer rebate
 };
 var callback = function(error, data, response) {
   if (error) {
@@ -613,6 +647,7 @@ apiInstance.listDeliveryAccountBook(settle, opts, callback);
 ```
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -628,30 +663,32 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-Authentication with API key and secret is required
+[apiv4](../README.md#apiv4)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
-<a name="listDeliveryAccounts"></a>
-# **listDeliveryAccounts**
+## listDeliveryAccounts
+
 > FuturesAccount listDeliveryAccounts(settle)
 
 Query futures account
 
 ### Example
+
 ```javascript
 var GateApi = require('gate-api');
-var client = GateApi.ApiClient.instance;
-client.key = "YOUR API KEY";
-client.secret = "YOUR API SECRET";
-// uncomment the next line if you are using the API with other host
-// client.basePath = "https://some-other-hosts";
+
+var defaultClient = GateApi.ApiClient.instance;
+// Configure Gate APIv4 key authentication: apiv4
+var apiv4 = defaultClient.authentications['apiv4'];
+apiv4.key = 'YOUR_API_KEY'
+apiv4.secret = 'YOUR_API_SECRET'
 
 var apiInstance = new GateApi.DeliveryApi();
-var settle = "usdt"; // String | Settle currency
+var settle = usdt; // String | Settle currency
 var callback = function(error, data, response) {
   if (error) {
     console.error(error);
@@ -664,6 +701,7 @@ apiInstance.listDeliveryAccounts(settle, callback);
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **settle** | **String**| Settle currency | 
@@ -674,15 +712,15 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-Authentication with API key and secret is required
+[apiv4](../README.md#apiv4)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
-<a name="listDeliveryCandlesticks"></a>
-# **listDeliveryCandlesticks**
+## listDeliveryCandlesticks
+
 > [FuturesCandlestick] listDeliveryCandlesticks(settle, contract, opts)
 
 Get futures candlesticks
@@ -690,17 +728,18 @@ Get futures candlesticks
 Return specified contract candlesticks. If prefix &#x60;contract&#x60; with &#x60;mark_&#x60;, the contract&#39;s mark price candlesticks are returned; if prefix with &#x60;index_&#x60;, index price candlesticks will be returned.  Maximum of 2000 points are returned in one query. Be sure not to exceed the limit when specifying &#x60;from&#x60;, &#x60;to&#x60; and &#x60;interval&#x60;
 
 ### Example
+
 ```javascript
 var GateApi = require('gate-api');
 
 var apiInstance = new GateApi.DeliveryApi();
-var settle = "usdt"; // String | Settle currency
-var contract = "BTC_USDT_WEEKLY_20200703"; // String | Futures contract
+var settle = usdt; // String | Settle currency
+var contract = BTC_USDT_WEEKLY_20200703; // String | Futures contract
 var opts = {
   'from': 1546905600, // Number | Start time of candlesticks, formatted in Unix timestamp in seconds. Default to`to - 100 * interval` if not specified
   'to': 1546935600, // Number | End time of candlesticks, formatted in Unix timestamp in seconds. Default to current time
   'limit': 100, // Number | Maximum recent data points returned. `limit` is conflicted with `from` and `to`. If either `from` or `to` is specified, request will be rejected.
-  'interval': "5m" // String | Interval time between data points
+  'interval': 5m // String | Interval time between data points
 };
 var callback = function(error, data, response) {
   if (error) {
@@ -713,6 +752,7 @@ apiInstance.listDeliveryCandlesticks(settle, contract, opts, callback);
 ```
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -733,21 +773,22 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
-<a name="listDeliveryContracts"></a>
-# **listDeliveryContracts**
+## listDeliveryContracts
+
 > [DeliveryContract] listDeliveryContracts(settle)
 
 List all futures contracts
 
 ### Example
+
 ```javascript
 var GateApi = require('gate-api');
 
 var apiInstance = new GateApi.DeliveryApi();
-var settle = "usdt"; // String | Settle currency
+var settle = usdt; // String | Settle currency
 var callback = function(error, data, response) {
   if (error) {
     console.error(error);
@@ -759,6 +800,7 @@ apiInstance.listDeliveryContracts(settle, callback);
 ```
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -774,21 +816,22 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
-<a name="listDeliveryInsuranceLedger"></a>
-# **listDeliveryInsuranceLedger**
+## listDeliveryInsuranceLedger
+
 > [InsuranceRecord] listDeliveryInsuranceLedger(settle, opts)
 
 Futures insurance balance history
 
 ### Example
+
 ```javascript
 var GateApi = require('gate-api');
 
 var apiInstance = new GateApi.DeliveryApi();
-var settle = "usdt"; // String | Settle currency
+var settle = usdt; // String | Settle currency
 var opts = {
   'limit': 100 // Number | Maximum number of records returned in one list
 };
@@ -803,6 +846,7 @@ apiInstance.listDeliveryInsuranceLedger(settle, opts, callback);
 ```
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -819,30 +863,32 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
-<a name="listDeliveryLiquidates"></a>
-# **listDeliveryLiquidates**
+## listDeliveryLiquidates
+
 > [FuturesLiquidate] listDeliveryLiquidates(settle, opts)
 
 List liquidation history
 
 ### Example
+
 ```javascript
 var GateApi = require('gate-api');
-var client = GateApi.ApiClient.instance;
-client.key = "YOUR API KEY";
-client.secret = "YOUR API SECRET";
-// uncomment the next line if you are using the API with other host
-// client.basePath = "https://some-other-hosts";
+
+var defaultClient = GateApi.ApiClient.instance;
+// Configure Gate APIv4 key authentication: apiv4
+var apiv4 = defaultClient.authentications['apiv4'];
+apiv4.key = 'YOUR_API_KEY'
+apiv4.secret = 'YOUR_API_SECRET'
 
 var apiInstance = new GateApi.DeliveryApi();
-var settle = "usdt"; // String | Settle currency
+var settle = usdt; // String | Settle currency
 var opts = {
-  'contract': "BTC_USDT_WEEKLY_20200703", // String | Futures contract
+  'contract': BTC_USDT_WEEKLY_20200703, // String | Futures contract
   'limit': 100, // Number | Maximum number of records returned in one list
-  'at': 0 // Number | Specify a liquidation timestamp
+  'at': 1546905600 // Number | Specify a liquidation timestamp
 };
 var callback = function(error, data, response) {
   if (error) {
@@ -855,6 +901,7 @@ apiInstance.listDeliveryLiquidates(settle, opts, callback);
 ```
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -869,15 +916,15 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-Authentication with API key and secret is required
+[apiv4](../README.md#apiv4)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
-<a name="listDeliveryOrderBook"></a>
-# **listDeliveryOrderBook**
+## listDeliveryOrderBook
+
 > FuturesOrderBook listDeliveryOrderBook(settle, contract, opts)
 
 Futures order book
@@ -885,14 +932,15 @@ Futures order book
 Bids will be sorted by price from high to low, while asks sorted reversely
 
 ### Example
+
 ```javascript
 var GateApi = require('gate-api');
 
 var apiInstance = new GateApi.DeliveryApi();
-var settle = "usdt"; // String | Settle currency
-var contract = "BTC_USDT_WEEKLY_20200703"; // String | Futures contract
+var settle = usdt; // String | Settle currency
+var contract = BTC_USDT_WEEKLY_20200703; // String | Futures contract
 var opts = {
-  'interval': "0", // String | Order depth. 0 means no aggregation is applied. default to 0
+  'interval': 0, // String | Order depth. 0 means no aggregation is applied. default to 0
   'limit': 10 // Number | Maximum number of order depth data in asks or bids
 };
 var callback = function(error, data, response) {
@@ -906,6 +954,7 @@ apiInstance.listDeliveryOrderBook(settle, contract, opts, callback);
 ```
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -924,11 +973,11 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
-<a name="listDeliveryOrders"></a>
-# **listDeliveryOrders**
+## listDeliveryOrders
+
 > [FuturesOrder] listDeliveryOrders(settle, status, opts)
 
 List futures orders
@@ -936,22 +985,24 @@ List futures orders
 Zero-fill order cannot be retrieved 60 seconds after cancellation
 
 ### Example
+
 ```javascript
 var GateApi = require('gate-api');
-var client = GateApi.ApiClient.instance;
-client.key = "YOUR API KEY";
-client.secret = "YOUR API SECRET";
-// uncomment the next line if you are using the API with other host
-// client.basePath = "https://some-other-hosts";
+
+var defaultClient = GateApi.ApiClient.instance;
+// Configure Gate APIv4 key authentication: apiv4
+var apiv4 = defaultClient.authentications['apiv4'];
+apiv4.key = 'YOUR_API_KEY'
+apiv4.secret = 'YOUR_API_SECRET'
 
 var apiInstance = new GateApi.DeliveryApi();
-var settle = "usdt"; // String | Settle currency
-var status = "open"; // String | List orders based on status
+var settle = usdt; // String | Settle currency
+var status = open; // String | List orders based on status
 var opts = {
-  'contract': "BTC_USDT_WEEKLY_20200703", // String | Futures contract
+  'contract': BTC_USDT_WEEKLY_20200703, // String | Futures contract
   'limit': 100, // Number | Maximum number of records returned in one list
   'offset': 0, // Number | List offset, starting from 0
-  'lastId': "12345", // String | Specify list staring point using the `id` of last record in previous list-query results
+  'lastId': 12345, // String | Specify list staring point using the `id` of last record in previous list-query results
   'countTotal': 0 // Number | Whether to return total number matched. Default to 0(no return)
 };
 var callback = function(error, data, response) {
@@ -965,6 +1016,7 @@ apiInstance.listDeliveryOrders(settle, status, opts, callback);
 ```
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -982,32 +1034,34 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-Authentication with API key and secret is required
+[apiv4](../README.md#apiv4)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
-<a name="listDeliveryPositionClose"></a>
-# **listDeliveryPositionClose**
+## listDeliveryPositionClose
+
 > [PositionClose] listDeliveryPositionClose(settle, opts)
 
 List position close history
 
 ### Example
+
 ```javascript
 var GateApi = require('gate-api');
-var client = GateApi.ApiClient.instance;
-client.key = "YOUR API KEY";
-client.secret = "YOUR API SECRET";
-// uncomment the next line if you are using the API with other host
-// client.basePath = "https://some-other-hosts";
+
+var defaultClient = GateApi.ApiClient.instance;
+// Configure Gate APIv4 key authentication: apiv4
+var apiv4 = defaultClient.authentications['apiv4'];
+apiv4.key = 'YOUR_API_KEY'
+apiv4.secret = 'YOUR_API_SECRET'
 
 var apiInstance = new GateApi.DeliveryApi();
-var settle = "usdt"; // String | Settle currency
+var settle = usdt; // String | Settle currency
 var opts = {
-  'contract': "BTC_USDT_WEEKLY_20200703", // String | Futures contract
+  'contract': BTC_USDT_WEEKLY_20200703, // String | Futures contract
   'limit': 100 // Number | Maximum number of records returned in one list
 };
 var callback = function(error, data, response) {
@@ -1022,6 +1076,7 @@ apiInstance.listDeliveryPositionClose(settle, opts, callback);
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **settle** | **String**| Settle currency | 
@@ -1034,30 +1089,32 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-Authentication with API key and secret is required
+[apiv4](../README.md#apiv4)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
-<a name="listDeliveryPositions"></a>
-# **listDeliveryPositions**
+## listDeliveryPositions
+
 > [Position] listDeliveryPositions(settle)
 
 List all positions of a user
 
 ### Example
+
 ```javascript
 var GateApi = require('gate-api');
-var client = GateApi.ApiClient.instance;
-client.key = "YOUR API KEY";
-client.secret = "YOUR API SECRET";
-// uncomment the next line if you are using the API with other host
-// client.basePath = "https://some-other-hosts";
+
+var defaultClient = GateApi.ApiClient.instance;
+// Configure Gate APIv4 key authentication: apiv4
+var apiv4 = defaultClient.authentications['apiv4'];
+apiv4.key = 'YOUR_API_KEY'
+apiv4.secret = 'YOUR_API_SECRET'
 
 var apiInstance = new GateApi.DeliveryApi();
-var settle = "usdt"; // String | Settle currency
+var settle = usdt; // String | Settle currency
 var callback = function(error, data, response) {
   if (error) {
     console.error(error);
@@ -1070,6 +1127,7 @@ apiInstance.listDeliveryPositions(settle, callback);
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **settle** | **String**| Settle currency | 
@@ -1080,34 +1138,36 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-Authentication with API key and secret is required
+[apiv4](../README.md#apiv4)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
-<a name="listDeliverySettlements"></a>
-# **listDeliverySettlements**
+## listDeliverySettlements
+
 > [DeliverySettlement] listDeliverySettlements(settle, opts)
 
 List settlement history
 
 ### Example
+
 ```javascript
 var GateApi = require('gate-api');
-var client = GateApi.ApiClient.instance;
-client.key = "YOUR API KEY";
-client.secret = "YOUR API SECRET";
-// uncomment the next line if you are using the API with other host
-// client.basePath = "https://some-other-hosts";
+
+var defaultClient = GateApi.ApiClient.instance;
+// Configure Gate APIv4 key authentication: apiv4
+var apiv4 = defaultClient.authentications['apiv4'];
+apiv4.key = 'YOUR_API_KEY'
+apiv4.secret = 'YOUR_API_SECRET'
 
 var apiInstance = new GateApi.DeliveryApi();
-var settle = "usdt"; // String | Settle currency
+var settle = usdt; // String | Settle currency
 var opts = {
-  'contract': "BTC_USDT_WEEKLY_20200703", // String | Futures contract
+  'contract': BTC_USDT_WEEKLY_20200703, // String | Futures contract
   'limit': 100, // Number | Maximum number of records returned in one list
-  'at': 0 // Number | Specify a settlement timestamp
+  'at': 1546905600 // Number | Specify a settlement timestamp
 };
 var callback = function(error, data, response) {
   if (error) {
@@ -1120,6 +1180,7 @@ apiInstance.listDeliverySettlements(settle, opts, callback);
 ```
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -1134,27 +1195,28 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-Authentication with API key and secret is required
+[apiv4](../README.md#apiv4)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
-<a name="listDeliveryTickers"></a>
-# **listDeliveryTickers**
+## listDeliveryTickers
+
 > [FuturesTicker] listDeliveryTickers(settle, opts)
 
 List futures tickers
 
 ### Example
+
 ```javascript
 var GateApi = require('gate-api');
 
 var apiInstance = new GateApi.DeliveryApi();
-var settle = "usdt"; // String | Settle currency
+var settle = usdt; // String | Settle currency
 var opts = {
-  'contract': "BTC_USDT_WEEKLY_20200703" // String | Futures contract
+  'contract': BTC_USDT_WEEKLY_20200703 // String | Futures contract
 };
 var callback = function(error, data, response) {
   if (error) {
@@ -1167,6 +1229,7 @@ apiInstance.listDeliveryTickers(settle, opts, callback);
 ```
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -1183,25 +1246,26 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
-<a name="listDeliveryTrades"></a>
-# **listDeliveryTrades**
+## listDeliveryTrades
+
 > [FuturesTrade] listDeliveryTrades(settle, contract, opts)
 
 Futures trading history
 
 ### Example
+
 ```javascript
 var GateApi = require('gate-api');
 
 var apiInstance = new GateApi.DeliveryApi();
-var settle = "usdt"; // String | Settle currency
-var contract = "BTC_USDT_WEEKLY_20200703"; // String | Futures contract
+var settle = usdt; // String | Settle currency
+var contract = BTC_USDT_WEEKLY_20200703; // String | Futures contract
 var opts = {
   'limit': 100, // Number | Maximum number of records returned in one list
-  'lastId': "12345", // String | Specify list staring point using the id of last record in previous list-query results  This parameter is deprecated. Use `from` and `to` instead to limit time range
+  'lastId': 12345, // String | Specify list staring point using the id of last record in previous list-query results  This parameter is deprecated. Use `from` and `to` instead to limit time range
   'from': 1546905600, // Number | Specify starting time in Unix seconds. If not specified, `to` and `limit` will be used to limit response items. If items between `from` and `to` are more than `limit`, only `limit` number will be returned. 
   'to': 1546935600 // Number | Specify end time in Unix seconds, default to current time
 };
@@ -1216,6 +1280,7 @@ apiInstance.listDeliveryTrades(settle, contract, opts, callback);
 ```
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -1236,29 +1301,31 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
-<a name="listPriceTriggeredDeliveryOrders"></a>
-# **listPriceTriggeredDeliveryOrders**
+## listPriceTriggeredDeliveryOrders
+
 > [FuturesPriceTriggeredOrder] listPriceTriggeredDeliveryOrders(settle, status, opts)
 
 List all auto orders
 
 ### Example
+
 ```javascript
 var GateApi = require('gate-api');
-var client = GateApi.ApiClient.instance;
-client.key = "YOUR API KEY";
-client.secret = "YOUR API SECRET";
-// uncomment the next line if you are using the API with other host
-// client.basePath = "https://some-other-hosts";
+
+var defaultClient = GateApi.ApiClient.instance;
+// Configure Gate APIv4 key authentication: apiv4
+var apiv4 = defaultClient.authentications['apiv4'];
+apiv4.key = 'YOUR_API_KEY'
+apiv4.secret = 'YOUR_API_SECRET'
 
 var apiInstance = new GateApi.DeliveryApi();
-var settle = "usdt"; // String | Settle currency
+var settle = usdt; // String | Settle currency
 var status = "status_example"; // String | List orders based on status
 var opts = {
-  'contract': "BTC_USD", // String | Futures contract, return related data only if specified
+  'contract': BTC_USD, // String | Futures contract, return related data only if specified
   'limit': 100, // Number | Maximum number of records returned in one list
   'offset': 0 // Number | List offset, starting from 0
 };
@@ -1274,6 +1341,7 @@ apiInstance.listPriceTriggeredDeliveryOrders(settle, status, opts, callback);
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **settle** | **String**| Settle currency | 
@@ -1288,32 +1356,34 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-Authentication with API key and secret is required
+[apiv4](../README.md#apiv4)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
-<a name="updateDeliveryPositionLeverage"></a>
-# **updateDeliveryPositionLeverage**
+## updateDeliveryPositionLeverage
+
 > Position updateDeliveryPositionLeverage(settle, contract, leverage)
 
 Update position leverage
 
 ### Example
+
 ```javascript
 var GateApi = require('gate-api');
-var client = GateApi.ApiClient.instance;
-client.key = "YOUR API KEY";
-client.secret = "YOUR API SECRET";
-// uncomment the next line if you are using the API with other host
-// client.basePath = "https://some-other-hosts";
+
+var defaultClient = GateApi.ApiClient.instance;
+// Configure Gate APIv4 key authentication: apiv4
+var apiv4 = defaultClient.authentications['apiv4'];
+apiv4.key = 'YOUR_API_KEY'
+apiv4.secret = 'YOUR_API_SECRET'
 
 var apiInstance = new GateApi.DeliveryApi();
-var settle = "usdt"; // String | Settle currency
-var contract = "BTC_USDT_WEEKLY_20200703"; // String | Futures contract
-var leverage = "10"; // String | New position leverage
+var settle = usdt; // String | Settle currency
+var contract = BTC_USDT_WEEKLY_20200703; // String | Futures contract
+var leverage = 10; // String | New position leverage
 var callback = function(error, data, response) {
   if (error) {
     console.error(error);
@@ -1325,6 +1395,7 @@ apiInstance.updateDeliveryPositionLeverage(settle, contract, leverage, callback)
 ```
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -1338,32 +1409,34 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-Authentication with API key and secret is required
+[apiv4](../README.md#apiv4)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
-<a name="updateDeliveryPositionMargin"></a>
-# **updateDeliveryPositionMargin**
+## updateDeliveryPositionMargin
+
 > Position updateDeliveryPositionMargin(settle, contract, change)
 
 Update position margin
 
 ### Example
+
 ```javascript
 var GateApi = require('gate-api');
-var client = GateApi.ApiClient.instance;
-client.key = "YOUR API KEY";
-client.secret = "YOUR API SECRET";
-// uncomment the next line if you are using the API with other host
-// client.basePath = "https://some-other-hosts";
+
+var defaultClient = GateApi.ApiClient.instance;
+// Configure Gate APIv4 key authentication: apiv4
+var apiv4 = defaultClient.authentications['apiv4'];
+apiv4.key = 'YOUR_API_KEY'
+apiv4.secret = 'YOUR_API_SECRET'
 
 var apiInstance = new GateApi.DeliveryApi();
-var settle = "usdt"; // String | Settle currency
-var contract = "BTC_USDT_WEEKLY_20200703"; // String | Futures contract
-var change = "0.01"; // String | Margin change. Use positive number to increase margin, negative number otherwise.
+var settle = usdt; // String | Settle currency
+var contract = BTC_USDT_WEEKLY_20200703; // String | Futures contract
+var change = 0.01; // String | Margin change. Use positive number to increase margin, negative number otherwise.
 var callback = function(error, data, response) {
   if (error) {
     console.error(error);
@@ -1375,6 +1448,7 @@ apiInstance.updateDeliveryPositionMargin(settle, contract, change, callback);
 ```
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -1388,32 +1462,34 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-Authentication with API key and secret is required
+[apiv4](../README.md#apiv4)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
-<a name="updateDeliveryPositionRiskLimit"></a>
-# **updateDeliveryPositionRiskLimit**
+## updateDeliveryPositionRiskLimit
+
 > Position updateDeliveryPositionRiskLimit(settle, contract, riskLimit)
 
 Update position risk limit
 
 ### Example
+
 ```javascript
 var GateApi = require('gate-api');
-var client = GateApi.ApiClient.instance;
-client.key = "YOUR API KEY";
-client.secret = "YOUR API SECRET";
-// uncomment the next line if you are using the API with other host
-// client.basePath = "https://some-other-hosts";
+
+var defaultClient = GateApi.ApiClient.instance;
+// Configure Gate APIv4 key authentication: apiv4
+var apiv4 = defaultClient.authentications['apiv4'];
+apiv4.key = 'YOUR_API_KEY'
+apiv4.secret = 'YOUR_API_SECRET'
 
 var apiInstance = new GateApi.DeliveryApi();
-var settle = "usdt"; // String | Settle currency
-var contract = "BTC_USDT_WEEKLY_20200703"; // String | Futures contract
-var riskLimit = "10"; // String | New position risk limit
+var settle = usdt; // String | Settle currency
+var contract = BTC_USDT_WEEKLY_20200703; // String | Futures contract
+var riskLimit = 10; // String | New position risk limit
 var callback = function(error, data, response) {
   if (error) {
     console.error(error);
@@ -1425,6 +1501,7 @@ apiInstance.updateDeliveryPositionRiskLimit(settle, contract, riskLimit, callbac
 ```
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -1438,10 +1515,9 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-Authentication with API key and secret is required
+[apiv4](../README.md#apiv4)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
+- **Content-Type**: Not defined
+- **Accept**: application/json

@@ -7,23 +7,25 @@ Method | HTTP request | Description
 [**withdraw**](WithdrawalApi.md#withdraw) | **POST** /withdrawals | Withdraw
 
 
-<a name="withdraw"></a>
-# **withdraw**
+## withdraw
+
 > LedgerRecord withdraw(ledgerRecord)
 
 Withdraw
 
 ### Example
+
 ```javascript
 var GateApi = require('gate-api');
-var client = GateApi.ApiClient.instance;
-client.key = "YOUR API KEY";
-client.secret = "YOUR API SECRET";
-// uncomment the next line if you are using the API with other host
-// client.basePath = "https://some-other-hosts";
+
+var defaultClient = GateApi.ApiClient.instance;
+// Configure Gate APIv4 key authentication: apiv4
+var apiv4 = defaultClient.authentications['apiv4'];
+apiv4.key = 'YOUR_API_KEY'
+apiv4.secret = 'YOUR_API_SECRET'
 
 var apiInstance = new GateApi.WithdrawalApi();
-var ledgerRecord = new GateApi.LedgerRecord(); // LedgerRecord | 
+var ledgerRecord = {"id":"210496","timestamp":"1542000000","currency":"ETH","address":"1HkxtBAMrA3tP5ENnYY2CZortjZvFDH5Cs","txid":"128988928203223323290","amount":"222.61","memo":"","status":"DONE"}; // LedgerRecord | 
 var callback = function(error, data, response) {
   if (error) {
     console.error(error);
@@ -36,6 +38,7 @@ apiInstance.withdraw(ledgerRecord, callback);
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **ledgerRecord** | [**LedgerRecord**](LedgerRecord.md)|  | 
@@ -46,10 +49,9 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-Authentication with API key and secret is required
+[apiv4](../README.md#apiv4)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
-
+- **Content-Type**: application/json
+- **Accept**: application/json

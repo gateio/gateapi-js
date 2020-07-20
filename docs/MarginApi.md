@@ -21,8 +21,8 @@ Method | HTTP request | Description
 [**updateLoanRecord**](MarginApi.md#updateLoanRecord) | **PATCH** /margin/loan_records/{loan_record_id} | Modify a loan record
 
 
-<a name="cancelLoan"></a>
-# **cancelLoan**
+## cancelLoan
+
 > Loan cancelLoan(loanId, currency)
 
 Cancel lending loan
@@ -30,17 +30,19 @@ Cancel lending loan
 Only lending loans can be cancelled
 
 ### Example
+
 ```javascript
 var GateApi = require('gate-api');
-var client = GateApi.ApiClient.instance;
-client.key = "YOUR API KEY";
-client.secret = "YOUR API SECRET";
-// uncomment the next line if you are using the API with other host
-// client.basePath = "https://some-other-hosts";
+
+var defaultClient = GateApi.ApiClient.instance;
+// Configure Gate APIv4 key authentication: apiv4
+var apiv4 = defaultClient.authentications['apiv4'];
+apiv4.key = 'YOUR_API_KEY'
+apiv4.secret = 'YOUR_API_SECRET'
 
 var apiInstance = new GateApi.MarginApi();
-var loanId = "12345"; // String | Loan ID
-var currency = "BTC"; // String | Retrieved specified currency related data
+var loanId = 12345; // String | Loan ID
+var currency = BTC; // String | Retrieved specified currency related data
 var callback = function(error, data, response) {
   if (error) {
     console.error(error);
@@ -53,6 +55,7 @@ apiInstance.cancelLoan(loanId, currency, callback);
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **loanId** | **String**| Loan ID | 
@@ -64,30 +67,32 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-Authentication with API key and secret is required
+[apiv4](../README.md#apiv4)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
-<a name="createLoan"></a>
-# **createLoan**
+## createLoan
+
 > Loan createLoan(loan)
 
 Lend or borrow
 
 ### Example
+
 ```javascript
 var GateApi = require('gate-api');
-var client = GateApi.ApiClient.instance;
-client.key = "YOUR API KEY";
-client.secret = "YOUR API SECRET";
-// uncomment the next line if you are using the API with other host
-// client.basePath = "https://some-other-hosts";
+
+var defaultClient = GateApi.ApiClient.instance;
+// Configure Gate APIv4 key authentication: apiv4
+var apiv4 = defaultClient.authentications['apiv4'];
+apiv4.key = 'YOUR_API_KEY'
+apiv4.secret = 'YOUR_API_SECRET'
 
 var apiInstance = new GateApi.MarginApi();
-var loan = new GateApi.Loan(); // Loan | 
+var loan = {"id":"123435","create_time":"1548000000","expire_time":"1548100000","side":"borrow","status":"loaned","currency":"BTC","rate":"0.002","amount":"1.5","days":10,"auto_renew":true,"currency_pair":"ETH_BTC","left":"0","repaid":"0","paid_interest":"0","unpaid_interest":"0","fee_rate":"0.18","orig_id":"123424"}; // Loan | 
 var callback = function(error, data, response) {
   if (error) {
     console.error(error);
@@ -100,6 +105,7 @@ apiInstance.createLoan(loan, callback);
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **loan** | [**Loan**](Loan.md)|  | 
@@ -110,31 +116,33 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-Authentication with API key and secret is required
+[apiv4](../README.md#apiv4)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
-<a name="getLoan"></a>
-# **getLoan**
+## getLoan
+
 > Loan getLoan(loanId, side)
 
 Retrieve one single loan detail
 
 ### Example
+
 ```javascript
 var GateApi = require('gate-api');
-var client = GateApi.ApiClient.instance;
-client.key = "YOUR API KEY";
-client.secret = "YOUR API SECRET";
-// uncomment the next line if you are using the API with other host
-// client.basePath = "https://some-other-hosts";
+
+var defaultClient = GateApi.ApiClient.instance;
+// Configure Gate APIv4 key authentication: apiv4
+var apiv4 = defaultClient.authentications['apiv4'];
+apiv4.key = 'YOUR_API_KEY'
+apiv4.secret = 'YOUR_API_SECRET'
 
 var apiInstance = new GateApi.MarginApi();
-var loanId = "12345"; // String | Loan ID
-var side = "lend"; // String | Lend or borrow
+var loanId = 12345; // String | Loan ID
+var side = lend; // String | Lend or borrow
 var callback = function(error, data, response) {
   if (error) {
     console.error(error);
@@ -147,6 +155,7 @@ apiInstance.getLoan(loanId, side, callback);
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **loanId** | **String**| Loan ID | 
@@ -158,31 +167,33 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-Authentication with API key and secret is required
+[apiv4](../README.md#apiv4)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
-<a name="getLoanRecord"></a>
-# **getLoanRecord**
+## getLoanRecord
+
 > LoanRecord getLoanRecord(loanRecordId, loanId)
 
 Get one single loan record
 
 ### Example
+
 ```javascript
 var GateApi = require('gate-api');
-var client = GateApi.ApiClient.instance;
-client.key = "YOUR API KEY";
-client.secret = "YOUR API SECRET";
-// uncomment the next line if you are using the API with other host
-// client.basePath = "https://some-other-hosts";
+
+var defaultClient = GateApi.ApiClient.instance;
+// Configure Gate APIv4 key authentication: apiv4
+var apiv4 = defaultClient.authentications['apiv4'];
+apiv4.key = 'YOUR_API_KEY'
+apiv4.secret = 'YOUR_API_SECRET'
 
 var apiInstance = new GateApi.MarginApi();
-var loanRecordId = "12345"; // String | Loan record ID
-var loanId = "12345"; // String | Loan ID
+var loanRecordId = 12345; // String | Loan record ID
+var loanId = 12345; // String | Loan ID
 var callback = function(error, data, response) {
   if (error) {
     console.error(error);
@@ -195,6 +206,7 @@ apiInstance.getLoanRecord(loanRecordId, loanId, callback);
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **loanRecordId** | **String**| Loan record ID | 
@@ -206,31 +218,33 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-Authentication with API key and secret is required
+[apiv4](../README.md#apiv4)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
-<a name="listFundingAccounts"></a>
-# **listFundingAccounts**
+## listFundingAccounts
+
 > [FundingAccount] listFundingAccounts(opts)
 
 Funding account list
 
 ### Example
+
 ```javascript
 var GateApi = require('gate-api');
-var client = GateApi.ApiClient.instance;
-client.key = "YOUR API KEY";
-client.secret = "YOUR API SECRET";
-// uncomment the next line if you are using the API with other host
-// client.basePath = "https://some-other-hosts";
+
+var defaultClient = GateApi.ApiClient.instance;
+// Configure Gate APIv4 key authentication: apiv4
+var apiv4 = defaultClient.authentications['apiv4'];
+apiv4.key = 'YOUR_API_KEY'
+apiv4.secret = 'YOUR_API_SECRET'
 
 var apiInstance = new GateApi.MarginApi();
 var opts = {
-  'currency': "BTC" // String | Retrieved specified currency related data
+  'currency': BTC // String | Retrieved specified currency related data
 };
 var callback = function(error, data, response) {
   if (error) {
@@ -244,6 +258,7 @@ apiInstance.listFundingAccounts(opts, callback);
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **currency** | **String**| Retrieved specified currency related data | [optional] 
@@ -254,25 +269,26 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-Authentication with API key and secret is required
+[apiv4](../README.md#apiv4)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
-<a name="listFundingBook"></a>
-# **listFundingBook**
+## listFundingBook
+
 > [FundingBookItem] listFundingBook(currency)
 
 Order book of lending loans
 
 ### Example
+
 ```javascript
 var GateApi = require('gate-api');
 
 var apiInstance = new GateApi.MarginApi();
-var currency = "BTC"; // String | Retrieved specified currency related data
+var currency = BTC; // String | Retrieved specified currency related data
 var callback = function(error, data, response) {
   if (error) {
     console.error(error);
@@ -284,6 +300,7 @@ apiInstance.listFundingBook(currency, callback);
 ```
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -299,28 +316,30 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
-<a name="listLoanRecords"></a>
-# **listLoanRecords**
+## listLoanRecords
+
 > [LoanRecord] listLoanRecords(loanId, opts)
 
 List repayment records of specified loan
 
 ### Example
+
 ```javascript
 var GateApi = require('gate-api');
-var client = GateApi.ApiClient.instance;
-client.key = "YOUR API KEY";
-client.secret = "YOUR API SECRET";
-// uncomment the next line if you are using the API with other host
-// client.basePath = "https://some-other-hosts";
+
+var defaultClient = GateApi.ApiClient.instance;
+// Configure Gate APIv4 key authentication: apiv4
+var apiv4 = defaultClient.authentications['apiv4'];
+apiv4.key = 'YOUR_API_KEY'
+apiv4.secret = 'YOUR_API_SECRET'
 
 var apiInstance = new GateApi.MarginApi();
-var loanId = "12345"; // String | Loan ID
+var loanId = 12345; // String | Loan ID
 var opts = {
-  'status': "loaned", // String | Loan record status
+  'status': loaned, // String | Loan record status
   'page': 1, // Number | Page number
   'limit': 100 // Number | Maximum number of records returned in one list
 };
@@ -336,6 +355,7 @@ apiInstance.listLoanRecords(loanId, opts, callback);
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **loanId** | **String**| Loan ID | 
@@ -349,30 +369,32 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-Authentication with API key and secret is required
+[apiv4](../README.md#apiv4)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
-<a name="listLoanRepayments"></a>
-# **listLoanRepayments**
+## listLoanRepayments
+
 > [Repayment] listLoanRepayments(loanId)
 
 List loan repayment records
 
 ### Example
+
 ```javascript
 var GateApi = require('gate-api');
-var client = GateApi.ApiClient.instance;
-client.key = "YOUR API KEY";
-client.secret = "YOUR API SECRET";
-// uncomment the next line if you are using the API with other host
-// client.basePath = "https://some-other-hosts";
+
+var defaultClient = GateApi.ApiClient.instance;
+// Configure Gate APIv4 key authentication: apiv4
+var apiv4 = defaultClient.authentications['apiv4'];
+apiv4.key = 'YOUR_API_KEY'
+apiv4.secret = 'YOUR_API_SECRET'
 
 var apiInstance = new GateApi.MarginApi();
-var loanId = "12345"; // String | Loan ID
+var loanId = 12345; // String | Loan ID
 var callback = function(error, data, response) {
   if (error) {
     console.error(error);
@@ -385,6 +407,7 @@ apiInstance.listLoanRepayments(loanId, callback);
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **loanId** | **String**| Loan ID | 
@@ -395,36 +418,38 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-Authentication with API key and secret is required
+[apiv4](../README.md#apiv4)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
-<a name="listLoans"></a>
-# **listLoans**
+## listLoans
+
 > [Loan] listLoans(status, side, opts)
 
 List all loans
 
 ### Example
+
 ```javascript
 var GateApi = require('gate-api');
-var client = GateApi.ApiClient.instance;
-client.key = "YOUR API KEY";
-client.secret = "YOUR API SECRET";
-// uncomment the next line if you are using the API with other host
-// client.basePath = "https://some-other-hosts";
+
+var defaultClient = GateApi.ApiClient.instance;
+// Configure Gate APIv4 key authentication: apiv4
+var apiv4 = defaultClient.authentications['apiv4'];
+apiv4.key = 'YOUR_API_KEY'
+apiv4.secret = 'YOUR_API_SECRET'
 
 var apiInstance = new GateApi.MarginApi();
-var status = "open"; // String | Loan status
-var side = "lend"; // String | Lend or borrow
+var status = open; // String | Loan status
+var side = lend; // String | Lend or borrow
 var opts = {
-  'currency': "BTC", // String | Retrieved specified currency related data
-  'currencyPair': "BTC_USDT", // String | Currency pair
-  'sortBy': "rate", // String | Specify which field is used to sort. `create_time` or `rate` is supported. Default to `create_time`
-  'reverseSort': true, // Boolean | Whether to sort in descending order. Default to `true`
+  'currency': BTC, // String | Retrieved specified currency related data
+  'currencyPair': BTC_USDT, // String | Currency pair
+  'sortBy': rate, // String | Specify which field is used to sort. `create_time` or `rate` is supported. Default to `create_time`
+  'reverseSort': false, // Boolean | Whether to sort in descending order. Default to `true`
   'page': 1, // Number | Page number
   'limit': 100 // Number | Maximum number of records returned in one list
 };
@@ -439,6 +464,7 @@ apiInstance.listLoans(status, side, opts, callback);
 ```
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -457,31 +483,33 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-Authentication with API key and secret is required
+[apiv4](../README.md#apiv4)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
-<a name="listMarginAccounts"></a>
-# **listMarginAccounts**
+## listMarginAccounts
+
 > [MarginAccount] listMarginAccounts(opts)
 
 Margin account list
 
 ### Example
+
 ```javascript
 var GateApi = require('gate-api');
-var client = GateApi.ApiClient.instance;
-client.key = "YOUR API KEY";
-client.secret = "YOUR API SECRET";
-// uncomment the next line if you are using the API with other host
-// client.basePath = "https://some-other-hosts";
+
+var defaultClient = GateApi.ApiClient.instance;
+// Configure Gate APIv4 key authentication: apiv4
+var apiv4 = defaultClient.authentications['apiv4'];
+apiv4.key = 'YOUR_API_KEY'
+apiv4.secret = 'YOUR_API_SECRET'
 
 var apiInstance = new GateApi.MarginApi();
 var opts = {
-  'currencyPair': "BTC_USDT" // String | Currency pair
+  'currencyPair': BTC_USDT // String | Currency pair
 };
 var callback = function(error, data, response) {
   if (error) {
@@ -495,6 +523,7 @@ apiInstance.listMarginAccounts(opts, callback);
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **currencyPair** | **String**| Currency pair | [optional] 
@@ -505,20 +534,21 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-Authentication with API key and secret is required
+[apiv4](../README.md#apiv4)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
-<a name="listMarginCurrencyPairs"></a>
-# **listMarginCurrencyPairs**
+## listMarginCurrencyPairs
+
 > [MarginCurrencyPair] listMarginCurrencyPairs()
 
 List all supported currency pairs supported in margin trading
 
 ### Example
+
 ```javascript
 var GateApi = require('gate-api');
 
@@ -534,6 +564,7 @@ apiInstance.listMarginCurrencyPairs(callback);
 ```
 
 ### Parameters
+
 This endpoint does not need any parameter.
 
 ### Return type
@@ -546,27 +577,29 @@ No authorization required
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
-<a name="mergeLoans"></a>
-# **mergeLoans**
+## mergeLoans
+
 > Loan mergeLoans(currency, ids)
 
 Merge multiple lending loans
 
 ### Example
+
 ```javascript
 var GateApi = require('gate-api');
-var client = GateApi.ApiClient.instance;
-client.key = "YOUR API KEY";
-client.secret = "YOUR API SECRET";
-// uncomment the next line if you are using the API with other host
-// client.basePath = "https://some-other-hosts";
+
+var defaultClient = GateApi.ApiClient.instance;
+// Configure Gate APIv4 key authentication: apiv4
+var apiv4 = defaultClient.authentications['apiv4'];
+apiv4.key = 'YOUR_API_KEY'
+apiv4.secret = 'YOUR_API_SECRET'
 
 var apiInstance = new GateApi.MarginApi();
-var currency = "BTC"; // String | Retrieved specified currency related data
-var ids = "123,234,345"; // String | Lending loan ID list separated by `,`. Maximum of 20 IDs are allowed in one request
+var currency = BTC; // String | Retrieved specified currency related data
+var ids = 123,234,345; // String | Lending loan ID list separated by `,`. Maximum of 20 IDs are allowed in one request
 var callback = function(error, data, response) {
   if (error) {
     console.error(error);
@@ -579,6 +612,7 @@ apiInstance.mergeLoans(currency, ids, callback);
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **currency** | **String**| Retrieved specified currency related data | 
@@ -590,31 +624,33 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-Authentication with API key and secret is required
+[apiv4](../README.md#apiv4)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
-<a name="repayLoan"></a>
-# **repayLoan**
+## repayLoan
+
 > Loan repayLoan(loanId, repayRequest)
 
 Repay a loan
 
 ### Example
+
 ```javascript
 var GateApi = require('gate-api');
-var client = GateApi.ApiClient.instance;
-client.key = "YOUR API KEY";
-client.secret = "YOUR API SECRET";
-// uncomment the next line if you are using the API with other host
-// client.basePath = "https://some-other-hosts";
+
+var defaultClient = GateApi.ApiClient.instance;
+// Configure Gate APIv4 key authentication: apiv4
+var apiv4 = defaultClient.authentications['apiv4'];
+apiv4.key = 'YOUR_API_KEY'
+apiv4.secret = 'YOUR_API_SECRET'
 
 var apiInstance = new GateApi.MarginApi();
-var loanId = "12345"; // String | Loan ID
-var repayRequest = new GateApi.RepayRequest(); // RepayRequest | 
+var loanId = 12345; // String | Loan ID
+var repayRequest = {"currency_pair":"ETH_BTC","currency":"ETH","mode":"partial","amount":"100"}; // RepayRequest | 
 var callback = function(error, data, response) {
   if (error) {
     console.error(error);
@@ -627,6 +663,7 @@ apiInstance.repayLoan(loanId, repayRequest, callback);
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **loanId** | **String**| Loan ID | 
@@ -638,15 +675,15 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-Authentication with API key and secret is required
+[apiv4](../README.md#apiv4)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
-<a name="updateLoan"></a>
-# **updateLoan**
+## updateLoan
+
 > Loan updateLoan(loanId, loanPatch)
 
 Modify a loan
@@ -654,17 +691,19 @@ Modify a loan
 Only &#x60;auto_renew&#x60; modification is supported currently
 
 ### Example
+
 ```javascript
 var GateApi = require('gate-api');
-var client = GateApi.ApiClient.instance;
-client.key = "YOUR API KEY";
-client.secret = "YOUR API SECRET";
-// uncomment the next line if you are using the API with other host
-// client.basePath = "https://some-other-hosts";
+
+var defaultClient = GateApi.ApiClient.instance;
+// Configure Gate APIv4 key authentication: apiv4
+var apiv4 = defaultClient.authentications['apiv4'];
+apiv4.key = 'YOUR_API_KEY'
+apiv4.secret = 'YOUR_API_SECRET'
 
 var apiInstance = new GateApi.MarginApi();
-var loanId = "12345"; // String | Loan ID
-var loanPatch = new GateApi.LoanPatch(); // LoanPatch | 
+var loanId = 12345; // String | Loan ID
+var loanPatch = {"currency":"BTC","side":"borrow","currency_pair":"BTC_USDT","auto_renew":false}; // LoanPatch | 
 var callback = function(error, data, response) {
   if (error) {
     console.error(error);
@@ -677,6 +716,7 @@ apiInstance.updateLoan(loanId, loanPatch, callback);
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **loanId** | **String**| Loan ID | 
@@ -688,15 +728,15 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-Authentication with API key and secret is required
+[apiv4](../README.md#apiv4)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
-<a name="updateLoanRecord"></a>
-# **updateLoanRecord**
+## updateLoanRecord
+
 > LoanRecord updateLoanRecord(loanRecordId, loanPatch)
 
 Modify a loan record
@@ -704,17 +744,19 @@ Modify a loan record
 Only &#x60;auto_renew&#x60; modification is supported currently
 
 ### Example
+
 ```javascript
 var GateApi = require('gate-api');
-var client = GateApi.ApiClient.instance;
-client.key = "YOUR API KEY";
-client.secret = "YOUR API SECRET";
-// uncomment the next line if you are using the API with other host
-// client.basePath = "https://some-other-hosts";
+
+var defaultClient = GateApi.ApiClient.instance;
+// Configure Gate APIv4 key authentication: apiv4
+var apiv4 = defaultClient.authentications['apiv4'];
+apiv4.key = 'YOUR_API_KEY'
+apiv4.secret = 'YOUR_API_SECRET'
 
 var apiInstance = new GateApi.MarginApi();
-var loanRecordId = "12345"; // String | Loan record ID
-var loanPatch = new GateApi.LoanPatch(); // LoanPatch | 
+var loanRecordId = 12345; // String | Loan record ID
+var loanPatch = {"currency":"BTC","side":"borrow","currency_pair":"BTC_USDT","auto_renew":false}; // LoanPatch | 
 var callback = function(error, data, response) {
   if (error) {
     console.error(error);
@@ -727,6 +769,7 @@ apiInstance.updateLoanRecord(loanRecordId, loanPatch, callback);
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **loanRecordId** | **String**| Loan record ID | 
@@ -738,10 +781,9 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-Authentication with API key and secret is required
+[apiv4](../README.md#apiv4)
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
-
+- **Content-Type**: application/json
+- **Accept**: application/json

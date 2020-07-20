@@ -1,6 +1,7 @@
 # GateApi.MyFuturesTrade
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **Number** | Trade ID | [optional] 
@@ -11,15 +12,10 @@ Name | Type | Description | Notes
 **price** | **String** | Trading price | [optional] 
 **role** | **String** | Trade role. Available values are &#x60;taker&#x60; and &#x60;maker&#x60; | [optional] 
 
-
-<a name="RoleEnum"></a>
 ## Enum: RoleEnum
-
 
 * `taker` (value: `"taker"`)
 
 * `maker` (value: `"maker"`)
-
-
 
 

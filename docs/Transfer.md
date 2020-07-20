@@ -1,6 +1,7 @@
 # GateApi.Transfer
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **currency** | **String** | Transfer currency. For futures account, &#x60;currency&#x60; can be set to &#x60;POINT&#x60; or settle currency | 
@@ -10,11 +11,8 @@ Name | Type | Description | Notes
 **currencyPair** | **String** | Margin currency pair. Required if transfer from or to margin account | [optional] 
 **settle** | **String** | Futures settle currency. Required if &#x60;currency&#x60; is &#x60;POINT&#x60; | [optional] 
 
-
-<a name="FromEnum"></a>
 ## Enum: FromEnum
 
-
 * `spot` (value: `"spot"`)
 
 * `margin` (value: `"margin"`)
@@ -24,12 +22,8 @@ Name | Type | Description | Notes
 * `delivery` (value: `"delivery"`)
 
 
-
-
-<a name="ToEnum"></a>
 ## Enum: ToEnum
 
-
 * `spot` (value: `"spot"`)
 
 * `margin` (value: `"margin"`)
@@ -37,7 +31,5 @@ Name | Type | Description | Notes
 * `futures` (value: `"futures"`)
 
 * `delivery` (value: `"delivery"`)
-
-
 
 
