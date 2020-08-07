@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **base** | **String** | Base currency | [optional] 
 **quote** | **String** | Quote currency | [optional] 
 **leverage** | **Number** | Leverage | [optional] 
-**minBaseAmount** | **String** | Minimum base currency to loan, &#x60;null&#x60; means no limit | [optional] 
-**minQuoteAmount** | **String** | Minimum quote currency to loan, &#x60;null&#x60; means no limit | [optional] 
-**maxQuoteAmount** | **String** | Maximum borrowable amount for quote currency. Base currency limit is calculated by quote maximum and market price. &#x60;null&#x60; means no limit | [optional] 
+**min_base_amount** | **String** | Minimum base currency to loan, &#x60;null&#x60; means no limit | [optional] 
+**min_quote_amount** | **String** | Minimum quote currency to loan, &#x60;null&#x60; means no limit | [optional] 
+**max_quote_amount** | **String** | Maximum borrowable amount for quote currency. Base currency limit is calculated by quote maximum and market price. &#x60;null&#x60; means no limit | [optional] 
 

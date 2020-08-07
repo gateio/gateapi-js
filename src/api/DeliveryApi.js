@@ -13,18 +13,18 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient', 'model/DeliveryContract', 'model/DeliverySettlement', 'model/FuturesAccount', 'model/FuturesAccountBook', 'model/FuturesCandlestick', 'model/FuturesLiquidate', 'model/FuturesOrder', 'model/FuturesOrderBook', 'model/FuturesPriceTriggeredOrder', 'model/FuturesTicker', 'model/FuturesTrade', 'model/InsuranceRecord', 'model/MyFuturesTrade', 'model/Position', 'model/PositionClose', 'model/TriggerOrderResponse'], factory);
+    define(['ApiClient', 'model/DeliveryContract', 'model/FuturesCandlestick', 'model/FuturesOrderBook', 'model/FuturesTicker', 'model/FuturesTrade', 'model/InsuranceRecord'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('../model/DeliveryContract'), require('../model/DeliverySettlement'), require('../model/FuturesAccount'), require('../model/FuturesAccountBook'), require('../model/FuturesCandlestick'), require('../model/FuturesLiquidate'), require('../model/FuturesOrder'), require('../model/FuturesOrderBook'), require('../model/FuturesPriceTriggeredOrder'), require('../model/FuturesTicker'), require('../model/FuturesTrade'), require('../model/InsuranceRecord'), require('../model/MyFuturesTrade'), require('../model/Position'), require('../model/PositionClose'), require('../model/TriggerOrderResponse'));
+    module.exports = factory(require('../ApiClient'), require('../model/DeliveryContract'), require('../model/FuturesCandlestick'), require('../model/FuturesOrderBook'), require('../model/FuturesTicker'), require('../model/FuturesTrade'), require('../model/InsuranceRecord'));
   } else {
     // Browser globals (root is window)
     if (!root.GateApi) {
       root.GateApi = {};
     }
-    root.GateApi.DeliveryApi = factory(root.GateApi.ApiClient, root.GateApi.DeliveryContract, root.GateApi.DeliverySettlement, root.GateApi.FuturesAccount, root.GateApi.FuturesAccountBook, root.GateApi.FuturesCandlestick, root.GateApi.FuturesLiquidate, root.GateApi.FuturesOrder, root.GateApi.FuturesOrderBook, root.GateApi.FuturesPriceTriggeredOrder, root.GateApi.FuturesTicker, root.GateApi.FuturesTrade, root.GateApi.InsuranceRecord, root.GateApi.MyFuturesTrade, root.GateApi.Position, root.GateApi.PositionClose, root.GateApi.TriggerOrderResponse);
+    root.GateApi.DeliveryApi = factory(root.GateApi.ApiClient, root.GateApi.DeliveryContract, root.GateApi.FuturesCandlestick, root.GateApi.FuturesOrderBook, root.GateApi.FuturesTicker, root.GateApi.FuturesTrade, root.GateApi.InsuranceRecord);
   }
-}(this, function(ApiClient, DeliveryContract, DeliverySettlement, FuturesAccount, FuturesAccountBook, FuturesCandlestick, FuturesLiquidate, FuturesOrder, FuturesOrderBook, FuturesPriceTriggeredOrder, FuturesTicker, FuturesTrade, InsuranceRecord, MyFuturesTrade, Position, PositionClose, TriggerOrderResponse) {
+}(this, function(ApiClient, DeliveryContract, FuturesCandlestick, FuturesOrderBook, FuturesTicker, FuturesTrade, InsuranceRecord) {
   'use strict';
 
   /**
@@ -44,235 +44,24 @@
 
 
     /**
-     * Callback function to receive the result of the cancelDeliveryOrder operation.
-     * @callback module:api/DeliveryApi~cancelDeliveryOrderCallback
+     * Callback function to receive the result of the listDeliveryContracts operation.
+     * @callback module:api/DeliveryApi~listDeliveryContractsCallback
      * @param {String} error Error message, if any.
-     * @param {module:model/FuturesOrder} data The data returned by the service call.
+     * @param {Array.<module:model/DeliveryContract>} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
     /**
-     * Cancel a single order
+     * List all futures contracts
      * @param {module:model/String} settle Settle currency
-     * @param {String} orderId ID returned on order successfully being created
-     * @param {module:api/DeliveryApi~cancelDeliveryOrderCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/FuturesOrder}
+     * @param {module:api/DeliveryApi~listDeliveryContractsCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link Array.<module:model/DeliveryContract>}
      */
-    this.cancelDeliveryOrder = function(settle, orderId, callback) {
+    this.listDeliveryContracts = function(settle, callback) {
       var postBody = null;
       // verify the required parameter 'settle' is set
       if (settle === undefined || settle === null) {
-        throw new Error("Missing the required parameter 'settle' when calling cancelDeliveryOrder");
-      }
-      // verify the required parameter 'orderId' is set
-      if (orderId === undefined || orderId === null) {
-        throw new Error("Missing the required parameter 'orderId' when calling cancelDeliveryOrder");
-      }
-
-      var pathParams = {
-        'settle': settle,
-        'order_id': orderId
-      };
-      var queryParams = {
-      };
-      var collectionQueryParams = {
-      };
-      var headerParams = {
-      };
-      var formParams = {
-      };
-
-      var authNames = ['apiv4'];
-      var contentTypes = [];
-      var accepts = ['application/json'];
-      var returnType = FuturesOrder;
-      return this.apiClient.callApi(
-        '/delivery/{settle}/orders/{order_id}', 'DELETE',
-        pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, null, callback
-      );
-    }
-
-    /**
-     * Callback function to receive the result of the cancelDeliveryOrders operation.
-     * @callback module:api/DeliveryApi~cancelDeliveryOrdersCallback
-     * @param {String} error Error message, if any.
-     * @param {Array.<module:model/FuturesOrder>} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
-     */
-
-    /**
-     * Cancel all `open` orders matched
-     * Zero-fill order cannot be retrieved 60 seconds after cancellation
-     * @param {module:model/String} settle Settle currency
-     * @param {String} contract Futures contract
-     * @param {Object} opts Optional parameters
-     * @param {module:model/String} opts.side All bids or asks. Both included in not specified
-     * @param {module:api/DeliveryApi~cancelDeliveryOrdersCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link Array.<module:model/FuturesOrder>}
-     */
-    this.cancelDeliveryOrders = function(settle, contract, opts, callback) {
-      opts = opts || {};
-      var postBody = null;
-      // verify the required parameter 'settle' is set
-      if (settle === undefined || settle === null) {
-        throw new Error("Missing the required parameter 'settle' when calling cancelDeliveryOrders");
-      }
-      // verify the required parameter 'contract' is set
-      if (contract === undefined || contract === null) {
-        throw new Error("Missing the required parameter 'contract' when calling cancelDeliveryOrders");
-      }
-
-      var pathParams = {
-        'settle': settle
-      };
-      var queryParams = {
-        'contract': contract,
-        'side': opts['side'],
-      };
-      var collectionQueryParams = {
-      };
-      var headerParams = {
-      };
-      var formParams = {
-      };
-
-      var authNames = ['apiv4'];
-      var contentTypes = [];
-      var accepts = ['application/json'];
-      var returnType = [FuturesOrder];
-      return this.apiClient.callApi(
-        '/delivery/{settle}/orders', 'DELETE',
-        pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, null, callback
-      );
-    }
-
-    /**
-     * Callback function to receive the result of the cancelPriceTriggeredDeliveryOrder operation.
-     * @callback module:api/DeliveryApi~cancelPriceTriggeredDeliveryOrderCallback
-     * @param {String} error Error message, if any.
-     * @param {module:model/FuturesPriceTriggeredOrder} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
-     */
-
-    /**
-     * Cancel a single order
-     * @param {module:model/String} settle Settle currency
-     * @param {String} orderId ID returned on order successfully being created
-     * @param {module:api/DeliveryApi~cancelPriceTriggeredDeliveryOrderCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/FuturesPriceTriggeredOrder}
-     */
-    this.cancelPriceTriggeredDeliveryOrder = function(settle, orderId, callback) {
-      var postBody = null;
-      // verify the required parameter 'settle' is set
-      if (settle === undefined || settle === null) {
-        throw new Error("Missing the required parameter 'settle' when calling cancelPriceTriggeredDeliveryOrder");
-      }
-      // verify the required parameter 'orderId' is set
-      if (orderId === undefined || orderId === null) {
-        throw new Error("Missing the required parameter 'orderId' when calling cancelPriceTriggeredDeliveryOrder");
-      }
-
-      var pathParams = {
-        'settle': settle,
-        'order_id': orderId
-      };
-      var queryParams = {
-      };
-      var collectionQueryParams = {
-      };
-      var headerParams = {
-      };
-      var formParams = {
-      };
-
-      var authNames = ['apiv4'];
-      var contentTypes = [];
-      var accepts = ['application/json'];
-      var returnType = FuturesPriceTriggeredOrder;
-      return this.apiClient.callApi(
-        '/delivery/{settle}/price_orders/{order_id}', 'DELETE',
-        pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, null, callback
-      );
-    }
-
-    /**
-     * Callback function to receive the result of the cancelPriceTriggeredDeliveryOrderList operation.
-     * @callback module:api/DeliveryApi~cancelPriceTriggeredDeliveryOrderListCallback
-     * @param {String} error Error message, if any.
-     * @param {Array.<module:model/FuturesPriceTriggeredOrder>} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
-     */
-
-    /**
-     * Cancel all open orders
-     * @param {module:model/String} settle Settle currency
-     * @param {String} contract Futures contract
-     * @param {module:api/DeliveryApi~cancelPriceTriggeredDeliveryOrderListCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link Array.<module:model/FuturesPriceTriggeredOrder>}
-     */
-    this.cancelPriceTriggeredDeliveryOrderList = function(settle, contract, callback) {
-      var postBody = null;
-      // verify the required parameter 'settle' is set
-      if (settle === undefined || settle === null) {
-        throw new Error("Missing the required parameter 'settle' when calling cancelPriceTriggeredDeliveryOrderList");
-      }
-      // verify the required parameter 'contract' is set
-      if (contract === undefined || contract === null) {
-        throw new Error("Missing the required parameter 'contract' when calling cancelPriceTriggeredDeliveryOrderList");
-      }
-
-      var pathParams = {
-        'settle': settle
-      };
-      var queryParams = {
-        'contract': contract,
-      };
-      var collectionQueryParams = {
-      };
-      var headerParams = {
-      };
-      var formParams = {
-      };
-
-      var authNames = ['apiv4'];
-      var contentTypes = [];
-      var accepts = ['application/json'];
-      var returnType = [FuturesPriceTriggeredOrder];
-      return this.apiClient.callApi(
-        '/delivery/{settle}/price_orders', 'DELETE',
-        pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, null, callback
-      );
-    }
-
-    /**
-     * Callback function to receive the result of the createDeliveryOrder operation.
-     * @callback module:api/DeliveryApi~createDeliveryOrderCallback
-     * @param {String} error Error message, if any.
-     * @param {module:model/FuturesOrder} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
-     */
-
-    /**
-     * Create a futures order
-     * Zero-fill order cannot be retrieved 60 seconds after cancellation
-     * @param {module:model/String} settle Settle currency
-     * @param {module:model/FuturesOrder} futuresOrder 
-     * @param {module:api/DeliveryApi~createDeliveryOrderCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/FuturesOrder}
-     */
-    this.createDeliveryOrder = function(settle, futuresOrder, callback) {
-      var postBody = futuresOrder;
-      // verify the required parameter 'settle' is set
-      if (settle === undefined || settle === null) {
-        throw new Error("Missing the required parameter 'settle' when calling createDeliveryOrder");
-      }
-      // verify the required parameter 'futuresOrder' is set
-      if (futuresOrder === undefined || futuresOrder === null) {
-        throw new Error("Missing the required parameter 'futuresOrder' when calling createDeliveryOrder");
+        throw new Error("Missing the required parameter 'settle' when calling listDeliveryContracts");
       }
 
       var pathParams = {
@@ -287,61 +76,12 @@
       var formParams = {
       };
 
-      var authNames = ['apiv4'];
-      var contentTypes = ['application/json'];
+      var authNames = [];
+      var contentTypes = [];
       var accepts = ['application/json'];
-      var returnType = FuturesOrder;
+      var returnType = [DeliveryContract];
       return this.apiClient.callApi(
-        '/delivery/{settle}/orders', 'POST',
-        pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, null, callback
-      );
-    }
-
-    /**
-     * Callback function to receive the result of the createPriceTriggeredDeliveryOrder operation.
-     * @callback module:api/DeliveryApi~createPriceTriggeredDeliveryOrderCallback
-     * @param {String} error Error message, if any.
-     * @param {module:model/TriggerOrderResponse} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
-     */
-
-    /**
-     * Create a price-triggered order
-     * @param {module:model/String} settle Settle currency
-     * @param {module:model/FuturesPriceTriggeredOrder} futuresPriceTriggeredOrder 
-     * @param {module:api/DeliveryApi~createPriceTriggeredDeliveryOrderCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/TriggerOrderResponse}
-     */
-    this.createPriceTriggeredDeliveryOrder = function(settle, futuresPriceTriggeredOrder, callback) {
-      var postBody = futuresPriceTriggeredOrder;
-      // verify the required parameter 'settle' is set
-      if (settle === undefined || settle === null) {
-        throw new Error("Missing the required parameter 'settle' when calling createPriceTriggeredDeliveryOrder");
-      }
-      // verify the required parameter 'futuresPriceTriggeredOrder' is set
-      if (futuresPriceTriggeredOrder === undefined || futuresPriceTriggeredOrder === null) {
-        throw new Error("Missing the required parameter 'futuresPriceTriggeredOrder' when calling createPriceTriggeredDeliveryOrder");
-      }
-
-      var pathParams = {
-        'settle': settle
-      };
-      var queryParams = {
-      };
-      var collectionQueryParams = {
-      };
-      var headerParams = {
-      };
-      var formParams = {
-      };
-
-      var authNames = ['apiv4'];
-      var contentTypes = ['application/json'];
-      var accepts = ['application/json'];
-      var returnType = TriggerOrderResponse;
-      return this.apiClient.callApi(
-        '/delivery/{settle}/price_orders', 'POST',
+        '/delivery/{settle}/contracts', 'GET',
         pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, null, callback
       );
@@ -398,87 +138,43 @@
     }
 
     /**
-     * Callback function to receive the result of the getDeliveryOrder operation.
-     * @callback module:api/DeliveryApi~getDeliveryOrderCallback
+     * Callback function to receive the result of the listDeliveryOrderBook operation.
+     * @callback module:api/DeliveryApi~listDeliveryOrderBookCallback
      * @param {String} error Error message, if any.
-     * @param {module:model/FuturesOrder} data The data returned by the service call.
+     * @param {module:model/FuturesOrderBook} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
     /**
-     * Get a single order
-     * Zero-fill order cannot be retrieved 60 seconds after cancellation
-     * @param {module:model/String} settle Settle currency
-     * @param {String} orderId ID returned on order successfully being created
-     * @param {module:api/DeliveryApi~getDeliveryOrderCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/FuturesOrder}
-     */
-    this.getDeliveryOrder = function(settle, orderId, callback) {
-      var postBody = null;
-      // verify the required parameter 'settle' is set
-      if (settle === undefined || settle === null) {
-        throw new Error("Missing the required parameter 'settle' when calling getDeliveryOrder");
-      }
-      // verify the required parameter 'orderId' is set
-      if (orderId === undefined || orderId === null) {
-        throw new Error("Missing the required parameter 'orderId' when calling getDeliveryOrder");
-      }
-
-      var pathParams = {
-        'settle': settle,
-        'order_id': orderId
-      };
-      var queryParams = {
-      };
-      var collectionQueryParams = {
-      };
-      var headerParams = {
-      };
-      var formParams = {
-      };
-
-      var authNames = ['apiv4'];
-      var contentTypes = [];
-      var accepts = ['application/json'];
-      var returnType = FuturesOrder;
-      return this.apiClient.callApi(
-        '/delivery/{settle}/orders/{order_id}', 'GET',
-        pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, null, callback
-      );
-    }
-
-    /**
-     * Callback function to receive the result of the getDeliveryPosition operation.
-     * @callback module:api/DeliveryApi~getDeliveryPositionCallback
-     * @param {String} error Error message, if any.
-     * @param {module:model/Position} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
-     */
-
-    /**
-     * Get single position
+     * Futures order book
+     * Bids will be sorted by price from high to low, while asks sorted reversely
      * @param {module:model/String} settle Settle currency
      * @param {String} contract Futures contract
-     * @param {module:api/DeliveryApi~getDeliveryPositionCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/Position}
+     * @param {Object} opts Optional parameters
+     * @param {module:model/String} opts.interval Order depth. 0 means no aggregation is applied. default to 0 (default to '0')
+     * @param {Number} opts.limit Maximum number of order depth data in asks or bids (default to 10)
+     * @param {module:api/DeliveryApi~listDeliveryOrderBookCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:model/FuturesOrderBook}
      */
-    this.getDeliveryPosition = function(settle, contract, callback) {
+    this.listDeliveryOrderBook = function(settle, contract, opts, callback) {
+      opts = opts || {};
       var postBody = null;
       // verify the required parameter 'settle' is set
       if (settle === undefined || settle === null) {
-        throw new Error("Missing the required parameter 'settle' when calling getDeliveryPosition");
+        throw new Error("Missing the required parameter 'settle' when calling listDeliveryOrderBook");
       }
       // verify the required parameter 'contract' is set
       if (contract === undefined || contract === null) {
-        throw new Error("Missing the required parameter 'contract' when calling getDeliveryPosition");
+        throw new Error("Missing the required parameter 'contract' when calling listDeliveryOrderBook");
       }
 
       var pathParams = {
-        'settle': settle,
-        'contract': contract
+        'settle': settle
       };
       var queryParams = {
+        'contract': contract,
+        'interval': opts['interval'],
+        'limit': opts['limit'],
       };
       var collectionQueryParams = {
       };
@@ -487,160 +183,58 @@
       var formParams = {
       };
 
-      var authNames = ['apiv4'];
+      var authNames = [];
       var contentTypes = [];
       var accepts = ['application/json'];
-      var returnType = Position;
+      var returnType = FuturesOrderBook;
       return this.apiClient.callApi(
-        '/delivery/{settle}/positions/{contract}', 'GET',
+        '/delivery/{settle}/order_book', 'GET',
         pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, null, callback
       );
     }
 
     /**
-     * Callback function to receive the result of the getMyDeliveryTrades operation.
-     * @callback module:api/DeliveryApi~getMyDeliveryTradesCallback
+     * Callback function to receive the result of the listDeliveryTrades operation.
+     * @callback module:api/DeliveryApi~listDeliveryTradesCallback
      * @param {String} error Error message, if any.
-     * @param {Array.<module:model/MyFuturesTrade>} data The data returned by the service call.
+     * @param {Array.<module:model/FuturesTrade>} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
     /**
-     * List personal trading history
+     * Futures trading history
      * @param {module:model/String} settle Settle currency
+     * @param {String} contract Futures contract
      * @param {Object} opts Optional parameters
-     * @param {String} opts.contract Futures contract
-     * @param {Number} opts.order Futures order ID, return related data only if specified
      * @param {Number} opts.limit Maximum number of records returned in one list (default to 100)
-     * @param {Number} opts.offset List offset, starting from 0 (default to 0)
-     * @param {String} opts.lastId Specify list staring point using the `id` of last record in previous list-query results
-     * @param {module:model/Number} opts.countTotal Whether to return total number matched. Default to 0(no return) (default to 0)
-     * @param {module:api/DeliveryApi~getMyDeliveryTradesCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link Array.<module:model/MyFuturesTrade>}
+     * @param {String} opts.lastId Specify list staring point using the id of last record in previous list-query results  This parameter is deprecated. Use `from` and `to` instead to limit time range
+     * @param {Number} opts.from Specify starting time in Unix seconds. If not specified, `to` and `limit` will be used to limit response items. If items between `from` and `to` are more than `limit`, only `limit` number will be returned. 
+     * @param {Number} opts.to Specify end time in Unix seconds, default to current time
+     * @param {module:api/DeliveryApi~listDeliveryTradesCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link Array.<module:model/FuturesTrade>}
      */
-    this.getMyDeliveryTrades = function(settle, opts, callback) {
+    this.listDeliveryTrades = function(settle, contract, opts, callback) {
       opts = opts || {};
       var postBody = null;
       // verify the required parameter 'settle' is set
       if (settle === undefined || settle === null) {
-        throw new Error("Missing the required parameter 'settle' when calling getMyDeliveryTrades");
+        throw new Error("Missing the required parameter 'settle' when calling listDeliveryTrades");
+      }
+      // verify the required parameter 'contract' is set
+      if (contract === undefined || contract === null) {
+        throw new Error("Missing the required parameter 'contract' when calling listDeliveryTrades");
       }
 
       var pathParams = {
         'settle': settle
       };
       var queryParams = {
-        'contract': opts['contract'],
-        'order': opts['order'],
+        'contract': contract,
         'limit': opts['limit'],
-        'offset': opts['offset'],
         'last_id': opts['lastId'],
-        'count_total': opts['countTotal'],
-      };
-      var collectionQueryParams = {
-      };
-      var headerParams = {
-      };
-      var formParams = {
-      };
-
-      var authNames = ['apiv4'];
-      var contentTypes = [];
-      var accepts = ['application/json'];
-      var returnType = [MyFuturesTrade];
-      return this.apiClient.callApi(
-        '/delivery/{settle}/my_trades', 'GET',
-        pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, null, callback
-      );
-    }
-
-    /**
-     * Callback function to receive the result of the getPriceTriggeredDeliveryOrder operation.
-     * @callback module:api/DeliveryApi~getPriceTriggeredDeliveryOrderCallback
-     * @param {String} error Error message, if any.
-     * @param {module:model/FuturesPriceTriggeredOrder} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
-     */
-
-    /**
-     * Get a single order
-     * @param {module:model/String} settle Settle currency
-     * @param {String} orderId ID returned on order successfully being created
-     * @param {module:api/DeliveryApi~getPriceTriggeredDeliveryOrderCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/FuturesPriceTriggeredOrder}
-     */
-    this.getPriceTriggeredDeliveryOrder = function(settle, orderId, callback) {
-      var postBody = null;
-      // verify the required parameter 'settle' is set
-      if (settle === undefined || settle === null) {
-        throw new Error("Missing the required parameter 'settle' when calling getPriceTriggeredDeliveryOrder");
-      }
-      // verify the required parameter 'orderId' is set
-      if (orderId === undefined || orderId === null) {
-        throw new Error("Missing the required parameter 'orderId' when calling getPriceTriggeredDeliveryOrder");
-      }
-
-      var pathParams = {
-        'settle': settle,
-        'order_id': orderId
-      };
-      var queryParams = {
-      };
-      var collectionQueryParams = {
-      };
-      var headerParams = {
-      };
-      var formParams = {
-      };
-
-      var authNames = ['apiv4'];
-      var contentTypes = [];
-      var accepts = ['application/json'];
-      var returnType = FuturesPriceTriggeredOrder;
-      return this.apiClient.callApi(
-        '/delivery/{settle}/price_orders/{order_id}', 'GET',
-        pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, null, callback
-      );
-    }
-
-    /**
-     * Callback function to receive the result of the listDeliveryAccountBook operation.
-     * @callback module:api/DeliveryApi~listDeliveryAccountBookCallback
-     * @param {String} error Error message, if any.
-     * @param {Array.<module:model/FuturesAccountBook>} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
-     */
-
-    /**
-     * Query account book
-     * @param {module:model/String} settle Settle currency
-     * @param {Object} opts Optional parameters
-     * @param {Number} opts.limit Maximum number of records returned in one list (default to 100)
-     * @param {Number} opts.from Start timestamp
-     * @param {Number} opts.to End timestamp
-     * @param {module:model/String} opts.type Changing Type: - dnw: Deposit & Withdraw - pnl: Profit & Loss by reducing position - fee: Trading fee - refr: Referrer rebate - fund: Funding - point_dnw: POINT Deposit & Withdraw - point_fee: POINT Trading fee - point_refr: POINT Referrer rebate
-     * @param {module:api/DeliveryApi~listDeliveryAccountBookCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link Array.<module:model/FuturesAccountBook>}
-     */
-    this.listDeliveryAccountBook = function(settle, opts, callback) {
-      opts = opts || {};
-      var postBody = null;
-      // verify the required parameter 'settle' is set
-      if (settle === undefined || settle === null) {
-        throw new Error("Missing the required parameter 'settle' when calling listDeliveryAccountBook");
-      }
-
-      var pathParams = {
-        'settle': settle
-      };
-      var queryParams = {
-        'limit': opts['limit'],
         'from': opts['from'],
         'to': opts['to'],
-        'type': opts['type'],
       };
       var collectionQueryParams = {
       };
@@ -649,56 +243,12 @@
       var formParams = {
       };
 
-      var authNames = ['apiv4'];
+      var authNames = [];
       var contentTypes = [];
       var accepts = ['application/json'];
-      var returnType = [FuturesAccountBook];
+      var returnType = [FuturesTrade];
       return this.apiClient.callApi(
-        '/delivery/{settle}/account_book', 'GET',
-        pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, null, callback
-      );
-    }
-
-    /**
-     * Callback function to receive the result of the listDeliveryAccounts operation.
-     * @callback module:api/DeliveryApi~listDeliveryAccountsCallback
-     * @param {String} error Error message, if any.
-     * @param {module:model/FuturesAccount} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
-     */
-
-    /**
-     * Query futures account
-     * @param {module:model/String} settle Settle currency
-     * @param {module:api/DeliveryApi~listDeliveryAccountsCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/FuturesAccount}
-     */
-    this.listDeliveryAccounts = function(settle, callback) {
-      var postBody = null;
-      // verify the required parameter 'settle' is set
-      if (settle === undefined || settle === null) {
-        throw new Error("Missing the required parameter 'settle' when calling listDeliveryAccounts");
-      }
-
-      var pathParams = {
-        'settle': settle
-      };
-      var queryParams = {
-      };
-      var collectionQueryParams = {
-      };
-      var headerParams = {
-      };
-      var formParams = {
-      };
-
-      var authNames = ['apiv4'];
-      var contentTypes = [];
-      var accepts = ['application/json'];
-      var returnType = FuturesAccount;
-      return this.apiClient.callApi(
-        '/delivery/{settle}/accounts', 'GET',
+        '/delivery/{settle}/trades', 'GET',
         pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, null, callback
       );
@@ -766,416 +316,6 @@
     }
 
     /**
-     * Callback function to receive the result of the listDeliveryContracts operation.
-     * @callback module:api/DeliveryApi~listDeliveryContractsCallback
-     * @param {String} error Error message, if any.
-     * @param {Array.<module:model/DeliveryContract>} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
-     */
-
-    /**
-     * List all futures contracts
-     * @param {module:model/String} settle Settle currency
-     * @param {module:api/DeliveryApi~listDeliveryContractsCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link Array.<module:model/DeliveryContract>}
-     */
-    this.listDeliveryContracts = function(settle, callback) {
-      var postBody = null;
-      // verify the required parameter 'settle' is set
-      if (settle === undefined || settle === null) {
-        throw new Error("Missing the required parameter 'settle' when calling listDeliveryContracts");
-      }
-
-      var pathParams = {
-        'settle': settle
-      };
-      var queryParams = {
-      };
-      var collectionQueryParams = {
-      };
-      var headerParams = {
-      };
-      var formParams = {
-      };
-
-      var authNames = [];
-      var contentTypes = [];
-      var accepts = ['application/json'];
-      var returnType = [DeliveryContract];
-      return this.apiClient.callApi(
-        '/delivery/{settle}/contracts', 'GET',
-        pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, null, callback
-      );
-    }
-
-    /**
-     * Callback function to receive the result of the listDeliveryInsuranceLedger operation.
-     * @callback module:api/DeliveryApi~listDeliveryInsuranceLedgerCallback
-     * @param {String} error Error message, if any.
-     * @param {Array.<module:model/InsuranceRecord>} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
-     */
-
-    /**
-     * Futures insurance balance history
-     * @param {module:model/String} settle Settle currency
-     * @param {Object} opts Optional parameters
-     * @param {Number} opts.limit Maximum number of records returned in one list (default to 100)
-     * @param {module:api/DeliveryApi~listDeliveryInsuranceLedgerCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link Array.<module:model/InsuranceRecord>}
-     */
-    this.listDeliveryInsuranceLedger = function(settle, opts, callback) {
-      opts = opts || {};
-      var postBody = null;
-      // verify the required parameter 'settle' is set
-      if (settle === undefined || settle === null) {
-        throw new Error("Missing the required parameter 'settle' when calling listDeliveryInsuranceLedger");
-      }
-
-      var pathParams = {
-        'settle': settle
-      };
-      var queryParams = {
-        'limit': opts['limit'],
-      };
-      var collectionQueryParams = {
-      };
-      var headerParams = {
-      };
-      var formParams = {
-      };
-
-      var authNames = [];
-      var contentTypes = [];
-      var accepts = ['application/json'];
-      var returnType = [InsuranceRecord];
-      return this.apiClient.callApi(
-        '/delivery/{settle}/insurance', 'GET',
-        pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, null, callback
-      );
-    }
-
-    /**
-     * Callback function to receive the result of the listDeliveryLiquidates operation.
-     * @callback module:api/DeliveryApi~listDeliveryLiquidatesCallback
-     * @param {String} error Error message, if any.
-     * @param {Array.<module:model/FuturesLiquidate>} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
-     */
-
-    /**
-     * List liquidation history
-     * @param {module:model/String} settle Settle currency
-     * @param {Object} opts Optional parameters
-     * @param {String} opts.contract Futures contract
-     * @param {Number} opts.limit Maximum number of records returned in one list (default to 100)
-     * @param {Number} opts.at Specify a liquidation timestamp (default to 0)
-     * @param {module:api/DeliveryApi~listDeliveryLiquidatesCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link Array.<module:model/FuturesLiquidate>}
-     */
-    this.listDeliveryLiquidates = function(settle, opts, callback) {
-      opts = opts || {};
-      var postBody = null;
-      // verify the required parameter 'settle' is set
-      if (settle === undefined || settle === null) {
-        throw new Error("Missing the required parameter 'settle' when calling listDeliveryLiquidates");
-      }
-
-      var pathParams = {
-        'settle': settle
-      };
-      var queryParams = {
-        'contract': opts['contract'],
-        'limit': opts['limit'],
-        'at': opts['at'],
-      };
-      var collectionQueryParams = {
-      };
-      var headerParams = {
-      };
-      var formParams = {
-      };
-
-      var authNames = ['apiv4'];
-      var contentTypes = [];
-      var accepts = ['application/json'];
-      var returnType = [FuturesLiquidate];
-      return this.apiClient.callApi(
-        '/delivery/{settle}/liquidates', 'GET',
-        pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, null, callback
-      );
-    }
-
-    /**
-     * Callback function to receive the result of the listDeliveryOrderBook operation.
-     * @callback module:api/DeliveryApi~listDeliveryOrderBookCallback
-     * @param {String} error Error message, if any.
-     * @param {module:model/FuturesOrderBook} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
-     */
-
-    /**
-     * Futures order book
-     * Bids will be sorted by price from high to low, while asks sorted reversely
-     * @param {module:model/String} settle Settle currency
-     * @param {String} contract Futures contract
-     * @param {Object} opts Optional parameters
-     * @param {module:model/String} opts.interval Order depth. 0 means no aggregation is applied. default to 0 (default to '0')
-     * @param {Number} opts.limit Maximum number of order depth data in asks or bids (default to 10)
-     * @param {module:api/DeliveryApi~listDeliveryOrderBookCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/FuturesOrderBook}
-     */
-    this.listDeliveryOrderBook = function(settle, contract, opts, callback) {
-      opts = opts || {};
-      var postBody = null;
-      // verify the required parameter 'settle' is set
-      if (settle === undefined || settle === null) {
-        throw new Error("Missing the required parameter 'settle' when calling listDeliveryOrderBook");
-      }
-      // verify the required parameter 'contract' is set
-      if (contract === undefined || contract === null) {
-        throw new Error("Missing the required parameter 'contract' when calling listDeliveryOrderBook");
-      }
-
-      var pathParams = {
-        'settle': settle
-      };
-      var queryParams = {
-        'contract': contract,
-        'interval': opts['interval'],
-        'limit': opts['limit'],
-      };
-      var collectionQueryParams = {
-      };
-      var headerParams = {
-      };
-      var formParams = {
-      };
-
-      var authNames = [];
-      var contentTypes = [];
-      var accepts = ['application/json'];
-      var returnType = FuturesOrderBook;
-      return this.apiClient.callApi(
-        '/delivery/{settle}/order_book', 'GET',
-        pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, null, callback
-      );
-    }
-
-    /**
-     * Callback function to receive the result of the listDeliveryOrders operation.
-     * @callback module:api/DeliveryApi~listDeliveryOrdersCallback
-     * @param {String} error Error message, if any.
-     * @param {Array.<module:model/FuturesOrder>} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
-     */
-
-    /**
-     * List futures orders
-     * Zero-fill order cannot be retrieved 60 seconds after cancellation
-     * @param {module:model/String} settle Settle currency
-     * @param {module:model/String} status List orders based on status
-     * @param {Object} opts Optional parameters
-     * @param {String} opts.contract Futures contract
-     * @param {Number} opts.limit Maximum number of records returned in one list (default to 100)
-     * @param {Number} opts.offset List offset, starting from 0 (default to 0)
-     * @param {String} opts.lastId Specify list staring point using the `id` of last record in previous list-query results
-     * @param {module:model/Number} opts.countTotal Whether to return total number matched. Default to 0(no return) (default to 0)
-     * @param {module:api/DeliveryApi~listDeliveryOrdersCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link Array.<module:model/FuturesOrder>}
-     */
-    this.listDeliveryOrders = function(settle, status, opts, callback) {
-      opts = opts || {};
-      var postBody = null;
-      // verify the required parameter 'settle' is set
-      if (settle === undefined || settle === null) {
-        throw new Error("Missing the required parameter 'settle' when calling listDeliveryOrders");
-      }
-      // verify the required parameter 'status' is set
-      if (status === undefined || status === null) {
-        throw new Error("Missing the required parameter 'status' when calling listDeliveryOrders");
-      }
-
-      var pathParams = {
-        'settle': settle
-      };
-      var queryParams = {
-        'contract': opts['contract'],
-        'status': status,
-        'limit': opts['limit'],
-        'offset': opts['offset'],
-        'last_id': opts['lastId'],
-        'count_total': opts['countTotal'],
-      };
-      var collectionQueryParams = {
-      };
-      var headerParams = {
-      };
-      var formParams = {
-      };
-
-      var authNames = ['apiv4'];
-      var contentTypes = [];
-      var accepts = ['application/json'];
-      var returnType = [FuturesOrder];
-      return this.apiClient.callApi(
-        '/delivery/{settle}/orders', 'GET',
-        pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, null, callback
-      );
-    }
-
-    /**
-     * Callback function to receive the result of the listDeliveryPositionClose operation.
-     * @callback module:api/DeliveryApi~listDeliveryPositionCloseCallback
-     * @param {String} error Error message, if any.
-     * @param {Array.<module:model/PositionClose>} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
-     */
-
-    /**
-     * List position close history
-     * @param {module:model/String} settle Settle currency
-     * @param {Object} opts Optional parameters
-     * @param {String} opts.contract Futures contract
-     * @param {Number} opts.limit Maximum number of records returned in one list (default to 100)
-     * @param {module:api/DeliveryApi~listDeliveryPositionCloseCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link Array.<module:model/PositionClose>}
-     */
-    this.listDeliveryPositionClose = function(settle, opts, callback) {
-      opts = opts || {};
-      var postBody = null;
-      // verify the required parameter 'settle' is set
-      if (settle === undefined || settle === null) {
-        throw new Error("Missing the required parameter 'settle' when calling listDeliveryPositionClose");
-      }
-
-      var pathParams = {
-        'settle': settle
-      };
-      var queryParams = {
-        'contract': opts['contract'],
-        'limit': opts['limit'],
-      };
-      var collectionQueryParams = {
-      };
-      var headerParams = {
-      };
-      var formParams = {
-      };
-
-      var authNames = ['apiv4'];
-      var contentTypes = [];
-      var accepts = ['application/json'];
-      var returnType = [PositionClose];
-      return this.apiClient.callApi(
-        '/delivery/{settle}/position_close', 'GET',
-        pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, null, callback
-      );
-    }
-
-    /**
-     * Callback function to receive the result of the listDeliveryPositions operation.
-     * @callback module:api/DeliveryApi~listDeliveryPositionsCallback
-     * @param {String} error Error message, if any.
-     * @param {Array.<module:model/Position>} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
-     */
-
-    /**
-     * List all positions of a user
-     * @param {module:model/String} settle Settle currency
-     * @param {module:api/DeliveryApi~listDeliveryPositionsCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link Array.<module:model/Position>}
-     */
-    this.listDeliveryPositions = function(settle, callback) {
-      var postBody = null;
-      // verify the required parameter 'settle' is set
-      if (settle === undefined || settle === null) {
-        throw new Error("Missing the required parameter 'settle' when calling listDeliveryPositions");
-      }
-
-      var pathParams = {
-        'settle': settle
-      };
-      var queryParams = {
-      };
-      var collectionQueryParams = {
-      };
-      var headerParams = {
-      };
-      var formParams = {
-      };
-
-      var authNames = ['apiv4'];
-      var contentTypes = [];
-      var accepts = ['application/json'];
-      var returnType = [Position];
-      return this.apiClient.callApi(
-        '/delivery/{settle}/positions', 'GET',
-        pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, null, callback
-      );
-    }
-
-    /**
-     * Callback function to receive the result of the listDeliverySettlements operation.
-     * @callback module:api/DeliveryApi~listDeliverySettlementsCallback
-     * @param {String} error Error message, if any.
-     * @param {Array.<module:model/DeliverySettlement>} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
-     */
-
-    /**
-     * List settlement history
-     * @param {module:model/String} settle Settle currency
-     * @param {Object} opts Optional parameters
-     * @param {String} opts.contract Futures contract
-     * @param {Number} opts.limit Maximum number of records returned in one list (default to 100)
-     * @param {Number} opts.at Specify a settlement timestamp (default to 0)
-     * @param {module:api/DeliveryApi~listDeliverySettlementsCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link Array.<module:model/DeliverySettlement>}
-     */
-    this.listDeliverySettlements = function(settle, opts, callback) {
-      opts = opts || {};
-      var postBody = null;
-      // verify the required parameter 'settle' is set
-      if (settle === undefined || settle === null) {
-        throw new Error("Missing the required parameter 'settle' when calling listDeliverySettlements");
-      }
-
-      var pathParams = {
-        'settle': settle
-      };
-      var queryParams = {
-        'contract': opts['contract'],
-        'limit': opts['limit'],
-        'at': opts['at'],
-      };
-      var collectionQueryParams = {
-      };
-      var headerParams = {
-      };
-      var formParams = {
-      };
-
-      var authNames = ['apiv4'];
-      var contentTypes = [];
-      var accepts = ['application/json'];
-      var returnType = [DeliverySettlement];
-      return this.apiClient.callApi(
-        '/delivery/{settle}/settlements', 'GET',
-        pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, null, callback
-      );
-    }
-
-    /**
      * Callback function to receive the result of the listDeliveryTickers operation.
      * @callback module:api/DeliveryApi~listDeliveryTickersCallback
      * @param {String} error Error message, if any.
@@ -1224,46 +364,34 @@
     }
 
     /**
-     * Callback function to receive the result of the listDeliveryTrades operation.
-     * @callback module:api/DeliveryApi~listDeliveryTradesCallback
+     * Callback function to receive the result of the listDeliveryInsuranceLedger operation.
+     * @callback module:api/DeliveryApi~listDeliveryInsuranceLedgerCallback
      * @param {String} error Error message, if any.
-     * @param {Array.<module:model/FuturesTrade>} data The data returned by the service call.
+     * @param {Array.<module:model/InsuranceRecord>} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
     /**
-     * Futures trading history
+     * Futures insurance balance history
      * @param {module:model/String} settle Settle currency
-     * @param {String} contract Futures contract
      * @param {Object} opts Optional parameters
      * @param {Number} opts.limit Maximum number of records returned in one list (default to 100)
-     * @param {String} opts.lastId Specify list staring point using the id of last record in previous list-query results  This parameter is deprecated. Use `from` and `to` instead to limit time range
-     * @param {Number} opts.from Specify starting time in Unix seconds. If not specified, `to` and `limit` will be used to limit response items. If items between `from` and `to` are more than `limit`, only `limit` number will be returned. 
-     * @param {Number} opts.to Specify end time in Unix seconds, default to current time
-     * @param {module:api/DeliveryApi~listDeliveryTradesCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link Array.<module:model/FuturesTrade>}
+     * @param {module:api/DeliveryApi~listDeliveryInsuranceLedgerCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link Array.<module:model/InsuranceRecord>}
      */
-    this.listDeliveryTrades = function(settle, contract, opts, callback) {
+    this.listDeliveryInsuranceLedger = function(settle, opts, callback) {
       opts = opts || {};
       var postBody = null;
       // verify the required parameter 'settle' is set
       if (settle === undefined || settle === null) {
-        throw new Error("Missing the required parameter 'settle' when calling listDeliveryTrades");
-      }
-      // verify the required parameter 'contract' is set
-      if (contract === undefined || contract === null) {
-        throw new Error("Missing the required parameter 'contract' when calling listDeliveryTrades");
+        throw new Error("Missing the required parameter 'settle' when calling listDeliveryInsuranceLedger");
       }
 
       var pathParams = {
         'settle': settle
       };
       var queryParams = {
-        'contract': contract,
         'limit': opts['limit'],
-        'last_id': opts['lastId'],
-        'from': opts['from'],
-        'to': opts['to'],
       };
       var collectionQueryParams = {
       };
@@ -1275,235 +403,9 @@
       var authNames = [];
       var contentTypes = [];
       var accepts = ['application/json'];
-      var returnType = [FuturesTrade];
+      var returnType = [InsuranceRecord];
       return this.apiClient.callApi(
-        '/delivery/{settle}/trades', 'GET',
-        pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, null, callback
-      );
-    }
-
-    /**
-     * Callback function to receive the result of the listPriceTriggeredDeliveryOrders operation.
-     * @callback module:api/DeliveryApi~listPriceTriggeredDeliveryOrdersCallback
-     * @param {String} error Error message, if any.
-     * @param {Array.<module:model/FuturesPriceTriggeredOrder>} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
-     */
-
-    /**
-     * List all auto orders
-     * @param {module:model/String} settle Settle currency
-     * @param {module:model/String} status List orders based on status
-     * @param {Object} opts Optional parameters
-     * @param {String} opts.contract Futures contract, return related data only if specified
-     * @param {Number} opts.limit Maximum number of records returned in one list (default to 100)
-     * @param {Number} opts.offset List offset, starting from 0 (default to 0)
-     * @param {module:api/DeliveryApi~listPriceTriggeredDeliveryOrdersCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link Array.<module:model/FuturesPriceTriggeredOrder>}
-     */
-    this.listPriceTriggeredDeliveryOrders = function(settle, status, opts, callback) {
-      opts = opts || {};
-      var postBody = null;
-      // verify the required parameter 'settle' is set
-      if (settle === undefined || settle === null) {
-        throw new Error("Missing the required parameter 'settle' when calling listPriceTriggeredDeliveryOrders");
-      }
-      // verify the required parameter 'status' is set
-      if (status === undefined || status === null) {
-        throw new Error("Missing the required parameter 'status' when calling listPriceTriggeredDeliveryOrders");
-      }
-
-      var pathParams = {
-        'settle': settle
-      };
-      var queryParams = {
-        'status': status,
-        'contract': opts['contract'],
-        'limit': opts['limit'],
-        'offset': opts['offset'],
-      };
-      var collectionQueryParams = {
-      };
-      var headerParams = {
-      };
-      var formParams = {
-      };
-
-      var authNames = ['apiv4'];
-      var contentTypes = [];
-      var accepts = ['application/json'];
-      var returnType = [FuturesPriceTriggeredOrder];
-      return this.apiClient.callApi(
-        '/delivery/{settle}/price_orders', 'GET',
-        pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, null, callback
-      );
-    }
-
-    /**
-     * Callback function to receive the result of the updateDeliveryPositionLeverage operation.
-     * @callback module:api/DeliveryApi~updateDeliveryPositionLeverageCallback
-     * @param {String} error Error message, if any.
-     * @param {module:model/Position} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
-     */
-
-    /**
-     * Update position leverage
-     * @param {module:model/String} settle Settle currency
-     * @param {String} contract Futures contract
-     * @param {String} leverage New position leverage
-     * @param {module:api/DeliveryApi~updateDeliveryPositionLeverageCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/Position}
-     */
-    this.updateDeliveryPositionLeverage = function(settle, contract, leverage, callback) {
-      var postBody = null;
-      // verify the required parameter 'settle' is set
-      if (settle === undefined || settle === null) {
-        throw new Error("Missing the required parameter 'settle' when calling updateDeliveryPositionLeverage");
-      }
-      // verify the required parameter 'contract' is set
-      if (contract === undefined || contract === null) {
-        throw new Error("Missing the required parameter 'contract' when calling updateDeliveryPositionLeverage");
-      }
-      // verify the required parameter 'leverage' is set
-      if (leverage === undefined || leverage === null) {
-        throw new Error("Missing the required parameter 'leverage' when calling updateDeliveryPositionLeverage");
-      }
-
-      var pathParams = {
-        'settle': settle,
-        'contract': contract
-      };
-      var queryParams = {
-        'leverage': leverage,
-      };
-      var collectionQueryParams = {
-      };
-      var headerParams = {
-      };
-      var formParams = {
-      };
-
-      var authNames = ['apiv4'];
-      var contentTypes = [];
-      var accepts = ['application/json'];
-      var returnType = Position;
-      return this.apiClient.callApi(
-        '/delivery/{settle}/positions/{contract}/leverage', 'POST',
-        pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, null, callback
-      );
-    }
-
-    /**
-     * Callback function to receive the result of the updateDeliveryPositionMargin operation.
-     * @callback module:api/DeliveryApi~updateDeliveryPositionMarginCallback
-     * @param {String} error Error message, if any.
-     * @param {module:model/Position} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
-     */
-
-    /**
-     * Update position margin
-     * @param {module:model/String} settle Settle currency
-     * @param {String} contract Futures contract
-     * @param {String} change Margin change. Use positive number to increase margin, negative number otherwise.
-     * @param {module:api/DeliveryApi~updateDeliveryPositionMarginCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/Position}
-     */
-    this.updateDeliveryPositionMargin = function(settle, contract, change, callback) {
-      var postBody = null;
-      // verify the required parameter 'settle' is set
-      if (settle === undefined || settle === null) {
-        throw new Error("Missing the required parameter 'settle' when calling updateDeliveryPositionMargin");
-      }
-      // verify the required parameter 'contract' is set
-      if (contract === undefined || contract === null) {
-        throw new Error("Missing the required parameter 'contract' when calling updateDeliveryPositionMargin");
-      }
-      // verify the required parameter 'change' is set
-      if (change === undefined || change === null) {
-        throw new Error("Missing the required parameter 'change' when calling updateDeliveryPositionMargin");
-      }
-
-      var pathParams = {
-        'settle': settle,
-        'contract': contract
-      };
-      var queryParams = {
-        'change': change,
-      };
-      var collectionQueryParams = {
-      };
-      var headerParams = {
-      };
-      var formParams = {
-      };
-
-      var authNames = ['apiv4'];
-      var contentTypes = [];
-      var accepts = ['application/json'];
-      var returnType = Position;
-      return this.apiClient.callApi(
-        '/delivery/{settle}/positions/{contract}/margin', 'POST',
-        pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, null, callback
-      );
-    }
-
-    /**
-     * Callback function to receive the result of the updateDeliveryPositionRiskLimit operation.
-     * @callback module:api/DeliveryApi~updateDeliveryPositionRiskLimitCallback
-     * @param {String} error Error message, if any.
-     * @param {module:model/Position} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
-     */
-
-    /**
-     * Update position risk limit
-     * @param {module:model/String} settle Settle currency
-     * @param {String} contract Futures contract
-     * @param {String} riskLimit New position risk limit
-     * @param {module:api/DeliveryApi~updateDeliveryPositionRiskLimitCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:model/Position}
-     */
-    this.updateDeliveryPositionRiskLimit = function(settle, contract, riskLimit, callback) {
-      var postBody = null;
-      // verify the required parameter 'settle' is set
-      if (settle === undefined || settle === null) {
-        throw new Error("Missing the required parameter 'settle' when calling updateDeliveryPositionRiskLimit");
-      }
-      // verify the required parameter 'contract' is set
-      if (contract === undefined || contract === null) {
-        throw new Error("Missing the required parameter 'contract' when calling updateDeliveryPositionRiskLimit");
-      }
-      // verify the required parameter 'riskLimit' is set
-      if (riskLimit === undefined || riskLimit === null) {
-        throw new Error("Missing the required parameter 'riskLimit' when calling updateDeliveryPositionRiskLimit");
-      }
-
-      var pathParams = {
-        'settle': settle,
-        'contract': contract
-      };
-      var queryParams = {
-        'risk_limit': riskLimit,
-      };
-      var collectionQueryParams = {
-      };
-      var headerParams = {
-      };
-      var formParams = {
-      };
-
-      var authNames = ['apiv4'];
-      var contentTypes = [];
-      var accepts = ['application/json'];
-      var returnType = Position;
-      return this.apiClient.callApi(
-        '/delivery/{settle}/positions/{contract}/risk_limit', 'POST',
+        '/delivery/{settle}/insurance', 'GET',
         pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, null, callback
       );

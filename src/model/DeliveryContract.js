@@ -57,8 +57,8 @@
       if (data.hasOwnProperty('name')) {
         obj['name'] = ApiClient.convertToType(data['name'], 'String');
       }
-      if (data.hasOwnProperty('underling')) {
-        obj['underling'] = ApiClient.convertToType(data['underling'], 'String');
+      if (data.hasOwnProperty('underlying')) {
+        obj['underlying'] = ApiClient.convertToType(data['underlying'], 'String');
       }
       if (data.hasOwnProperty('cycle')) {
         obj['cycle'] = ApiClient.convertToType(data['cycle'], 'String');
@@ -176,9 +176,9 @@
   exports.prototype['name'] = undefined;
   /**
    * Underlying
-   * @member {String} underling
+   * @member {String} underlying
    */
-  exports.prototype['underling'] = undefined;
+  exports.prototype['underlying'] = undefined;
   /**
    * Cycle type, e.g. WEEKLY, QUARTERLY
    * @member {module:model/DeliveryContract.CycleEnum} cycle

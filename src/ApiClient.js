@@ -13,10 +13,10 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['superagent', 'querystring', 'crypto'], factory);
+    define(['superagent', 'querystring'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('superagent'), require('querystring'), require('crypto'));
+    module.exports = factory(require('superagent'), require('querystring'));
   } else {
     // Browser globals (root is window)
     if (!root.GateApi) {
@@ -51,19 +51,7 @@
      * @type {Array.<String>}
      */
     this.authentications = {
-      'apiv4': {type: 'apiv4', key: '', secret: ''}
     };
-    /*
-     * API Key
-     * @deprecated in favor of this.authentications, reserved for compatibility
-     */
-    this.key = "";
-
-    /*
-     * API secret
-     * @deprecated in favor of this.authentications, reserved for compatibility
-     */
-    this.secret = "";
     /**
      * The default HTTP headers to be included for all API calls.
      * @type {Array.<String>}
@@ -306,24 +294,6 @@
   };
 
   /**
-   * Applies Gate APIv4 authentication headers to the request
-   * @param {Object} request The request object created by a <code>superagent()</code> call.
-   */
-  exports.prototype.applyGateApiV4AuthToRequest = function(request) {
-    var req = request.toJSON()
-    var url = new URL(req.url)
-    var timestamp = ((new Date()).getTime() / 1000).toString();
-    var resourcePath = url.pathname
-    var queryString = unescape(url.search.slice(1));
-    var bodyParam = req.data
-    console.log("resourcePath: ", resourcePath, ", queryString: ", queryString, ", body: ", bodyParam)
-    var hashedPayload = crypto.createHash('sha512').update(bodyParam).digest('hex');
-    var signatureString = [req.method, resourcePath, queryString, hashedPayload, timestamp].join("\n");
-    var signature = crypto.createHmac('sha512', this.secret).update(signatureString).digest('hex');
-    request.set({'KEY': this.key, 'Timestamp': timestamp, 'SIGN': signature})
-  }
-
-  /**
    * Applies authentication headers to the request.
    * @param {Object} request The request object created by a <code>superagent()</code> call.
    * @param {Array.<String>} authNames An array of authentication method names.
@@ -357,9 +327,6 @@
               request.query(data);
             }
           }
-          break;
-        case 'apiv4':
-          _this.applyGateApiV4AuthToRequest(request)
           break;
         case 'oauth2':
           if (auth.accessToken) {
