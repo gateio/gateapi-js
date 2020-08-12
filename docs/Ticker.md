@@ -1,16 +1,16 @@
 # GateApi.Ticker
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**currencyPair** | **String** | Currency pair | [optional] 
+**currency_pair** | **String** | Currency pair | [optional] 
 **last** | **String** | Last trading price | [optional] 
-**lowestAsk** | **String** | Lowest ask | [optional] 
-**highestBid** | **String** | Highest bid | [optional] 
-**changePercentage** | **String** | Change percentage. | [optional] 
-**baseVolume** | **String** | Base currency trade volume | [optional] 
-**quoteVolume** | **String** | Quote currency trade volume | [optional] 
-**high24h** | **String** | Highest price in 24h | [optional] 
-**low24h** | **String** | Lowest price in 24h | [optional] 
-
+**lowest_ask** | **String** | Lowest ask | [optional] 
+**highest_bid** | **String** | Highest bid | [optional] 
+**change_percentage** | **String** | Change percentage. | [optional] 
+**base_volume** | **String** | Base currency trade volume | [optional] 
+**quote_volume** | **String** | Quote currency trade volume | [optional] 
+**high_24h** | **String** | Highest price in 24h | [optional] 
+**low_24h** | **String** | Lowest price in 24h | [optional] 
 

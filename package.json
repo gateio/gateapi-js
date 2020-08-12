@@ -1,21 +1,21 @@
 {
   "name": "gate-api",
-  "version": "4.14.0",
+  "version": "5.15.2",
   "description": "APIv4_provides_spot_margin_and_futures_trading_operations__There_are_public_APIs_to_retrieve_the_real_time_market_statistics_and_private_APIs_which_needs_authentication_to_trade_on_users_behalf_",
   "license": "Apache License 2.0",
   "main": "src/index.js",
   "scripts": {
-    "test": "./node_modules/mocha/bin/mocha --recursive"
+    "test": "mocha --recursive"
   },
   "browser": {
     "fs": false
   },
   "dependencies": {
-    "superagent": "3.7.0"
+    "superagent": "5.1.0"
   },
   "devDependencies": {
-    "expect.js": "~0.3.1",
+    "expect.js": "^0.3.1",
     "mocha": "^5.2.0",
-    "sinon": "1.17.3"
+    "sinon": "^7.2.0"
   }
 }
