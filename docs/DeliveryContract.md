@@ -41,6 +41,7 @@ Name | Type | Description | Notes
 **position_size** | **Number** | Current total long position size | [optional] 
 **config_change_time** | **Number** | Configuration&#39;s last changed time | [optional] 
 **in_delisting** | **Boolean** | Contract is delisting | [optional] 
+**orders_limit** | **Number** | Maximum number of open orders | [optional] 
 
 ## Enum: CycleEnum
 
