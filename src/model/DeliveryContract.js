@@ -165,6 +165,9 @@
       if (data.hasOwnProperty('in_delisting')) {
         obj['in_delisting'] = ApiClient.convertToType(data['in_delisting'], 'Boolean');
       }
+      if (data.hasOwnProperty('orders_limit')) {
+        obj['orders_limit'] = ApiClient.convertToType(data['orders_limit'], 'Number');
+      }
     }
     return obj;
   }
@@ -354,6 +357,11 @@
    * @member {Boolean} in_delisting
    */
   exports.prototype['in_delisting'] = undefined;
+  /**
+   * Maximum number of open orders
+   * @member {Number} orders_limit
+   */
+  exports.prototype['orders_limit'] = undefined;
 
 
   /**
