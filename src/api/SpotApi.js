@@ -183,6 +183,7 @@
      * @param {Object} opts Optional parameters
      * @param {String} opts.interval Order depth. 0 means no aggregation is applied. default to 0 (default to '0')
      * @param {Number} opts.limit Maximum number of order depth data in asks or bids (default to 10)
+     * @param {Boolean} opts.withId Return order book ID (default to false)
      * @param {module:api/SpotApi~listOrderBookCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/OrderBook}
      */
@@ -200,6 +201,7 @@
         'currency_pair': currencyPair,
         'interval': opts['interval'],
         'limit': opts['limit'],
+        'with_id': opts['withId'],
       };
       var collectionQueryParams = {
       };

@@ -13,18 +13,18 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient', 'model/Contract', 'model/FundingRateRecord', 'model/FuturesCandlestick', 'model/FuturesOrderBook', 'model/FuturesTicker', 'model/FuturesTrade', 'model/InsuranceRecord'], factory);
+    define(['ApiClient', 'model/Contract', 'model/ContractStat', 'model/FundingRateRecord', 'model/FuturesCandlestick', 'model/FuturesOrderBook', 'model/FuturesTicker', 'model/FuturesTrade', 'model/InsuranceRecord'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('../model/Contract'), require('../model/FundingRateRecord'), require('../model/FuturesCandlestick'), require('../model/FuturesOrderBook'), require('../model/FuturesTicker'), require('../model/FuturesTrade'), require('../model/InsuranceRecord'));
+    module.exports = factory(require('../ApiClient'), require('../model/Contract'), require('../model/ContractStat'), require('../model/FundingRateRecord'), require('../model/FuturesCandlestick'), require('../model/FuturesOrderBook'), require('../model/FuturesTicker'), require('../model/FuturesTrade'), require('../model/InsuranceRecord'));
   } else {
     // Browser globals (root is window)
     if (!root.GateApi) {
       root.GateApi = {};
     }
-    root.GateApi.FuturesApi = factory(root.GateApi.ApiClient, root.GateApi.Contract, root.GateApi.FundingRateRecord, root.GateApi.FuturesCandlestick, root.GateApi.FuturesOrderBook, root.GateApi.FuturesTicker, root.GateApi.FuturesTrade, root.GateApi.InsuranceRecord);
+    root.GateApi.FuturesApi = factory(root.GateApi.ApiClient, root.GateApi.Contract, root.GateApi.ContractStat, root.GateApi.FundingRateRecord, root.GateApi.FuturesCandlestick, root.GateApi.FuturesOrderBook, root.GateApi.FuturesTicker, root.GateApi.FuturesTrade, root.GateApi.InsuranceRecord);
   }
-}(this, function(ApiClient, Contract, FundingRateRecord, FuturesCandlestick, FuturesOrderBook, FuturesTicker, FuturesTrade, InsuranceRecord) {
+}(this, function(ApiClient, Contract, ContractStat, FundingRateRecord, FuturesCandlestick, FuturesOrderBook, FuturesTicker, FuturesTrade, InsuranceRecord) {
   'use strict';
 
   /**
@@ -460,6 +460,62 @@
       var returnType = [InsuranceRecord];
       return this.apiClient.callApi(
         '/futures/{settle}/insurance', 'GET',
+        pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null, callback
+      );
+    }
+
+    /**
+     * Callback function to receive the result of the listContractStats operation.
+     * @callback module:api/FuturesApi~listContractStatsCallback
+     * @param {String} error Error message, if any.
+     * @param {Array.<module:model/ContractStat>} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Futures stats
+     * @param {module:model/String} settle Settle currency
+     * @param {String} contract Futures contract
+     * @param {Object} opts Optional parameters
+     * @param {module:model/String} opts.interval  (default to '5m')
+     * @param {Number} opts.limit  (default to 30)
+     * @param {module:api/FuturesApi~listContractStatsCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link Array.<module:model/ContractStat>}
+     */
+    this.listContractStats = function(settle, contract, opts, callback) {
+      opts = opts || {};
+      var postBody = null;
+      // verify the required parameter 'settle' is set
+      if (settle === undefined || settle === null) {
+        throw new Error("Missing the required parameter 'settle' when calling listContractStats");
+      }
+      // verify the required parameter 'contract' is set
+      if (contract === undefined || contract === null) {
+        throw new Error("Missing the required parameter 'contract' when calling listContractStats");
+      }
+
+      var pathParams = {
+        'settle': settle
+      };
+      var queryParams = {
+        'contract': contract,
+        'interval': opts['interval'],
+        'limit': opts['limit'],
+      };
+      var collectionQueryParams = {
+      };
+      var headerParams = {
+      };
+      var formParams = {
+      };
+
+      var authNames = [];
+      var contentTypes = [];
+      var accepts = ['application/json'];
+      var returnType = [ContractStat];
+      return this.apiClient.callApi(
+        '/futures/{settle}/contract_stats', 'GET',
         pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, null, callback
       );
