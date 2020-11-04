@@ -57,6 +57,9 @@
   exports.constructFromObject = function(data, obj) {
     if (data) {
       obj = obj || new exports();
+      if (data.hasOwnProperty('id')) {
+        obj['id'] = ApiClient.convertToType(data['id'], 'Number');
+      }
       if (data.hasOwnProperty('asks')) {
         obj['asks'] = ApiClient.convertToType(data['asks'], [['String']]);
       }
@@ -67,6 +70,11 @@
     return obj;
   }
 
+  /**
+   * Order book ID, which is updated whenever the order book is changed. Valid only when `with_id` is set to `true`
+   * @member {Number} id
+   */
+  exports.prototype['id'] = undefined;
   /**
    * Asks order depth
    * @member {Array.<Array.<String>>} asks

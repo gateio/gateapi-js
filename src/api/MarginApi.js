@@ -82,6 +82,50 @@
     }
 
     /**
+     * Callback function to receive the result of the getMarginCurrencyPair operation.
+     * @callback module:api/MarginApi~getMarginCurrencyPairCallback
+     * @param {String} error Error message, if any.
+     * @param {module:model/MarginCurrencyPair} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Query one single margin currency pair
+     * @param {String} currencyPair Margin currency pair
+     * @param {module:api/MarginApi~getMarginCurrencyPairCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:model/MarginCurrencyPair}
+     */
+    this.getMarginCurrencyPair = function(currencyPair, callback) {
+      var postBody = null;
+      // verify the required parameter 'currencyPair' is set
+      if (currencyPair === undefined || currencyPair === null) {
+        throw new Error("Missing the required parameter 'currencyPair' when calling getMarginCurrencyPair");
+      }
+
+      var pathParams = {
+        'currency_pair': currencyPair
+      };
+      var queryParams = {
+      };
+      var collectionQueryParams = {
+      };
+      var headerParams = {
+      };
+      var formParams = {
+      };
+
+      var authNames = [];
+      var contentTypes = [];
+      var accepts = ['application/json'];
+      var returnType = MarginCurrencyPair;
+      return this.apiClient.callApi(
+        '/margin/currency_pairs/{currency_pair}', 'GET',
+        pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null, callback
+      );
+    }
+
+    /**
      * Callback function to receive the result of the listFundingBook operation.
      * @callback module:api/MarginApi~listFundingBookCallback
      * @param {String} error Error message, if any.

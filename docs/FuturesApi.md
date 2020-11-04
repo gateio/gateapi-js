@@ -12,6 +12,7 @@ Method | HTTP request | Description
 [**listFuturesTickers**](FuturesApi.md#listFuturesTickers) | **GET** /futures/{settle}/tickers | List futures tickers
 [**listFuturesFundingRateHistory**](FuturesApi.md#listFuturesFundingRateHistory) | **GET** /futures/{settle}/funding_rate | Funding rate history
 [**listFuturesInsuranceLedger**](FuturesApi.md#listFuturesInsuranceLedger) | **GET** /futures/{settle}/insurance | Futures insurance balance history
+[**listContractStats**](FuturesApi.md#listContractStats) | **GET** /futures/{settle}/contract_stats | Futures stats
 
 
 ## listFuturesContracts
@@ -400,6 +401,57 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**[InsuranceRecord]**](InsuranceRecord.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+## listContractStats
+
+> [ContractStat] listContractStats(settle, contract, opts)
+
+Futures stats
+
+### Example
+
+```javascript
+var GateApi = require('gate-api');
+
+var apiInstance = new GateApi.FuturesApi();
+var settle = 'btc'; // String | Settle currency
+var contract = "BTC_USD"; // String | Futures contract
+var opts = {
+  'interval': '5m', // String | 
+  'limit': 30 // Number | 
+};
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully. Returned data: ' + data);
+  }
+};
+apiInstance.listContractStats(settle, contract, opts, callback);
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **settle** | **String**| Settle currency | [default to &#39;btc&#39;]
+ **contract** | **String**| Futures contract | 
+ **interval** | **String**|  | [optional] [default to &#39;5m&#39;]
+ **limit** | **Number**|  | [optional] [default to 30]
+
+### Return type
+
+[**[ContractStat]**](ContractStat.md)
 
 ### Authorization
 
