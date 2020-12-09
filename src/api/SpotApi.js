@@ -235,6 +235,7 @@
      * @param {Object} opts Optional parameters
      * @param {Number} opts.limit Maximum number of records returned in one list (default to 100)
      * @param {String} opts.lastId Specify list staring point using the `id` of last record in previous list-query results
+     * @param {Boolean} opts.reverse Whether to retrieve records whose IDs are smaller than `last_id`'s. Default to larger ones.  When `last_id` is specified. Set `reverse` to `true` to trace back trading history; `false` to retrieve latest tradings.  No effect if `last_id` is not specified. (default to false)
      * @param {module:api/SpotApi~listTradesCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link Array.<module:model/Trade>}
      */
@@ -252,6 +253,7 @@
         'currency_pair': currencyPair,
         'limit': opts['limit'],
         'last_id': opts['lastId'],
+        'reverse': opts['reverse'],
       };
       var collectionQueryParams = {
       };

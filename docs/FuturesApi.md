@@ -13,6 +13,7 @@ Method | HTTP request | Description
 [**listFuturesFundingRateHistory**](FuturesApi.md#listFuturesFundingRateHistory) | **GET** /futures/{settle}/funding_rate | Funding rate history
 [**listFuturesInsuranceLedger**](FuturesApi.md#listFuturesInsuranceLedger) | **GET** /futures/{settle}/insurance | Futures insurance balance history
 [**listContractStats**](FuturesApi.md#listContractStats) | **GET** /futures/{settle}/contract_stats | Futures stats
+[**listLiquidatedOrders**](FuturesApi.md#listLiquidatedOrders) | **GET** /futures/{settle}/liq_orders | Retrieve liquidation history
 
 
 ## listFuturesContracts
@@ -426,6 +427,7 @@ var apiInstance = new GateApi.FuturesApi();
 var settle = 'btc'; // String | Settle currency
 var contract = "BTC_USD"; // String | Futures contract
 var opts = {
+  'from': 1604561000, // Number | Start timestamp
   'interval': '5m', // String | 
   'limit': 30 // Number | 
 };
@@ -446,12 +448,68 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **settle** | **String**| Settle currency | [default to &#39;btc&#39;]
  **contract** | **String**| Futures contract | 
+ **from** | **Number**| Start timestamp | [optional] 
  **interval** | **String**|  | [optional] [default to &#39;5m&#39;]
  **limit** | **Number**|  | [optional] [default to 30]
 
 ### Return type
 
 [**[ContractStat]**](ContractStat.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+## listLiquidatedOrders
+
+> [FuturesLiquidate] listLiquidatedOrders(settle, opts)
+
+Retrieve liquidation history
+
+Interval between &#x60;from&#x60; and &#x60;to&#x60; cannot exceeds 3600. Some private fields will not be returned in public endpoints. Refer to field description for detail.
+
+### Example
+
+```javascript
+var GateApi = require('gate-api');
+
+var apiInstance = new GateApi.FuturesApi();
+var settle = 'btc'; // String | Settle currency
+var opts = {
+  'contract': "BTC_USD", // String | Futures contract, return related data only if specified
+  'from': 1547706332, // Number | Start timestamp
+  'to': 1547706332, // Number | End timestamp
+  'limit': 100 // Number | Maximum number of records returned in one list
+};
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully. Returned data: ' + data);
+  }
+};
+apiInstance.listLiquidatedOrders(settle, opts, callback);
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **settle** | **String**| Settle currency | [default to &#39;btc&#39;]
+ **contract** | **String**| Futures contract, return related data only if specified | [optional] 
+ **from** | **Number**| Start timestamp | [optional] 
+ **to** | **Number**| End timestamp | [optional] 
+ **limit** | **Number**| Maximum number of records returned in one list | [optional] [default to 100]
+
+### Return type
+
+[**[FuturesLiquidate]**](FuturesLiquidate.md)
 
 ### Authorization
 

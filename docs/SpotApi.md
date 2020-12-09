@@ -209,7 +209,8 @@ var apiInstance = new GateApi.SpotApi();
 var currencyPair = "BTC_USDT"; // String | Currency pair
 var opts = {
   'limit': 100, // Number | Maximum number of records returned in one list
-  'lastId': "12345" // String | Specify list staring point using the `id` of last record in previous list-query results
+  'lastId': "12345", // String | Specify list staring point using the `id` of last record in previous list-query results
+  'reverse': false // Boolean | Whether to retrieve records whose IDs are smaller than `last_id`'s. Default to larger ones.  When `last_id` is specified. Set `reverse` to `true` to trace back trading history; `false` to retrieve latest tradings.  No effect if `last_id` is not specified.
 };
 var callback = function(error, data, response) {
   if (error) {
@@ -229,6 +230,7 @@ Name | Type | Description  | Notes
  **currencyPair** | **String**| Currency pair | 
  **limit** | **Number**| Maximum number of records returned in one list | [optional] [default to 100]
  **lastId** | **String**| Specify list staring point using the &#x60;id&#x60; of last record in previous list-query results | [optional] 
+ **reverse** | **Boolean**| Whether to retrieve records whose IDs are smaller than &#x60;last_id&#x60;&#39;s. Default to larger ones.  When &#x60;last_id&#x60; is specified. Set &#x60;reverse&#x60; to &#x60;true&#x60; to trace back trading history; &#x60;false&#x60; to retrieve latest tradings.  No effect if &#x60;last_id&#x60; is not specified. | [optional] [default to false]
 
 ### Return type
 

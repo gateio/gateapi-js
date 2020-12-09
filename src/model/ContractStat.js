@@ -62,8 +62,11 @@
       if (data.hasOwnProperty('lsr_account')) {
         obj['lsr_account'] = ApiClient.convertToType(data['lsr_account'], 'Number');
       }
-      if (data.hasOwnProperty('liq_size')) {
-        obj['liq_size'] = ApiClient.convertToType(data['liq_size'], 'Number');
+      if (data.hasOwnProperty('long_liq_size')) {
+        obj['long_liq_size'] = ApiClient.convertToType(data['long_liq_size'], 'Number');
+      }
+      if (data.hasOwnProperty('short_liq_size')) {
+        obj['short_liq_size'] = ApiClient.convertToType(data['short_liq_size'], 'Number');
       }
       if (data.hasOwnProperty('open_interest')) {
         obj['open_interest'] = ApiClient.convertToType(data['open_interest'], 'Number');
@@ -88,10 +91,15 @@
    */
   exports.prototype['lsr_account'] = undefined;
   /**
-   * Liquidation size
-   * @member {Number} liq_size
+   * Long liquidation size
+   * @member {Number} long_liq_size
    */
-  exports.prototype['liq_size'] = undefined;
+  exports.prototype['long_liq_size'] = undefined;
+  /**
+   * Short liquidation size
+   * @member {Number} short_liq_size
+   */
+  exports.prototype['short_liq_size'] = undefined;
   /**
    * Open interest
    * @member {Number} open_interest

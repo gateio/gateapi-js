@@ -13,18 +13,18 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient', 'model/Contract', 'model/ContractStat', 'model/FundingRateRecord', 'model/FuturesCandlestick', 'model/FuturesOrderBook', 'model/FuturesTicker', 'model/FuturesTrade', 'model/InsuranceRecord'], factory);
+    define(['ApiClient', 'model/Contract', 'model/ContractStat', 'model/FundingRateRecord', 'model/FuturesCandlestick', 'model/FuturesLiquidate', 'model/FuturesOrderBook', 'model/FuturesTicker', 'model/FuturesTrade', 'model/InsuranceRecord'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('../model/Contract'), require('../model/ContractStat'), require('../model/FundingRateRecord'), require('../model/FuturesCandlestick'), require('../model/FuturesOrderBook'), require('../model/FuturesTicker'), require('../model/FuturesTrade'), require('../model/InsuranceRecord'));
+    module.exports = factory(require('../ApiClient'), require('../model/Contract'), require('../model/ContractStat'), require('../model/FundingRateRecord'), require('../model/FuturesCandlestick'), require('../model/FuturesLiquidate'), require('../model/FuturesOrderBook'), require('../model/FuturesTicker'), require('../model/FuturesTrade'), require('../model/InsuranceRecord'));
   } else {
     // Browser globals (root is window)
     if (!root.GateApi) {
       root.GateApi = {};
     }
-    root.GateApi.FuturesApi = factory(root.GateApi.ApiClient, root.GateApi.Contract, root.GateApi.ContractStat, root.GateApi.FundingRateRecord, root.GateApi.FuturesCandlestick, root.GateApi.FuturesOrderBook, root.GateApi.FuturesTicker, root.GateApi.FuturesTrade, root.GateApi.InsuranceRecord);
+    root.GateApi.FuturesApi = factory(root.GateApi.ApiClient, root.GateApi.Contract, root.GateApi.ContractStat, root.GateApi.FundingRateRecord, root.GateApi.FuturesCandlestick, root.GateApi.FuturesLiquidate, root.GateApi.FuturesOrderBook, root.GateApi.FuturesTicker, root.GateApi.FuturesTrade, root.GateApi.InsuranceRecord);
   }
-}(this, function(ApiClient, Contract, ContractStat, FundingRateRecord, FuturesCandlestick, FuturesOrderBook, FuturesTicker, FuturesTrade, InsuranceRecord) {
+}(this, function(ApiClient, Contract, ContractStat, FundingRateRecord, FuturesCandlestick, FuturesLiquidate, FuturesOrderBook, FuturesTicker, FuturesTrade, InsuranceRecord) {
   'use strict';
 
   /**
@@ -478,6 +478,7 @@
      * @param {module:model/String} settle Settle currency
      * @param {String} contract Futures contract
      * @param {Object} opts Optional parameters
+     * @param {Number} opts.from Start timestamp
      * @param {module:model/String} opts.interval  (default to '5m')
      * @param {Number} opts.limit  (default to 30)
      * @param {module:api/FuturesApi~listContractStatsCallback} callback The callback function, accepting three arguments: error, data, response
@@ -500,6 +501,7 @@
       };
       var queryParams = {
         'contract': contract,
+        'from': opts['from'],
         'interval': opts['interval'],
         'limit': opts['limit'],
       };
@@ -516,6 +518,61 @@
       var returnType = [ContractStat];
       return this.apiClient.callApi(
         '/futures/{settle}/contract_stats', 'GET',
+        pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null, callback
+      );
+    }
+
+    /**
+     * Callback function to receive the result of the listLiquidatedOrders operation.
+     * @callback module:api/FuturesApi~listLiquidatedOrdersCallback
+     * @param {String} error Error message, if any.
+     * @param {Array.<module:model/FuturesLiquidate>} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Retrieve liquidation history
+     * Interval between `from` and `to` cannot exceeds 3600. Some private fields will not be returned in public endpoints. Refer to field description for detail.
+     * @param {module:model/String} settle Settle currency
+     * @param {Object} opts Optional parameters
+     * @param {String} opts.contract Futures contract, return related data only if specified
+     * @param {Number} opts.from Start timestamp
+     * @param {Number} opts.to End timestamp
+     * @param {Number} opts.limit Maximum number of records returned in one list (default to 100)
+     * @param {module:api/FuturesApi~listLiquidatedOrdersCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link Array.<module:model/FuturesLiquidate>}
+     */
+    this.listLiquidatedOrders = function(settle, opts, callback) {
+      opts = opts || {};
+      var postBody = null;
+      // verify the required parameter 'settle' is set
+      if (settle === undefined || settle === null) {
+        throw new Error("Missing the required parameter 'settle' when calling listLiquidatedOrders");
+      }
+
+      var pathParams = {
+        'settle': settle
+      };
+      var queryParams = {
+        'contract': opts['contract'],
+        'from': opts['from'],
+        'to': opts['to'],
+        'limit': opts['limit'],
+      };
+      var collectionQueryParams = {
+      };
+      var headerParams = {
+      };
+      var formParams = {
+      };
+
+      var authNames = [];
+      var contentTypes = [];
+      var accepts = ['application/json'];
+      var returnType = [FuturesLiquidate];
+      return this.apiClient.callApi(
+        '/futures/{settle}/liq_orders', 'GET',
         pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, null, callback
       );
