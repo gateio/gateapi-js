@@ -119,7 +119,7 @@ var GateApi = require('gate-api');
 
 var apiInstance = new GateApi.FuturesApi();
 var settle = 'btc'; // String | Settle currency
-var contract = "BTC_USD"; // String | Futures contract
+var contract = "BTC_USDT"; // String | Futures contract
 var opts = {
   'interval': '0', // String | Order depth. 0 means no aggregation is applied. default to 0
   'limit': 10 // Number | Maximum number of order depth data in asks or bids
@@ -170,7 +170,7 @@ var GateApi = require('gate-api');
 
 var apiInstance = new GateApi.FuturesApi();
 var settle = 'btc'; // String | Settle currency
-var contract = "BTC_USD"; // String | Futures contract
+var contract = "BTC_USDT"; // String | Futures contract
 var opts = {
   'limit': 100, // Number | Maximum number of records returned in one list
   'lastId': "12345", // String | Specify list staring point using the id of last record in previous list-query results  This parameter is deprecated. Use `from` and `to` instead to limit time range
@@ -227,7 +227,7 @@ var GateApi = require('gate-api');
 
 var apiInstance = new GateApi.FuturesApi();
 var settle = 'btc'; // String | Settle currency
-var contract = "BTC_USD"; // String | Futures contract
+var contract = "BTC_USDT"; // String | Futures contract
 var opts = {
   'from': 1546905600, // Number | Start time of candlesticks, formatted in Unix timestamp in seconds. Default to`to - 100 * interval` if not specified
   'to': 1546935600, // Number | End time of candlesticks, formatted in Unix timestamp in seconds. Default to current time
@@ -283,7 +283,7 @@ var GateApi = require('gate-api');
 var apiInstance = new GateApi.FuturesApi();
 var settle = 'btc'; // String | Settle currency
 var opts = {
-  'contract': "BTC_USD" // String | Futures contract, return related data only if specified
+  'contract': "BTC_USDT" // String | Futures contract, return related data only if specified
 };
 var callback = function(error, data, response) {
   if (error) {
@@ -329,7 +329,7 @@ var GateApi = require('gate-api');
 
 var apiInstance = new GateApi.FuturesApi();
 var settle = 'btc'; // String | Settle currency
-var contract = "BTC_USD"; // String | Futures contract
+var contract = "BTC_USDT"; // String | Futures contract
 var opts = {
   'limit': 100 // Number | Maximum number of records returned in one list
 };
@@ -425,7 +425,7 @@ var GateApi = require('gate-api');
 
 var apiInstance = new GateApi.FuturesApi();
 var settle = 'btc'; // String | Settle currency
-var contract = "BTC_USD"; // String | Futures contract
+var contract = "BTC_USDT"; // String | Futures contract
 var opts = {
   'from': 1604561000, // Number | Start timestamp
   'interval': '5m', // String | 
@@ -481,7 +481,7 @@ var GateApi = require('gate-api');
 var apiInstance = new GateApi.FuturesApi();
 var settle = 'btc'; // String | Settle currency
 var opts = {
-  'contract': "BTC_USD", // String | Futures contract, return related data only if specified
+  'contract': "BTC_USDT", // String | Futures contract, return related data only if specified
   'from': 1547706332, // Number | Start timestamp
   'to': 1547706332, // Number | End timestamp
   'limit': 100 // Number | Maximum number of records returned in one list
