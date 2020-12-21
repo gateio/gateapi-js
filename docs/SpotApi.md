@@ -4,6 +4,8 @@ All URIs are relative to *https://api.gateio.ws/api/v4*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**listCurrencies**](SpotApi.md#listCurrencies) | **GET** /spot/currencies | List all currencies&#39; detail
+[**getCurrency**](SpotApi.md#getCurrency) | **GET** /spot/currencies/{currency} | Get detail of one particular currency
 [**listCurrencyPairs**](SpotApi.md#listCurrencyPairs) | **GET** /spot/currency_pairs | List all currency pairs supported
 [**getCurrencyPair**](SpotApi.md#getCurrencyPair) | **GET** /spot/currency_pairs/{currency_pair} | Get detail of one single order
 [**listTickers**](SpotApi.md#listTickers) | **GET** /spot/tickers | Retrieve ticker information
@@ -11,6 +13,88 @@ Method | HTTP request | Description
 [**listTrades**](SpotApi.md#listTrades) | **GET** /spot/trades | Retrieve market trades
 [**listCandlesticks**](SpotApi.md#listCandlesticks) | **GET** /spot/candlesticks | Market candlesticks
 
+
+## listCurrencies
+
+> [Currency] listCurrencies()
+
+List all currencies&#39; detail
+
+### Example
+
+```javascript
+var GateApi = require('gate-api');
+
+var apiInstance = new GateApi.SpotApi();
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully. Returned data: ' + data);
+  }
+};
+apiInstance.listCurrencies(callback);
+```
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+[**[Currency]**](Currency.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+## getCurrency
+
+> Currency getCurrency(currency)
+
+Get detail of one particular currency
+
+### Example
+
+```javascript
+var GateApi = require('gate-api');
+
+var apiInstance = new GateApi.SpotApi();
+var currency = "GT"; // String | Currency name
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully. Returned data: ' + data);
+  }
+};
+apiInstance.getCurrency(currency, callback);
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **currency** | **String**| Currency name | 
+
+### Return type
+
+[**Currency**](Currency.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
 ## listCurrencyPairs
 

@@ -13,12 +13,12 @@
 (function(factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient', 'model/Contract', 'model/ContractStat', 'model/CurrencyPair', 'model/DeliveryContract', 'model/FundingBookItem', 'model/FundingRateRecord', 'model/FuturesCandlestick', 'model/FuturesLiquidate', 'model/FuturesOrderBook', 'model/FuturesOrderBookItem', 'model/FuturesTicker', 'model/FuturesTrade', 'model/InsuranceRecord', 'model/MarginCurrencyPair', 'model/OrderBook', 'model/Ticker', 'model/Trade', 'api/DeliveryApi', 'api/FuturesApi', 'api/MarginApi', 'api/SpotApi'], factory);
+    define(['ApiClient', 'model/Contract', 'model/ContractStat', 'model/Currency', 'model/CurrencyPair', 'model/DeliveryContract', 'model/FundingBookItem', 'model/FundingRateRecord', 'model/FuturesCandlestick', 'model/FuturesLiquidate', 'model/FuturesOrderBook', 'model/FuturesOrderBookItem', 'model/FuturesTicker', 'model/FuturesTrade', 'model/InsuranceRecord', 'model/MarginCurrencyPair', 'model/OrderBook', 'model/Ticker', 'model/Trade', 'api/DeliveryApi', 'api/FuturesApi', 'api/MarginApi', 'api/SpotApi'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('./ApiClient'), require('./model/Contract'), require('./model/ContractStat'), require('./model/CurrencyPair'), require('./model/DeliveryContract'), require('./model/FundingBookItem'), require('./model/FundingRateRecord'), require('./model/FuturesCandlestick'), require('./model/FuturesLiquidate'), require('./model/FuturesOrderBook'), require('./model/FuturesOrderBookItem'), require('./model/FuturesTicker'), require('./model/FuturesTrade'), require('./model/InsuranceRecord'), require('./model/MarginCurrencyPair'), require('./model/OrderBook'), require('./model/Ticker'), require('./model/Trade'), require('./api/DeliveryApi'), require('./api/FuturesApi'), require('./api/MarginApi'), require('./api/SpotApi'));
+    module.exports = factory(require('./ApiClient'), require('./model/Contract'), require('./model/ContractStat'), require('./model/Currency'), require('./model/CurrencyPair'), require('./model/DeliveryContract'), require('./model/FundingBookItem'), require('./model/FundingRateRecord'), require('./model/FuturesCandlestick'), require('./model/FuturesLiquidate'), require('./model/FuturesOrderBook'), require('./model/FuturesOrderBookItem'), require('./model/FuturesTicker'), require('./model/FuturesTrade'), require('./model/InsuranceRecord'), require('./model/MarginCurrencyPair'), require('./model/OrderBook'), require('./model/Ticker'), require('./model/Trade'), require('./api/DeliveryApi'), require('./api/FuturesApi'), require('./api/MarginApi'), require('./api/SpotApi'));
   }
-}(function(ApiClient, Contract, ContractStat, CurrencyPair, DeliveryContract, FundingBookItem, FundingRateRecord, FuturesCandlestick, FuturesLiquidate, FuturesOrderBook, FuturesOrderBookItem, FuturesTicker, FuturesTrade, InsuranceRecord, MarginCurrencyPair, OrderBook, Ticker, Trade, DeliveryApi, FuturesApi, MarginApi, SpotApi) {
+}(function(ApiClient, Contract, ContractStat, Currency, CurrencyPair, DeliveryContract, FundingBookItem, FundingRateRecord, FuturesCandlestick, FuturesLiquidate, FuturesOrderBook, FuturesOrderBookItem, FuturesTicker, FuturesTrade, InsuranceRecord, MarginCurrencyPair, OrderBook, Ticker, Trade, DeliveryApi, FuturesApi, MarginApi, SpotApi) {
   'use strict';
 
   /**
@@ -67,6 +67,11 @@
      * @property {module:model/ContractStat}
      */
     ContractStat: ContractStat,
+    /**
+     * The Currency model constructor.
+     * @property {module:model/Currency}
+     */
+    Currency: Currency,
     /**
      * The CurrencyPair model constructor.
      * @property {module:model/CurrencyPair}

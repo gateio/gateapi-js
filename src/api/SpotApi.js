@@ -13,18 +13,18 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient', 'model/CurrencyPair', 'model/OrderBook', 'model/Ticker', 'model/Trade'], factory);
+    define(['ApiClient', 'model/Currency', 'model/CurrencyPair', 'model/OrderBook', 'model/Ticker', 'model/Trade'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('../model/CurrencyPair'), require('../model/OrderBook'), require('../model/Ticker'), require('../model/Trade'));
+    module.exports = factory(require('../ApiClient'), require('../model/Currency'), require('../model/CurrencyPair'), require('../model/OrderBook'), require('../model/Ticker'), require('../model/Trade'));
   } else {
     // Browser globals (root is window)
     if (!root.GateApi) {
       root.GateApi = {};
     }
-    root.GateApi.SpotApi = factory(root.GateApi.ApiClient, root.GateApi.CurrencyPair, root.GateApi.OrderBook, root.GateApi.Ticker, root.GateApi.Trade);
+    root.GateApi.SpotApi = factory(root.GateApi.ApiClient, root.GateApi.Currency, root.GateApi.CurrencyPair, root.GateApi.OrderBook, root.GateApi.Ticker, root.GateApi.Trade);
   }
-}(this, function(ApiClient, CurrencyPair, OrderBook, Ticker, Trade) {
+}(this, function(ApiClient, Currency, CurrencyPair, OrderBook, Ticker, Trade) {
   'use strict';
 
   /**
@@ -42,6 +42,88 @@
   var exports = function(apiClient) {
     this.apiClient = apiClient || ApiClient.instance;
 
+
+    /**
+     * Callback function to receive the result of the listCurrencies operation.
+     * @callback module:api/SpotApi~listCurrenciesCallback
+     * @param {String} error Error message, if any.
+     * @param {Array.<module:model/Currency>} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * List all currencies' detail
+     * @param {module:api/SpotApi~listCurrenciesCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link Array.<module:model/Currency>}
+     */
+    this.listCurrencies = function(callback) {
+      var postBody = null;
+
+      var pathParams = {
+      };
+      var queryParams = {
+      };
+      var collectionQueryParams = {
+      };
+      var headerParams = {
+      };
+      var formParams = {
+      };
+
+      var authNames = [];
+      var contentTypes = [];
+      var accepts = ['application/json'];
+      var returnType = [Currency];
+      return this.apiClient.callApi(
+        '/spot/currencies', 'GET',
+        pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null, callback
+      );
+    }
+
+    /**
+     * Callback function to receive the result of the getCurrency operation.
+     * @callback module:api/SpotApi~getCurrencyCallback
+     * @param {String} error Error message, if any.
+     * @param {module:model/Currency} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Get detail of one particular currency
+     * @param {String} currency Currency name
+     * @param {module:api/SpotApi~getCurrencyCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:model/Currency}
+     */
+    this.getCurrency = function(currency, callback) {
+      var postBody = null;
+      // verify the required parameter 'currency' is set
+      if (currency === undefined || currency === null) {
+        throw new Error("Missing the required parameter 'currency' when calling getCurrency");
+      }
+
+      var pathParams = {
+        'currency': currency
+      };
+      var queryParams = {
+      };
+      var collectionQueryParams = {
+      };
+      var headerParams = {
+      };
+      var formParams = {
+      };
+
+      var authNames = [];
+      var contentTypes = [];
+      var accepts = ['application/json'];
+      var returnType = Currency;
+      return this.apiClient.callApi(
+        '/spot/currencies/{currency}', 'GET',
+        pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null, callback
+      );
+    }
 
     /**
      * Callback function to receive the result of the listCurrencyPairs operation.

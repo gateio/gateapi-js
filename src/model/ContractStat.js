@@ -65,11 +65,32 @@
       if (data.hasOwnProperty('long_liq_size')) {
         obj['long_liq_size'] = ApiClient.convertToType(data['long_liq_size'], 'Number');
       }
+      if (data.hasOwnProperty('long_liq_amount')) {
+        obj['long_liq_amount'] = ApiClient.convertToType(data['long_liq_amount'], 'Number');
+      }
+      if (data.hasOwnProperty('long_liq_usd')) {
+        obj['long_liq_usd'] = ApiClient.convertToType(data['long_liq_usd'], 'Number');
+      }
       if (data.hasOwnProperty('short_liq_size')) {
         obj['short_liq_size'] = ApiClient.convertToType(data['short_liq_size'], 'Number');
       }
+      if (data.hasOwnProperty('short_liq_amount')) {
+        obj['short_liq_amount'] = ApiClient.convertToType(data['short_liq_amount'], 'Number');
+      }
+      if (data.hasOwnProperty('short_liq_usd')) {
+        obj['short_liq_usd'] = ApiClient.convertToType(data['short_liq_usd'], 'Number');
+      }
       if (data.hasOwnProperty('open_interest')) {
         obj['open_interest'] = ApiClient.convertToType(data['open_interest'], 'Number');
+      }
+      if (data.hasOwnProperty('open_interest_usd')) {
+        obj['open_interest_usd'] = ApiClient.convertToType(data['open_interest_usd'], 'Number');
+      }
+      if (data.hasOwnProperty('top_lsr_account')) {
+        obj['top_lsr_account'] = ApiClient.convertToType(data['top_lsr_account'], 'String');
+      }
+      if (data.hasOwnProperty('top_lsr_size')) {
+        obj['top_lsr_size'] = ApiClient.convertToType(data['top_lsr_size'], 'String');
       }
     }
     return obj;
@@ -96,15 +117,50 @@
    */
   exports.prototype['long_liq_size'] = undefined;
   /**
+   * Long liquidation amount(base currency)
+   * @member {Number} long_liq_amount
+   */
+  exports.prototype['long_liq_amount'] = undefined;
+  /**
+   * Long liquidation volume(quote currency)
+   * @member {Number} long_liq_usd
+   */
+  exports.prototype['long_liq_usd'] = undefined;
+  /**
    * Short liquidation size
    * @member {Number} short_liq_size
    */
   exports.prototype['short_liq_size'] = undefined;
   /**
-   * Open interest
+   * Short liquidation amount(base currency)
+   * @member {Number} short_liq_amount
+   */
+  exports.prototype['short_liq_amount'] = undefined;
+  /**
+   * Short liquidation volume(quote currency)
+   * @member {Number} short_liq_usd
+   */
+  exports.prototype['short_liq_usd'] = undefined;
+  /**
+   * Open interest size
    * @member {Number} open_interest
    */
   exports.prototype['open_interest'] = undefined;
+  /**
+   * Open interest volume(quote currency)
+   * @member {Number} open_interest_usd
+   */
+  exports.prototype['open_interest_usd'] = undefined;
+  /**
+   * Top trader long/short account ratio
+   * @member {String} top_lsr_account
+   */
+  exports.prototype['top_lsr_account'] = undefined;
+  /**
+   * Top trader long/short position ratio
+   * @member {String} top_lsr_size
+   */
+  exports.prototype['top_lsr_size'] = undefined;
 
 
 
