@@ -87,10 +87,10 @@
         obj['open_interest_usd'] = ApiClient.convertToType(data['open_interest_usd'], 'Number');
       }
       if (data.hasOwnProperty('top_lsr_account')) {
-        obj['top_lsr_account'] = ApiClient.convertToType(data['top_lsr_account'], 'String');
+        obj['top_lsr_account'] = ApiClient.convertToType(data['top_lsr_account'], 'Number');
       }
       if (data.hasOwnProperty('top_lsr_size')) {
-        obj['top_lsr_size'] = ApiClient.convertToType(data['top_lsr_size'], 'String');
+        obj['top_lsr_size'] = ApiClient.convertToType(data['top_lsr_size'], 'Number');
       }
     }
     return obj;
@@ -153,12 +153,12 @@
   exports.prototype['open_interest_usd'] = undefined;
   /**
    * Top trader long/short account ratio
-   * @member {String} top_lsr_account
+   * @member {Number} top_lsr_account
    */
   exports.prototype['top_lsr_account'] = undefined;
   /**
    * Top trader long/short position ratio
-   * @member {String} top_lsr_size
+   * @member {Number} top_lsr_size
    */
   exports.prototype['top_lsr_size'] = undefined;
 

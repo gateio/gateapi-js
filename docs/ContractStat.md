@@ -15,6 +15,6 @@ Name | Type | Description | Notes
 **short_liq_usd** | **Number** | Short liquidation volume(quote currency) | [optional] 
 **open_interest** | **Number** | Open interest size | [optional] 
 **open_interest_usd** | **Number** | Open interest volume(quote currency) | [optional] 
-**top_lsr_account** | **String** | Top trader long/short account ratio | [optional] 
-**top_lsr_size** | **String** | Top trader long/short position ratio | [optional] 
+**top_lsr_account** | **Number** | Top trader long/short account ratio | [optional] 
+**top_lsr_size** | **Number** | Top trader long/short position ratio | [optional] 
 
