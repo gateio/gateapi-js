@@ -80,6 +80,18 @@
       if (data.hasOwnProperty('low_24h')) {
         obj['low_24h'] = ApiClient.convertToType(data['low_24h'], 'String');
       }
+      if (data.hasOwnProperty('etf_net_value')) {
+        obj['etf_net_value'] = ApiClient.convertToType(data['etf_net_value'], 'String');
+      }
+      if (data.hasOwnProperty('etf_pre_net_value')) {
+        obj['etf_pre_net_value'] = ApiClient.convertToType(data['etf_pre_net_value'], 'String');
+      }
+      if (data.hasOwnProperty('etf_pre_timestamp')) {
+        obj['etf_pre_timestamp'] = ApiClient.convertToType(data['etf_pre_timestamp'], 'Number');
+      }
+      if (data.hasOwnProperty('etf_leverage')) {
+        obj['etf_leverage'] = ApiClient.convertToType(data['etf_leverage'], 'String');
+      }
     }
     return obj;
   }
@@ -129,6 +141,26 @@
    * @member {String} low_24h
    */
   exports.prototype['low_24h'] = undefined;
+  /**
+   * ETF net value
+   * @member {String} etf_net_value
+   */
+  exports.prototype['etf_net_value'] = undefined;
+  /**
+   * ETF previous net value at re-balancing time
+   * @member {String} etf_pre_net_value
+   */
+  exports.prototype['etf_pre_net_value'] = undefined;
+  /**
+   * ETF previous re-balancing time
+   * @member {Number} etf_pre_timestamp
+   */
+  exports.prototype['etf_pre_timestamp'] = undefined;
+  /**
+   * ETF current leverage
+   * @member {String} etf_leverage
+   */
+  exports.prototype['etf_leverage'] = undefined;
 
 
 
