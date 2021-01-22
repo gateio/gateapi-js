@@ -59,6 +59,9 @@
       if (data.hasOwnProperty('create_time')) {
         obj['create_time'] = ApiClient.convertToType(data['create_time'], 'String');
       }
+      if (data.hasOwnProperty('create_time_ms')) {
+        obj['create_time_ms'] = ApiClient.convertToType(data['create_time_ms'], 'String');
+      }
       if (data.hasOwnProperty('side')) {
         obj['side'] = ApiClient.convertToType(data['side'], 'String');
       }
@@ -100,6 +103,11 @@
    * @member {String} create_time
    */
   exports.prototype['create_time'] = undefined;
+  /**
+   * Trading time, with millisecond precision
+   * @member {String} create_time_ms
+   */
+  exports.prototype['create_time_ms'] = undefined;
   /**
    * Order side
    * @member {module:model/Trade.SideEnum} side

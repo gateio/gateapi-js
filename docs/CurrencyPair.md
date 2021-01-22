@@ -13,6 +13,10 @@ Name | Type | Description | Notes
 **amount_precision** | **Number** | Amount scale | [optional] 
 **precision** | **Number** | Price scale | [optional] 
 **trade_status** | **String** | How currency pair can be traded  - untradable: cannot be bought or sold - buyable: can be bought - sellable: can be sold - tradable: can be bought or sold | [optional] 
+**etf_net_value** | **String** | ETF net value | [optional] 
+**etf_pre_net_value** | **String** | ETF previous net value at re-balancing time | [optional] 
+**etf_pre_timestamp** | **Number** | ETF previous re-balancing time | [optional] 
+**etf_leverage** | **String** | ETF current leverage | [optional] 
 
 ## Enum: TradeStatusEnum
 

@@ -6,6 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **String** | Trade ID | [optional] 
 **create_time** | **String** | Trading time | [optional] 
+**create_time_ms** | **String** | Trading time, with millisecond precision | [optional] 
 **side** | **String** | Order side | [optional] 
 **role** | **String** | Trade role | [optional] 
 **amount** | **String** | Trade amount | [optional] 
