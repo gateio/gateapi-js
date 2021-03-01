@@ -59,6 +59,9 @@
       if (data.hasOwnProperty('create_time')) {
         obj['create_time'] = ApiClient.convertToType(data['create_time'], 'Number');
       }
+      if (data.hasOwnProperty('create_time_ms')) {
+        obj['create_time_ms'] = ApiClient.convertToType(data['create_time_ms'], 'Number');
+      }
       if (data.hasOwnProperty('contract')) {
         obj['contract'] = ApiClient.convertToType(data['contract'], 'String');
       }
@@ -82,6 +85,11 @@
    * @member {Number} create_time
    */
   exports.prototype['create_time'] = undefined;
+  /**
+   * Trading time, with milliseconds set to 3 decimal places.
+   * @member {Number} create_time_ms
+   */
+  exports.prototype['create_time_ms'] = undefined;
   /**
    * Futures contract
    * @member {String} contract

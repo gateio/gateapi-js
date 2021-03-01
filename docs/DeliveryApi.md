@@ -119,7 +119,8 @@ var settle = "usdt"; // String | Settle currency
 var contract = "BTC_USDT_20200814"; // String | Futures contract
 var opts = {
   'interval': '0', // String | Order depth. 0 means no aggregation is applied. default to 0
-  'limit': 10 // Number | Maximum number of order depth data in asks or bids
+  'limit': 10, // Number | Maximum number of order depth data in asks or bids
+  'withId': false // Boolean | Whether order book update ID would be returned. This ID increments by 1 on every order book update
 };
 var callback = function(error, data, response) {
   if (error) {
@@ -140,6 +141,7 @@ Name | Type | Description  | Notes
  **contract** | **String**| Futures contract | 
  **interval** | **String**| Order depth. 0 means no aggregation is applied. default to 0 | [optional] [default to &#39;0&#39;]
  **limit** | **Number**| Maximum number of order depth data in asks or bids | [optional] [default to 10]
+ **withId** | **Boolean**| Whether order book update ID would be returned. This ID increments by 1 on every order book update | [optional] [default to false]
 
 ### Return type
 

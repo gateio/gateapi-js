@@ -35,7 +35,7 @@
 
   /**
    * Constructs a new <code>Contract</code>.
-   * Futures contract details
+   * Contract detail.  USD value per contract:  - USDT settled contracts： &#x60;quanto_multiplier x token price&#x60; - BTC settled contracts：&#x60;quanto_multiplier x BTC price x token price&#x60;
    * @alias module:model/Contract
    * @class
    */

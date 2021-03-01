@@ -57,6 +57,9 @@
   exports.constructFromObject = function(data, obj) {
     if (data) {
       obj = obj || new exports();
+      if (data.hasOwnProperty('id')) {
+        obj['id'] = ApiClient.convertToType(data['id'], 'Number');
+      }
       if (data.hasOwnProperty('asks')) {
         obj['asks'] = ApiClient.convertToType(data['asks'], [FuturesOrderBookItem]);
       }
@@ -67,6 +70,11 @@
     return obj;
   }
 
+  /**
+   * Order Book ID. Increase by 1 on every order book change. Set `with_id=true` to include this field in response
+   * @member {Number} id
+   */
+  exports.prototype['id'] = undefined;
   /**
    * Asks order depth
    * @member {Array.<module:model/FuturesOrderBookItem>} asks

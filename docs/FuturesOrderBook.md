@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**id** | **Number** | Order Book ID. Increase by 1 on every order book change. Set &#x60;with_id&#x3D;true&#x60; to include this field in response | [optional] 
 **asks** | [**[FuturesOrderBookItem]**](FuturesOrderBookItem.md) | Asks order depth | 
 **bids** | [**[FuturesOrderBookItem]**](FuturesOrderBookItem.md) | Bids order depth | 
 
