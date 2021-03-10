@@ -28,7 +28,7 @@ List all futures contracts
 var GateApi = require('gate-api');
 
 var apiInstance = new GateApi.FuturesApi();
-var settle = 'btc'; // String | Settle currency
+var settle = "usdt"; // String | Settle currency
 var callback = function(error, data, response) {
   if (error) {
     console.error(error);
@@ -44,7 +44,7 @@ apiInstance.listFuturesContracts(settle, callback);
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **settle** | **String**| Settle currency | [default to &#39;btc&#39;]
+ **settle** | **String**| Settle currency | 
 
 ### Return type
 
@@ -71,8 +71,8 @@ Get a single contract
 var GateApi = require('gate-api');
 
 var apiInstance = new GateApi.FuturesApi();
-var settle = 'btc'; // String | Settle currency
-var contract = "BTC_USD"; // String | Futures contract
+var settle = "usdt"; // String | Settle currency
+var contract = "BTC_USDT"; // String | Futures contract
 var callback = function(error, data, response) {
   if (error) {
     console.error(error);
@@ -88,7 +88,7 @@ apiInstance.getFuturesContract(settle, contract, callback);
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **settle** | **String**| Settle currency | [default to &#39;btc&#39;]
+ **settle** | **String**| Settle currency | 
  **contract** | **String**| Futures contract | 
 
 ### Return type
@@ -118,7 +118,7 @@ Bids will be sorted by price from high to low, while asks sorted reversely
 var GateApi = require('gate-api');
 
 var apiInstance = new GateApi.FuturesApi();
-var settle = 'btc'; // String | Settle currency
+var settle = "usdt"; // String | Settle currency
 var contract = "BTC_USDT"; // String | Futures contract
 var opts = {
   'interval': '0', // String | Order depth. 0 means no aggregation is applied. default to 0
@@ -140,7 +140,7 @@ apiInstance.listFuturesOrderBook(settle, contract, opts, callback);
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **settle** | **String**| Settle currency | [default to &#39;btc&#39;]
+ **settle** | **String**| Settle currency | 
  **contract** | **String**| Futures contract | 
  **interval** | **String**| Order depth. 0 means no aggregation is applied. default to 0 | [optional] [default to &#39;0&#39;]
  **limit** | **Number**| Maximum number of order depth data in asks or bids | [optional] [default to 10]
@@ -171,7 +171,7 @@ Futures trading history
 var GateApi = require('gate-api');
 
 var apiInstance = new GateApi.FuturesApi();
-var settle = 'btc'; // String | Settle currency
+var settle = "usdt"; // String | Settle currency
 var contract = "BTC_USDT"; // String | Futures contract
 var opts = {
   'limit': 100, // Number | Maximum number of records returned in one list
@@ -194,7 +194,7 @@ apiInstance.listFuturesTrades(settle, contract, opts, callback);
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **settle** | **String**| Settle currency | [default to &#39;btc&#39;]
+ **settle** | **String**| Settle currency | 
  **contract** | **String**| Futures contract | 
  **limit** | **Number**| Maximum number of records returned in one list | [optional] [default to 100]
  **lastId** | **String**| Specify list staring point using the id of last record in previous list-query results  This parameter is deprecated. Use &#x60;from&#x60; and &#x60;to&#x60; instead to limit time range | [optional] 
@@ -228,7 +228,7 @@ Return specified contract candlesticks. If prefix &#x60;contract&#x60; with &#x6
 var GateApi = require('gate-api');
 
 var apiInstance = new GateApi.FuturesApi();
-var settle = 'btc'; // String | Settle currency
+var settle = "usdt"; // String | Settle currency
 var contract = "BTC_USDT"; // String | Futures contract
 var opts = {
   'from': 1546905600, // Number | Start time of candlesticks, formatted in Unix timestamp in seconds. Default to`to - 100 * interval` if not specified
@@ -251,7 +251,7 @@ apiInstance.listFuturesCandlesticks(settle, contract, opts, callback);
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **settle** | **String**| Settle currency | [default to &#39;btc&#39;]
+ **settle** | **String**| Settle currency | 
  **contract** | **String**| Futures contract | 
  **from** | **Number**| Start time of candlesticks, formatted in Unix timestamp in seconds. Default to&#x60;to - 100 * interval&#x60; if not specified | [optional] 
  **to** | **Number**| End time of candlesticks, formatted in Unix timestamp in seconds. Default to current time | [optional] 
@@ -283,7 +283,7 @@ List futures tickers
 var GateApi = require('gate-api');
 
 var apiInstance = new GateApi.FuturesApi();
-var settle = 'btc'; // String | Settle currency
+var settle = "usdt"; // String | Settle currency
 var opts = {
   'contract': "BTC_USDT" // String | Futures contract, return related data only if specified
 };
@@ -302,7 +302,7 @@ apiInstance.listFuturesTickers(settle, opts, callback);
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **settle** | **String**| Settle currency | [default to &#39;btc&#39;]
+ **settle** | **String**| Settle currency | 
  **contract** | **String**| Futures contract, return related data only if specified | [optional] 
 
 ### Return type
@@ -330,7 +330,7 @@ Funding rate history
 var GateApi = require('gate-api');
 
 var apiInstance = new GateApi.FuturesApi();
-var settle = 'btc'; // String | Settle currency
+var settle = "usdt"; // String | Settle currency
 var contract = "BTC_USDT"; // String | Futures contract
 var opts = {
   'limit': 100 // Number | Maximum number of records returned in one list
@@ -350,7 +350,7 @@ apiInstance.listFuturesFundingRateHistory(settle, contract, opts, callback);
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **settle** | **String**| Settle currency | [default to &#39;btc&#39;]
+ **settle** | **String**| Settle currency | 
  **contract** | **String**| Futures contract | 
  **limit** | **Number**| Maximum number of records returned in one list | [optional] [default to 100]
 
@@ -379,7 +379,7 @@ Futures insurance balance history
 var GateApi = require('gate-api');
 
 var apiInstance = new GateApi.FuturesApi();
-var settle = 'btc'; // String | Settle currency
+var settle = "usdt"; // String | Settle currency
 var opts = {
   'limit': 100 // Number | Maximum number of records returned in one list
 };
@@ -398,7 +398,7 @@ apiInstance.listFuturesInsuranceLedger(settle, opts, callback);
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **settle** | **String**| Settle currency | [default to &#39;btc&#39;]
+ **settle** | **String**| Settle currency | 
  **limit** | **Number**| Maximum number of records returned in one list | [optional] [default to 100]
 
 ### Return type
@@ -426,7 +426,7 @@ Futures stats
 var GateApi = require('gate-api');
 
 var apiInstance = new GateApi.FuturesApi();
-var settle = 'btc'; // String | Settle currency
+var settle = "usdt"; // String | Settle currency
 var contract = "BTC_USDT"; // String | Futures contract
 var opts = {
   'from': 1604561000, // Number | Start timestamp
@@ -448,7 +448,7 @@ apiInstance.listContractStats(settle, contract, opts, callback);
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **settle** | **String**| Settle currency | [default to &#39;btc&#39;]
+ **settle** | **String**| Settle currency | 
  **contract** | **String**| Futures contract | 
  **from** | **Number**| Start timestamp | [optional] 
  **interval** | **String**|  | [optional] [default to &#39;5m&#39;]
@@ -481,7 +481,7 @@ Interval between &#x60;from&#x60; and &#x60;to&#x60; cannot exceeds 3600. Some p
 var GateApi = require('gate-api');
 
 var apiInstance = new GateApi.FuturesApi();
-var settle = 'btc'; // String | Settle currency
+var settle = "usdt"; // String | Settle currency
 var opts = {
   'contract': "BTC_USDT", // String | Futures contract, return related data only if specified
   'from': 1547706332, // Number | Start timestamp
@@ -503,7 +503,7 @@ apiInstance.listLiquidatedOrders(settle, opts, callback);
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **settle** | **String**| Settle currency | [default to &#39;btc&#39;]
+ **settle** | **String**| Settle currency | 
  **contract** | **String**| Futures contract, return related data only if specified | [optional] 
  **from** | **Number**| Start timestamp | [optional] 
  **to** | **Number**| End timestamp | [optional] 
