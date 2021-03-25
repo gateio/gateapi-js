@@ -81,6 +81,12 @@
       if (data.hasOwnProperty('trade_status')) {
         obj['trade_status'] = ApiClient.convertToType(data['trade_status'], 'String');
       }
+      if (data.hasOwnProperty('sell_start')) {
+        obj['sell_start'] = ApiClient.convertToType(data['sell_start'], 'Number');
+      }
+      if (data.hasOwnProperty('buy_start')) {
+        obj['buy_start'] = ApiClient.convertToType(data['buy_start'], 'Number');
+      }
     }
     return obj;
   }
@@ -130,6 +136,16 @@
    * @member {module:model/CurrencyPair.TradeStatusEnum} trade_status
    */
   exports.prototype['trade_status'] = undefined;
+  /**
+   * 允许卖出时间，秒级 Unix 时间戳
+   * @member {Number} sell_start
+   */
+  exports.prototype['sell_start'] = undefined;
+  /**
+   * 允许买入时间，秒级 Unix 时间戳
+   * @member {Number} buy_start
+   */
+  exports.prototype['buy_start'] = undefined;
 
 
   /**
