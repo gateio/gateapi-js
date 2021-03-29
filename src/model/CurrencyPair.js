@@ -137,12 +137,12 @@
    */
   exports.prototype['trade_status'] = undefined;
   /**
-   * 允许卖出时间，秒级 Unix 时间戳
+   * Sell start unix timestamp in seconds
    * @member {Number} sell_start
    */
   exports.prototype['sell_start'] = undefined;
   /**
-   * 允许买入时间，秒级 Unix 时间戳
+   * Buy start unix timestamp in seconds
    * @member {Number} buy_start
    */
   exports.prototype['buy_start'] = undefined;

@@ -13,8 +13,8 @@ Name | Type | Description | Notes
 **amount_precision** | **Number** | Amount scale | [optional] 
 **precision** | **Number** | Price scale | [optional] 
 **trade_status** | **String** | How currency pair can be traded  - untradable: cannot be bought or sold - buyable: can be bought - sellable: can be sold - tradable: can be bought or sold | [optional] 
-**sell_start** | **Number** | 允许卖出时间，秒级 Unix 时间戳 | [optional] 
-**buy_start** | **Number** | 允许买入时间，秒级 Unix 时间戳 | [optional] 
+**sell_start** | **Number** | Sell start unix timestamp in seconds | [optional] 
+**buy_start** | **Number** | Buy start unix timestamp in seconds | [optional] 
 
 ## Enum: TradeStatusEnum
 
