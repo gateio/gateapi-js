@@ -13,18 +13,18 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient', 'model/FundingBookItem', 'model/MarginCurrencyPair'], factory);
+    define(['ApiClient', 'model/CrossMarginCurrency', 'model/FundingBookItem', 'model/MarginCurrencyPair'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('../model/FundingBookItem'), require('../model/MarginCurrencyPair'));
+    module.exports = factory(require('../ApiClient'), require('../model/CrossMarginCurrency'), require('../model/FundingBookItem'), require('../model/MarginCurrencyPair'));
   } else {
     // Browser globals (root is window)
     if (!root.GateApi) {
       root.GateApi = {};
     }
-    root.GateApi.MarginApi = factory(root.GateApi.ApiClient, root.GateApi.FundingBookItem, root.GateApi.MarginCurrencyPair);
+    root.GateApi.MarginApi = factory(root.GateApi.ApiClient, root.GateApi.CrossMarginCurrency, root.GateApi.FundingBookItem, root.GateApi.MarginCurrencyPair);
   }
-}(this, function(ApiClient, FundingBookItem, MarginCurrencyPair) {
+}(this, function(ApiClient, CrossMarginCurrency, FundingBookItem, MarginCurrencyPair) {
   'use strict';
 
   /**
@@ -164,6 +164,88 @@
       var returnType = [FundingBookItem];
       return this.apiClient.callApi(
         '/margin/funding_book', 'GET',
+        pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null, callback
+      );
+    }
+
+    /**
+     * Callback function to receive the result of the listCrossMarginCurrencies operation.
+     * @callback module:api/MarginApi~listCrossMarginCurrenciesCallback
+     * @param {String} error Error message, if any.
+     * @param {Array.<module:model/CrossMarginCurrency>} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Currencies supported by cross margin.
+     * @param {module:api/MarginApi~listCrossMarginCurrenciesCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link Array.<module:model/CrossMarginCurrency>}
+     */
+    this.listCrossMarginCurrencies = function(callback) {
+      var postBody = null;
+
+      var pathParams = {
+      };
+      var queryParams = {
+      };
+      var collectionQueryParams = {
+      };
+      var headerParams = {
+      };
+      var formParams = {
+      };
+
+      var authNames = [];
+      var contentTypes = [];
+      var accepts = ['application/json'];
+      var returnType = [CrossMarginCurrency];
+      return this.apiClient.callApi(
+        '/margin/cross/currencies', 'GET',
+        pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null, callback
+      );
+    }
+
+    /**
+     * Callback function to receive the result of the getCrossMarginCurrency operation.
+     * @callback module:api/MarginApi~getCrossMarginCurrencyCallback
+     * @param {String} error Error message, if any.
+     * @param {module:model/CrossMarginCurrency} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Retrieve detail of one single currency supported by cross margin
+     * @param {String} currency Currency name
+     * @param {module:api/MarginApi~getCrossMarginCurrencyCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:model/CrossMarginCurrency}
+     */
+    this.getCrossMarginCurrency = function(currency, callback) {
+      var postBody = null;
+      // verify the required parameter 'currency' is set
+      if (currency === undefined || currency === null) {
+        throw new Error("Missing the required parameter 'currency' when calling getCrossMarginCurrency");
+      }
+
+      var pathParams = {
+        'currency': currency
+      };
+      var queryParams = {
+      };
+      var collectionQueryParams = {
+      };
+      var headerParams = {
+      };
+      var formParams = {
+      };
+
+      var authNames = [];
+      var contentTypes = [];
+      var accepts = ['application/json'];
+      var returnType = CrossMarginCurrency;
+      return this.apiClient.callApi(
+        '/margin/cross/currencies/{currency}', 'GET',
         pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, null, callback
       );

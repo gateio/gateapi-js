@@ -193,7 +193,7 @@
    */
   exports.prototype['type'] = undefined;
   /**
-   * Multiplier used in converting from invoicing to settlement currency in quanto futures
+   * Multiplier used in converting from invoicing to settlement currency
    * @member {String} quanto_multiplier
    */
   exports.prototype['quanto_multiplier'] = undefined;
