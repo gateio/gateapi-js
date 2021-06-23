@@ -60,6 +60,12 @@
       if (data.hasOwnProperty('id')) {
         obj['id'] = ApiClient.convertToType(data['id'], 'Number');
       }
+      if (data.hasOwnProperty('current')) {
+        obj['current'] = ApiClient.convertToType(data['current'], 'Number');
+      }
+      if (data.hasOwnProperty('update')) {
+        obj['update'] = ApiClient.convertToType(data['update'], 'Number');
+      }
       if (data.hasOwnProperty('asks')) {
         obj['asks'] = ApiClient.convertToType(data['asks'], [['String']]);
       }
@@ -75,6 +81,16 @@
    * @member {Number} id
    */
   exports.prototype['id'] = undefined;
+  /**
+   * Response data generation timestamp in milliseconds
+   * @member {Number} current
+   */
+  exports.prototype['current'] = undefined;
+  /**
+   * Order book changed timestamp in milliseconds
+   * @member {Number} update
+   */
+  exports.prototype['update'] = undefined;
   /**
    * Asks order depth
    * @member {Array.<Array.<String>>} asks
