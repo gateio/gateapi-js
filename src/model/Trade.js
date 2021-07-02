@@ -62,6 +62,9 @@
       if (data.hasOwnProperty('create_time_ms')) {
         obj['create_time_ms'] = ApiClient.convertToType(data['create_time_ms'], 'String');
       }
+      if (data.hasOwnProperty('currency_pair')) {
+        obj['currency_pair'] = ApiClient.convertToType(data['currency_pair'], 'String');
+      }
       if (data.hasOwnProperty('side')) {
         obj['side'] = ApiClient.convertToType(data['side'], 'String');
       }
@@ -108,6 +111,11 @@
    * @member {String} create_time_ms
    */
   exports.prototype['create_time_ms'] = undefined;
+  /**
+   * Currency pair
+   * @member {String} currency_pair
+   */
+  exports.prototype['currency_pair'] = undefined;
   /**
    * Order side
    * @member {module:model/Trade.SideEnum} side
