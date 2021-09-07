@@ -152,7 +152,7 @@
    */
   exports.prototype['fee_currency'] = undefined;
   /**
-   * Point used to deduct fee
+   * Points used to deduct fee
    * @member {String} point_fee
    */
   exports.prototype['point_fee'] = undefined;

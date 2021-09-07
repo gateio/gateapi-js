@@ -135,7 +135,7 @@
 
     /**
      * Order book of lending loans
-     * @param {String} currency Retrieved specified currency related data
+     * @param {String} currency Retrieve data of the specified currency
      * @param {module:api/MarginApi~listFundingBookCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link Array.<module:model/FundingBookItem>}
      */

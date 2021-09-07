@@ -77,7 +77,7 @@
    */
   exports.prototype['amount'] = undefined;
   /**
-   * How long the loan should be repaid
+   * The number of days till the loan repayment's dateline
    * @member {Number} days
    */
   exports.prototype['days'] = undefined;

@@ -52,7 +52,7 @@
      */
 
     /**
-     * List all currencies' detail
+     * List all currencies' details
      * @param {module:api/SpotApi~listCurrenciesCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link Array.<module:model/Currency>}
      */
@@ -90,7 +90,7 @@
      */
 
     /**
-     * Get detail of one particular currency
+     * Get details of a specific currency
      * @param {String} currency Currency name
      * @param {module:api/SpotApi~getCurrencyCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/Currency}
@@ -172,7 +172,7 @@
      */
 
     /**
-     * Get detail of one single order
+     * Get details of a specifc order
      * @param {String} currencyPair Currency pair
      * @param {module:api/SpotApi~getCurrencyPairCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/CurrencyPair}
@@ -260,7 +260,7 @@
 
     /**
      * Retrieve order book
-     * Order book will be sorted by price from high to low on bids; reversed on asks
+     * Order book will be sorted by price from high to low on bids; low to high on asks
      * @param {String} currencyPair Currency pair
      * @param {Object} opts Optional parameters
      * @param {String} opts.interval Order depth. 0 means no aggregation is applied. default to 0 (default to '0')
@@ -315,9 +315,9 @@
      * Retrieve market trades
      * @param {String} currencyPair Currency pair
      * @param {Object} opts Optional parameters
-     * @param {Number} opts.limit Maximum number of records returned in one list (default to 100)
+     * @param {Number} opts.limit Maximum number of records to be returned in a single list (default to 100)
      * @param {String} opts.lastId Specify list staring point using the `id` of last record in previous list-query results
-     * @param {Boolean} opts.reverse Whether to retrieve records whose IDs are smaller than `last_id`'s. Default to larger ones.  When `last_id` is specified. Set `reverse` to `true` to trace back trading history; `false` to retrieve latest tradings.  No effect if `last_id` is not specified. (default to false)
+     * @param {Boolean} opts.reverse Whether the id of records to be retrieved should be smaller than the last_id specified- true: Retrieve records where id is smaller than the specified last_id- false: Retrieve records where id is larger than the specified last_idDefault to false.  When `last_id` is specified. Set `reverse` to `true` to trace back trading history; `false` to retrieve latest tradings.  No effect if `last_id` is not specified. (default to false)
      * @param {module:api/SpotApi~listTradesCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link Array.<module:model/Trade>}
      */
@@ -365,10 +365,10 @@
 
     /**
      * Market candlesticks
-     * Maximum of 1000 points are returned in one query. Be sure not to exceed the limit when specifying `from`, `to` and `interval`
+     * Maximum of 1000 points can be returned in a query. Be sure not to exceed the limit when specifying from, to and interval
      * @param {String} currencyPair Currency pair
      * @param {Object} opts Optional parameters
-     * @param {Number} opts.limit Maximum recent data points returned. `limit` is conflicted with `from` and `to`. If either `from` or `to` is specified, request will be rejected. (default to 100)
+     * @param {Number} opts.limit Maximum recent data points to return. `limit` is conflicted with `from` and `to`. If either `from` or `to` is specified, request will be rejected. (default to 100)
      * @param {Number} opts.from Start time of candlesticks, formatted in Unix timestamp in seconds. Default to`to - 100 * interval` if not specified
      * @param {Number} opts.to End time of candlesticks, formatted in Unix timestamp in seconds. Default to current time
      * @param {module:model/String} opts.interval Interval time between data points (default to '30m')

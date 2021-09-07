@@ -4,10 +4,10 @@ All URIs are relative to *https://api.gateio.ws/api/v4*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**listCurrencies**](SpotApi.md#listCurrencies) | **GET** /spot/currencies | List all currencies&#39; detail
-[**getCurrency**](SpotApi.md#getCurrency) | **GET** /spot/currencies/{currency} | Get detail of one particular currency
+[**listCurrencies**](SpotApi.md#listCurrencies) | **GET** /spot/currencies | List all currencies&#39; details
+[**getCurrency**](SpotApi.md#getCurrency) | **GET** /spot/currencies/{currency} | Get details of a specific currency
 [**listCurrencyPairs**](SpotApi.md#listCurrencyPairs) | **GET** /spot/currency_pairs | List all currency pairs supported
-[**getCurrencyPair**](SpotApi.md#getCurrencyPair) | **GET** /spot/currency_pairs/{currency_pair} | Get detail of one single order
+[**getCurrencyPair**](SpotApi.md#getCurrencyPair) | **GET** /spot/currency_pairs/{currency_pair} | Get details of a specifc order
 [**listTickers**](SpotApi.md#listTickers) | **GET** /spot/tickers | Retrieve ticker information
 [**listOrderBook**](SpotApi.md#listOrderBook) | **GET** /spot/order_book | Retrieve order book
 [**listTrades**](SpotApi.md#listTrades) | **GET** /spot/trades | Retrieve market trades
@@ -18,7 +18,7 @@ Method | HTTP request | Description
 
 > [Currency] listCurrencies()
 
-List all currencies&#39; detail
+List all currencies&#39; details
 
 ### Example
 
@@ -57,7 +57,7 @@ No authorization required
 
 > Currency getCurrency(currency)
 
-Get detail of one particular currency
+Get details of a specific currency
 
 ### Example
 
@@ -139,7 +139,7 @@ No authorization required
 
 > CurrencyPair getCurrencyPair(currencyPair)
 
-Get detail of one single order
+Get details of a specifc order
 
 ### Example
 
@@ -231,7 +231,7 @@ No authorization required
 
 Retrieve order book
 
-Order book will be sorted by price from high to low on bids; reversed on asks
+Order book will be sorted by price from high to low on bids; low to high on asks
 
 ### Example
 
@@ -292,9 +292,9 @@ var GateApi = require('gate-api');
 var apiInstance = new GateApi.SpotApi();
 var currencyPair = "BTC_USDT"; // String | Currency pair
 var opts = {
-  'limit': 100, // Number | Maximum number of records returned in one list
+  'limit': 100, // Number | Maximum number of records to be returned in a single list
   'lastId': "12345", // String | Specify list staring point using the `id` of last record in previous list-query results
-  'reverse': false // Boolean | Whether to retrieve records whose IDs are smaller than `last_id`'s. Default to larger ones.  When `last_id` is specified. Set `reverse` to `true` to trace back trading history; `false` to retrieve latest tradings.  No effect if `last_id` is not specified.
+  'reverse': false // Boolean | Whether the id of records to be retrieved should be smaller than the last_id specified- true: Retrieve records where id is smaller than the specified last_id- false: Retrieve records where id is larger than the specified last_idDefault to false.  When `last_id` is specified. Set `reverse` to `true` to trace back trading history; `false` to retrieve latest tradings.  No effect if `last_id` is not specified.
 };
 var callback = function(error, data, response) {
   if (error) {
@@ -312,9 +312,9 @@ apiInstance.listTrades(currencyPair, opts, callback);
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **currencyPair** | **String**| Currency pair | 
- **limit** | **Number**| Maximum number of records returned in one list | [optional] [default to 100]
+ **limit** | **Number**| Maximum number of records to be returned in a single list | [optional] [default to 100]
  **lastId** | **String**| Specify list staring point using the &#x60;id&#x60; of last record in previous list-query results | [optional] 
- **reverse** | **Boolean**| Whether to retrieve records whose IDs are smaller than &#x60;last_id&#x60;&#39;s. Default to larger ones.  When &#x60;last_id&#x60; is specified. Set &#x60;reverse&#x60; to &#x60;true&#x60; to trace back trading history; &#x60;false&#x60; to retrieve latest tradings.  No effect if &#x60;last_id&#x60; is not specified. | [optional] [default to false]
+ **reverse** | **Boolean**| Whether the id of records to be retrieved should be smaller than the last_id specified- true: Retrieve records where id is smaller than the specified last_id- false: Retrieve records where id is larger than the specified last_idDefault to false.  When &#x60;last_id&#x60; is specified. Set &#x60;reverse&#x60; to &#x60;true&#x60; to trace back trading history; &#x60;false&#x60; to retrieve latest tradings.  No effect if &#x60;last_id&#x60; is not specified. | [optional] [default to false]
 
 ### Return type
 
@@ -335,7 +335,7 @@ No authorization required
 
 Market candlesticks
 
-Maximum of 1000 points are returned in one query. Be sure not to exceed the limit when specifying &#x60;from&#x60;, &#x60;to&#x60; and &#x60;interval&#x60;
+Maximum of 1000 points can be returned in a query. Be sure not to exceed the limit when specifying from, to and interval
 
 ### Example
 
@@ -345,7 +345,7 @@ var GateApi = require('gate-api');
 var apiInstance = new GateApi.SpotApi();
 var currencyPair = "BTC_USDT"; // String | Currency pair
 var opts = {
-  'limit': 100, // Number | Maximum recent data points returned. `limit` is conflicted with `from` and `to`. If either `from` or `to` is specified, request will be rejected.
+  'limit': 100, // Number | Maximum recent data points to return. `limit` is conflicted with `from` and `to`. If either `from` or `to` is specified, request will be rejected.
   'from': 1546905600, // Number | Start time of candlesticks, formatted in Unix timestamp in seconds. Default to`to - 100 * interval` if not specified
   'to': 1546935600, // Number | End time of candlesticks, formatted in Unix timestamp in seconds. Default to current time
   'interval': '30m' // String | Interval time between data points
@@ -366,7 +366,7 @@ apiInstance.listCandlesticks(currencyPair, opts, callback);
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **currencyPair** | **String**| Currency pair | 
- **limit** | **Number**| Maximum recent data points returned. &#x60;limit&#x60; is conflicted with &#x60;from&#x60; and &#x60;to&#x60;. If either &#x60;from&#x60; or &#x60;to&#x60; is specified, request will be rejected. | [optional] [default to 100]
+ **limit** | **Number**| Maximum recent data points to return. &#x60;limit&#x60; is conflicted with &#x60;from&#x60; and &#x60;to&#x60;. If either &#x60;from&#x60; or &#x60;to&#x60; is specified, request will be rejected. | [optional] [default to 100]
  **from** | **Number**| Start time of candlesticks, formatted in Unix timestamp in seconds. Default to&#x60;to - 100 * interval&#x60; if not specified | [optional] 
  **to** | **Number**| End time of candlesticks, formatted in Unix timestamp in seconds. Default to current time | [optional] 
  **interval** | **String**| Interval time between data points | [optional] [default to &#39;30m&#39;]

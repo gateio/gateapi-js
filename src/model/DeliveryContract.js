@@ -338,7 +338,7 @@
    */
   exports.prototype['trade_id'] = undefined;
   /**
-   * Historical accumulation trade size
+   * Historical accumulated trade size
    * @member {Number} trade_size
    */
   exports.prototype['trade_size'] = undefined;
@@ -348,7 +348,7 @@
    */
   exports.prototype['position_size'] = undefined;
   /**
-   * Configuration's last changed time
+   * Last changed time of configuration
    * @member {Number} config_change_time
    */
   exports.prototype['config_change_time'] = undefined;

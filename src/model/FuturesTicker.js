@@ -189,7 +189,7 @@
    */
   exports.prototype['index_price'] = undefined;
   /**
-   * Exchange rate of base currency and settlement currency in Quanto contract. Not existed in contract of other types
+   * Exchange rate of base currency and settlement currency in Quanto contract. Does not exists in contracts of other types
    * @member {String} quanto_base_rate
    */
   exports.prototype['quanto_base_rate'] = undefined;

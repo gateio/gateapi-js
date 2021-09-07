@@ -105,7 +105,7 @@ Order book of lending loans
 var GateApi = require('gate-api');
 
 var apiInstance = new GateApi.MarginApi();
-var currency = "BTC"; // String | Retrieved specified currency related data
+var currency = "BTC"; // String | Retrieve data of the specified currency
 var callback = function(error, data, response) {
   if (error) {
     console.error(error);
@@ -121,7 +121,7 @@ apiInstance.listFundingBook(currency, callback);
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **currency** | **String**| Retrieved specified currency related data | 
+ **currency** | **String**| Retrieve data of the specified currency | 
 
 ### Return type
 

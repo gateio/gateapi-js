@@ -123,7 +123,7 @@ var contract = "BTC_USDT"; // String | Futures contract
 var opts = {
   'interval': '0', // String | Order depth. 0 means no aggregation is applied. default to 0
   'limit': 10, // Number | Maximum number of order depth data in asks or bids
-  'withId': false // Boolean | Whether order book update ID would be returned. This ID increments by 1 on every order book update
+  'withId': false // Boolean | Whether the order book update ID will be returned. This ID increases by 1 on every order book update
 };
 var callback = function(error, data, response) {
   if (error) {
@@ -144,7 +144,7 @@ Name | Type | Description  | Notes
  **contract** | **String**| Futures contract | 
  **interval** | **String**| Order depth. 0 means no aggregation is applied. default to 0 | [optional] [default to &#39;0&#39;]
  **limit** | **Number**| Maximum number of order depth data in asks or bids | [optional] [default to 10]
- **withId** | **Boolean**| Whether order book update ID would be returned. This ID increments by 1 on every order book update | [optional] [default to false]
+ **withId** | **Boolean**| Whether the order book update ID will be returned. This ID increases by 1 on every order book update | [optional] [default to false]
 
 ### Return type
 
@@ -174,8 +174,8 @@ var apiInstance = new GateApi.FuturesApi();
 var settle = "usdt"; // String | Settle currency
 var contract = "BTC_USDT"; // String | Futures contract
 var opts = {
-  'limit': 100, // Number | Maximum number of records returned in one list
-  'lastId': "12345", // String | Specify list staring point using the id of last record in previous list-query results  This parameter is deprecated. Use `from` and `to` instead to limit time range
+  'limit': 100, // Number | Maximum number of records to be returned in a single list
+  'lastId': "12345", // String | Specify the starting point for this list based on a previously retrieved id  This parameter is deprecated. Use `from` and `to` instead to limit time range
   'from': 1546905600, // Number | Specify starting time in Unix seconds. If not specified, `to` and `limit` will be used to limit response items. If items between `from` and `to` are more than `limit`, only `limit` number will be returned. 
   'to': 1546935600 // Number | Specify end time in Unix seconds, default to current time
 };
@@ -196,8 +196,8 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **settle** | **String**| Settle currency | 
  **contract** | **String**| Futures contract | 
- **limit** | **Number**| Maximum number of records returned in one list | [optional] [default to 100]
- **lastId** | **String**| Specify list staring point using the id of last record in previous list-query results  This parameter is deprecated. Use &#x60;from&#x60; and &#x60;to&#x60; instead to limit time range | [optional] 
+ **limit** | **Number**| Maximum number of records to be returned in a single list | [optional] [default to 100]
+ **lastId** | **String**| Specify the starting point for this list based on a previously retrieved id  This parameter is deprecated. Use &#x60;from&#x60; and &#x60;to&#x60; instead to limit time range | [optional] 
  **from** | **Number**| Specify starting time in Unix seconds. If not specified, &#x60;to&#x60; and &#x60;limit&#x60; will be used to limit response items. If items between &#x60;from&#x60; and &#x60;to&#x60; are more than &#x60;limit&#x60;, only &#x60;limit&#x60; number will be returned.  | [optional] 
  **to** | **Number**| Specify end time in Unix seconds, default to current time | [optional] 
 
@@ -233,7 +233,7 @@ var contract = "BTC_USDT"; // String | Futures contract
 var opts = {
   'from': 1546905600, // Number | Start time of candlesticks, formatted in Unix timestamp in seconds. Default to`to - 100 * interval` if not specified
   'to': 1546935600, // Number | End time of candlesticks, formatted in Unix timestamp in seconds. Default to current time
-  'limit': 100, // Number | Maximum recent data points returned. `limit` is conflicted with `from` and `to`. If either `from` or `to` is specified, request will be rejected.
+  'limit': 100, // Number | Maximum recent data points to return. `limit` is conflicted with `from` and `to`. If either `from` or `to` is specified, request will be rejected.
   'interval': '5m' // String | Interval time between data points
 };
 var callback = function(error, data, response) {
@@ -255,7 +255,7 @@ Name | Type | Description  | Notes
  **contract** | **String**| Futures contract | 
  **from** | **Number**| Start time of candlesticks, formatted in Unix timestamp in seconds. Default to&#x60;to - 100 * interval&#x60; if not specified | [optional] 
  **to** | **Number**| End time of candlesticks, formatted in Unix timestamp in seconds. Default to current time | [optional] 
- **limit** | **Number**| Maximum recent data points returned. &#x60;limit&#x60; is conflicted with &#x60;from&#x60; and &#x60;to&#x60;. If either &#x60;from&#x60; or &#x60;to&#x60; is specified, request will be rejected. | [optional] [default to 100]
+ **limit** | **Number**| Maximum recent data points to return. &#x60;limit&#x60; is conflicted with &#x60;from&#x60; and &#x60;to&#x60;. If either &#x60;from&#x60; or &#x60;to&#x60; is specified, request will be rejected. | [optional] [default to 100]
  **interval** | **String**| Interval time between data points | [optional] [default to &#39;5m&#39;]
 
 ### Return type
@@ -333,7 +333,7 @@ var apiInstance = new GateApi.FuturesApi();
 var settle = "usdt"; // String | Settle currency
 var contract = "BTC_USDT"; // String | Futures contract
 var opts = {
-  'limit': 100 // Number | Maximum number of records returned in one list
+  'limit': 100 // Number | Maximum number of records to be returned in a single list
 };
 var callback = function(error, data, response) {
   if (error) {
@@ -352,7 +352,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **settle** | **String**| Settle currency | 
  **contract** | **String**| Futures contract | 
- **limit** | **Number**| Maximum number of records returned in one list | [optional] [default to 100]
+ **limit** | **Number**| Maximum number of records to be returned in a single list | [optional] [default to 100]
 
 ### Return type
 
@@ -381,7 +381,7 @@ var GateApi = require('gate-api');
 var apiInstance = new GateApi.FuturesApi();
 var settle = "usdt"; // String | Settle currency
 var opts = {
-  'limit': 100 // Number | Maximum number of records returned in one list
+  'limit': 100 // Number | Maximum number of records to be returned in a single list
 };
 var callback = function(error, data, response) {
   if (error) {
@@ -399,7 +399,7 @@ apiInstance.listFuturesInsuranceLedger(settle, opts, callback);
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **settle** | **String**| Settle currency | 
- **limit** | **Number**| Maximum number of records returned in one list | [optional] [default to 100]
+ **limit** | **Number**| Maximum number of records to be returned in a single list | [optional] [default to 100]
 
 ### Return type
 
@@ -486,7 +486,7 @@ var opts = {
   'contract': "BTC_USDT", // String | Futures contract, return related data only if specified
   'from': 1547706332, // Number | Start timestamp
   'to': 1547706332, // Number | End timestamp
-  'limit': 100 // Number | Maximum number of records returned in one list
+  'limit': 100 // Number | Maximum number of records to be returned in a single list
 };
 var callback = function(error, data, response) {
   if (error) {
@@ -507,7 +507,7 @@ Name | Type | Description  | Notes
  **contract** | **String**| Futures contract, return related data only if specified | [optional] 
  **from** | **Number**| Start timestamp | [optional] 
  **to** | **Number**| End timestamp | [optional] 
- **limit** | **Number**| Maximum number of records returned in one list | [optional] [default to 100]
+ **limit** | **Number**| Maximum number of records to be returned in a single list | [optional] [default to 100]
 
 ### Return type
 

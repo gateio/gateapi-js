@@ -153,7 +153,7 @@
      * @param {Object} opts Optional parameters
      * @param {module:model/String} opts.interval Order depth. 0 means no aggregation is applied. default to 0 (default to '0')
      * @param {Number} opts.limit Maximum number of order depth data in asks or bids (default to 10)
-     * @param {Boolean} opts.withId Whether order book update ID would be returned. This ID increments by 1 on every order book update (default to false)
+     * @param {Boolean} opts.withId Whether the order book update ID will be returned. This ID increases by 1 on every order book update (default to false)
      * @param {module:api/DeliveryApi~listDeliveryOrderBookCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:model/FuturesOrderBook}
      */
@@ -209,8 +209,8 @@
      * @param {module:model/String} settle Settle currency
      * @param {String} contract Futures contract
      * @param {Object} opts Optional parameters
-     * @param {Number} opts.limit Maximum number of records returned in one list (default to 100)
-     * @param {String} opts.lastId Specify list staring point using the id of last record in previous list-query results  This parameter is deprecated. Use `from` and `to` instead to limit time range
+     * @param {Number} opts.limit Maximum number of records to be returned in a single list (default to 100)
+     * @param {String} opts.lastId Specify the starting point for this list based on a previously retrieved id  This parameter is deprecated. Use `from` and `to` instead to limit time range
      * @param {Number} opts.from Specify starting time in Unix seconds. If not specified, `to` and `limit` will be used to limit response items. If items between `from` and `to` are more than `limit`, only `limit` number will be returned. 
      * @param {Number} opts.to Specify end time in Unix seconds, default to current time
      * @param {module:api/DeliveryApi~listDeliveryTradesCallback} callback The callback function, accepting three arguments: error, data, response
@@ -272,7 +272,7 @@
      * @param {Object} opts Optional parameters
      * @param {Number} opts.from Start time of candlesticks, formatted in Unix timestamp in seconds. Default to`to - 100 * interval` if not specified
      * @param {Number} opts.to End time of candlesticks, formatted in Unix timestamp in seconds. Default to current time
-     * @param {Number} opts.limit Maximum recent data points returned. `limit` is conflicted with `from` and `to`. If either `from` or `to` is specified, request will be rejected. (default to 100)
+     * @param {Number} opts.limit Maximum recent data points to return. `limit` is conflicted with `from` and `to`. If either `from` or `to` is specified, request will be rejected. (default to 100)
      * @param {module:model/String} opts.interval Interval time between data points (default to '5m')
      * @param {module:api/DeliveryApi~listDeliveryCandlesticksCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link Array.<module:model/FuturesCandlestick>}
@@ -377,7 +377,7 @@
      * Futures insurance balance history
      * @param {module:model/String} settle Settle currency
      * @param {Object} opts Optional parameters
-     * @param {Number} opts.limit Maximum number of records returned in one list (default to 100)
+     * @param {Number} opts.limit Maximum number of records to be returned in a single list (default to 100)
      * @param {module:api/DeliveryApi~listDeliveryInsuranceLedgerCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link Array.<module:model/InsuranceRecord>}
      */

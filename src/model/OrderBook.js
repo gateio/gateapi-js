@@ -82,12 +82,12 @@
    */
   exports.prototype['id'] = undefined;
   /**
-   * Response data generation timestamp in milliseconds
+   * The timestamp of the response data being generated (in milliseconds)
    * @member {Number} current
    */
   exports.prototype['current'] = undefined;
   /**
-   * Order book changed timestamp in milliseconds
+   * The timestamp of when the orderbook last changed (in milliseconds)
    * @member {Number} update
    */
   exports.prototype['update'] = undefined;
