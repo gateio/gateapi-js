@@ -284,6 +284,8 @@ No authorization required
 
 Retrieve market trades
 
+You can use &#x60;from&#x60; and &#x60;to&#x60; to query by time range, or use &#x60;last_id&#x60; by scrolling page. The default behavior is by time range.  Scrolling query using &#x60;last_id&#x60; is not recommended any more. If &#x60;last_id&#x60; is specified, time range query parameters will be ignored.
+
 ### Example
 
 ```javascript
@@ -294,7 +296,10 @@ var currencyPair = "BTC_USDT"; // String | Currency pair
 var opts = {
   'limit': 100, // Number | Maximum number of records to be returned in a single list
   'lastId': "12345", // String | Specify list staring point using the `id` of last record in previous list-query results
-  'reverse': false // Boolean | Whether the id of records to be retrieved should be smaller than the last_id specified- true: Retrieve records where id is smaller than the specified last_id- false: Retrieve records where id is larger than the specified last_idDefault to false.  When `last_id` is specified. Set `reverse` to `true` to trace back trading history; `false` to retrieve latest tradings.  No effect if `last_id` is not specified.
+  'reverse': false, // Boolean | Whether the id of records to be retrieved should be smaller than the last_id specified- true: Retrieve records where id is smaller than the specified last_id- false: Retrieve records where id is larger than the specified last_idDefault to false.  When `last_id` is specified. Set `reverse` to `true` to trace back trading history; `false` to retrieve latest tradings.  No effect if `last_id` is not specified.
+  'from': 1627706330, // Number | Start timestamp of the query
+  'to': 1635329650, // Number | Time range ending, default to current time
+  'page': 1 // Number | Page number
 };
 var callback = function(error, data, response) {
   if (error) {
@@ -315,6 +320,9 @@ Name | Type | Description  | Notes
  **limit** | **Number**| Maximum number of records to be returned in a single list | [optional] [default to 100]
  **lastId** | **String**| Specify list staring point using the &#x60;id&#x60; of last record in previous list-query results | [optional] 
  **reverse** | **Boolean**| Whether the id of records to be retrieved should be smaller than the last_id specified- true: Retrieve records where id is smaller than the specified last_id- false: Retrieve records where id is larger than the specified last_idDefault to false.  When &#x60;last_id&#x60; is specified. Set &#x60;reverse&#x60; to &#x60;true&#x60; to trace back trading history; &#x60;false&#x60; to retrieve latest tradings.  No effect if &#x60;last_id&#x60; is not specified. | [optional] [default to false]
+ **from** | **Number**| Start timestamp of the query | [optional] 
+ **to** | **Number**| Time range ending, default to current time | [optional] 
+ **page** | **Number**| Page number | [optional] [default to 1]
 
 ### Return type
 

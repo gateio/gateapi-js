@@ -313,11 +313,15 @@
 
     /**
      * Retrieve market trades
+     * You can use `from` and `to` to query by time range, or use `last_id` by scrolling page. The default behavior is by time range.  Scrolling query using `last_id` is not recommended any more. If `last_id` is specified, time range query parameters will be ignored.
      * @param {String} currencyPair Currency pair
      * @param {Object} opts Optional parameters
      * @param {Number} opts.limit Maximum number of records to be returned in a single list (default to 100)
      * @param {String} opts.lastId Specify list staring point using the `id` of last record in previous list-query results
      * @param {Boolean} opts.reverse Whether the id of records to be retrieved should be smaller than the last_id specified- true: Retrieve records where id is smaller than the specified last_id- false: Retrieve records where id is larger than the specified last_idDefault to false.  When `last_id` is specified. Set `reverse` to `true` to trace back trading history; `false` to retrieve latest tradings.  No effect if `last_id` is not specified. (default to false)
+     * @param {Number} opts.from Start timestamp of the query
+     * @param {Number} opts.to Time range ending, default to current time
+     * @param {Number} opts.page Page number (default to 1)
      * @param {module:api/SpotApi~listTradesCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link Array.<module:model/Trade>}
      */
@@ -336,6 +340,9 @@
         'limit': opts['limit'],
         'last_id': opts['lastId'],
         'reverse': opts['reverse'],
+        'from': opts['from'],
+        'to': opts['to'],
+        'page': opts['page'],
       };
       var collectionQueryParams = {
       };
