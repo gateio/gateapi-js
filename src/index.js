@@ -13,12 +13,12 @@
 (function(factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient', 'model/Contract', 'model/ContractStat', 'model/CrossMarginCurrency', 'model/Currency', 'model/CurrencyPair', 'model/DeliveryContract', 'model/FundingBookItem', 'model/FundingRateRecord', 'model/FuturesCandlestick', 'model/FuturesLiquidate', 'model/FuturesOrderBook', 'model/FuturesOrderBookItem', 'model/FuturesTicker', 'model/FuturesTrade', 'model/InsuranceRecord', 'model/MarginCurrencyPair', 'model/OrderBook', 'model/Ticker', 'model/Trade', 'api/DeliveryApi', 'api/FuturesApi', 'api/MarginApi', 'api/SpotApi'], factory);
+    define(['ApiClient', 'model/Contract', 'model/ContractStat', 'model/CrossMarginCurrency', 'model/Currency', 'model/CurrencyChain', 'model/CurrencyPair', 'model/DeliveryContract', 'model/FundingBookItem', 'model/FundingRateRecord', 'model/FuturesCandlestick', 'model/FuturesLiquidate', 'model/FuturesOrderBook', 'model/FuturesOrderBookItem', 'model/FuturesTicker', 'model/FuturesTrade', 'model/InsuranceRecord', 'model/MarginCurrencyPair', 'model/OptionsContract', 'model/OptionsSettlement', 'model/OptionsTicker', 'model/OptionsUnderlying', 'model/OptionsUnderlyingTicker', 'model/OrderBook', 'model/Ticker', 'model/Trade', 'api/DeliveryApi', 'api/FuturesApi', 'api/MarginApi', 'api/OptionsApi', 'api/SpotApi', 'api/WalletApi'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('./ApiClient'), require('./model/Contract'), require('./model/ContractStat'), require('./model/CrossMarginCurrency'), require('./model/Currency'), require('./model/CurrencyPair'), require('./model/DeliveryContract'), require('./model/FundingBookItem'), require('./model/FundingRateRecord'), require('./model/FuturesCandlestick'), require('./model/FuturesLiquidate'), require('./model/FuturesOrderBook'), require('./model/FuturesOrderBookItem'), require('./model/FuturesTicker'), require('./model/FuturesTrade'), require('./model/InsuranceRecord'), require('./model/MarginCurrencyPair'), require('./model/OrderBook'), require('./model/Ticker'), require('./model/Trade'), require('./api/DeliveryApi'), require('./api/FuturesApi'), require('./api/MarginApi'), require('./api/SpotApi'));
+    module.exports = factory(require('./ApiClient'), require('./model/Contract'), require('./model/ContractStat'), require('./model/CrossMarginCurrency'), require('./model/Currency'), require('./model/CurrencyChain'), require('./model/CurrencyPair'), require('./model/DeliveryContract'), require('./model/FundingBookItem'), require('./model/FundingRateRecord'), require('./model/FuturesCandlestick'), require('./model/FuturesLiquidate'), require('./model/FuturesOrderBook'), require('./model/FuturesOrderBookItem'), require('./model/FuturesTicker'), require('./model/FuturesTrade'), require('./model/InsuranceRecord'), require('./model/MarginCurrencyPair'), require('./model/OptionsContract'), require('./model/OptionsSettlement'), require('./model/OptionsTicker'), require('./model/OptionsUnderlying'), require('./model/OptionsUnderlyingTicker'), require('./model/OrderBook'), require('./model/Ticker'), require('./model/Trade'), require('./api/DeliveryApi'), require('./api/FuturesApi'), require('./api/MarginApi'), require('./api/OptionsApi'), require('./api/SpotApi'), require('./api/WalletApi'));
   }
-}(function(ApiClient, Contract, ContractStat, CrossMarginCurrency, Currency, CurrencyPair, DeliveryContract, FundingBookItem, FundingRateRecord, FuturesCandlestick, FuturesLiquidate, FuturesOrderBook, FuturesOrderBookItem, FuturesTicker, FuturesTrade, InsuranceRecord, MarginCurrencyPair, OrderBook, Ticker, Trade, DeliveryApi, FuturesApi, MarginApi, SpotApi) {
+}(function(ApiClient, Contract, ContractStat, CrossMarginCurrency, Currency, CurrencyChain, CurrencyPair, DeliveryContract, FundingBookItem, FundingRateRecord, FuturesCandlestick, FuturesLiquidate, FuturesOrderBook, FuturesOrderBookItem, FuturesTicker, FuturesTrade, InsuranceRecord, MarginCurrencyPair, OptionsContract, OptionsSettlement, OptionsTicker, OptionsUnderlying, OptionsUnderlyingTicker, OrderBook, Ticker, Trade, DeliveryApi, FuturesApi, MarginApi, OptionsApi, SpotApi, WalletApi) {
   'use strict';
 
   /**
@@ -77,6 +77,11 @@
      * @property {module:model/Currency}
      */
     Currency: Currency,
+    /**
+     * The CurrencyChain model constructor.
+     * @property {module:model/CurrencyChain}
+     */
+    CurrencyChain: CurrencyChain,
     /**
      * The CurrencyPair model constructor.
      * @property {module:model/CurrencyPair}
@@ -138,6 +143,31 @@
      */
     MarginCurrencyPair: MarginCurrencyPair,
     /**
+     * The OptionsContract model constructor.
+     * @property {module:model/OptionsContract}
+     */
+    OptionsContract: OptionsContract,
+    /**
+     * The OptionsSettlement model constructor.
+     * @property {module:model/OptionsSettlement}
+     */
+    OptionsSettlement: OptionsSettlement,
+    /**
+     * The OptionsTicker model constructor.
+     * @property {module:model/OptionsTicker}
+     */
+    OptionsTicker: OptionsTicker,
+    /**
+     * The OptionsUnderlying model constructor.
+     * @property {module:model/OptionsUnderlying}
+     */
+    OptionsUnderlying: OptionsUnderlying,
+    /**
+     * The OptionsUnderlyingTicker model constructor.
+     * @property {module:model/OptionsUnderlyingTicker}
+     */
+    OptionsUnderlyingTicker: OptionsUnderlyingTicker,
+    /**
      * The OrderBook model constructor.
      * @property {module:model/OrderBook}
      */
@@ -168,10 +198,20 @@
      */
     MarginApi: MarginApi,
     /**
+     * The OptionsApi service constructor.
+     * @property {module:api/OptionsApi}
+     */
+    OptionsApi: OptionsApi,
+    /**
      * The SpotApi service constructor.
      * @property {module:api/SpotApi}
      */
-    SpotApi: SpotApi
+    SpotApi: SpotApi,
+    /**
+     * The WalletApi service constructor.
+     * @property {module:api/WalletApi}
+     */
+    WalletApi: WalletApi
   };
 
   return exports;
