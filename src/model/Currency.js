@@ -71,6 +71,9 @@
       if (data.hasOwnProperty('trade_disabled')) {
         obj['trade_disabled'] = ApiClient.convertToType(data['trade_disabled'], 'Boolean');
       }
+      if (data.hasOwnProperty('fixed_rate')) {
+        obj['fixed_rate'] = ApiClient.convertToType(data['fixed_rate'], 'String');
+      }
     }
     return obj;
   }
@@ -105,6 +108,11 @@
    * @member {Boolean} trade_disabled
    */
   exports.prototype['trade_disabled'] = undefined;
+  /**
+   * Fixed fee rate. Only for fixed rate currencies, not valid for normal currencies
+   * @member {String} fixed_rate
+   */
+  exports.prototype['fixed_rate'] = undefined;
 
 
 

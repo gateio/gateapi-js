@@ -122,7 +122,7 @@
    */
   exports.prototype['side'] = undefined;
   /**
-   * Trade role
+   * Trade role. No value in public endpoints
    * @member {module:model/Trade.RoleEnum} role
    */
   exports.prototype['role'] = undefined;
@@ -152,12 +152,12 @@
    */
   exports.prototype['fee_currency'] = undefined;
   /**
-   * Points used to deduct fee
+   * Points used to deduct fee. No value in public endpoints
    * @member {String} point_fee
    */
   exports.prototype['point_fee'] = undefined;
   /**
-   * GT used to deduct fee
+   * GT used to deduct fee. No value in public endpoints
    * @member {String} gt_fee
    */
   exports.prototype['gt_fee'] = undefined;
