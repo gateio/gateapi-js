@@ -65,6 +65,12 @@
       if (data.hasOwnProperty('is_disabled')) {
         obj['is_disabled'] = ApiClient.convertToType(data['is_disabled'], 'Number');
       }
+      if (data.hasOwnProperty('is_deposit_disabled')) {
+        obj['is_deposit_disabled'] = ApiClient.convertToType(data['is_deposit_disabled'], 'Number');
+      }
+      if (data.hasOwnProperty('is_withdraw_disabled')) {
+        obj['is_withdraw_disabled'] = ApiClient.convertToType(data['is_withdraw_disabled'], 'Number');
+      }
     }
     return obj;
   }
@@ -89,6 +95,16 @@
    * @member {Number} is_disabled
    */
   exports.prototype['is_disabled'] = undefined;
+  /**
+   * Is deposit disabled. 0 means not
+   * @member {Number} is_deposit_disabled
+   */
+  exports.prototype['is_deposit_disabled'] = undefined;
+  /**
+   * Is withdrawal disabled. 0 means not
+   * @member {Number} is_withdraw_disabled
+   */
+  exports.prototype['is_withdraw_disabled'] = undefined;
 
 
 

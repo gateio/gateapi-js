@@ -74,6 +74,9 @@
       if (data.hasOwnProperty('fixed_rate')) {
         obj['fixed_rate'] = ApiClient.convertToType(data['fixed_rate'], 'String');
       }
+      if (data.hasOwnProperty('chain')) {
+        obj['chain'] = ApiClient.convertToType(data['chain'], 'String');
+      }
     }
     return obj;
   }
@@ -113,6 +116,11 @@
    * @member {String} fixed_rate
    */
   exports.prototype['fixed_rate'] = undefined;
+  /**
+   * Chain of currency
+   * @member {String} chain
+   */
+  exports.prototype['chain'] = undefined;
 
 
 

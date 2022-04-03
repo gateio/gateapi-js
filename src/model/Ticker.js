@@ -107,27 +107,27 @@
    */
   exports.prototype['last'] = undefined;
   /**
-   * Lowest ask
+   * Recent lowest ask
    * @member {String} lowest_ask
    */
   exports.prototype['lowest_ask'] = undefined;
   /**
-   * Highest bid
+   * Recent highest bid
    * @member {String} highest_bid
    */
   exports.prototype['highest_bid'] = undefined;
   /**
-   * Change percentage.
+   * Change percentage in the last 24h
    * @member {String} change_percentage
    */
   exports.prototype['change_percentage'] = undefined;
   /**
-   * Base currency trade volume
+   * Base currency trade volume in the last 24h
    * @member {String} base_volume
    */
   exports.prototype['base_volume'] = undefined;
   /**
-   * Quote currency trade volume
+   * Quote currency trade volume in the last 24h
    * @member {String} quote_volume
    */
   exports.prototype['quote_volume'] = undefined;

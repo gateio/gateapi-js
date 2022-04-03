@@ -273,7 +273,7 @@
      * @param {Number} opts.from Start time of candlesticks, formatted in Unix timestamp in seconds. Default to`to - 100 * interval` if not specified
      * @param {Number} opts.to End time of candlesticks, formatted in Unix timestamp in seconds. Default to current time
      * @param {Number} opts.limit Maximum recent data points to return. `limit` is conflicted with `from` and `to`. If either `from` or `to` is specified, request will be rejected. (default to 100)
-     * @param {module:model/String} opts.interval Interval time between data points (default to '5m')
+     * @param {module:model/String} opts.interval Interval time between data points. Note that `1w` means natual week(Mon-Sun), while `7d` means every 7d since unix 0 (default to '5m')
      * @param {module:api/FuturesApi~listFuturesCandlesticksCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link Array.<module:model/FuturesCandlestick>}
      */
