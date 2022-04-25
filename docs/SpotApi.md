@@ -298,7 +298,7 @@ var currencyPair = "BTC_USDT"; // String | Currency pair
 var opts = {
   'limit': 100, // Number | Maximum number of records to be returned in a single list
   'lastId': "12345", // String | Specify list staring point using the `id` of last record in previous list-query results
-  'reverse': false, // Boolean | Whether the id of records to be retrieved should be smaller than the last_id specified- true: Retrieve records where id is smaller than the specified last_id- false: Retrieve records where id is larger than the specified last_idDefault to false.  When `last_id` is specified. Set `reverse` to `true` to trace back trading history; `false` to retrieve latest tradings.  No effect if `last_id` is not specified.
+  'reverse': false, // Boolean | Whether the id of records to be retrieved should be less than the last_id specified. Default to false.  When `last_id` is specified. Set `reverse` to `true` to trace back trading history; `false` to retrieve latest tradings.  No effect if `last_id` is not specified.
   'from': 1627706330, // Number | Start timestamp of the query
   'to': 1635329650, // Number | Time range ending, default to current time
   'page': 1 // Number | Page number
@@ -321,7 +321,7 @@ Name | Type | Description  | Notes
  **currencyPair** | **String**| Currency pair | 
  **limit** | **Number**| Maximum number of records to be returned in a single list | [optional] [default to 100]
  **lastId** | **String**| Specify list staring point using the &#x60;id&#x60; of last record in previous list-query results | [optional] 
- **reverse** | **Boolean**| Whether the id of records to be retrieved should be smaller than the last_id specified- true: Retrieve records where id is smaller than the specified last_id- false: Retrieve records where id is larger than the specified last_idDefault to false.  When &#x60;last_id&#x60; is specified. Set &#x60;reverse&#x60; to &#x60;true&#x60; to trace back trading history; &#x60;false&#x60; to retrieve latest tradings.  No effect if &#x60;last_id&#x60; is not specified. | [optional] [default to false]
+ **reverse** | **Boolean**| Whether the id of records to be retrieved should be less than the last_id specified. Default to false.  When &#x60;last_id&#x60; is specified. Set &#x60;reverse&#x60; to &#x60;true&#x60; to trace back trading history; &#x60;false&#x60; to retrieve latest tradings.  No effect if &#x60;last_id&#x60; is not specified. | [optional] [default to false]
  **from** | **Number**| Start timestamp of the query | [optional] 
  **to** | **Number**| Time range ending, default to current time | [optional] 
  **page** | **Number**| Page number | [optional] [default to 1]
@@ -358,7 +358,7 @@ var opts = {
   'limit': 100, // Number | Maximum recent data points to return. `limit` is conflicted with `from` and `to`. If either `from` or `to` is specified, request will be rejected.
   'from': 1546905600, // Number | Start time of candlesticks, formatted in Unix timestamp in seconds. Default to`to - 100 * interval` if not specified
   'to': 1546935600, // Number | End time of candlesticks, formatted in Unix timestamp in seconds. Default to current time
-  'interval': '30m' // String | Interval time between data points
+  'interval': '30m' // String | Interval time between data points. Note that `30d` means 1 natual month, not 30 days
 };
 var callback = function(error, data, response) {
   if (error) {
@@ -379,7 +379,7 @@ Name | Type | Description  | Notes
  **limit** | **Number**| Maximum recent data points to return. &#x60;limit&#x60; is conflicted with &#x60;from&#x60; and &#x60;to&#x60;. If either &#x60;from&#x60; or &#x60;to&#x60; is specified, request will be rejected. | [optional] [default to 100]
  **from** | **Number**| Start time of candlesticks, formatted in Unix timestamp in seconds. Default to&#x60;to - 100 * interval&#x60; if not specified | [optional] 
  **to** | **Number**| End time of candlesticks, formatted in Unix timestamp in seconds. Default to current time | [optional] 
- **interval** | **String**| Interval time between data points | [optional] [default to &#39;30m&#39;]
+ **interval** | **String**| Interval time between data points. Note that &#x60;30d&#x60; means 1 natual month, not 30 days | [optional] [default to &#39;30m&#39;]
 
 ### Return type
 

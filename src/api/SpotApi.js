@@ -319,7 +319,7 @@
      * @param {Object} opts Optional parameters
      * @param {Number} opts.limit Maximum number of records to be returned in a single list (default to 100)
      * @param {String} opts.lastId Specify list staring point using the `id` of last record in previous list-query results
-     * @param {Boolean} opts.reverse Whether the id of records to be retrieved should be smaller than the last_id specified- true: Retrieve records where id is smaller than the specified last_id- false: Retrieve records where id is larger than the specified last_idDefault to false.  When `last_id` is specified. Set `reverse` to `true` to trace back trading history; `false` to retrieve latest tradings.  No effect if `last_id` is not specified. (default to false)
+     * @param {Boolean} opts.reverse Whether the id of records to be retrieved should be less than the last_id specified. Default to false.  When `last_id` is specified. Set `reverse` to `true` to trace back trading history; `false` to retrieve latest tradings.  No effect if `last_id` is not specified. (default to false)
      * @param {Number} opts.from Start timestamp of the query
      * @param {Number} opts.to Time range ending, default to current time
      * @param {Number} opts.page Page number (default to 1)
@@ -379,7 +379,7 @@
      * @param {Number} opts.limit Maximum recent data points to return. `limit` is conflicted with `from` and `to`. If either `from` or `to` is specified, request will be rejected. (default to 100)
      * @param {Number} opts.from Start time of candlesticks, formatted in Unix timestamp in seconds. Default to`to - 100 * interval` if not specified
      * @param {Number} opts.to End time of candlesticks, formatted in Unix timestamp in seconds. Default to current time
-     * @param {module:model/String} opts.interval Interval time between data points (default to '30m')
+     * @param {module:model/String} opts.interval Interval time between data points. Note that `30d` means 1 natual month, not 30 days (default to '30m')
      * @param {module:api/SpotApi~listCandlesticksCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link Array.<[String]>}
      */
