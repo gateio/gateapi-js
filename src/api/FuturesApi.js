@@ -13,18 +13,18 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient', 'model/Contract', 'model/ContractStat', 'model/FundingRateRecord', 'model/FuturesCandlestick', 'model/FuturesLiquidate', 'model/FuturesOrderBook', 'model/FuturesTicker', 'model/FuturesTrade', 'model/InsuranceRecord'], factory);
+    define(['ApiClient', 'model/Contract', 'model/ContractStat', 'model/FundingRateRecord', 'model/FuturesCandlestick', 'model/FuturesIndexConstituents', 'model/FuturesLiquidate', 'model/FuturesOrderBook', 'model/FuturesTicker', 'model/FuturesTrade', 'model/InsuranceRecord'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('../model/Contract'), require('../model/ContractStat'), require('../model/FundingRateRecord'), require('../model/FuturesCandlestick'), require('../model/FuturesLiquidate'), require('../model/FuturesOrderBook'), require('../model/FuturesTicker'), require('../model/FuturesTrade'), require('../model/InsuranceRecord'));
+    module.exports = factory(require('../ApiClient'), require('../model/Contract'), require('../model/ContractStat'), require('../model/FundingRateRecord'), require('../model/FuturesCandlestick'), require('../model/FuturesIndexConstituents'), require('../model/FuturesLiquidate'), require('../model/FuturesOrderBook'), require('../model/FuturesTicker'), require('../model/FuturesTrade'), require('../model/InsuranceRecord'));
   } else {
     // Browser globals (root is window)
     if (!root.GateApi) {
       root.GateApi = {};
     }
-    root.GateApi.FuturesApi = factory(root.GateApi.ApiClient, root.GateApi.Contract, root.GateApi.ContractStat, root.GateApi.FundingRateRecord, root.GateApi.FuturesCandlestick, root.GateApi.FuturesLiquidate, root.GateApi.FuturesOrderBook, root.GateApi.FuturesTicker, root.GateApi.FuturesTrade, root.GateApi.InsuranceRecord);
+    root.GateApi.FuturesApi = factory(root.GateApi.ApiClient, root.GateApi.Contract, root.GateApi.ContractStat, root.GateApi.FundingRateRecord, root.GateApi.FuturesCandlestick, root.GateApi.FuturesIndexConstituents, root.GateApi.FuturesLiquidate, root.GateApi.FuturesOrderBook, root.GateApi.FuturesTicker, root.GateApi.FuturesTrade, root.GateApi.InsuranceRecord);
   }
-}(this, function(ApiClient, Contract, ContractStat, FundingRateRecord, FuturesCandlestick, FuturesLiquidate, FuturesOrderBook, FuturesTicker, FuturesTrade, InsuranceRecord) {
+}(this, function(ApiClient, Contract, ContractStat, FundingRateRecord, FuturesCandlestick, FuturesIndexConstituents, FuturesLiquidate, FuturesOrderBook, FuturesTicker, FuturesTrade, InsuranceRecord) {
   'use strict';
 
   /**
@@ -520,6 +520,56 @@
       var returnType = [ContractStat];
       return this.apiClient.callApi(
         '/futures/{settle}/contract_stats', 'GET',
+        pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null, callback
+      );
+    }
+
+    /**
+     * Callback function to receive the result of the getIndexConstituents operation.
+     * @callback module:api/FuturesApi~getIndexConstituentsCallback
+     * @param {String} error Error message, if any.
+     * @param {module:model/FuturesIndexConstituents} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Get index constituents
+     * @param {module:model/String} settle Settle currency
+     * @param {String} index Index name
+     * @param {module:api/FuturesApi~getIndexConstituentsCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:model/FuturesIndexConstituents}
+     */
+    this.getIndexConstituents = function(settle, index, callback) {
+      var postBody = null;
+      // verify the required parameter 'settle' is set
+      if (settle === undefined || settle === null) {
+        throw new Error("Missing the required parameter 'settle' when calling getIndexConstituents");
+      }
+      // verify the required parameter 'index' is set
+      if (index === undefined || index === null) {
+        throw new Error("Missing the required parameter 'index' when calling getIndexConstituents");
+      }
+
+      var pathParams = {
+        'settle': settle,
+        'index': index
+      };
+      var queryParams = {
+      };
+      var collectionQueryParams = {
+      };
+      var headerParams = {
+      };
+      var formParams = {
+      };
+
+      var authNames = [];
+      var contentTypes = [];
+      var accepts = ['application/json'];
+      var returnType = FuturesIndexConstituents;
+      return this.apiClient.callApi(
+        '/futures/{settle}/index_constituents/{index}', 'GET',
         pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, null, callback
       );

@@ -13,12 +13,12 @@
 (function(factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient', 'model/Contract', 'model/ContractStat', 'model/CrossMarginCurrency', 'model/Currency', 'model/CurrencyChain', 'model/CurrencyPair', 'model/DeliveryContract', 'model/FundingBookItem', 'model/FundingRateRecord', 'model/FuturesCandlestick', 'model/FuturesLiquidate', 'model/FuturesOrderBook', 'model/FuturesOrderBookItem', 'model/FuturesTicker', 'model/FuturesTrade', 'model/InsuranceRecord', 'model/MarginCurrencyPair', 'model/OptionsContract', 'model/OptionsSettlement', 'model/OptionsTicker', 'model/OptionsUnderlying', 'model/OptionsUnderlyingTicker', 'model/OrderBook', 'model/Ticker', 'model/Trade', 'api/DeliveryApi', 'api/FuturesApi', 'api/MarginApi', 'api/OptionsApi', 'api/SpotApi', 'api/WalletApi'], factory);
+    define(['ApiClient', 'model/Contract', 'model/ContractStat', 'model/CrossMarginCurrency', 'model/Currency', 'model/CurrencyChain', 'model/CurrencyPair', 'model/DeliveryContract', 'model/FlashSwapCurrency', 'model/FundingBookItem', 'model/FundingRateRecord', 'model/FuturesCandlestick', 'model/FuturesIndexConstituents', 'model/FuturesLiquidate', 'model/FuturesOrderBook', 'model/FuturesOrderBookItem', 'model/FuturesTicker', 'model/FuturesTrade', 'model/IndexConstituent', 'model/InsuranceRecord', 'model/MarginCurrencyPair', 'model/OptionsContract', 'model/OptionsSettlement', 'model/OptionsTicker', 'model/OptionsUnderlying', 'model/OptionsUnderlyingTicker', 'model/OrderBook', 'model/Ticker', 'model/Trade', 'api/DeliveryApi', 'api/FlashSwapApi', 'api/FuturesApi', 'api/MarginApi', 'api/OptionsApi', 'api/SpotApi', 'api/WalletApi'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('./ApiClient'), require('./model/Contract'), require('./model/ContractStat'), require('./model/CrossMarginCurrency'), require('./model/Currency'), require('./model/CurrencyChain'), require('./model/CurrencyPair'), require('./model/DeliveryContract'), require('./model/FundingBookItem'), require('./model/FundingRateRecord'), require('./model/FuturesCandlestick'), require('./model/FuturesLiquidate'), require('./model/FuturesOrderBook'), require('./model/FuturesOrderBookItem'), require('./model/FuturesTicker'), require('./model/FuturesTrade'), require('./model/InsuranceRecord'), require('./model/MarginCurrencyPair'), require('./model/OptionsContract'), require('./model/OptionsSettlement'), require('./model/OptionsTicker'), require('./model/OptionsUnderlying'), require('./model/OptionsUnderlyingTicker'), require('./model/OrderBook'), require('./model/Ticker'), require('./model/Trade'), require('./api/DeliveryApi'), require('./api/FuturesApi'), require('./api/MarginApi'), require('./api/OptionsApi'), require('./api/SpotApi'), require('./api/WalletApi'));
+    module.exports = factory(require('./ApiClient'), require('./model/Contract'), require('./model/ContractStat'), require('./model/CrossMarginCurrency'), require('./model/Currency'), require('./model/CurrencyChain'), require('./model/CurrencyPair'), require('./model/DeliveryContract'), require('./model/FlashSwapCurrency'), require('./model/FundingBookItem'), require('./model/FundingRateRecord'), require('./model/FuturesCandlestick'), require('./model/FuturesIndexConstituents'), require('./model/FuturesLiquidate'), require('./model/FuturesOrderBook'), require('./model/FuturesOrderBookItem'), require('./model/FuturesTicker'), require('./model/FuturesTrade'), require('./model/IndexConstituent'), require('./model/InsuranceRecord'), require('./model/MarginCurrencyPair'), require('./model/OptionsContract'), require('./model/OptionsSettlement'), require('./model/OptionsTicker'), require('./model/OptionsUnderlying'), require('./model/OptionsUnderlyingTicker'), require('./model/OrderBook'), require('./model/Ticker'), require('./model/Trade'), require('./api/DeliveryApi'), require('./api/FlashSwapApi'), require('./api/FuturesApi'), require('./api/MarginApi'), require('./api/OptionsApi'), require('./api/SpotApi'), require('./api/WalletApi'));
   }
-}(function(ApiClient, Contract, ContractStat, CrossMarginCurrency, Currency, CurrencyChain, CurrencyPair, DeliveryContract, FundingBookItem, FundingRateRecord, FuturesCandlestick, FuturesLiquidate, FuturesOrderBook, FuturesOrderBookItem, FuturesTicker, FuturesTrade, InsuranceRecord, MarginCurrencyPair, OptionsContract, OptionsSettlement, OptionsTicker, OptionsUnderlying, OptionsUnderlyingTicker, OrderBook, Ticker, Trade, DeliveryApi, FuturesApi, MarginApi, OptionsApi, SpotApi, WalletApi) {
+}(function(ApiClient, Contract, ContractStat, CrossMarginCurrency, Currency, CurrencyChain, CurrencyPair, DeliveryContract, FlashSwapCurrency, FundingBookItem, FundingRateRecord, FuturesCandlestick, FuturesIndexConstituents, FuturesLiquidate, FuturesOrderBook, FuturesOrderBookItem, FuturesTicker, FuturesTrade, IndexConstituent, InsuranceRecord, MarginCurrencyPair, OptionsContract, OptionsSettlement, OptionsTicker, OptionsUnderlying, OptionsUnderlyingTicker, OrderBook, Ticker, Trade, DeliveryApi, FlashSwapApi, FuturesApi, MarginApi, OptionsApi, SpotApi, WalletApi) {
   'use strict';
 
   /**
@@ -93,6 +93,11 @@
      */
     DeliveryContract: DeliveryContract,
     /**
+     * The FlashSwapCurrency model constructor.
+     * @property {module:model/FlashSwapCurrency}
+     */
+    FlashSwapCurrency: FlashSwapCurrency,
+    /**
      * The FundingBookItem model constructor.
      * @property {module:model/FundingBookItem}
      */
@@ -107,6 +112,11 @@
      * @property {module:model/FuturesCandlestick}
      */
     FuturesCandlestick: FuturesCandlestick,
+    /**
+     * The FuturesIndexConstituents model constructor.
+     * @property {module:model/FuturesIndexConstituents}
+     */
+    FuturesIndexConstituents: FuturesIndexConstituents,
     /**
      * The FuturesLiquidate model constructor.
      * @property {module:model/FuturesLiquidate}
@@ -132,6 +142,11 @@
      * @property {module:model/FuturesTrade}
      */
     FuturesTrade: FuturesTrade,
+    /**
+     * The IndexConstituent model constructor.
+     * @property {module:model/IndexConstituent}
+     */
+    IndexConstituent: IndexConstituent,
     /**
      * The InsuranceRecord model constructor.
      * @property {module:model/InsuranceRecord}
@@ -187,6 +202,11 @@
      * @property {module:api/DeliveryApi}
      */
     DeliveryApi: DeliveryApi,
+    /**
+     * The FlashSwapApi service constructor.
+     * @property {module:api/FlashSwapApi}
+     */
+    FlashSwapApi: FlashSwapApi,
     /**
      * The FuturesApi service constructor.
      * @property {module:api/FuturesApi}

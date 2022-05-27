@@ -13,6 +13,7 @@ Method | HTTP request | Description
 [**listFuturesFundingRateHistory**](FuturesApi.md#listFuturesFundingRateHistory) | **GET** /futures/{settle}/funding_rate | Funding rate history
 [**listFuturesInsuranceLedger**](FuturesApi.md#listFuturesInsuranceLedger) | **GET** /futures/{settle}/insurance | Futures insurance balance history
 [**listContractStats**](FuturesApi.md#listContractStats) | **GET** /futures/{settle}/contract_stats | Futures stats
+[**getIndexConstituents**](FuturesApi.md#getIndexConstituents) | **GET** /futures/{settle}/index_constituents/{index} | Get index constituents
 [**listLiquidatedOrders**](FuturesApi.md#listLiquidatedOrders) | **GET** /futures/{settle}/liq_orders | Retrieve liquidation history
 
 
@@ -457,6 +458,51 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**[ContractStat]**](ContractStat.md)
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+## getIndexConstituents
+
+> FuturesIndexConstituents getIndexConstituents(settle, index)
+
+Get index constituents
+
+### Example
+
+```javascript
+var GateApi = require('gate-api');
+
+var apiInstance = new GateApi.FuturesApi();
+var settle = "usdt"; // String | Settle currency
+var index = "BTC_USDT"; // String | Index name
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully. Returned data: ' + data);
+  }
+};
+apiInstance.getIndexConstituents(settle, index, callback);
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **settle** | **String**| Settle currency | 
+ **index** | **String**| Index name | 
+
+### Return type
+
+[**FuturesIndexConstituents**](FuturesIndexConstituents.md)
 
 ### Authorization
 
