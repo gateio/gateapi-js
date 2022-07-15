@@ -74,6 +74,9 @@
       if (data.hasOwnProperty('max_quote_amount')) {
         obj['max_quote_amount'] = ApiClient.convertToType(data['max_quote_amount'], 'String');
       }
+      if (data.hasOwnProperty('status')) {
+        obj['status'] = ApiClient.convertToType(data['status'], 'Number');
+      }
     }
     return obj;
   }
@@ -113,6 +116,11 @@
    * @member {String} max_quote_amount
    */
   exports.prototype['max_quote_amount'] = undefined;
+  /**
+   * Currency pair status   - `0`: disabled  - `1`: enabled
+   * @member {Number} status
+   */
+  exports.prototype['status'] = undefined;
 
 
 
