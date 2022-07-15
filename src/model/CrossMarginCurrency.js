@@ -77,6 +77,9 @@
       if (data.hasOwnProperty('price')) {
         obj['price'] = ApiClient.convertToType(data['price'], 'String');
       }
+      if (data.hasOwnProperty('status')) {
+        obj['status'] = ApiClient.convertToType(data['status'], 'Number');
+      }
     }
     return obj;
   }
@@ -121,6 +124,11 @@
    * @member {String} price
    */
   exports.prototype['price'] = undefined;
+  /**
+   * status  - `0` : disable  - `1` : enable
+   * @member {Number} status
+   */
+  exports.prototype['status'] = undefined;
 
 
 

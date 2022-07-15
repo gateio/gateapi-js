@@ -68,6 +68,12 @@
       if (data.hasOwnProperty('change_percentage')) {
         obj['change_percentage'] = ApiClient.convertToType(data['change_percentage'], 'String');
       }
+      if (data.hasOwnProperty('change_utc0')) {
+        obj['change_utc0'] = ApiClient.convertToType(data['change_utc0'], 'String');
+      }
+      if (data.hasOwnProperty('change_utc8')) {
+        obj['change_utc8'] = ApiClient.convertToType(data['change_utc8'], 'String');
+      }
       if (data.hasOwnProperty('base_volume')) {
         obj['base_volume'] = ApiClient.convertToType(data['base_volume'], 'String');
       }
@@ -121,6 +127,16 @@
    * @member {String} change_percentage
    */
   exports.prototype['change_percentage'] = undefined;
+  /**
+   * utc0 timezone, the percentage change in the last 24 hours
+   * @member {String} change_utc0
+   */
+  exports.prototype['change_utc0'] = undefined;
+  /**
+   * utc8 timezone, the percentage change in the last 24 hours
+   * @member {String} change_utc8
+   */
+  exports.prototype['change_utc8'] = undefined;
   /**
    * Base currency trade volume in the last 24h
    * @member {String} base_volume

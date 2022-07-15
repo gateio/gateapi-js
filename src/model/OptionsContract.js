@@ -139,7 +139,7 @@
    */
   exports.prototype['name'] = undefined;
   /**
-   * 标记
+   * tag
    * @member {String} tag
    */
   exports.prototype['tag'] = undefined;

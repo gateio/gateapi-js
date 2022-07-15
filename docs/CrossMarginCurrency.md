@@ -12,4 +12,5 @@ Name | Type | Description | Notes
 **user_max_borrow_amount** | **String** | Maximum borrow value allowed per user, in USDT | [optional] 
 **total_max_borrow_amount** | **String** | Maximum borrow value allowed for this currency, in USDT | [optional] 
 **price** | **String** | Price change between this currency and USDT | [optional] 
+**status** | **Number** | status  - &#x60;0&#x60; : disable  - &#x60;1&#x60; : enable | [optional] 
 

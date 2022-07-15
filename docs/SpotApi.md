@@ -12,6 +12,7 @@ Method | HTTP request | Description
 [**listOrderBook**](SpotApi.md#listOrderBook) | **GET** /spot/order_book | Retrieve order book
 [**listTrades**](SpotApi.md#listTrades) | **GET** /spot/trades | Retrieve market trades
 [**listCandlesticks**](SpotApi.md#listCandlesticks) | **GET** /spot/candlesticks | Market candlesticks
+[**getSystemTime**](SpotApi.md#getSystemTime) | **GET** /spot/time | Get server current time
 
 
 ## listCurrencies
@@ -195,7 +196,8 @@ var GateApi = require('gate-api');
 
 var apiInstance = new GateApi.SpotApi();
 var opts = {
-  'currencyPair': "BTC_USDT" // String | Currency pair
+  'currencyPair': "BTC_USDT", // String | Currency pair
+  'timezone': "utc0" // String | Timezone
 };
 var callback = function(error, data, response) {
   if (error) {
@@ -213,6 +215,7 @@ apiInstance.listTickers(opts, callback);
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **currencyPair** | **String**| Currency pair | [optional] 
+ **timezone** | **String**| Timezone | [optional] 
 
 ### Return type
 
@@ -384,6 +387,45 @@ Name | Type | Description  | Notes
 ### Return type
 
 **[[String]]**
+
+### Authorization
+
+No authorization required
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+## getSystemTime
+
+> SystemTime getSystemTime()
+
+Get server current time
+
+### Example
+
+```javascript
+var GateApi = require('gate-api');
+
+var apiInstance = new GateApi.SpotApi();
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully. Returned data: ' + data);
+  }
+};
+apiInstance.getSystemTime(callback);
+```
+
+### Parameters
+
+This endpoint does not need any parameter.
+
+### Return type
+
+[**SystemTime**](SystemTime.md)
 
 ### Authorization
 
